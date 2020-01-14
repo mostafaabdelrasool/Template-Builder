@@ -1,0 +1,28 @@
+<div fxLayout="row">
+  <div style="height: 100vh; width: 10vw;border: 1px solid; margin: 5px;">
+    <button mat-button (click)="addElement(0)">Click me!</button>
+  </div>
+  <div style="height: 100vh; width: 70vw;border: 1px solid; margin: 5px;" class="boundary" cdkDropList
+    [cdkDropListData]="fields" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of fields">
+      <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
+        <div *ngSwitchCase="0">
+          <mat-form-field gdAlignColumns="start stretch" id="{{item.id}}" [ngStyle]="{width:item.style.width,height:item.style.height,
+            maxWidth:item.style.maxWidth,maxHeight:item.style.maxHeight,marginTop:item.style.marginTop,
+            marginRight:item.style.marginRight,marginBottom:item.style.marginBottom,marginLeft:item.style.marginLeft,
+            paddingTop:item.style.paddingTop,
+            paddingRight:item.style.paddingRight,paddingBottom:item.style.paddingBottom,paddingLeft:item.style.paddingLeft}"
+            (click)="selectItem(item)" [ngClass]="{'item-selected':item.isSelected}">
+            <input matInput placeholder="Favorite food" value="Sushi">
+          </mat-form-field>
+        </div>
+        <div *ngSwitchDefault>output2</div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 100vh; width: 20vw;border: 1px solid; margin: 5px;">
+    <app-properties *ngIf="selectedField" [currentField]=selectedField></app-properties>
+  </div>
+</div>

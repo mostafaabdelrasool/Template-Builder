@@ -1,0 +1,13 @@
+<mat-form-field style="width: 6em;">
+    <input matInput type="number" (change)=propertyChangeHandle($event) name="item.name" placeholder="{{item.name}}"
+        [value]="value">
+</mat-form-field>
+<select (change)=setMeasureUnit($event) [value]="unit">
+    <option value="px">px</option>
+    <option value="em">em</option>
+    <option value="vh">vh</option>
+    <option value="%">%</option>
+</select>
+<button mat-icon-button  (click)="clear()" aria-label="Example icon-button with a close icon">
+    <mat-icon>close</mat-icon>
+</button>
