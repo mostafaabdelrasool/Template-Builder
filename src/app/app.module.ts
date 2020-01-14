@@ -11,6 +11,7 @@ import { PropertiesComponent } from './sidebar/properties.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { MeasureUnitComponent } from './sidebar/measureUnit.component';
+import { CodeGeneratorModule } from './code-generator/code.generator.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { MeasureUnitComponent } from './sidebar/measureUnit.component';
     AngularMaterialModule,
     ResizableModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    CodeGeneratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
