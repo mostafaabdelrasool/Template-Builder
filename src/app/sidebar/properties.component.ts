@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Fields } from '../app.component';
+import { Fields } from '../model/field';
 
 @Component({
   selector: 'app-properties',
@@ -21,12 +21,4 @@ export class PropertiesComponent implements OnInit {
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
   }
-  // setMeasureUnit(event, model) {
-  //   this.currentField.style[model + 'unit'] = event.target.value;
-  //   this.currentField.style[model] = this.currentField.style[model].replace(/[^\d]/g, "") + event.target.value;
-  // }
-  // propertyChangeHandle(event) {
-  //   const { value, name } = event.target;
-  //   this.currentField.style[name] = value + (this.currentField.style[name + 'unit'] || '');
-  // }
 }

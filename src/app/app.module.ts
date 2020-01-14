@@ -12,12 +12,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { MeasureUnitComponent } from './sidebar/measureUnit.component';
 import { CodeGeneratorModule } from './code-generator/code.generator.module';
+import { FieldsComponent } from './fields/fields.component';
+import { AppService } from './share/Render/app.service';
 @NgModule({
   declarations: [
     AppComponent,
     SanitizeHtmlPipe,
     PropertiesComponent,
-    MeasureUnitComponent
+    MeasureUnitComponent,
+    FieldsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { CodeGeneratorModule } from './code-generator/code.generator.module';
     FormsModule,
     CodeGeneratorModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
