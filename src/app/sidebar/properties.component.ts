@@ -4,7 +4,7 @@ import { Fields } from '../model/field';
 @Component({
   selector: 'app-properties',
   templateUrl: './properties.component.html',
-  styleUrls: ['./properties.component.css']
+  styleUrls: ['./properties.component.scss']
 })
 export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields

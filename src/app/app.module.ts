@@ -15,13 +15,15 @@ import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { FieldsComponent } from './fields/fields.component';
 import { AppService } from './share/Render/app.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { FieldTypesComponent } from './field-types/field-types.component';
 @NgModule({
   declarations: [
     AppComponent,
     SanitizeHtmlPipe,
     PropertiesComponent,
     MeasureUnitComponent,
-    FieldsComponent,TopNavComponent
+    FieldsComponent,TopNavComponent,
+    FieldTypesComponent
   ],
   imports: [
     BrowserModule,
