@@ -14,13 +14,14 @@ import { MeasureUnitComponent } from './sidebar/measureUnit.component';
 import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { FieldsComponent } from './fields/fields.component';
 import { AppService } from './share/Render/app.service';
+import { TopNavComponent } from './top-nav/top-nav.component';
 @NgModule({
   declarations: [
     AppComponent,
     SanitizeHtmlPipe,
     PropertiesComponent,
     MeasureUnitComponent,
-    FieldsComponent
+    FieldsComponent,TopNavComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { AppService } from './share/Render/app.service';
     CodeGeneratorModule
   ],
   providers: [AppService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

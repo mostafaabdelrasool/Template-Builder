@@ -11,6 +11,7 @@ import { AppService } from './share/Render/app.service';
 })
 export class AppComponent {
   title = 'template-builder';
+  sidebarOpened = false;
   constructor(public appService: AppService) {
 
   }

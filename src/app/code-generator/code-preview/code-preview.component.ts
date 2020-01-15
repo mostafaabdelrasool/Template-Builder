@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Inject } from "@angular/core";
 import { CodeModel } from '@ngstack/code-editor';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: "app-code-preview",
@@ -25,7 +26,11 @@ export class CodePreviewComponent implements OnInit {
       enabled: true
     }
   };
-  constructor() {
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  constructor( public dialogRef: MatDialogRef<CodePreviewComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
     this.codeModel.value =  [
       `import { TranslateModule, TranslateService } from '@ngstack/translate';`,
       `import { CodeEditorModule } from '@ngstack/code-editor';`,

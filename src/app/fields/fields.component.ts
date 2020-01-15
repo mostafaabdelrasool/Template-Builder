@@ -16,6 +16,7 @@ export class FieldsComponent implements OnInit {
 
   selectItem(field: Fields) {
     field.isSelected = true;
+    this.appService.sidebarOpened=true;
     this.appService.currentField = field;
     this.appService.fields.forEach(x => {
       if (x.id != field.id) {
