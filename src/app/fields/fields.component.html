@@ -2,12 +2,7 @@
     <div *ngFor="let item of appService.fields">
         <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
             <div *ngSwitchCase="0">
-                <mat-form-field gdAlignColumns="start stretch" id="{{item.id}}"
-                    [ngStyle]="{width:item.style.width,height:item.style.height,
-        maxWidth:item.style.maxWidth,maxHeight:item.style.maxHeight,marginTop:item.style.marginTop,
-        marginRight:item.style.marginRight,marginBottom:item.style.marginBottom,marginLeft:item.style.marginLeft,
-        paddingTop:item.style.paddingTop,
-        paddingRight:item.style.paddingRight,paddingBottom:item.style.paddingBottom,paddingLeft:item.style.paddingLeft}" (click)="selectItem(item)"
+                <mat-form-field id="{{item.id}}" [appStyle]="item.style" (click)="selectItem(item)"
                     [ngClass]="{'item-selected':item.isSelected}">
                     <input matInput placeholder="Favorite food" value="Sushi">
                 </mat-form-field>

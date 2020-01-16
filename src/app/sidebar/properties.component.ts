@@ -1,14 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Fields } from '../model/field';
+import { AppService } from '../share/Render/app.service';
 
 @Component({
   selector: 'app-properties',
   templateUrl: './properties.component.html',
-  styleUrls: ['./properties.component.scss']
+  styleUrls: ['./properties.component.scss'],
 })
 export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields
-  constructor() {
+  constructor(private appService:AppService) {
 
   }
 
@@ -20,5 +21,9 @@ export class PropertiesComponent implements OnInit {
   }
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
+    this.filedValueChanged('');
+  }
+  filedValueChanged(event) {
+    this.appService.fieldStyleSubject.next(this.currentField.style)
   }
 }

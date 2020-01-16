@@ -4,128 +4,126 @@
         placeholder="Add Class" appendTo="body" multiple="true" [(ngModel)]="currentField.classes">
     </ng-select>
 </div>
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Setting
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-form-field>
-                <input matInput placeholder="Id" [(ngModel)]="currentField.id">
-            </mat-form-field>
+<fieldset (change)=filedValueChanged($event)>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Setting
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <mat-form-field>
+                    <input matInput placeholder="Id" [(ngModel)]="currentField.id">
+                </mat-form-field>
 
-            <mat-form-field>
-                <input matInput placeholder="Name" [(ngModel)]="currentField.name">
-            </mat-form-field>
-        </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                General
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <mat-form-field>
-                <mat-select placeholder="Display" [(value)]="currentField.style.display">
-                    <mat-option value="none">
-                        none
-                    </mat-option>
-                    <mat-option value="inline-block">
-                        inline-block
-                    </mat-option>
-                    <mat-option value="block">
-                        block
-                    </mat-option>
-                    <mat-option value="inline">
-                        inline
-                    </mat-option>
-                    <mat-option value="flex">
-                        flex
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-select placeholder="Position" [(value)]="currentField.style.position">
-                    <mat-option value="absolute">
-                        absolute
-                    </mat-option>
-                    <mat-option value="relative">
-                        relative
-                    </mat-option>
-                    <mat-option value="static">
-                        static
-                    </mat-option>
-                    <mat-option value="fixed">
-                        fixed
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="number" placeholder="Top" [(ngModel)]="currentField.style.top">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="number" placeholder="Right" [(ngModel)]="currentField.style.right">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="number" placeholder="Left" [(ngModel)]="currentField.style.left">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="number" placeholder="Bottom" [(ngModel)]="currentField.style.bottom">
-            </mat-form-field>
-        </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Dimension
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-            <app-measureUnit [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
-                (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
-            <app-measureUnit [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
-                (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
-            <app-measureUnit [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
-                (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
-            <app-measureUnit [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
-                (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
-            <div>
-                Margin
-                <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                    <app-measureUnit
-                        [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
-                        (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
-                        (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
-                        (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
-                        (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
+                <mat-form-field>
+                    <input matInput placeholder="Name" [(ngModel)]="currentField.name">
+                </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    General
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="1 1 49%" >
+                    <mat-select placeholder="Display" (selectionChange)="filedValueChanged($event)" [(value)]="currentField.style.display">
+                        <mat-option value="none">
+                            none
+                        </mat-option>
+                        <mat-option value="inline-block">
+                            inline-block
+                        </mat-option>
+                        <mat-option value="block">
+                            block
+                        </mat-option>
+                        <mat-option value="inline">
+                            inline
+                        </mat-option>
+                        <mat-option value="flex">
+                            flex
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field fxFlex="1 1 49%" >
+                    <mat-select placeholder="Position" (selectionChange)="filedValueChanged($event)" [(value)]="currentField.style.position">
+                        <mat-option value="absolute">
+                            absolute
+                        </mat-option>
+                        <mat-option value="relative">
+                            relative
+                        </mat-option>
+                        <mat-option value="static">
+                            static
+                        </mat-option>
+                        <mat-option value="fixed">
+                            fixed
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <app-measureUnit [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
+                    (valueUpdated)="updateStyle($event,'top')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
+                    (valueUpdated)="updateStyle($event,'right')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
+                    (valueUpdated)="updateStyle($event,'left')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
+                    (valueUpdated)="updateStyle($event,'bottom')"></app-measureUnit>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Dimension
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <app-measureUnit [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
+                    (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
+                    (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
+                    (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
+                    (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
+                <div>
+                    Margin
+                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+                        <app-measureUnit
+                            [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
+                            (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
+                            (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
+                            (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
+                            (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
+                    </div>
+                </div>
+                <div>
+                    Padding
+                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+                        <app-measureUnit
+                            [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
+                            (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
+                            (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
+                            (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
+                        <app-measureUnit
+                            [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
+                            (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
+                    </div>
                 </div>
             </div>
-            <div>
-                Padding
-                <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                    <app-measureUnit
-                        [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
-                        (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
-                        (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
-                        (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
-                    <app-measureUnit
-                        [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
-                        (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
-                </div>
-            </div>
-        </div>
-    </mat-expansion-panel>
-</mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</fieldset>

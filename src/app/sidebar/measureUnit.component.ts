@@ -28,7 +28,7 @@ export class MeasureUnitComponent implements OnInit {
   ngOnInit() {
     if (this.item.modelValue) {
       this.value = this.item.modelValue.replace(/[^\d]/g, "");
-      this.unit = this.item.modelValue.replace(/[^\d]/g, "");
+      this.unit = this.item.modelValue.replace(/[0-9]/g, "");
     } else {
       this.unit = 'px';
     }

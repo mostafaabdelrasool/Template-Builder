@@ -19,7 +19,10 @@ export class FieldsComponent implements OnInit {
     field.isSelected = true;
     this.appService.sidebarOpened = true;
     this.appService.currentManager = Manager_Type.STYLES;
-    this.appService.currentField = field;
+    this.appService.currentField =undefined;
+    setTimeout(() => {
+    this.appService.currentField =field;
+    }, 100);
     this.appService.fields.forEach(x => {
       if (x.id != field.id) {
         x.isSelected = false;

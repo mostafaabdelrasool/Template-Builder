@@ -16,6 +16,7 @@ import { FieldsComponent } from './fields/fields.component';
 import { AppService } from './share/Render/app.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { FieldTypesComponent } from './field-types/field-types.component';
+import { ApplyStyleDirective } from './share/Render/apply-style.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { FieldTypesComponent } from './field-types/field-types.component';
     PropertiesComponent,
     MeasureUnitComponent,
     FieldsComponent,TopNavComponent,
-    FieldTypesComponent
+    FieldTypesComponent,
+    ApplyStyleDirective
   ],
   imports: [
     BrowserModule,
