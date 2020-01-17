@@ -32,4 +32,5 @@ export interface Style {
   flexDirection?:string;
   alignItems?:string;
   justifyContent?:string;
+  flexWrap?:string;
 }

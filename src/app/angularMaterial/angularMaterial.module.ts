@@ -41,7 +41,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
-  exports: [MatToolbarModule, MatSidenavModule,MatSelectModule,
+  exports: [MatToolbarModule, MatSidenavModule,MatSelectModule,MatButtonToggleModule,
     MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatInputModule, MatDialogModule,
     MatTooltipModule,NgxLayoutsModule, FormsModule,MatCheckboxModule,MatExpansionModule,MatAutocompleteModule , MatRadioModule,DragDropModule,MatTreeModule]
 })

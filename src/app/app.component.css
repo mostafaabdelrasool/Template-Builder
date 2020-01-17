@@ -1,13 +1,11 @@
 .sidebar{
-    width: 30vw;
+    width: 17vw;
   display: none;
   transition: all .5s linear;
   opacity: 0;
   box-shadow: 0 0 2px 2px #00000052;
   padding: 5px;
   margin: 5px;
-
-  border-top-left-radius: 5px;
 }
 .showsidebar{
     display: inline-block;

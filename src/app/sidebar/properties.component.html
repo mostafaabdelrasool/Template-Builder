@@ -12,16 +12,19 @@
                     Setting
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div fxLayout="row" fxLayoutAlign="space-between center">
-                <mat-form-field>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="Id" [(ngModel)]="currentField.id">
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="Name" [(ngModel)]="currentField.name">
                 </mat-form-field>
-                <mat-form-field>
-                    <input matInput readonly=true placeholder="Name" [(ngModel)]="currentField.type">
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput readonly=true placeholder="Type" [(ngModel)]="currentField.type">
+                </mat-form-field>
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput placeholder="Model binder" [(ngModel)]="currentField.model">
                 </mat-form-field>
             </div>
         </mat-expansion-panel>
@@ -137,49 +140,57 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div>
-                <div>
-                    Orientation
-                    <div fxLayout="row" class="st-border">
-                        <button mat-icon-button (click)="setFlexSetting('flex-direction','row')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>Row</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('flex-direction','column')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>Column</mat-icon>
-                        </button>
-                    </div>
-                </div>
-                <div>
-                    Child Alignment
-                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                        <button mat-icon-button (click)="setFlexSetting('justify-content','start')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>H-start</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('justify-content','center')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>H-center</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('justify-content','end')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>H-end</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('align-items','start')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>V-start</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('align-items','end')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>V-center</mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="setFlexSetting('align-items','end')"
-                            aria-label="Example icon-button with a close icon">
-                            <mat-icon>V-end</mat-icon>
-                        </button>
-                    </div>
-                </div>
-
+                Orientation
+                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                    <mat-button-toggle (click)="setFlexSetting('flex-direction','row')">
+                        <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('flex-direction','column')">
+                        <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div>
+                Horizontal Alignment
+                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                    <mat-button-toggle (click)="setFlexSetting('justify-content','flex-start')">
+                        <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('justify-content','center')">
+                        <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('justify-content','flex-end')">
+                        <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('justify-content','space-between')">
+                        <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('justify-content','space-around')">
+                        <mat-icon aria-hidden="false" aria-label="column format_align_justify icon">format_align_justify
+                        </mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+                Vertical Alignment
+                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                    <mat-button-toggle (click)="setFlexSetting('align-items','flex-start')">
+                        <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('align-items','center')">
+                        <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('align-items','flex-end')">
+                        <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                        </mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle (click)="setFlexSetting('align-items','stretch')">
+                        <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
