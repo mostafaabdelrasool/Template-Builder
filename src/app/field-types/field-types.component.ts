@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from '../share/Render/app.service';
 import { FieldType, Fields } from '../model/field';
+import { Containers } from '../model/containers';
 
 @Component({
   selector: "app-field-types",
@@ -9,15 +10,24 @@ import { FieldType, Fields } from '../model/field';
 })
 
 export class FieldTypesComponent implements OnInit {
-  
+
   constructor(public appService: AppService) {
 
   }
   addElement(type: FieldType) {
-    const field: Fields = {
-      type: FieldType.INPUT_TEXT, model: 'text', id: Date.now().toString(), style: {}
-    };
-    this.appService.currentContainer.fields.push(field);
+
+    if (type === FieldType.DIV) {
+      const container: Containers = {
+        type: type, model: 'text', id: Date.now().toString(), style: {}, fields: []
+      };
+      this.appService.containers.push(container)
+      this.appService.currentContainer=container;
+    } else {
+      const field: Fields = {
+        type: type, model: 'text', id: Date.now().toString(), style: {}
+      };
+      this.appService.currentContainer.fields.push(field);
+    }
   }
   ngOnInit() {
 

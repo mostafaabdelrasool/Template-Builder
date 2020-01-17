@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { AppService } from '../share/Render/app.service';
 import { Containers } from '../model/containers';
 import { Manager_Type } from '../model/manager';
@@ -7,7 +7,9 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 @Component({
   selector: "app-containers",
   templateUrl: "./containers.component.html",
-  styleUrls: ["./containers.component.scss"]
+  styleUrls: ["./containers.component.scss"],
+  encapsulation:ViewEncapsulation.None
+
 })
 
 export class ContainersComponent implements OnInit {
@@ -18,9 +20,9 @@ export class ContainersComponent implements OnInit {
     container.isSelected = true;
     this.appService.sidebarOpened = true;
     this.appService.currentManager = Manager_Type.STYLES;
-    this.appService.currentContainer = undefined;
+    this.appService.currentField = undefined;
     setTimeout(() => {
-      this.appService.currentContainer = container;
+      this.appService.currentField = container;
     }, 100);
     this.appService.containers.forEach(x => {
       if (x.id != container.id) {

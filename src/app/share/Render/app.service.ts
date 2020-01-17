@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style } from 'src/app/model/field';
+import { Fields, Style, FieldType } from 'src/app/model/field';
 import { Manager_Type } from 'src/app/model/manager';
 import { BehaviorSubject } from 'rxjs';
-import { Containers, ContainerType } from 'src/app/model/containers';
+import { Containers } from 'src/app/model/containers';
 
 /**
  * @description
@@ -17,10 +17,11 @@ export class AppService {
   fieldStyleSubject: BehaviorSubject<Style>;
   currentContainer: Containers;
   constructor() {
-    this.currentContainer = { type: ContainerType.DIV, id: Date.now().toString(), fields: [] };
-    this.containers = [
-      {... this.currentContainer }
-    ];
+    this.currentContainer = {
+      model: undefined,
+      type: FieldType.DIV, id: Date.now().toString(), fields: [],style:{}
+    };
+    this.containers = [Object.assign({},this.currentContainer)];
     this.fieldStyleSubject = new BehaviorSubject<Style>(null);
   }
 

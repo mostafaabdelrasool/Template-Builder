@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewEncapsulation } from "@angular/core";
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Fields, FieldType } from '../model/field';
 import { AppService } from '../share/Render/app.service';
@@ -7,7 +7,8 @@ import { Manager_Type } from '../model/manager';
 @Component({
   selector: "app-fields",
   templateUrl: "./fields.component.html",
-  styleUrls: ["./fields.component.scss"]
+  styleUrls: ["./fields.component.scss"],
+  encapsulation:ViewEncapsulation.None
 })
 
 export class FieldsComponent implements OnInit {

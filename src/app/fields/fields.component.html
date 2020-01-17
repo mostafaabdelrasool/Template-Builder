@@ -1,5 +1,5 @@
-<div cdkDropList [cdkDropListData]="appService.currentContainer.fields" (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let item of appService.currentContainer.fields">
+<div cdkDropList [cdkDropListData]="fields" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of fields">
         <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
             <div *ngSwitchCase="0">
                 <mat-form-field id="{{item.id}}" [appStyle]="item.style" (click)="selectItem(item)"
