@@ -3,8 +3,8 @@
     <div *ngFor="let item of appService.containers">
         <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
             <div *ngSwitchCase="3">
-                <div class="field-container" [appStyle]="item.style"  [ngClass]="{'item-selected':item.isSelected}" (click)="selectItem(item)">
-                  <app-fields [fields]=item.fields></app-fields>
+                <div class="field-container"   [ngClass]="{'item-selected':item.isSelected}" (click)="selectItem(item)">
+                  <app-fields [appStyle]="item.style" [fields]=item.fields></app-fields>
                 </div>
             </div>
             <div *ngSwitchDefault>output2</div>

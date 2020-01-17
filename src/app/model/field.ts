@@ -29,4 +29,7 @@ export interface Style {
   paddingRight?: string;
   paddingBottom?: string;
   paddingLeft?: string;
+  flexDirection?:string;
+  alignItems?:string;
+  justifyContent?:string;
 }

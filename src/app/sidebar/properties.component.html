@@ -28,12 +28,13 @@
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    General
+                    Display
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="1 1 49%" >
-                    <mat-select placeholder="Display" (selectionChange)="filedValueChanged($event)" [(value)]="currentField.style.display">
+                <mat-form-field fxFlex="1 1 49%">
+                    <mat-select placeholder="Display" (selectionChange)="filedValueChanged($event)"
+                        [(value)]="currentField.style.display">
                         <mat-option value="none">
                             none
                         </mat-option>
@@ -51,8 +52,9 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%" >
-                    <mat-select placeholder="Position" (selectionChange)="filedValueChanged($event)" [(value)]="currentField.style.position">
+                <mat-form-field fxFlex="1 1 49%">
+                    <mat-select placeholder="Position" (selectionChange)="filedValueChanged($event)"
+                        [(value)]="currentField.style.position">
                         <mat-option value="absolute">
                             absolute
                         </mat-option>
@@ -126,6 +128,58 @@
                             (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
                     </div>
                 </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Flex Setting
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div>
+                <div>
+                    Orientation
+                    <div fxLayout="row" class="st-border">
+                        <button mat-icon-button (click)="setFlexSetting('flex-direction','row')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>Row</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('flex-direction','column')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>Column</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    Child Alignment
+                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+                        <button mat-icon-button (click)="setFlexSetting('justify-content','start')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>H-start</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('justify-content','center')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>H-center</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('justify-content','end')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>H-end</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('align-items','start')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>V-start</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('align-items','end')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>V-center</mat-icon>
+                        </button>
+                        <button mat-icon-button (click)="setFlexSetting('align-items','end')"
+                            aria-label="Example icon-button with a close icon">
+                            <mat-icon>V-end</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </mat-expansion-panel>
     </mat-accordion>

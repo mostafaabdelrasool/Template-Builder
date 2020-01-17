@@ -9,7 +9,7 @@ import { AppService } from '../share/Render/app.service';
 })
 export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields
-  constructor(private appService:AppService) {
+  constructor(private appService: AppService) {
 
   }
 
@@ -25,5 +25,9 @@ export class PropertiesComponent implements OnInit {
   }
   filedValueChanged(event) {
     this.appService.fieldStyleSubject.next(this.currentField.style)
+  }
+  setFlexSetting(flexType, value) {
+    this.currentField.style[flexType] = value;
+    this.filedValueChanged('');
   }
 }
