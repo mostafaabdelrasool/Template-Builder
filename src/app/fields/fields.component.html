@@ -2,7 +2,7 @@
     <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
         <div *ngSwitchCase="0">
             <mat-form-field id="{{item.id}}" [appStyle]="item.style" (click)="selectItem(item)"
-                [ngClass]="{'item-selected':item.isSelected}">
+                [ngClass]="{'item-selected':item.id===appService.currentField?.id}">
                 <input matInput placeholder="Favorite food" value="Sushi">
             </mat-form-field>
             <!-- <div style="height: 20px;width: 100%;" [appHighlight]='{color:"yellow"}'></div> -->

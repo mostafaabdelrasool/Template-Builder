@@ -16,19 +16,19 @@ export class ContainersComponent implements OnInit {
 
   constructor(public appService: AppService) {
   }
-  selectItem(container: Containers) {
+  selectItem(event,container: Containers) {
+    if (event.target.tagName!=='DIV') {
+     //if user click on child element it will fire this event also because it has a click event
+      return ;
+    }
     container.isSelected = true;
     this.appService.sidebarOpened = true;
     this.appService.currentManager = Manager_Type.STYLES;
     this.appService.currentField = undefined;
     setTimeout(() => {
       this.appService.currentField = container;
+      this.appService.currentContainer = container;
     }, 100);
-    this.appService.containers.forEach(x => {
-      if (x.id != container.id) {
-        x.isSelected = false;
-      }
-    })
   }
   drop(event: CdkDragDrop<string[]>, item: Containers) {
     if (event.previousContainer === event.container) {

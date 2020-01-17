@@ -22,13 +22,9 @@ export class FieldsComponent implements OnInit {
     this.appService.currentManager = Manager_Type.STYLES;
     this.appService.currentField = undefined;
     setTimeout(() => {
+//this is a work around because angular doesn't detect change of child properties so i clear all and set again
       this.appService.currentField = field;
     }, 100);
-    this.appService.currentContainer.fields.forEach(x => {
-      if (x.id != field.id) {
-        x.isSelected = false;
-      }
-    })
   }
   drop(event: CdkDragDrop<string[]>, item: Fields) {
     if (event.previousContainer === event.container) {

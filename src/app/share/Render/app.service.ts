@@ -19,10 +19,9 @@ export class AppService {
   constructor() {
     this.currentContainer = {
       model: undefined,
-      type: FieldType.DIV, id: Date.now().toString(), fields: [],style:{}
+      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: {}
     };
-    this.containers = [Object.assign({},this.currentContainer)];
+    this.containers = [Object.assign({}, this.currentContainer)];
     this.fieldStyleSubject = new BehaviorSubject<Style>(null);
   }
-
 }

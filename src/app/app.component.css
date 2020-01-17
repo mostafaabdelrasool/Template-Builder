@@ -14,7 +14,7 @@
     opacity: 1;
 }
 .boundary{
-  height: 100vh; width: 100%;border: 1px solid; margin: 5px;
+  height: auto; width: 100%;min-height: 90vh;
 }
 .item-selected{
   border: 1px dashed black;
