@@ -1,0 +1,12 @@
+<div cdkDropList [cdkDropListData]="appService.containers" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of appService.containers">
+        <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
+            <div *ngSwitchCase="0">
+                <div>
+                  <app-fields [fields]=item.fields></app-fields>
+                </div>
+            </div>
+            <div *ngSwitchDefault>output2</div>
+        </div>
+    </div>
+</div>

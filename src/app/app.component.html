@@ -1,9 +1,9 @@
 <app-top-nav></app-top-nav>
 <div fxLayout="row">
   <div class="boundary">
-    <app-fields></app-fields>
+    <app-containers></app-containers>
   </div>
-  
+
   <div [ngClass]="{'showsidebar': appService.sidebarOpened}" class="sidebar">
     <div [ngSwitch]="appService.currentManager">
       <div *ngSwitchCase="1">
@@ -15,6 +15,6 @@
       <div *ngSwitchDefault>output2</div>
     </div>
 
-   
+
   </div>
 </div>

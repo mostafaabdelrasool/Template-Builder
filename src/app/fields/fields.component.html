@@ -1,15 +1,14 @@
-<div cdkDropList [cdkDropListData]="appService.fields" (cdkDropListDropped)="drop($event)">
-    <div *ngFor="let item of appService.fields">
+<div cdkDropList [cdkDropListData]="appService.currentContainer.fields" (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let item of appService.currentContainer.fields">
         <div [ngSwitch]="item.type" cdkDragBoundary=".boundary" cdkDrag>
             <div *ngSwitchCase="0">
                 <mat-form-field id="{{item.id}}" [appStyle]="item.style" (click)="selectItem(item)"
                     [ngClass]="{'item-selected':item.isSelected}">
                     <input matInput placeholder="Favorite food" value="Sushi">
                 </mat-form-field>
+                <!-- <div style="height: 20px;width: 100%;" [appHighlight]='{color:"yellow"}'></div> -->
             </div>
             <div *ngSwitchDefault>output2</div>
-        </div>
-        <div>
         </div>
     </div>
 </div>

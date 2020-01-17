@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Fields, FieldType } from '../model/field';
 import { AppService } from '../share/Render/app.service';
@@ -11,7 +11,7 @@ import { Manager_Type } from '../model/manager';
 })
 
 export class FieldsComponent implements OnInit {
-
+  @Input() fields: Fields[];
   constructor(public appService: AppService) {
   }
 
@@ -19,11 +19,11 @@ export class FieldsComponent implements OnInit {
     field.isSelected = true;
     this.appService.sidebarOpened = true;
     this.appService.currentManager = Manager_Type.STYLES;
-    this.appService.currentField =undefined;
+    this.appService.currentField = undefined;
     setTimeout(() => {
-    this.appService.currentField =field;
+      this.appService.currentField = field;
     }, 100);
-    this.appService.fields.forEach(x => {
+    this.appService.currentContainer.fields.forEach(x => {
       if (x.id != field.id) {
         x.isSelected = false;
       }
@@ -31,7 +31,7 @@ export class FieldsComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>, item: Fields) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(this.appService.fields, event.previousIndex, event.currentIndex);
+      moveItemInArray(this.appService.currentContainer.fields, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,

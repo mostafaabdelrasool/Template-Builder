@@ -17,7 +17,7 @@ export class FieldTypesComponent implements OnInit {
     const field: Fields = {
       type: FieldType.INPUT_TEXT, model: 'text', id: Date.now().toString(), style: {}
     };
-    this.appService.fields.push(field);
+    this.appService.currentContainer.fields.push(field);
   }
   ngOnInit() {
 

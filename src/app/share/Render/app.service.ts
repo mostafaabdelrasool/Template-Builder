@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Fields, Style } from 'src/app/model/field';
 import { Manager_Type } from 'src/app/model/manager';
 import { BehaviorSubject } from 'rxjs';
+import { Containers, ContainerType } from 'src/app/model/containers';
 
 /**
  * @description
@@ -9,14 +10,18 @@ import { BehaviorSubject } from 'rxjs';
  */
 @Injectable()
 export class AppService {
-  fields: Fields[];
+  containers: Containers[];
   currentField: Fields;
   sidebarOpened: boolean = false;
   currentManager = Manager_Type.NONE;
-  fieldStyleSubject:BehaviorSubject<Style>;
+  fieldStyleSubject: BehaviorSubject<Style>;
+  currentContainer: Containers;
   constructor() {
-    this.fields = new Array<Fields>();
-    this.fieldStyleSubject=new BehaviorSubject<Style>(null);
+    this.currentContainer = { type: ContainerType.DIV, id: Date.now().toString(), fields: [] };
+    this.containers = [
+      {... this.currentContainer }
+    ];
+    this.fieldStyleSubject = new BehaviorSubject<Style>(null);
   }
 
 }
