@@ -3,18 +3,18 @@ import { AppService } from '../share/Render/app.service';
 import { Containers } from '../model/containers';
 import { Manager_Type } from '../model/manager';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { HighlightColors } from '../share/Render/highlight.directive';
 
 @Component({
   selector: "app-containers",
   templateUrl: "./containers.component.html",
   styleUrls: ["./containers.component.scss"],
-  encapsulation:ViewEncapsulation.None
-
 })
 
 export class ContainersComponent implements OnInit {
-
+  color: HighlightColors;
   constructor(public appService: AppService) {
+    this.color=HighlightColors.BLACK;
   }
   selectItem(event,container: Containers) {
     if (event.target.tagName!=='DIV') {
@@ -30,7 +30,7 @@ export class ContainersComponent implements OnInit {
       this.appService.currentContainer = container;
     }, 100);
   }
-  drop(event: CdkDragDrop<string[]>, item: Containers) {
+  drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(this.appService.containers, event.previousIndex, event.currentIndex);
     } else {
@@ -40,6 +40,18 @@ export class ContainersComponent implements OnInit {
         event.currentIndex);
     }
   }
+
+  dropField(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(this.appService.currentContainer.fields, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
+
   ngOnInit() {
 
   }

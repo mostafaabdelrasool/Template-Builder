@@ -13,9 +13,10 @@ export class HighlightDirective {
   @HostListener('mouseleave') onMouseLeave() {
     this.highlight(null);
   }
-  private highlight(color: string) {
+  private highlight(color: HighlightColors) {
     if (!this.highlightColor.disabled) {
-      this.el.nativeElement.style.backgroundColor = color;
+      this.el.nativeElement.style.border = color ? '2px solid ' + color : null;
+
     }
   }
   @Input('appHighlight') highlightColor: HighlightSetting;
@@ -25,5 +26,5 @@ export interface HighlightSetting {
   disabled: boolean;
 }
 export enum HighlightColors {
-  YELLOW = 'yellow', BLUE = 'blue', RED = 'red'
+  YELLOW = 'yellow', BLUE = '#00c4ff', RED = 'red',BLACK='black'
 }

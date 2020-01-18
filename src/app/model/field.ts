@@ -5,7 +5,8 @@ export class Fields {
   id: string;
   classes?: string[];
   name?: string
-  style?: Style
+  style?: Style;
+  containerId?:string;
 }
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION

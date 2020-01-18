@@ -24,7 +24,7 @@ export class FieldTypesComponent implements OnInit {
       this.appService.currentContainer=container;
     } else {
       const field: Fields = {
-        type: type, model: 'text', id: Date.now().toString(), style: {}
+        type: type, model: 'text', id: Date.now().toString(), style: {},containerId: this.appService.currentContainer.id
       };
       this.appService.currentContainer.fields.push(field);
     }
