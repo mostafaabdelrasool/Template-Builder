@@ -6,12 +6,19 @@ export class Fields {
   classes?: string[];
   name?: string
   style?: Style;
-  containerId?:string;
+  containerId?: string;
   placeholder?: string;
   value?: string;
+  min?: number;
+  max?: number;
+  step?: number;
+  startDate?: Date
+  endData?: Date
 }
 export enum FieldType {
-  INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION
+  INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
+  DATEPICKER, TEXT_AREA, RADIO_BUTTON, SELECT, SLIDER, SLIDER_TOGGLE,
+  CHILD_DIV
 }
 export interface Style {
   position?: string;
@@ -32,8 +39,8 @@ export interface Style {
   paddingRight?: string;
   paddingBottom?: string;
   paddingLeft?: string;
-  flexDirection?:string;
-  alignItems?:string;
-  justifyContent?:string;
-  flexWrap?:string;
+  flexDirection?: string;
+  alignItems?: string;
+  justifyContent?: string;
+  flexWrap?: string;
 }

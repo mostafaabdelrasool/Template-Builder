@@ -1,2 +1,53 @@
-<button mat-button (click)="addElement(0)">Click me!</button>
-<button mat-button (click)="addElement(3)">DIV</button>
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Form
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div  fxLayout="row wrap">
+            <button mat-button (click)="addElement(0)" aria-label="Example icon-button with a input icon">
+                Input text
+                <mat-icon>input</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(1)" aria-label="Example icon-button with a looks_5 icon">
+                Input number
+                <mat-icon>looks_5</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(6)" aria-label="Example icon-button with a check_box icon">
+                Check box
+                <mat-icon>check_box</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(7)" aria-label="Example icon-button with a date_range icon">
+                Datepicker
+                <mat-icon>date_range</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(9)"
+                aria-label="Example icon-button with a radio_button_checked icon">
+                Radio Button
+                <mat-icon>radio_button_checked</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(11)" aria-label="Example icon-button with a fast_forward icon">
+                Slider
+                <mat-icon>fast_forward</mat-icon>
+            </button>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Container
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div  fxLayout="row wrap">
+            <button mat-button (click)="addElement(3)" aria-label="Example icon-button with a crop_square icon">
+                Container Div
+                <mat-icon>crop_square</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(13)" aria-label="Example icon-button with a flip_to_back icon">
+                Child Container Div
+                <mat-icon>flip_to_back</mat-icon>
+            </button>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

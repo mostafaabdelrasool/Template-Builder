@@ -37,12 +37,14 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
+  
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
-  exports: [MatToolbarModule, MatSidenavModule,MatSelectModule,MatButtonToggleModule,MatChipsModule,
-    MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatInputModule, MatDialogModule,
-    MatTooltipModule,NgxLayoutsModule, FormsModule,MatCheckboxModule,MatExpansionModule,MatAutocompleteModule , MatRadioModule,DragDropModule,MatTreeModule]
+  exports: [MatToolbarModule, MatSidenavModule, MatSelectModule, MatButtonToggleModule, MatChipsModule,
+    MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatInputModule, MatDialogModule,  MatDatepickerModule,
+    MatNativeDateModule,MatSliderModule,
+    MatTooltipModule, NgxLayoutsModule, FormsModule, MatCheckboxModule, MatExpansionModule, MatAutocompleteModule, MatRadioModule, DragDropModule, MatTreeModule]
 })
 export class AngularMaterialModule { }
