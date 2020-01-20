@@ -11,10 +11,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class CodePreviewComponent implements OnInit {
   @Input() activeTheme = 'vs';
   @Input() readOnly = false;
-  @Input() code;
+  @Input() code: string[];
+  @Input() language: string;
 
   codeModel: CodeModel = {
-    language: 'typescript',
+    language: this.language || 'typescript',
     uri: 'main.ts',
     value: '',
     dependencies: ['@types/node', '@ngstack/translate', '@ngstack/code-editor']
@@ -29,19 +30,21 @@ export class CodePreviewComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  constructor( public dialogRef: MatDialogRef<CodePreviewComponent>,
+  constructor(public dialogRef: MatDialogRef<CodePreviewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.codeModel.value =  [
-      `import { TranslateModule, TranslateService } from '@ngstack/translate';`,
-      `import { CodeEditorModule } from '@ngstack/code-editor';`,
-      `import * as fs from 'fs';`,
-      '',
-      `export class MyClass {`,
-      `  constructor(translate: TranslateService) {`,
-      '',
-      '  }',
-      `}`
-    ].join('\n');
+    this.codeModel.value = data.code || '';
+    this.codeModel.language = data.language || '';
+    // [
+    //   `import { TranslateModule, TranslateService } from '@ngstack/translate';`,
+    //   `import { CodeEditorModule } from '@ngstack/code-editor';`,
+    //   `import * as fs from 'fs';`,
+    //   '',
+    //   `export class MyClass {`,
+    //   `  constructor(translate: TranslateService) {`,
+    //   '',
+    //   '  }',
+    //   `}`
+    // ].join('\n');
   }
 
   ngOnInit() {

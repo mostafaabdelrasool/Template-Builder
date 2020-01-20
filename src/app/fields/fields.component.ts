@@ -15,6 +15,7 @@ export class FieldsComponent implements OnInit {
   constructor(public appService: AppService) {
   }
 
+
   selectField(field: Fields) {
     field.isSelected = true;
     this.appService.sidebarOpened = true;

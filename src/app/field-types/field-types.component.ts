@@ -18,13 +18,13 @@ export class FieldTypesComponent implements OnInit {
 
     if (type === FieldType.DIV) {
       const container: Containers = {
-        type: type, model: 'text', id: Date.now().toString(), style: {}, fields: []
+        type: type, model: 'text', id: Date.now().toString(), style: {}, fields: [],classes:[]
       };
       this.appService.containers.push(container)
       this.appService.currentContainer=container;
     } else {
       const field: Fields = {
-        type: type, model: 'text', id: Date.now().toString(), style: {},containerId: this.appService.currentContainer.id
+        type: type, model: 'text', id: Date.now().toString(),classes:[], style: {},containerId: this.appService.currentContainer.id
       };
       this.appService.currentContainer.fields.push(field);
     }

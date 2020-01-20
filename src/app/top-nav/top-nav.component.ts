@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material';
 import { CodePreviewComponent } from '../code-generator/code-preview/code-preview.component';
 import { AppService } from '../share/Render/app.service';
 import { Manager_Type } from '../model/manager';
+import { ComponentCodeService } from '../code-generator/angular/component-code.service';
+import { HtmlCodeService } from '../code-generator/angular/HtmlCodeService';
 
 @Component({
   selector: "app-top-nav",
@@ -12,12 +14,13 @@ import { Manager_Type } from '../model/manager';
 
 export class TopNavComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, public appService: AppService) { }
+  constructor(public dialog: MatDialog, public appService: AppService,
+    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '49vw',
-      height: '86vh',
-      data: {}
+      height: 'auto',
+      data: { code: this.htmlCodeService.generate(this.appService.containers), language: 'html' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -30,10 +33,10 @@ export class TopNavComponent implements OnInit {
   OpenManager(managerName: Manager_Type) {
     if (this.appService.currentManager === managerName) {
       this.appService.sidebarOpened = !this.appService.sidebarOpened;
-    }else {
+    } else {
       this.appService.sidebarOpened = true;
     }
     this.appService.currentManager = managerName;
-   
+
   }
 }

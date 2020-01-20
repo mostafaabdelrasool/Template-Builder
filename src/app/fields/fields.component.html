@@ -1,6 +1,6 @@
-<div [ngSwitch]="field.type" *ngIf="field">
+<div [ngSwitch]="field.type" (click)="selectField(field)">
     <div *ngSwitchCase="0">
-        <mat-form-field id="{{field.id}}" [appStyle]="field.style" (click)="selectField(field)"
+        <mat-form-field id="{{field.id}}" [appStyle]="field.style" 
             [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
             <input matInput placeholder="Favorite food" value="Sushi">
         </mat-form-field>

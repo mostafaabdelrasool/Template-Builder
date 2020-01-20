@@ -1,8 +1,9 @@
 <div cdkDropList [cdkDropListData]="appService.containers" (cdkDropListDropped)="drop($event)">
     <div cdkDropListGroup>
-        <div *ngFor="let item of appService.containers" id="{{item.id}}" cdkDrag>
+        <div *ngFor="let item of appService.containers"  id="{{item.id}}" cdkDrag>
             <div [ngSwitch]="item.type">
-                <div *ngSwitchCase="3" class="field-container" [appHighlight]='{color:color}' [appStyle]="item.style"
+                <!-- [appHighlight]='{color:color}' -->
+                <div *ngSwitchCase="divType" class="field-container"  [appStyle]="item.style"
                     [ngClass]="{'item-selected': item.id===appService.currentField?.id}"
                     (click)="selectItem($event,item)" cdkDropList [cdkDropListData]="item.fields"
                     (cdkDropListDropped)="dropField($event)">

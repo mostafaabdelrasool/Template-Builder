@@ -4,6 +4,7 @@ import { Containers } from '../model/containers';
 import { Manager_Type } from '../model/manager';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { HighlightColors } from '../share/Render/highlight.directive';
+import { FieldType } from '../model/field';
 
 @Component({
   selector: "app-containers",
@@ -13,8 +14,10 @@ import { HighlightColors } from '../share/Render/highlight.directive';
 
 export class ContainersComponent implements OnInit {
   color: HighlightColors;
+  divType:FieldType;
   constructor(public appService: AppService) {
     this.color=HighlightColors.BLACK;
+    this.divType=FieldType.DIV
   }
   selectItem(event,container: Containers) {
     if (event.target.tagName!=='DIV') {
