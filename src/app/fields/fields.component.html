@@ -29,10 +29,8 @@
     </div>
     <div *ngSwitchCase="11">
         <label>{{field.placeholder}}</label>
-        <mat-slider [max]="field.max" [min]="field.min" [step]="field.step" [(ngModel)]="field.value"></mat-slider>
+        <mat-slider [max]="field.max" [min]="field.min" [step]="field.step"></mat-slider>
     </div>
-    <div *ngSwitchCase="13">
-        <!-- <app-containers></app-containers> -->
-    </div>
-    <div *ngSwitchDefault>output2</div>
+   
+    <div *ngSwitchDefault></div>
 </div>

@@ -1,0 +1,7 @@
+<div [ngSwitch]="container.type" class="field-container" [appStyle]="container.style"
+    (click)="selectItem($event,container)" id="{{container.id}}"
+    [ngClass]="{'item-selected': container.id===appService.currentField?.id}">
+    <div *ngFor="let field of container.fields" [appStyle]="field.style">
+        <app-fields [field]="field"></app-fields>
+    </div>
+</div>

@@ -14,7 +14,7 @@ export class FieldTypesComponent implements OnInit {
   constructor(public appService: AppService) {
 
   }
-  addElement(type: FieldType) {
+  addElement(type: FieldType, isContainer: boolean) {
 
     if (type === FieldType.DIV) {
       const container: Containers = {
@@ -23,11 +23,15 @@ export class FieldTypesComponent implements OnInit {
       this.appService.containers.push(container)
       this.appService.currentContainer = container;
     } else {
-      const field: Fields = {
+      const field = {
         type: type, model: 'text',
         id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-        placeholder:'label'
+        placeholder: 'label', isContainer: isContainer
       };
+      if (isContainer) {
+        //because here we add field so fields prop. note exist in type field
+        field["fields"] = [];
+      }
       this.appService.currentContainer.fields.push(field);
     }
   }

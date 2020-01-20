@@ -29,3 +29,13 @@
   padding:0 5px 5px !important;
 
 }
+.field-container{
+  height: auto;
+  border: 1px dashed #e9e4e4;
+  box-shadow: 0 0 4px #eee2e2;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  min-height: 10em;
+  width: 98%;
+}

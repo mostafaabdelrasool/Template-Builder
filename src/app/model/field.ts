@@ -12,8 +12,9 @@ export class Fields {
   min?: number;
   max?: number;
   step?: number;
-  startDate?: Date
-  endData?: Date
+  startDate?: Date;
+  endData?: Date;
+  isContainer?:boolean
 }
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,

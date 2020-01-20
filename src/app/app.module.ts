@@ -19,6 +19,7 @@ import { FieldTypesComponent } from './field-types/field-types.component';
 import { ApplyStyleDirective } from './share/Render/apply-style.directive';
 import { HighlightDirective } from './share/Render/highlight.directive';
 import { ContainersComponent } from './containers/containers.component';
+import { ChildContainerComponent } from './child-container/child-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { ContainersComponent } from './containers/containers.component';
     FieldTypesComponent,
     ApplyStyleDirective,
     HighlightDirective,
-    ContainersComponent
+    ContainersComponent,
+    ChildContainerComponent
   ],
   imports: [
     BrowserModule,
