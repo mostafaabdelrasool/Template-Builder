@@ -37,6 +37,29 @@
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
+                   Value Setting
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput type="number" placeholder="Min" [(ngModel)]="currentField.min">
+                </mat-form-field>
+
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput type="number" placeholder="Max" [(ngModel)]="currentField.max">
+                </mat-form-field>
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput  type="number" placeholder="Max Length" [(ngModel)]="currentField.maxLength">
+                </mat-form-field>
+                <mat-form-field fxFlex="1 1 49%">
+                    <input matInput type="number" placeholder="Min Length" [(ngModel)]="currentField.minLength">
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="currentField.required">Required</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
                     Display
                 </mat-panel-title>
             </mat-expansion-panel-header>

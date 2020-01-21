@@ -20,10 +20,10 @@ export class ContainersComponent implements OnInit {
     this.divType=FieldType.DIV
   }
   selectItem(event,container: Containers) {
-    // if (event.target.tagName!=='DIV') {
-    //  //if user click on child element it will fire this event also because it has a click event
-    //   return ;
-    // }
+    if (event.target.tagName!=='DIV') {
+     //if user click on child element it will fire this event also because it has a click event
+      return ;
+    }
     container.isSelected = true;
     this.appService.sidebarOpened = true;
     this.appService.currentManager = Manager_Type.STYLES;
