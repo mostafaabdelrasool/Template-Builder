@@ -23,8 +23,8 @@
         </mat-form-field>
     </div>
     <div *ngSwitchCase="9">
-        <mat-radio-group  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}" aria-label="Select an option">
-            <mat-radio-button value="1">{{field.placeholder}}</mat-radio-button>
+        <mat-radio-group fxLayout="row" fxLayoutGap="5px"  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}" aria-label="Select an option">
+            <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}</mat-radio-button>
         </mat-radio-group>
     </div>
     <div *ngSwitchCase="11"  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}">

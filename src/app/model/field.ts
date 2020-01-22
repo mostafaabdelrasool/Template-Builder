@@ -17,12 +17,13 @@ export class Fields {
   isContainer?:boolean;
   maxLength?:number;
   minLength?:number;
-  required?:boolean
+  required?:boolean;
+  radioButtonGroup?:any[]
 }
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
-  DATEPICKER, TEXT_AREA, RADIO_BUTTON, SELECT, SLIDER, SLIDER_TOGGLE,
-  CHILD_DIV
+  DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
+  CHILD_DIV,RADIO_BUTTON
 }
 export interface Style {
   position?: string;

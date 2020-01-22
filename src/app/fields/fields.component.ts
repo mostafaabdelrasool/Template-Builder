@@ -25,6 +25,7 @@ export class FieldsComponent implements OnInit {
       //this is a work around because angular doesn't detect change of child properties so i clear all and set again
       this.appService.currentField = field;
     }, 100);
+    event.stopPropagation();
   }
 
   ngOnInit() {

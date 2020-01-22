@@ -5,7 +5,7 @@
                 Form
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <div  fxLayout="row wrap">
+        <div fxLayout="row wrap">
             <button mat-button (click)="addElement(0)" aria-label="Example icon-button with a input icon">
                 Input text
                 <mat-icon>input</mat-icon>
@@ -24,6 +24,11 @@
             </button>
             <button mat-button (click)="addElement(9)"
                 aria-label="Example icon-button with a radio_button_checked icon">
+                Radio Button Group
+                <mat-icon>radio_button_checked</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(14)"
+                aria-label="Example icon-button with a radio_button_checked icon">
                 Radio Button
                 <mat-icon>radio_button_checked</mat-icon>
             </button>
@@ -39,7 +44,7 @@
                 Container
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <div  fxLayout="row wrap">
+        <div fxLayout="row wrap">
             <button mat-button (click)="addElement(3)" aria-label="Example icon-button with a crop_square icon">
                 Container Div
                 <mat-icon>crop_square</mat-icon>

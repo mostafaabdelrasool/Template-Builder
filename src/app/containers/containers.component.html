@@ -3,12 +3,12 @@
         <div *ngFor="let item of appService.containers"  id="{{item.id}}" cdkDrag>
             <div [ngSwitch]="item.type">
                 <!-- [appHighlight]='{color:color}' -->
+                <mat-icon matTooltip="Drag containers" cdkDragHandle aria-hidden="false"
+                aria-label="Example drag_handle icon">drag_handle</mat-icon>
                 <div *ngSwitchCase="divType" class="field-container"  [appStyle]="item.style"
                     [ngClass]="{'item-selected': item.id===appService.currentField?.id}"
                     (click)="selectItem($event,item)" cdkDropList [cdkDropListData]="item.fields"
                     (cdkDropListDropped)="dropField($event)">
-                    <mat-icon matTooltip="Drag containers" cdkDragHandle aria-hidden="false"
-                        aria-label="Example drag_handle icon">drag_handle</mat-icon>
                     <div *ngFor="let field of item.fields" [appStyle]="field.style" cdkDragBoundary=".boundary" cdkDrag>
                         <app-fields *ngIf="field.type!==13" [field]="field"></app-fields>
                         <app-child-container  style="width: 100%;" *ngIf="field.isContainer" [container]="field"></app-child-container>
