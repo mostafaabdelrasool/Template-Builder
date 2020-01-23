@@ -23,7 +23,7 @@ export class Fields {
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
-  CHILD_DIV,RADIO_BUTTON
+  CHILD_DIV,RADIO_BUTTON,CARD
 }
 export interface Style {
   position?: string;

@@ -45,11 +45,15 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
-            <button mat-button (click)="addElement(3)" aria-label="Example icon-button with a crop_square icon">
+            <button mat-button (click)="addElement(3,true)" aria-label="Example icon-button with a crop_square icon">
                 Container Div
                 <mat-icon>crop_square</mat-icon>
             </button>
-            <button mat-button (click)="addElement(13,true)" aria-label="Example icon-button with a flip_to_back icon">
+            <button mat-button (click)="addElement(15,true)" aria-label="Example icon-button with a chrome_reader_mode icon">
+                Card
+                <mat-icon>chrome_reader_mode</mat-icon>
+            </button>
+            <button mat-button (click)="addElement(13,false,true)" aria-label="Example icon-button with a flip_to_back icon">
                 Child Container Div
                 <mat-icon>flip_to_back</mat-icon>
             </button>

@@ -15,9 +15,9 @@ export class FieldTypesComponent implements OnInit {
   constructor(public appService: AppService,private _snackBar: MatSnackBar) {
 
   }
-  addElement(type: FieldType, isContainer: boolean) {
+  addElement(type: FieldType, isContainer: boolean,isChildContainer:boolean) {
 
-    if (type === FieldType.DIV) {
+    if (isContainer) {
       const container: Containers = {
         type: type, model: 'text', id: Date.now().toString(), style: {}, fields: [], classes: []
       };
@@ -29,9 +29,10 @@ export class FieldTypesComponent implements OnInit {
         id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
         placeholder: 'label', isContainer: isContainer
       };
-      if (isContainer) {
+      if (isChildContainer) {
         //because here we add field so fields prop. note exist in type field
         field["fields"] = [];
+        field.isContainer=true;
       }
       switch (type) {
         case FieldType.RADIO_BUTTON_GROUP:
