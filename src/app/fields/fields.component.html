@@ -17,7 +17,7 @@
     </div>
     <div *ngSwitchCase="7">
         <mat-form-field  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
-            <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+            <input  readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker startView="year"></mat-datepicker>
         </mat-form-field>
