@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.type" (click)="selectField(field)">
+<div [ngSwitch]="field.type" (click)="appService.selectField(field)">
     <div *ngSwitchCase="0">
         <mat-form-field id="{{field.id}}" [appStyle]="field.style"
             [ngClass]="{'item-selected':field.id===appService.currentField?.id}">

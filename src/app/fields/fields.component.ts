@@ -16,17 +16,7 @@ export class FieldsComponent implements OnInit {
   }
 
 
-  selectField(field: Fields) {
-    field.isSelected = true;
-    this.appService.sidebarOpened = true;
-    this.appService.currentManager = Manager_Type.STYLES;
-    this.appService.currentField = undefined;
-    setTimeout(() => {
-      //this is a work around because angular doesn't detect change of child properties so i clear all and set again
-      this.appService.currentField = field;
-    }, 100);
-    event.stopPropagation();
-  }
+ 
 
   ngOnInit() {
   }

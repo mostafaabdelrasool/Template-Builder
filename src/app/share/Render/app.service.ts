@@ -24,4 +24,15 @@ export class AppService {
     this.containers = [Object.assign({}, this.currentContainer)];
     this.fieldStyleSubject = new BehaviorSubject<Style>(null);
   }
+  selectField(field: Fields) {
+    field.isSelected = true;
+    this.sidebarOpened = true;
+    this.currentManager = Manager_Type.STYLES;
+    this.currentField = undefined;
+    setTimeout(() => {
+      //this is a work around because angular doesn't detect change of child properties so i clear all and set again
+      this.currentField = field;
+    }, 100);
+    event.stopPropagation();
+  }
 }

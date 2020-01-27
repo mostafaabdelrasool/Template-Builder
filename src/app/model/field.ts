@@ -1,3 +1,5 @@
+import { Containers } from './containers';
+
 export class Fields {
   type: FieldType;
   model: string;
@@ -20,6 +22,7 @@ export class Fields {
   required?:boolean;
   radioButtonGroup?:any[]
 }
+
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
