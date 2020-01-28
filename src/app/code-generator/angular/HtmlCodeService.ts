@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style, FieldType } from 'src/app/model/field';
+import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes } from 'src/app/model/field';
 import { Containers } from 'src/app/model/containers';
 @Injectable({
     providedIn: 'root'
@@ -42,6 +42,16 @@ export class HtmlCodeService {
                  </mat-slider>
                 </div>`;
     }
+    buttonCode(field: ButtonField): string {
+        let code = `<button ${field.buttonType} color="${field.buttonColor}">`;
+        if (field.buttonType === (ButtonFieldTypes.ICON || ButtonFieldTypes.MINI_FAB || ButtonFieldTypes.FAB)) {
+            code += `<mat-icon>${field.value}</mat-icon>`
+        } else {
+            code += '\n' + field.value;
+        }
+        code += '\n</button>';
+        return code;
+    }
     divCode(container: Containers): string {
         let code = `<div class="${container.classes ? container.classes.join(' ') : ''}" [style]="${this.getStyle(container.style)}">`;
         container.fields.forEach(x => {
@@ -62,11 +72,14 @@ export class HtmlCodeService {
                 case FieldType.SLIDER:
                     code += '\n' + this.sliderCode(x);
                     break;
+                case FieldType.BUTTON:
+                    code += '\n' + this.buttonCode(<ButtonField>x);
+                    break;
                 default:
                     break;
             }
         })
-        code += "</div> \n"
+        code += "\n </div> \n"
         return code;
     }
     generate(containers: Containers[]): string {

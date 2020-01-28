@@ -27,10 +27,11 @@ export class ButtonField extends Fields {
   buttonColor: string;
 }
 export enum ButtonFieldTypes {
-  BASIC, RASIED, STROCK, FLAT, ICON, FAB, MINI_FAB
+  BASIC = 'mat-button', RASIED = 'mat-raised-button', STROCK = 'mat-stroked-button',
+  FLAT = 'mat-flat-button', ICON='mat-icon-button', FAB='mat-fab', MINI_FAB='mat-mini-fab'
 }
 export enum ButtonFieldCOLOR {
-  Basic='basic', Primary='primary', Accent='accent', Warn='warn'
+  Basic = 'basic', Primary = 'primary', Accent = 'accent', Warn = 'warn'
 }
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,

@@ -69,7 +69,7 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
             <h3>Basic Buttons</h3>
-            <div class="example-button-row" (click)="addButton(0,$event)">
+            <div class="example-button-row" (click)="addButton('mat-button',$event)">
                 <button mat-button>Basic</button>
                 <button mat-button color="primary">Primary</button>
                 <button mat-button color="accent">Accent</button>
@@ -77,7 +77,7 @@
             </div>
 
             <h3>Raised Buttons</h3>
-            <div class="example-button-row" (click)="addButton(1,$event)">
+            <div class="example-button-row" (click)="addButton('mat-raised-button',$event)">
                 <button mat-raised-button >Basic</button>
                 <button mat-raised-button color="primary" >Primary</button>
                 <button mat-raised-button color="accent" >Accent</button>
@@ -86,7 +86,7 @@
             </div>
 
             <h3>Stroked Buttons</h3>
-            <div class="example-button-row" (click)="addButton(2,$event)">
+            <div class="example-button-row" (click)="addButton('mat-stroked-button',$event)">
                 <button mat-stroked-button>Basic</button>
                 <button mat-stroked-button color="primary">Primary</button>
                 <button mat-stroked-button color="accent">Accent</button>
@@ -95,7 +95,7 @@
             </div>
 
             <h3>Flat Buttons</h3>
-            <div class="example-button-row" (click)="addButton(3,$event)">
+            <div class="example-button-row" (click)="addButton('mat-flat-button',$event)">
                 <button mat-flat-button>Basic</button>
                 <button mat-flat-button color="primary">Primary</button>
                 <button mat-flat-button color="accent">Accent</button>
@@ -104,7 +104,7 @@
             </div>
 
             <h3>Icon Buttons</h3>
-            <div class="example-button-row" (click)="addButton(4,$event)">
+            <div class="example-button-row" (click)="addButton('mat-icon-button',$event)">
                 <button mat-icon-button aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
@@ -120,7 +120,7 @@
             </div>
 
             <h3>Fab Buttons</h3>
-            <div class="example-button-row"(click)="addButton(5,$event)">
+            <div class="example-button-row" (click)="addButton('mat-fab',$event)">
                 <button mat-fab>Basic</button>
                 <button mat-fab color="primary">Primary</button>
                 <button mat-fab color="accent">Accent</button>
@@ -131,7 +131,7 @@
             </div>
 
             <h3>Mini Fab Buttons</h3>
-            <div class="example-button-row" (click)="addButton(6,$event)">
+            <div class="example-button-row" (click)="addButton('mat-mini-fab',$event)">
                 <button mat-mini-fab>Basic</button>
                 <button mat-mini-fab color="primary">Primary</button>
                 <button mat-mini-fab color="accent">Accent</button>

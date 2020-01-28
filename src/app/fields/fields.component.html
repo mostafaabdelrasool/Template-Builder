@@ -38,35 +38,35 @@
     <div *ngSwitchCase="16" id="{{field.id}}" [appStyle]="field.style"
         [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
         <div [ngSwitch]="field['buttonType']">
-            <div *ngSwitchCase="0">
+            <div *ngSwitchCase="'mat-button'">
                 <button mat-button color="{{field['buttonColor']}}">{{field.value}}</button>
             </div>
-            <div *ngSwitchCase="1">
+            <div *ngSwitchCase="'mat-raised-button'">
                 <button mat-raised-button color="{{field['buttonColor']}}">{{field.value}}</button>
             </div>
-            <div *ngSwitchCase="2">
+            <div *ngSwitchCase="'mat-stroked-button'">
                 <button mat-stroked-button color="{{field['buttonColor']}}">{{field.value}}</button>
             </div>
-            <div *ngSwitchCase="3">
+            <div *ngSwitchCase="'mat-flat-button'">
                 <button mat-flat-button color="{{field['buttonColor']}}">{{field.value}}</button>
             </div>
-            <div *ngSwitchCase="4">
+            <div *ngSwitchCase="'mat-icon-button'">
                 <button mat-icon-button color="{{field['buttonColor']}}">
                     <mat-icon>{{field.value}}</mat-icon>
                 </button>
             </div>
-            <div *ngSwitchCase="5">
+            <div *ngSwitchCase="'mat-fab'">
                 <button mat-fab color="{{field['buttonColor']}}">
                     <mat-icon>{{field.value}}</mat-icon>
                 </button>
             </div>
-            <div *ngSwitchCase="6">
-                <button mat-mini-fab aria-label="Example icon-button with a heart icon">
+            <div *ngSwitchCase="'mat-mini-fab'">
+                <button mat-mini-fab color="{{field['buttonColor']}}"
+                    aria-label="Example icon-button with a heart icon">
                     <mat-icon>{{field.value}}</mat-icon>
                 </button>
             </div>
         </div>
-
+        <div *ngSwitchDefault></div>
     </div>
-    <div *ngSwitchDefault></div>
 </div>
