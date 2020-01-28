@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from '../../share/Render/app.service';
-import { FieldType, Fields } from '../../model/field';
+import { FieldType, Fields, ButtonFieldTypes, ButtonFieldCOLOR, ButtonField } from '../../model/field';
 import { Containers, CardField } from '../../model/containers';
 import { MatSnackBar } from '@angular/material';
 
@@ -69,6 +69,14 @@ export class FieldTypesComponent implements OnInit {
         break;
     }
     this.appService.currentContainer.fields.push(field);
+  }
+  addButton(buttonType: ButtonFieldTypes, event) {
+    const color = ButtonFieldCOLOR[event.toElement.innerText];
+    let button: ButtonField = {
+      type: FieldType.BUTTON, model: 'text', id: Date.now().toString(), value: event.toElement.innerText,
+      style: {}, classes: [], buttonType: buttonType, buttonColor: color
+    };
+    this.appService.currentContainer.fields.push(button)
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

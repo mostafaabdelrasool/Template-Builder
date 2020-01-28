@@ -49,14 +49,98 @@
                 Container Div
                 <mat-icon>crop_square</mat-icon>
             </button>
-            <button mat-button (click)="addElement(15,true)" aria-label="Example icon-button with a chrome_reader_mode icon">
+            <button mat-button (click)="addElement(15,true)"
+                aria-label="Example icon-button with a chrome_reader_mode icon">
                 Card
                 <mat-icon>chrome_reader_mode</mat-icon>
             </button>
-            <button mat-button (click)="addElement(13,false,true)" aria-label="Example icon-button with a flip_to_back icon">
+            <button mat-button (click)="addElement(13,false,true)"
+                aria-label="Example icon-button with a flip_to_back icon">
                 Child Container Div
                 <mat-icon>flip_to_back</mat-icon>
             </button>
+        </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Buttons
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap">
+            <h3>Basic Buttons</h3>
+            <div class="example-button-row" (click)="addButton(0,$event)">
+                <button mat-button>Basic</button>
+                <button mat-button color="primary">Primary</button>
+                <button mat-button color="accent">Accent</button>
+                <button mat-button color="warn">Warn</button>
+            </div>
+
+            <h3>Raised Buttons</h3>
+            <div class="example-button-row" (click)="addButton(1,$event)">
+                <button mat-raised-button >Basic</button>
+                <button mat-raised-button color="primary" >Primary</button>
+                <button mat-raised-button color="accent" >Accent</button>
+                <button mat-raised-button color="warn" >Warn</button>
+                
+            </div>
+
+            <h3>Stroked Buttons</h3>
+            <div class="example-button-row" (click)="addButton(2,$event)">
+                <button mat-stroked-button>Basic</button>
+                <button mat-stroked-button color="primary">Primary</button>
+                <button mat-stroked-button color="accent">Accent</button>
+                <button mat-stroked-button color="warn">Warn</button>
+               
+            </div>
+
+            <h3>Flat Buttons</h3>
+            <div class="example-button-row" (click)="addButton(3,$event)">
+                <button mat-flat-button>Basic</button>
+                <button mat-flat-button color="primary">Primary</button>
+                <button mat-flat-button color="accent">Accent</button>
+                <button mat-flat-button color="warn">Warn</button>
+               
+            </div>
+
+            <h3>Icon Buttons</h3>
+            <div class="example-button-row" (click)="addButton(4,$event)">
+                <button mat-icon-button aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+
+            <h3>Fab Buttons</h3>
+            <div class="example-button-row"(click)="addButton(5,$event)">
+                <button mat-fab>Basic</button>
+                <button mat-fab color="primary">Primary</button>
+                <button mat-fab color="accent">Accent</button>
+                <button mat-fab color="warn">Warn</button>
+                <button mat-fab aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+
+            <h3>Mini Fab Buttons</h3>
+            <div class="example-button-row" (click)="addButton(6,$event)">
+                <button mat-mini-fab>Basic</button>
+                <button mat-mini-fab color="primary">Primary</button>
+                <button mat-mini-fab color="accent">Accent</button>
+                <button mat-mini-fab color="warn">Warn</button>
+                <button mat-mini-fab aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+              
+            </div>
         </div>
     </mat-expansion-panel>
 </mat-accordion>

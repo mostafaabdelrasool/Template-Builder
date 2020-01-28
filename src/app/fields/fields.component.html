@@ -16,21 +16,57 @@
             [ngClass]="{'item-selected':field.id===appService.currentField?.id}">Label</mat-checkbox>
     </div>
     <div *ngSwitchCase="7">
-        <mat-form-field  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
-            <input  readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+        <mat-form-field id="{{field.id}}" [appStyle]="field.style"
+            [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
+            <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker startView="year"></mat-datepicker>
         </mat-form-field>
     </div>
     <div *ngSwitchCase="9">
-        <mat-radio-group fxLayout="row" fxLayoutGap="5px"  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}" aria-label="Select an option">
-            <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}</mat-radio-button>
+        <mat-radio-group fxLayout="row" fxLayoutGap="5px" id="{{field.id}}" [appStyle]="field.style"
+            [ngClass]="{'item-selected':field.id===appService.currentField?.id}" aria-label="Select an option">
+            <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
+            </mat-radio-button>
         </mat-radio-group>
     </div>
-    <div *ngSwitchCase="11"  id="{{field.id}}" [appStyle]="field.style"  [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
+    <div *ngSwitchCase="11" id="{{field.id}}" [appStyle]="field.style"
+        [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
         <label>{{field.placeholder}}</label>
         <mat-slider [max]="field.max" [min]="field.min" [step]="field.step"></mat-slider>
     </div>
-   
+    <div *ngSwitchCase="16" id="{{field.id}}" [appStyle]="field.style"
+        [ngClass]="{'item-selected':field.id===appService.currentField?.id}">
+        <div [ngSwitch]="field['buttonType']">
+            <div *ngSwitchCase="0">
+                <button mat-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </div>
+            <div *ngSwitchCase="1">
+                <button mat-raised-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </div>
+            <div *ngSwitchCase="2">
+                <button mat-stroked-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </div>
+            <div *ngSwitchCase="3">
+                <button mat-flat-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </div>
+            <div *ngSwitchCase="4">
+                <button mat-icon-button color="{{field['buttonColor']}}">
+                    <mat-icon>{{field.value}}</mat-icon>
+                </button>
+            </div>
+            <div *ngSwitchCase="5">
+                <button mat-fab color="{{field['buttonColor']}}">
+                    <mat-icon>{{field.value}}</mat-icon>
+                </button>
+            </div>
+            <div *ngSwitchCase="6">
+                <button mat-mini-fab aria-label="Example icon-button with a heart icon">
+                    <mat-icon>{{field.value}}</mat-icon>
+                </button>
+            </div>
+        </div>
+
+    </div>
     <div *ngSwitchDefault></div>
 </div>
