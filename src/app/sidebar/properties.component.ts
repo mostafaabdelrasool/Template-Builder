@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Fields } from '../model/field';
 import { AppService } from '../share/Render/app.service';
+import { CardField } from '../model/containers';
 
 @Component({
   selector: 'app-properties',
@@ -29,5 +30,9 @@ export class PropertiesComponent implements OnInit {
   setFlexSetting(flexType, value) {
     this.currentField.style[flexType] = value;
     this.filedValueChanged('');
+  }
+  addNewCardAction() {
+    const length = (<CardField>this.currentField).cardActions.length;
+    (<CardField>this.currentField).cardActions.push({ title: 'Action title ' + length })
   }
 }

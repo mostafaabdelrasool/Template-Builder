@@ -6,4 +6,9 @@ export class Containers extends Fields {
 export class CardField extends Containers{
   cardTitle?: string;
   cardSubTitle?: string;
+  cardActions?:CardActions[]
+}
+export class CardActions{
+  title:string;
+  onClickEventName?:string;
 }

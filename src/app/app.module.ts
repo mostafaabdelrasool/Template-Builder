@@ -15,7 +15,7 @@ import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { FieldsComponent } from './fields/fields.component';
 import { AppService } from './share/Render/app.service';
 import { TopNavComponent } from './top-nav/top-nav.component';
-import { FieldTypesComponent } from './field-types/field-types.component';
+import { FieldTypesComponent } from './sidebar/field-types/field-types.component';
 import { ApplyStyleDirective } from './share/Render/apply-style.directive';
 import { HighlightDirective } from './share/Render/highlight.directive';
 import { ContainersComponent } from './containers/containers.component';

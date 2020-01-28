@@ -243,12 +243,24 @@
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput placeholder="Title" [(ngModel)]="currentField.cardTitle">
+                    <input matInput placeholder="Title" [(ngModel)]="currentField['cardTitle']">
                 </mat-form-field>
 
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput placeholder="Sub-title" [(ngModel)]="currentField.cardSubTitle">
+                    <input matInput placeholder="Sub-title" [(ngModel)]="currentField['cardSubTitle']">
                 </mat-form-field>
+            </div>
+            Card Actions
+            <div class="st-border" fxLayout="column">
+                <div>
+                    <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon" 
+                    (click)="addNewCardAction()" matTooltip='Add Action'> <mat-icon>add</mat-icon></button>
+                </div>
+                <div *ngFor="let action of currentField['cardActions']" fxFlex="1 1 49%">
+                    <mat-form-field>
+                        <input matInput placeholder="action Name" [(ngModel)]="action.title">
+                    </mat-form-field>
+                </div>
             </div>
         </mat-expansion-panel>
     </mat-accordion>
