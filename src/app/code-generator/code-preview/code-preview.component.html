@@ -1,5 +1,11 @@
 <h3>Code</h3>
 <mat-divider></mat-divider>
-<p>This is the code generated from controls</p>
-<ngs-code-editor theme="vs-dark" [codeModel]="codeModel" language="typescript" [options]="options">
+<div fxflex="row" (click)="setCurrentCodeModel($event)">
+    <button mat-flat-button>HTML</button>
+    <button mat-flat-button>JS</button>
+    <button mat-flat-button>CSS</button>
+</div>
+
+<mat-divider></mat-divider>
+<ngs-code-editor theme="vs-dark" [codeModel]="currentCodeModel" [options]="options">
 </ngs-code-editor>

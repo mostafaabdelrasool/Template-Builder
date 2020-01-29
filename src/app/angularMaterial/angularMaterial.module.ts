@@ -45,6 +45,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   exports: [MatToolbarModule, MatSidenavModule, MatSelectModule, MatButtonToggleModule, MatChipsModule,
     MatButtonModule, MatListModule, MatIconModule, MatDividerModule, MatInputModule, MatDialogModule,  MatDatepickerModule,
     MatNativeDateModule,MatSliderModule,MatSnackBarModule,MatCardModule,
-    MatTooltipModule, NgxLayoutsModule, FormsModule, MatCheckboxModule, MatExpansionModule, MatAutocompleteModule, MatRadioModule, DragDropModule, MatTreeModule]
+    MatTooltipModule, NgxLayoutsModule, FormsModule, MatCheckboxModule,MatTabsModule, 
+    MatExpansionModule, MatAutocompleteModule, MatRadioModule, DragDropModule, MatTreeModule]
 })
 export class AngularMaterialModule { }

@@ -15,12 +15,12 @@ import { HtmlCodeService } from '../code-generator/angular/HtmlCodeService';
 export class TopNavComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public appService: AppService,
-    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService) { }
+    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService,private componentCodeService:ComponentCodeService) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',
       height: '90vh',
-      data: { code: this.htmlCodeService.generate(this.appService.containers), language: 'html' }
+      data: { htmlCode: this.htmlCodeService.generate(this.appService.containers),tsCode:this.componentCodeService.generate() }
     });
 
     dialogRef.afterClosed().subscribe(result => {
