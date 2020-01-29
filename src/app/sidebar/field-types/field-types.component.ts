@@ -28,7 +28,7 @@ export class FieldTypesComponent implements OnInit {
   }
   addContainer(type: FieldType) {
     let container: Containers = {
-      type: type, model: 'text', id: Date.now().toString(), style: {}, fields: [], classes: []
+      type: type, model: 'text', id: Date.now().toString(), style: this.appService.containerStyle, fields: [], classes: []
     };
     if (type === FieldType.CARD) {
       (<CardField>container).cardSubTitle = "Here is Sub-title";

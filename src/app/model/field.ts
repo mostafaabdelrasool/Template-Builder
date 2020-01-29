@@ -61,4 +61,8 @@ export interface Style {
   alignItems?: string;
   justifyContent?: string;
   flexWrap?: string;
+  border?:string;
+  boxShadow?:string;
+  borderRadius?:string;
+  minHeight?:string;
 }

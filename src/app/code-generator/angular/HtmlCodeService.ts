@@ -8,27 +8,27 @@ export class HtmlCodeService {
     constructor() {
     }
     inputCode(field: Fields): string {
-        return `<mat-form-field [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" class="${field.classes ? field.classes.join(' ') : ''}">
+      return `<mat-form-field [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" class="${field.classes ? field.classes.join(' ') : ''}">
             <input [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}">
-</mat-form-field>`;
+   </mat-form-field>`;
     }
     checkBoxCode(field: Fields): string {
-        return `<mat-checkbox  [required]="${field.required || ''}" [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" 
-                  class="${field.classes ? field.classes.join(' ') : ''}">${field.placeholder || ''}</mat-checkbox>`;
+    return `<mat-checkbox  [required]="${field.required || ''}" [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" 
+             class="${field.classes ? field.classes.join(' ') : ''}">${field.placeholder || ''}</mat-checkbox>`;
     }
     datepickerCode(field: Fields): string {
-        return `<mat-form-field   id="${field.id}" [style]="${this.getStyle(field.style)}" 
-                    class="${field.classes ? field.classes.join(' ') : ''}">
-                   <input readonly="true" [required]="${field.required || ''}" [min]="${field.min}" [max]="${field.max}" [(ngModel)]="${field.model}" matInput [matDatepicker]="picker" placeholder="${field.placeholder || ''}">
-                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                   <mat-datepicker [startAt]="${field.startDate || ''}" #picker startView="year"></mat-datepicker>
-                </mat-form-field>`;
+     return `<mat-form-field   id="${field.id}" [style]="${this.getStyle(field.style)}" 
+                class="${field.classes ? field.classes.join(' ') : ''}">
+                <input readonly="true" [required]="${field.required || ''}" [min]="${field.min}" [max]="${field.max}" [(ngModel)]="${field.model}" matInput [matDatepicker]="picker" placeholder="${field.placeholder || ''}">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker [startAt]="${field.startDate || ''}" #picker startView="year"></mat-datepicker>
+            </mat-form-field>`;
     }
     RadioButtonGroupCode(field: Fields): string {
         let code = `<mat-radio-group [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}"  id="${field.id}" [style]="${this.getStyle(field.style)}" 
                      class="${field.classes ? field.classes.join(' ') : ''}">`;
         field.radioButtonGroup.forEach(r => {
-            code += `<mat-radio-button value="${field.value}">${field.placeholder || ''}</mat-radio-button>`
+            code += `<mat-radio-button value="${field.value || ''}">${field.placeholder || ''}</mat-radio-button>`
         })
         code += '</mat-radio-group>'
         return code;

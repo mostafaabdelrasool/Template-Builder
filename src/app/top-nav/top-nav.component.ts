@@ -18,8 +18,8 @@ export class TopNavComponent implements OnInit {
     componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
-      width: '49vw',
-      height: 'auto',
+      width: '90vw',
+      height: '90vh',
       data: { code: this.htmlCodeService.generate(this.appService.containers), language: 'html' }
     });
 

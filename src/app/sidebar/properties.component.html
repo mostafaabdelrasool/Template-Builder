@@ -139,6 +139,8 @@
                     (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
                 <app-measureUnit [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
                     (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
+                <app-measureUnit [item]="{name:'Min Height',model:'minHeight',modelValue:currentField.style.minHeight}"
+                    (valueUpdated)="updateStyle($event,'minHeight')"></app-measureUnit>
                 <div>
                     Margin
                     <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
@@ -253,8 +255,10 @@
             Card Actions
             <div class="st-border" fxLayout="column">
                 <div>
-                    <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon" 
-                    (click)="addNewCardAction()" matTooltip='Add Action'> <mat-icon>add</mat-icon></button>
+                    <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon"
+                        (click)="addNewCardAction()" matTooltip='Add Action'>
+                        <mat-icon>add</mat-icon>
+                    </button>
                 </div>
                 <div *ngFor="let action of currentField['cardActions']" fxFlex="1 1 49%">
                     <mat-form-field>

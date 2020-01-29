@@ -1,5 +1,5 @@
 .sidebar{
-    width: 19vw;
+  width: 20vw;
   display: none;
   transition: all .5s linear;
   opacity: 0;

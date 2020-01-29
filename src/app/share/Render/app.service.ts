@@ -16,10 +16,27 @@ export class AppService {
   currentManager = Manager_Type.NONE;
   fieldStyleSubject: BehaviorSubject<Style>;
   currentContainer: Containers;
+  containerStyle: Style
   constructor() {
+    this.containerStyle = {
+      height: 'auto',
+      border: "1px dashed #e9e4e4",
+      boxShadow: "0 0 4px #eee2e2",
+      borderRadius:"5px",
+      marginTop:"5px",
+      marginRight:"5px",
+      marginBottom:"5px",
+      marginLeft:"5px",
+      paddingTop:"5px",
+      paddingRight:"5px",
+      paddingBottom:"5px",
+      paddingLeft:"5px",
+      minHeight: "10em",
+      width: "98%",
+    }
     this.currentContainer = {
       model: undefined,
-      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: {}
+      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle
     };
     this.containers = [Object.assign({}, this.currentContainer)];
     this.fieldStyleSubject = new BehaviorSubject<Style>(null);
