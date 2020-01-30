@@ -20,7 +20,9 @@ export class Fields {
   maxLength?: number;
   minLength?: number;
   required?: boolean;
-  radioButtonGroup?: any[]
+  radioButtonGroup?: any[];
+  fieldEvent?:FieldEvent[];
+  applyStyleInClass?:boolean;
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -37,6 +39,13 @@ export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
   CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP
+}
+export interface FieldEvent{
+  name:string;
+  type:string;
+}
+export enum AngularFieldEventType {
+  Click="click",Change="change"
 }
 export interface Style {
   position?: string;

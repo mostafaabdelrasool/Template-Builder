@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes } from 'src/app/model/field';
+import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes, FieldEvent, AngularFieldEventType } from 'src/app/model/field';
 import { Containers } from 'src/app/model/containers';
 @Injectable({
     providedIn: 'root'
@@ -8,25 +8,25 @@ export class HtmlCodeService {
     constructor() {
     }
     inputCode(field: Fields): string {
-      return `<mat-form-field [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" class="${field.classes ? field.classes.join(' ') : ''}">
-            <input [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}">
-   </mat-form-field>`;
+        let code = ` <mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)}>
+            <input ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}">
+           </mat-form-field>`;
+        return code;
     }
     checkBoxCode(field: Fields): string {
-    return `<mat-checkbox  [required]="${field.required || ''}" [(ngModel)]="${field.model}" id="${field.id}" [style]="${this.getStyle(field.style)}" 
-             class="${field.classes ? field.classes.join(' ') : ''}">${field.placeholder || ''}</mat-checkbox>`;
+        return `<mat-checkbox  [required]="${field.required || ''}" [(ngModel)]="${field.model}" ${this.commonProps(field)}>
+        ${field.placeholder || ''}</mat-checkbox>`;
     }
     datepickerCode(field: Fields): string {
-     return `<mat-form-field   id="${field.id}" [style]="${this.getStyle(field.style)}" 
-                class="${field.classes ? field.classes.join(' ') : ''}">
+        return `<mat-form-field   id="${field.id}" ${this.commonProps(field)}>
                 <input readonly="true" [required]="${field.required || ''}" [min]="${field.min}" [max]="${field.max}" [(ngModel)]="${field.model}" matInput [matDatepicker]="picker" placeholder="${field.placeholder || ''}">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker [startAt]="${field.startDate || ''}" #picker startView="year"></mat-datepicker>
             </mat-form-field>`;
     }
     RadioButtonGroupCode(field: Fields): string {
-        let code = `<mat-radio-group [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}"  id="${field.id}" [style]="${this.getStyle(field.style)}" 
-                     class="${field.classes ? field.classes.join(' ') : ''}">`;
+        let code = `<mat-radio-group [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}" 
+        ${this.commonProps(field)}>`;
         field.radioButtonGroup.forEach(r => {
             code += `<mat-radio-button value="${field.value || ''}">${field.placeholder || ''}</mat-radio-button>`
         })
@@ -34,13 +34,13 @@ export class HtmlCodeService {
         return code;
     }
     sliderCode(field: Fields): string {
-        return `<div> 
-                 <label>${field.placeholder}</label>
-                 <mat-slider  id="${field.id}" [style]="${this.getStyle(field.style)}" 
-                 class="${field.classes ? field.classes.join(' ') : ''}" [max]="${field.max}" 
-                 [min]="${field.min}" [step]="${field.step}">
-                 </mat-slider>
-                </div>`;
+        let code =
+            `<div> 
+         <label>${field.placeholder}</label>
+         <mat-slider  ${this.commonProps(field)} [max]="${field.max || ''}" [min]="${field.min || ''}" [step]="${field.step || ''}">
+         </mat-slider>
+       </div>`;
+        return code;
     }
     buttonCode(field: ButtonField): string {
         let code = `<button ${field.buttonType} color="${field.buttonColor}">`;
@@ -53,7 +53,7 @@ export class HtmlCodeService {
         return code;
     }
     divCode(container: Containers): string {
-        let code = `<div class="${container.classes ? container.classes.join(' ') : ''}" [style]="${this.getStyle(container.style)}">`;
+        let code = `<div  ${this.commonProps(container)}>`;
         container.fields.forEach(x => {
             switch (x.type) {
                 case FieldType.INPUT_NUMBER:
@@ -114,4 +114,27 @@ export class HtmlCodeService {
                 return ''
         }
     }
+    private generateEvent(fieldEvents: FieldEvent[]) {
+        let code = '';
+        fieldEvents.forEach(x => {
+            switch (x.type) {
+                case AngularFieldEventType.Change:
+                    code += `(${AngularFieldEventType.Change})="${x.name}($event)"`
+                    break;
+                case AngularFieldEventType.Click:
+                    code += `(${AngularFieldEventType.Click})="${x.name}($event)"`
+                    break;
+                default:
+                    break;
+            }
+        });
+        return code;
+
+    }
+    private commonProps(field: Fields): string {
+        const style = !field.applyStyleInClass ? `[style]="${this.getStyle(field.style)}"` : '';
+        let code = `id="${field.id}" ${style} class="${field.classes ? field.classes.join(' ') : ''}"`;
+        return code;
+    }
 }
+

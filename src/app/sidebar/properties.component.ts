@@ -9,7 +9,8 @@ import { CardField } from '../model/containers';
   styleUrls: ['./properties.component.scss'],
 })
 export class PropertiesComponent implements OnInit {
-  @Input() currentField: Fields
+  @Input() currentField: Fields;
+  applyStyleInClass:boolean;
   constructor(private appService: AppService) {
 
   }
@@ -34,5 +35,8 @@ export class PropertiesComponent implements OnInit {
   addNewCardAction() {
     const length = (<CardField>this.currentField).cardActions.length;
     (<CardField>this.currentField).cardActions.push({ title: 'Action title ' + length })
+  }
+  addFieldEvent() {
+    this.currentField.fieldEvent.push({ name: '', type: '' });
   }
 }

@@ -28,7 +28,8 @@ export class FieldTypesComponent implements OnInit {
   }
   addContainer(type: FieldType) {
     let container: Containers = {
-      type: type, model: 'text', id: Date.now().toString(), style: this.appService.containerStyle, fields: [], classes: []
+      type: type, model: 'text', id: Date.now().toString(), style: this.appService.containerStyle,
+       fields: [], classes: []
     };
     if (type === FieldType.CARD) {
       (<CardField>container).cardSubTitle = "Here is Sub-title";
@@ -42,7 +43,7 @@ export class FieldTypesComponent implements OnInit {
     let field: Fields = {
       type: type, model: 'text',
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'label', isContainer: isContainer
+      placeholder: 'label', isContainer: isContainer,fieldEvent:[]
     };
     if (isChildContainer) {
       //because here we add field so fields prop. note exist in type field
@@ -74,7 +75,7 @@ export class FieldTypesComponent implements OnInit {
     const color = ButtonFieldCOLOR[event.toElement.innerText];
     let button: ButtonField = {
       type: FieldType.BUTTON, model: 'text', id: Date.now().toString(), value: event.toElement.innerText,
-      style: {}, classes: [], buttonType: buttonType, buttonColor: color
+      style: {}, classes: [], buttonType: buttonType, buttonColor: color,fieldEvent:[]
     };
     this.appService.currentContainer.fields.push(button)
   }
