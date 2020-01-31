@@ -10,7 +10,7 @@ import { CardField } from '../model/containers';
 })
 export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields;
-  applyStyleInClass:boolean;
+  applyStyleInClass: boolean;
   constructor(private appService: AppService) {
 
   }
@@ -26,7 +26,9 @@ export class PropertiesComponent implements OnInit {
     this.filedValueChanged('');
   }
   filedValueChanged(event) {
-    this.appService.fieldStyleSubject.next(this.currentField.style)
+    const style={...this.currentField.style}
+    this.currentField.style=undefined;
+    this.currentField.style=style
   }
   setFlexSetting(flexType, value) {
     this.currentField.style[flexType] = value;
@@ -38,5 +40,29 @@ export class PropertiesComponent implements OnInit {
   }
   addFieldEvent() {
     this.currentField.fieldEvent.push({ name: '', type: '' });
+  }
+  boxShawChange(type, event) {
+    if (!this.currentField.style.boxShadow) {
+      this.currentField.style.boxShadow = ''
+    }
+    let result = this.currentField.style.boxShadow.split(' ');
+    switch (type) {
+      case 'x':
+        result[0] = event.value + 'px'
+        break;
+      case 'y':
+        result[1] = event.value + 'px'
+        break;
+      case 'b':
+        result[2] = event.value + 'px'
+        break;
+      case 's':
+        result[3] = event.value + 'px'
+        break;
+      default:
+        break;
+    }
+    this.currentField.style.boxShadow = result.join(' ');
+    this.filedValueChanged('');
   }
 }

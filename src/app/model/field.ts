@@ -1,5 +1,3 @@
-import { Containers } from './containers';
-
 export class Fields {
   type: FieldType;
   model: string;

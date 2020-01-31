@@ -129,6 +129,33 @@
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
+                    Look And Feel
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div>
+                    <label>y-offset</label>
+                    <mat-slider [step]="1" (change)="boxShawChange('y',$event)"></mat-slider>
+                </div>
+                <div>
+                    <label>x-offset</label>
+                    <mat-slider [step]="1" (change)="boxShawChange('x',$event)"></mat-slider>
+                </div>
+                <div>
+                    <label>blur</label>
+                    <mat-slider [step]="1" (change)="boxShawChange('b',$event)"></mat-slider>
+                </div>
+                <div>
+                    <label>spread</label>
+                    <mat-slider [step]="1" (change)="boxShawChange('s',$event)"></mat-slider>
+                </div>
+                <div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
                     Dimension
                 </mat-panel-title>
             </mat-expansion-panel-header>

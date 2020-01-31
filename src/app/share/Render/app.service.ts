@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Fields, Style, FieldType } from 'src/app/model/field';
 import { Manager_Type } from 'src/app/model/manager';
-import { BehaviorSubject } from 'rxjs';
 import { Containers } from 'src/app/model/containers';
 
 /**
@@ -14,7 +13,6 @@ export class AppService {
   currentField: Fields;
   sidebarOpened: boolean = false;
   currentManager = Manager_Type.NONE;
-  fieldStyleSubject: BehaviorSubject<Style>;
   currentContainer: Containers;
   containerStyle: Style
   constructor() {
@@ -39,7 +37,6 @@ export class AppService {
       type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle
     };
     this.containers = [Object.assign({}, this.currentContainer)];
-    this.fieldStyleSubject = new BehaviorSubject<Style>(null);
   }
   selectField(field: Fields) {
     field.isSelected = true;
