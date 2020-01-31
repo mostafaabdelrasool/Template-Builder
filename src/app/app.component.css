@@ -33,7 +33,7 @@
   height: auto; width: 100%;min-height: 90vh;
 }
 .item-selected{
-  border: 2px dashed #00c4ff !important;
+  border: 2px dashed #00c4ff;
 }
 .cdk-drop-list-dragging .cdk-drag {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);

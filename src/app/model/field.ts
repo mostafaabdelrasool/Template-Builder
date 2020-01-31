@@ -46,6 +46,9 @@ export enum AngularFieldEventType {
   Click="click",Change="change"
 }
 export interface Style {
+  borderColor?: string;
+  borderWidth?: string;
+  borderStyle?: string;
   position?: string;
   display?: string;
   width?: string;

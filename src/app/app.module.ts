@@ -20,6 +20,7 @@ import { ApplyStyleDirective } from './share/Render/apply-style.directive';
 import { HighlightDirective } from './share/Render/highlight.directive';
 import { ContainersComponent } from './containers/containers.component';
 import { ChildContainerComponent } from './child-container/child-container.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { ChildContainerComponent } from './child-container/child-container.compo
     ResizableModule,
     NgSelectModule,
     FormsModule,
-    CodeGeneratorModule
+    CodeGeneratorModule,
+    ColorPickerModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent],
