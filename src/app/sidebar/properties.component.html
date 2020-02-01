@@ -134,22 +134,14 @@
             </mat-expansion-panel-header>
             Box shadow
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                <div>
-                    <label>y-offset</label>
-                    <mat-slider [step]="1" (change)="boxShawChange('y',$event)"></mat-slider>
-                </div>
-                <div>
-                    <label>x-offset</label>
-                    <mat-slider [step]="1" (change)="boxShawChange('x',$event)"></mat-slider>
-                </div>
-                <div>
-                    <label>blur</label>
-                    <mat-slider [step]="1" (change)="boxShawChange('b',$event)"></mat-slider>
-                </div>
-                <div>
-                    <label>spread</label>
-                    <mat-slider [step]="1" (change)="boxShawChange('s',$event)"></mat-slider>
-                </div>
+                <app-measureUnit [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
+                    (valueUpdated)="boxShawChange('y',$event)"></app-measureUnit>
+                <app-measureUnit [item]="{name:'x-offset',model:'boxShadow.x',modelValue:boxShadow.x}"
+                    (valueUpdated)="boxShawChange('x',$event)"></app-measureUnit>
+                <app-measureUnit [item]="{name:'blur',model:'boxShadow.blur',modelValue:boxShadow.blur}"
+                    (valueUpdated)="boxShawChange('b',$event)"></app-measureUnit>
+                <app-measureUnit [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
+                    (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
                 <div>
                     <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow[4]"
                         [colorPicker]="boxShadow[4]" (colorPickerChange)="boxShawChange('c',$event)" />

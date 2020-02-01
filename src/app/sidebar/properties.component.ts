@@ -11,16 +11,13 @@ import { CardField } from '../model/containers';
 export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields;
   applyStyleInClass: boolean;
-  boxShadow: string[];
+  boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
   constructor(private appService: AppService) {
-
+       this.boxShadow={};
   }
 
   ngOnInit() {
     this.currentField.classes = this.currentField.classes || [];
-    if (this.currentField.style.boxShadow) {
-      this.boxShadow = this.currentField.style.boxShadow.split(' ');
-    }
   }
   addClass = className => {
     return this.currentField.classes.push(className);
@@ -53,16 +50,16 @@ export class PropertiesComponent implements OnInit {
     let result = this.currentField.style.boxShadow.split(' ');
     switch (type) {
       case 'x':
-        result[0] = event.value + 'px'
+        result[0] = event
         break;
       case 'y':
-        result[1] = event.value + 'px'
+        result[1] = event
         break;
       case 'b':
-        result[2] = event.value + 'px'
+        result[2] = event
         break;
       case 's':
-        result[3] = event.value + 'px'
+        result[3] = event
         break;
       case 'c':
         result[4] = event
@@ -70,7 +67,6 @@ export class PropertiesComponent implements OnInit {
       default:
         break;
     }
-    this.boxShadow = result;
     this.currentField.style.boxShadow = result.join(' ');
     this.filedValueChanged('');
   }
