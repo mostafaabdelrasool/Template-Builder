@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { AppService } from '../share/Render/app.service';
+import { Component, OnInit } from "@angular/core";
 import { Containers } from '../model/containers';
 import { Manager_Type } from '../model/manager';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { HighlightColors } from '../share/Render/highlight.directive';
 import { FieldType } from '../model/field';
+import { HighlightColors } from '../share/Render/highlight.directive';
+import { AppService } from '../share/Render/app.service';
 
 @Component({
   selector: "app-containers",

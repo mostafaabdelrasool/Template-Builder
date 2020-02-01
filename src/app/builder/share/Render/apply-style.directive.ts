@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef } from '@angular/core';
-import { Style } from 'src/app/model/field';
+import { Style } from 'src/app/builder/model/field';
 import { AppService } from './app.service';
 
 @Directive({

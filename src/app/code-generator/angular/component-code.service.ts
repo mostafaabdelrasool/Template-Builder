@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Fields, AngularFieldEventType } from 'src/app/model/field';
-import { Containers } from 'src/app/model/containers';
+import { Fields, AngularFieldEventType } from 'src/app/builder/model/field';
+import { Containers } from 'src/app/builder/model/containers';
 
 @Injectable({
   providedIn: 'root'

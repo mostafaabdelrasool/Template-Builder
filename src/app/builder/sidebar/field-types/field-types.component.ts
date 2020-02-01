@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from '../../share/Render/app.service';
-import { FieldType, Fields, ButtonFieldTypes, ButtonFieldCOLOR, ButtonField } from '../../model/field';
-import { Containers, CardField } from '../../model/containers';
 import { MatSnackBar } from '@angular/material';
+import { FieldType, Fields, ButtonFieldTypes, ButtonField, ButtonFieldCOLOR } from '../../model/field';
+import { Containers, CardField } from '../../model/containers';
 
 @Component({
   selector: "app-field-types",

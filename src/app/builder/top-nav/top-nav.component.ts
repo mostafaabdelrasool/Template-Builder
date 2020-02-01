@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material';
-import { CodePreviewComponent } from '../code-generator/code-preview/code-preview.component';
-import { AppService } from '../share/Render/app.service';
+import { CodePreviewComponent } from '../../code-generator/code-preview/code-preview.component';
 import { Manager_Type } from '../model/manager';
-import { ComponentCodeService } from '../code-generator/angular/component-code.service';
-import { HtmlCodeService } from '../code-generator/angular/HtmlCodeService';
+import { ComponentCodeService } from '../../code-generator/angular/component-code.service';
+import { HtmlCodeService } from '../../code-generator/angular/HtmlCodeService';
+import { AppService } from '../share/Render/app.service';
 
 @Component({
   selector: "app-top-nav",
@@ -15,7 +15,8 @@ import { HtmlCodeService } from '../code-generator/angular/HtmlCodeService';
 export class TopNavComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public appService: AppService,
-    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService, private componentCodeService: ComponentCodeService) { }
+    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService, 
+    private componentCodeService: ComponentCodeService) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',

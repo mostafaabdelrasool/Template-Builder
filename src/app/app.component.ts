@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AppService } from './share/Render/app.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,8 +9,6 @@ import { AppService } from './share/Render/app.service';
 })
 export class AppComponent {
  
-  constructor(public appService: AppService) {
 
-  }
 
 }

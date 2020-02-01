@@ -1,4 +1,4 @@
-import { Style, Fields } from './field';
+import {  Fields } from './field';
 
 export class Containers extends Fields {
   fields: Fields[];

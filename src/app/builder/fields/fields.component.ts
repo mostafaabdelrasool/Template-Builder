@@ -1,8 +1,6 @@
-import { Component, OnInit, Input, ViewEncapsulation } from "@angular/core";
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Fields, FieldType } from '../model/field';
+import { Component, OnInit, Input } from "@angular/core";
+import { Fields } from '../model/field';
 import { AppService } from '../share/Render/app.service';
-import { Manager_Type } from '../model/manager';
 
 @Component({
   selector: "app-fields",

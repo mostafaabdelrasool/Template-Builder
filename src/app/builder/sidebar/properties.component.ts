@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Fields } from '../model/field';
+import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
+import { Fields } from '../model/field';
 import { CardField } from '../model/containers';
 
 @Component({

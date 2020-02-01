@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Containers } from '../model/containers';
-import { AppService } from '../share/Render/app.service';
 import { ContainersComponent } from '../containers/containers.component';
+import { AppService } from '../share/Render/app.service';
 
 @Component({
   selector: "app-child-container",
