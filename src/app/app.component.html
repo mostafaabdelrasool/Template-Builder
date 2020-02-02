@@ -1,1 +1,4 @@
-<app-builder></app-builder>
+<div [@routeAnimations]="getRouterOutletState(o)">
+    <router-outlet #o="outlet"></router-outlet>
+
+</div>

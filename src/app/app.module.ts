@@ -6,6 +6,8 @@ import { ResizableModule } from 'angular-resizable-element';
 import { FormsModule } from '@angular/forms';
 import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { BuilderModule } from './builder/builder.module';
+import { ConfigurationModule } from './configuration/configuration.module';
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,9 @@ import { BuilderModule } from './builder/builder.module';
     ResizableModule,
     FormsModule,
     CodeGeneratorModule,
-    BuilderModule
+    BuilderModule,
+    ConfigurationModule,
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

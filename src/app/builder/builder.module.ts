@@ -17,7 +17,8 @@ import { HighlightDirective } from './share/Render/highlight.directive';
 import { AppService } from './share/Render/app.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ColorPickerModule } from 'ngx-color-picker';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BuilderRoutes } from './builder.routing';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AngularMaterialModule,
     FlexLayoutModule,
     NgSelectModule,
-    ColorPickerModule
+    ColorPickerModule,
+    BuilderRoutes
   ],
   declarations: [
     SanitizeHtmlPipe,
@@ -40,6 +42,6 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ChildContainerComponent,
     BuilderComponent],
   providers: [AppService],
-  exports:[BuilderComponent]
+  // exports: [BuilderComponent]
 })
 export class BuilderModule { }
