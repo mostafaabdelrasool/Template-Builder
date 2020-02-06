@@ -1,0 +1,82 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" >
+    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill">Fill</mat-checkbox>
+    <app-measureUnit [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
+        (valueUpdated)="updateStyle($event,'fxLayoutGap')"></app-measureUnit>
+</div>
+
+<div>
+    <div *ngIf="currentField.isContainer">
+        Orientation
+        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+            <mat-button-toggle (click)="setFlexSetting('fxLayout','row')">
+                <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayout','column')">
+                <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div *ngIf="currentField.isContainer">
+        Vertical  Alignment
+        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','start')">
+                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','center')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','end')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','space-between')">
+                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','space-around')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_justify icon">format_align_justify
+                </mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div *ngIf="currentField.isContainer">
+        Horizontal  Alignment
+        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignH','start')">
+                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignH','center')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignH','end')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignH','stretch')">
+                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <div>
+        Self Alignment
+        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+            <mat-button-toggle (click)="setFlexSetting('fxFlexAlign','start')">
+                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxFlexAlign','center')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxFlexAlign','end')">
+                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                </mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="setFlexSetting('fxFlexAlign','stretch')">
+                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>

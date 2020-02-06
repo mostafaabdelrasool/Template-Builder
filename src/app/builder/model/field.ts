@@ -45,7 +45,7 @@ export interface FieldEvent{
 export enum AngularFieldEventType {
   Click="click",Change="change"
 }
-export interface Style {
+export class Style {
   borderColor?: string;
   borderWidth?: string;
   borderStyle?: string;
@@ -75,4 +75,13 @@ export interface Style {
   boxShadow?:string;
   borderRadius?:string;
   minHeight?:string;
+  fxFlex?:FxFlex={}
+}
+export interface FxFlex{
+  fxFill?:boolean;
+  fxLayoutGap?:string;
+  fxFlexAlign?:string;
+  fxLayout?:string;
+  fxLayoutAlignH?:string;
+  fxLayoutAlignV?:string;
 }

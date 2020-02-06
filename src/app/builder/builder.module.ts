@@ -19,6 +19,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuilderRoutes } from './builder.routing';
+import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { BuilderRoutes } from './builder.routing';
     HighlightDirective,
     ContainersComponent,
     ChildContainerComponent,
-    BuilderComponent],
+    BuilderComponent,
+    FlexSettingComponent],
   providers: [AppService],
   // exports: [BuilderComponent]
 })

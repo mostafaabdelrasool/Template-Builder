@@ -6,16 +6,25 @@ import { AppService } from './app.service';
   selector: '[appStyle]'
 })
 export class ApplyStyleDirective {
-
+  _style: Style;
   constructor(private el: ElementRef, private appService: AppService) {
-
+    this._style={};
   }
   @Input('appStyle') set appStyle(value: Style) {
     if (value) {
-      Object.keys(value).forEach(key => {
-        this.el.nativeElement.style[key] = value[key]
-      })
+      // to detect change in fxFlex or style Object
+      if (JSON.stringify(value.fxFlex) !== JSON.stringify(this._style.fxFlex)) {
+        Object.keys(value.fxFlex).forEach(key => {
+          this.el.nativeElement.setAttribute(key, value.fxFlex[key])
+        })
+      } else {
+        Object.keys(value).forEach(key => {
+          this.el.nativeElement.style[key] = value[key]
+        })
+      }
+      this._style = {...value};
     }
+
   }
 
 }

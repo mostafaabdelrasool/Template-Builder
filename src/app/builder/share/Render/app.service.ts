@@ -34,7 +34,7 @@ export class AppService {
     }
     this.currentContainer = {
       model: undefined,
-      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle
+      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle,isContainer:true
     };
     this.containers = [Object.assign({}, this.currentContainer)];
   }
