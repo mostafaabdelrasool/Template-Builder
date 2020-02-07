@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="space-around center" >
-    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill">Fill</mat-checkbox>
+    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill</mat-checkbox>
     <app-measureUnit [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
         (valueUpdated)="updateStyle($event,'fxLayoutGap')"></app-measureUnit>
 </div>

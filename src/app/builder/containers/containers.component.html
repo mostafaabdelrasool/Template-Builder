@@ -1,16 +1,18 @@
 <div cdkDropList [cdkDropListData]="appService.containers" (cdkDropListDropped)="drop($event)">
     <div cdkDropListGroup>
         <div *ngFor="let item of appService.containers" id="{{item.id}}" cdkDrag>
-            <div [ngSwitch]="item.type">
+            <div [ngSwitch]="item.type" >
                 <!-- [appHighlight]='{color:color}' -->
                 <mat-icon matTooltip="Drag containers" cdkDragHandle aria-hidden="false"
                     aria-label="Example drag_handle icon">drag_handle</mat-icon>
                 <div *ngSwitchCase="divType" class="field-container" [appStyle]="item.style"
                     [ngClass]="{'item-selected': item.id===appService.currentField?.id}"
                     (click)="selectItem($event,item)" cdkDropList [cdkDropListData]="item.fields"
-                    (cdkDropListDropped)="dropField($event)">
-                    <div *ngFor="let field of item.fields" cdkDragBoundary=".boundary" cdkDrag>
-                        <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
+                    (cdkDropListDropped)="dropField($event)" >
+                    <div *ngFor="let field of item.fields" cdkDragBoundary=".boundary" cdkDrag [appStyle]="field.style"
+                    id="{{field.id}}" [ngClass]="{'item-selected':field.id===appService.currentField?.id,'inline-block':!field.isContainer}"
+                    (click)="appService.selectField(field)">
+                        <app-fields *ngIf="!field.isContainer"  [field]="field"></app-fields>
                         <app-child-container style="width: 100%;" *ngIf="field.isContainer" [container]="field">
                         </app-child-container>
                     </div>

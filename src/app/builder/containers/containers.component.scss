@@ -1,0 +1,11 @@
+.field-container{
+    .inline-block{
+        display: inline-block;
+    }
+    app-child-container{
+        display: block;
+    }
+    .item-selected{
+        border: 1px double gold !important;
+    }
+}
