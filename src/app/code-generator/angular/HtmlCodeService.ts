@@ -8,9 +8,10 @@ export class HtmlCodeService {
     constructor() {
     }
     inputCode(field: Fields): string {
-        let code = ` <mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)}>
-            <input ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}">
-           </mat-form-field>`;
+        let code = `
+        <mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)}>
+            <input ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}"/>
+        </mat-form-field>`;
         return code;
     }
     checkBoxCode(field: Fields): string {
@@ -58,7 +59,7 @@ export class HtmlCodeService {
             switch (x.type) {
                 case FieldType.INPUT_NUMBER:
                 case FieldType.INPUT_TEXT:
-                    code += "\n" + this.inputCode(x)
+                    code += this.inputCode(x)
                     break;
                 case FieldType.CHECKBOX:
                     code += '\n' + this.checkBoxCode(x);
@@ -99,7 +100,8 @@ export class HtmlCodeService {
     private getStyle(style: Style) {
         let result = '{';
         Object.keys(style).forEach(key => {
-            result += key + ":" + style[key] + ',';
+            if (key !== 'fxFlex')
+                result += key + ":" + style[key] + ',';
         });
         result += '}';
         return result;

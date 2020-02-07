@@ -31,11 +31,11 @@ export class ApplyStyleDirective {
       case "fxLayout":
         this.el.nativeElement.style.flexDirection = value;
         return true;
-      case "fxLayoutAlignH":
-        this.el.nativeElement.style.justifyContent = value;
-        return true;
       case "fxLayoutAlignV":
         this.el.nativeElement.style.alignContent = value;
+        return true;
+      case "fxLayoutAlignH":
+        this.el.nativeElement.style.justifyContent = value;
         return true;
       case "fxFlexAlign":
         this.el.nativeElement.style.alignSelf = value;
@@ -46,6 +46,9 @@ export class ApplyStyleDirective {
         this.el.nativeElement.style.minWidth = "100%";
         this.el.nativeElement.style.width = "100%";
         return true;
+        case "wrap":
+          this.el.nativeElement.style.flexWrap= "wrap";;
+          return true;
       default:
         return false;
     }
