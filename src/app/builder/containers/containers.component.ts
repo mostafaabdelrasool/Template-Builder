@@ -20,15 +20,21 @@ export class ContainersComponent implements OnInit {
     this.color = HighlightColors.BLACK;
     this.divType = FieldType.DIV
   }
-  selectItem(event, container: Containers) {
+  selectItem(event, container: Containers, selectItemOnly = false) {
+    if (this.appService.currentField && container.id === this.appService.currentField.id) {
+      return;
+    }
     container.isSelected = true;
     this.appService.sidebarOpened = true;
-    this.appService.currentManager = Manager_Type.STYLES;
+    //if drop item don't open the manager
+    if (!selectItemOnly) {
+      this.appService.currentManager = Manager_Type.STYLES;
+    }
     this.appService.currentField = undefined;
     setTimeout(() => {
       this.appService.currentField = container;
       this.appService.currentContainer = container;
-    });
+    }, 300);
     event.stopPropagation();
   }
   drop(event: CdkDragDrop<string[]>) {
@@ -56,9 +62,9 @@ export class ContainersComponent implements OnInit {
   ngOnInit() {
 
   }
-  onDragOver(event, container:Containers) {
-    if(container)
-    this.selectItem(event,container);
+  onDragOver(event, container: Containers) {
+    if (container)
+      this.selectItem(event, container, true);
     event.preventDefault();
   }
   onDrop(event) {
@@ -69,7 +75,7 @@ export class ContainersComponent implements OnInit {
   addContainer(type: FieldType) {
     let container: Containers = {
       type: type, model: 'text', id: Date.now().toString(), style: this.appService.containerStyle,
-      fields: [], classes: []
+      fields: [], classes: [], isContainer: true
     };
     if (type === FieldType.CARD) {
       (<CardField>container).cardSubTitle = "Here is Sub-title";

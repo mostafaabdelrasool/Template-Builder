@@ -6,11 +6,11 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
-            <button  draggable='true' (dragstart)='onDragStart($event,0);' mat-button aria-label="Example icon-button with a input icon">
+            <button  draggable='true' fxFlex="50"(dragstart)='onDragStart($event,0);' mat-button aria-label="Example icon-button with a input icon">
                 Input text
                 <mat-icon>input</mat-icon>
             </button>
-            <button mat-button draggable='true' (dragstart)='onDragStart($event,1);' aria-label="Example icon-button with a looks_5 icon">
+            <button mat-button draggable='true' fxFlex="50" (dragstart)='onDragStart($event,1);' aria-label="Example icon-button with a looks_5 icon">
                 Input number
                 <mat-icon>looks_5</mat-icon>
             </button>
