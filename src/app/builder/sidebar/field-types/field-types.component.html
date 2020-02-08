@@ -6,33 +6,33 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
-            <button mat-button (click)="addElement(0)" aria-label="Example icon-button with a input icon">
+            <button  draggable='true' (dragstart)='onDragStart($event,0);' mat-button aria-label="Example icon-button with a input icon">
                 Input text
                 <mat-icon>input</mat-icon>
             </button>
-            <button mat-button (click)="addElement(1)" aria-label="Example icon-button with a looks_5 icon">
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,1);' aria-label="Example icon-button with a looks_5 icon">
                 Input number
                 <mat-icon>looks_5</mat-icon>
             </button>
-            <button mat-button (click)="addElement(6)" aria-label="Example icon-button with a check_box icon">
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,6);' aria-label="Example icon-button with a check_box icon">
                 Check box
                 <mat-icon>check_box</mat-icon>
             </button>
-            <button mat-button (click)="addElement(7)" aria-label="Example icon-button with a date_range icon">
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,7);' aria-label="Example icon-button with a date_range icon">
                 Datepicker
                 <mat-icon>date_range</mat-icon>
             </button>
-            <button mat-button (click)="addElement(9)"
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,9);'
                 aria-label="Example icon-button with a radio_button_checked icon">
                 Radio Button Group
                 <mat-icon>radio_button_checked</mat-icon>
             </button>
-            <button mat-button (click)="addElement(14)"
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,14);'
                 aria-label="Example icon-button with a radio_button_checked icon">
                 Radio Button
                 <mat-icon>radio_button_checked</mat-icon>
             </button>
-            <button mat-button (click)="addElement(11)" aria-label="Example icon-button with a fast_forward icon">
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,11);' aria-label="Example icon-button with a fast_forward icon">
                 Slider
                 <mat-icon>fast_forward</mat-icon>
             </button>
@@ -45,16 +45,16 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
-            <button mat-button (click)="addElement(3,true)" aria-label="Example icon-button with a crop_square icon">
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,3,true);' aria-label="Example icon-button with a crop_square icon">
                 Container Div
                 <mat-icon>crop_square</mat-icon>
             </button>
-            <button mat-button (click)="addElement(15,true)"
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,15,true);'
                 aria-label="Example icon-button with a chrome_reader_mode icon">
                 Card
                 <mat-icon>chrome_reader_mode</mat-icon>
             </button>
-            <button mat-button (click)="addElement(13,false,true)"
+            <button mat-button draggable='true' (dragstart)='onDragStart($event,13,false,true);'
                 aria-label="Example icon-button with a flip_to_back icon">
                 Child Container Div
                 <mat-icon>flip_to_back</mat-icon>
@@ -69,74 +69,74 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
             <h3>Basic Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-button',$event)">
-                <button mat-button>Basic</button>
-                <button mat-button color="primary">Primary</button>
-                <button mat-button color="accent">Accent</button>
-                <button mat-button color="warn">Warn</button>
+            <div class="example-button-row">
+                <button mat-button draggable='true' (dragstart)="onButtonDragStart('mat-button','Basic',$event);">Basic</button>
+                <button mat-button draggable='true' (dragstart)="onButtonDragStart('mat-button','primary',$event);" color="primary">Primary</button>
+                <button mat-button draggable='true' (dragstart)="onButtonDragStart('mat-button','accent',$event);" color="accent">Accent</button>
+                <button mat-button draggable='true' (dragstart)="onButtonDragStart('mat-button','warn',$event);" color="warn">Warn</button>
             </div>
 
             <h3>Raised Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-raised-button',$event)">
-                <button mat-raised-button >Basic</button>
-                <button mat-raised-button color="primary" >Primary</button>
-                <button mat-raised-button color="accent" >Accent</button>
-                <button mat-raised-button color="warn" >Warn</button>
+            <div class="example-button-row" >
+                <button mat-raised-button draggable='true' (dragstart)="onButtonDragStart('mat-raised-button','Basic',$event)"   >Basic</button>
+                <button mat-raised-button draggable='true' (dragstart)="onButtonDragStart('mat-raised-button','primary',$event)" color="primary" >Primary</button>
+                <button mat-raised-button draggable='true' (dragstart)="onButtonDragStart('mat-raised-button','accent',$event)" color="accent" >Accent</button>
+                <button mat-raised-button draggable='true' (dragstart)="onButtonDragStart('mat-raised-button','warn',$event)" color="warn" >Warn</button>
                 
             </div>
 
             <h3>Stroked Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-stroked-button',$event)">
-                <button mat-stroked-button>Basic</button>
-                <button mat-stroked-button color="primary">Primary</button>
-                <button mat-stroked-button color="accent">Accent</button>
-                <button mat-stroked-button color="warn">Warn</button>
+            <div class="example-button-row" >
+                <button mat-stroked-button draggable='true' (dragstart)="onButtonDragStart('mat-stroked-button','Basic',$event)" >Basic</button>
+                <button mat-stroked-button draggable='true' (dragstart)="onButtonDragStart('mat-stroked-button','primary',$event)" color="primary">Primary</button>
+                <button mat-stroked-button draggable='true' (dragstart)="onButtonDragStart('mat-stroked-button','accent',$event)" color="accent">Accent</button>
+                <button mat-stroked-button draggable='true' (dragstart)="onButtonDragStart('mat-stroked-button','warn',$event)"   color="warn">Warn</button>
                
             </div>
 
             <h3>Flat Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-flat-button',$event)">
-                <button mat-flat-button>Basic</button>
-                <button mat-flat-button color="primary">Primary</button>
-                <button mat-flat-button color="accent">Accent</button>
-                <button mat-flat-button color="warn">Warn</button>
+            <div class="example-button-row" >
+                <button mat-flat-button draggable='true' (dragstart)="onButtonDragStart('mat-flat-button','Basic',$event)"  >Basic</button>
+                <button mat-flat-button draggable='true' (dragstart)="onButtonDragStart('mat-flat-button','primary',$event)"  color="primary">Primary</button>
+                <button mat-flat-button draggable='true' (dragstart)="onButtonDragStart('mat-flat-button','accent',$event)"  color="accent">Accent</button>
+                <button mat-flat-button draggable='true' (dragstart)="onButtonDragStart('mat-flat-button','warn',$event)"    color="warn">Warn</button>
                
             </div>
 
             <h3>Icon Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-icon-button',$event)">
-                <button mat-icon-button aria-label="Example icon-button with a heart icon">
+            <div class="example-button-row" >
+                <button mat-icon-button draggable='true' (dragstart)="onButtonDragStart('mat-icon-button','',$event)" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
-                <button mat-icon-button color="primary" aria-label="Example icon-button with a heart icon">
+                <button mat-icon-button draggable='true' (dragstart)="onButtonDragStart('mat-icon-button','primary',$event)" color="primary" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
-                <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+                <button mat-icon-button color="accent"  draggable='true' (dragstart)="onButtonDragStart('mat-icon-button','accent',$event)" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" aria-label="Example icon-button with a heart icon">
+                <button mat-icon-button color="warn" draggable='true' (dragstart)="onButtonDragStart('mat-icon-button','warn',$event)" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
             </div>
 
             <h3>Fab Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-fab',$event)">
-                <button mat-fab>Basic</button>
-                <button mat-fab color="primary">Primary</button>
-                <button mat-fab color="accent">Accent</button>
-                <button mat-fab color="warn">Warn</button>
-                <button mat-fab aria-label="Example icon-button with a heart icon">
+            <div class="example-button-row">
+                <button mat-fab draggable='true' (dragstart)="onButtonDragStart('mat-fab','Basic',$event)"   >Basic</button>
+                <button mat-fab draggable='true' (dragstart)="onButtonDragStart('mat-fab','primary',$event)" color="primary">Primary</button>
+                <button mat-fab draggable='true' (dragstart)="onButtonDragStart('mat-fab','accent',$event)" color="accent">Accent</button>
+                <button mat-fab draggable='true' (dragstart)="onButtonDragStart('mat-fab','warn',$event)"    color="warn">Warn</button>
+                <button mat-fab draggable='true' (dragstart)="onButtonDragStart('mat-fab','primary',$event)" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
             </div>
 
             <h3>Mini Fab Buttons</h3>
-            <div class="example-button-row" (click)="addButton('mat-mini-fab',$event)">
-                <button mat-mini-fab>Basic</button>
-                <button mat-mini-fab color="primary">Primary</button>
-                <button mat-mini-fab color="accent">Accent</button>
-                <button mat-mini-fab color="warn">Warn</button>
-                <button mat-mini-fab aria-label="Example icon-button with a heart icon">
+            <div class="example-button-row">
+                <button mat-mini-fab draggable='true' (dragstart)="onButtonDragStart('mat-mini-fab','Basic',$event)"  >Basic</button>
+                <button mat-mini-fab draggable='true' (dragstart)="onButtonDragStart('mat-mini-fab','primary',$event)" color="primary">Primary</button>
+                <button mat-mini-fab draggable='true' (dragstart)="onButtonDragStart('mat-mini-fab','accent',$event)"  color="accent">Accent</button>
+                <button mat-mini-fab draggable='true' (dragstart)="onButtonDragStart('mat-mini-fab','warn',$event)"    color="warn">Warn</button>
+                <button mat-mini-fab draggable='true' (dragstart)="onButtonDragStart('mat-mini-fab','favorite',$event)" aria-label="Example icon-button with a heart icon">
                     <mat-icon>favorite</mat-icon>
                 </button>
               
