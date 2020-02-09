@@ -1,30 +1,20 @@
 <div [ngSwitch]="field.type">
-    <div *ngSwitchCase="0">
-        <mat-form-field>
-            <input matInput placeholder="{{field.placeholder}}" value="text">
-        </mat-form-field>
-    </div>
-    <div *ngSwitchCase="1">
-        <mat-form-field>
-            <input type="number" matInput placeholder="{{field.placeholder}}" value="0">
-        </mat-form-field>
-    </div>
-    <div *ngSwitchCase="6">
-        <mat-checkbox>Label</mat-checkbox>
-    </div>
-    <div *ngSwitchCase="7">
-        <mat-form-field>
-            <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker startView="year"></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div *ngSwitchCase="9">
-        <mat-radio-group fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
-            <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
-            </mat-radio-button>
-        </mat-radio-group>
-    </div>
+    <mat-form-field *ngSwitchCase="0">
+        <input matInput placeholder="{{field.placeholder}}" value="text">
+    </mat-form-field>
+    <mat-form-field *ngSwitchCase="1">
+        <input type="number" matInput placeholder="{{field.placeholder}}" value="0">
+    </mat-form-field>
+    <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
+    <mat-form-field *ngSwitchCase="7">
+        <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year"></mat-datepicker>
+    </mat-form-field>
+    <mat-radio-group *ngSwitchCase="9" fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
+        <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
+        </mat-radio-button>
+    </mat-radio-group>
     <div *ngSwitchCase="11">
         <label>{{field.placeholder}}</label>
         <mat-slider [max]="field.max" [min]="field.min" [step]="field.step"></mat-slider>

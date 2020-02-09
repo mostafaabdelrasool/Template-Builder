@@ -9,24 +9,24 @@ export class HtmlCodeService {
     }
     inputCode(field: Fields): string {
         let code = `
-        <mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)}>
+        <mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)} ${this.addFxFlex(field)}>
             <input ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}"/>
         </mat-form-field>`;
         return code;
     }
     checkBoxCode(field: Fields): string {
-        return `<mat-checkbox  [required]="${field.required || ''}" [(ngModel)]="${field.model}" ${this.commonProps(field)}>
+        return `<mat-checkbox ${this.addFxFlex(field)} [required]="${field.required || ''}" [(ngModel)]="${field.model}" ${this.commonProps(field)}>
         ${field.placeholder || ''}</mat-checkbox>`;
     }
     datepickerCode(field: Fields): string {
-        return `<mat-form-field   id="${field.id}" ${this.commonProps(field)}>
+        return `<mat-form-field ${this.addFxFlex(field)}   id="${field.id}" ${this.commonProps(field)}>
                 <input readonly="true" [required]="${field.required || ''}" [min]="${field.min}" [max]="${field.max}" [(ngModel)]="${field.model}" matInput [matDatepicker]="picker" placeholder="${field.placeholder || ''}">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker [startAt]="${field.startDate || ''}" #picker startView="year"></mat-datepicker>
             </mat-form-field>`;
     }
     RadioButtonGroupCode(field: Fields): string {
-        let code = `<mat-radio-group [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}" 
+        let code = `<mat-radio-group ${this.addFxFlex(field)} [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}" 
         ${this.commonProps(field)}>`;
         field.radioButtonGroup.forEach(r => {
             code += `<mat-radio-button value="${field.value || ''}">${field.placeholder || ''}</mat-radio-button>`
@@ -36,7 +36,7 @@ export class HtmlCodeService {
     }
     sliderCode(field: Fields): string {
         let code =
-            `<div> 
+            `<div ${this.addFxFlex(field)}> 
          <label>${field.placeholder}</label>
          <mat-slider  ${this.commonProps(field)} [max]="${field.max || ''}" [min]="${field.min || ''}" [step]="${field.step || ''}">
          </mat-slider>
@@ -44,7 +44,7 @@ export class HtmlCodeService {
         return code;
     }
     buttonCode(field: ButtonField): string {
-        let code = `<button ${field.buttonType} color="${field.buttonColor}">`;
+        let code = `<button ${this.addFxFlex(field)} ${field.buttonType} color="${field.buttonColor}">`;
         if (field.buttonType === (ButtonFieldTypes.ICON || ButtonFieldTypes.MINI_FAB || ButtonFieldTypes.FAB)) {
             code += `<mat-icon>${field.value}</mat-icon>`
         } else {
@@ -54,7 +54,7 @@ export class HtmlCodeService {
         return code;
     }
     divCode(container: Containers): string {
-        let code = `<div  ${this.commonProps(container)}>`;
+        let code = `<div  ${this.commonProps(container)} ${this.addFxFlex(container)}>`;
         container.fields.forEach(x => {
             switch (x.type) {
                 case FieldType.INPUT_NUMBER:
@@ -136,6 +136,20 @@ export class HtmlCodeService {
     private commonProps(field: Fields): string {
         const style = !field.applyStyleInClass ? `[style]="${this.getStyle(field.style)}"` : '';
         let code = `id="${field.id}" ${style} class="${field.classes ? field.classes.join(' ') : ''}"`;
+        return code;
+    }
+    private addFxFlex(field: Fields): string {
+        if (!field.style.fxFlex) {
+            return '';
+        }
+        let code = '';
+        code += field.style.fxFlex.fxLayout ? `fxLayout="${field.style.fxFlex.fxLayout} ${field.style.fxFlex.wrap ? 'wrap' : ''}"` : '';
+        code += field.style.fxFlex.fxFill ? " fxFill" : '';
+        code += field.style.fxFlex.fxLayoutGap ? " fxLayoutGap='" + field.style.fxFlex.fxLayoutGap + "'" : '';
+        code += field.style.fxFlex.fxFlexAlign ? " fxFlexAlign='" + field.style.fxFlex.fxFlexAlign + "'" : '';
+        code += field.style.fxFlex.fxLayoutAlignH || field.style.fxFlex.fxLayoutAlignV ?
+            ` fxLayoutAlign="${field.style.fxFlex.fxLayoutAlignV + ' ' + field.style.fxFlex.fxLayoutAlignH}"` : '';
+        code += field.style.fxFlex.fxFlex ? " fxFlex='" + field.style.fxFlex.fxFlex + "'" : '';
         return code;
     }
 }

@@ -1,7 +1,6 @@
 <div [ngSwitch]="container.type" >
-    <div *ngSwitchCase="13" class="field-container" [appStyle]="container.style"
-    (click)="selectItem($event,container)" id="{{container.id}}"
-    [ngClass]="{'item-selected': container.id===appService.currentField?.id}"  (dragover)='onDragOver($event,container);' (drop)='onDrop($event);'>
+    <div *ngSwitchCase="13" class="child-container" id="{{container.id}}"
+     (dragover)='onDragOver($event,container);' (drop)='onDrop($event);'>
         <app-fields *ngFor="let field of container.fields" [field]="field"></app-fields>
     </div>
 

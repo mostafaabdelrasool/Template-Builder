@@ -85,4 +85,5 @@ export interface FxFlex{
   fxLayoutAlignH?:string;
   fxLayoutAlignV?:string;
   wrap?:string;
+  fxFlex?:string;
 }

@@ -1,9 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" >
-    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill</mat-checkbox>
-    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.wrap" (change)="setFlexSetting('wrap','true')">Wrap</mat-checkbox>
-    <app-measureUnit [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
-        (valueUpdated)="updateStyle($event,'fxLayoutGap')"></app-measureUnit>
+<div *ngIf="currentField.isContainer">
+    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill
+    </mat-checkbox>
+    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.wrap" (change)="setFlexSetting('wrap','true')">Wrap
+    </mat-checkbox>
 </div>
+<app-measureUnit *ngIf="currentField.isContainer"
+    [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
+    (valueUpdated)="updateStyle($event,'fxLayoutGap')"></app-measureUnit>
+<app-measureUnit
+    [item]="{name:'item-width',model:'currentField.style.fxFlex.fxFlex',modelValue:currentField.style.fxFlex.fxFlex}"
+    (valueUpdated)="updateStyle($event,'fxFlex')"></app-measureUnit>
 
 <div>
     <div *ngIf="currentField.isContainer">
@@ -18,7 +24,7 @@
         </mat-button-toggle-group>
     </div>
     <div *ngIf="currentField.isContainer">
-        Horizontal  Alignment
+        Horizontal Alignment
         <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
             <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignH','start')">
                 <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
@@ -42,7 +48,7 @@
         </mat-button-toggle-group>
     </div>
     <div *ngIf="currentField.isContainer">
-        Vertical  Alignment
+        Vertical Alignment
         <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
             <mat-button-toggle (click)="setFlexSetting('fxLayoutAlignV','start')">
                 <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
