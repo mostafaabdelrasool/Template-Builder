@@ -11,9 +11,9 @@
                 (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
                 <div *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style"
                     id="{{field.id}}" (click)="appService.selectField(field)" 
-                    [ngClass]="{'field-selected':field.id===appService.currentField?.id}" >
+                    [ngClass]="{'field-selected':field.id===appService.currentField?.id,'child-field-container':field.isContainer}" >
                     <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
-                    <app-child-container  style="width: 100%;" *ngIf="field.isContainer" [container]="field">
+                    <app-child-container  *ngIf="field.isContainer" [container]="field">
                     </app-child-container>
                 </div>
                 <div *ngSwitchDefault>output2</div>

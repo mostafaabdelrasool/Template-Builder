@@ -22,18 +22,19 @@ export class ComponentConfigComponent implements OnInit {
       enabled: true
     }
   };
-  
+
   constructor(public sharedService: SharedService) {
 
   }
   ngOnInit() {
-    this.sharedService.model = this.codeModel.value =
-      `{
+    if (!this.sharedService.model) {
+      this.sharedService.model = this.codeModel.value =
+        `{
       "prop1": "Shane",
       "prop2": 0,
       "prop3": true
 }`
- 
+    }
   }
   onCodeChanged(code) {
     this.sharedService.model = code;

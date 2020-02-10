@@ -6,10 +6,11 @@
 </div>
 <app-measureUnit *ngIf="currentField.isContainer"
     [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
-    (valueUpdated)="updateStyle($event,'fxLayoutGap')"></app-measureUnit>
-<app-measureUnit
-    [item]="{name:'item-width',model:'currentField.style.fxFlex.fxFlex',modelValue:currentField.style.fxFlex.fxFlex}"
-    (valueUpdated)="updateStyle($event,'fxFlex')"></app-measureUnit>
+    (valueUpdated)="setFlexSetting($event,'fxLayoutGap')"></app-measureUnit>
+<mat-form-field>
+    <input matInput type="number" [(ngModel)]="currentField.style.fxFlex.fxFlex"
+        (change)="setFlexSetting(currentField.style.fxFlex.fxFlex,'fxFlex')" placeholder="fxFlex">
+</mat-form-field>
 
 <div>
     <div *ngIf="currentField.isContainer">
