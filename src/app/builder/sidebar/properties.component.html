@@ -26,11 +26,18 @@
                     <input matInput readonly=true placeholder="Type" [(ngModel)]="currentField.type">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput placeholder="Model binder" [(ngModel)]="currentField.model">
-                </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
                 </mat-form-field>
+                <mat-form-field fxFlex="100">
+                    <input type="text" placeholder="Model binder" aria-label="Number" matInput
+                        [(ngModel)]="currentField.model" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of modelProps" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
                 <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="value" [(ngModel)]="currentField.value">
                 </mat-form-field>
@@ -340,7 +347,7 @@
                     FxFlex Setting
                 </mat-panel-title>
             </mat-expansion-panel-header>
-        <app-flex-setting [currentField]="currentField"></app-flex-setting>
+            <app-flex-setting [currentField]="currentField"></app-flex-setting>
         </mat-expansion-panel>
     </mat-accordion>
 </fieldset>

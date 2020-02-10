@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
 import { Fields } from '../model/field';
 import { CardField } from '../model/containers';
+import { SharedService } from 'src/app/share/shared.service';
+import { objectKeys } from 'src/app/share/object-func';
 
 @Component({
   selector: 'app-properties',
@@ -12,12 +14,19 @@ export class PropertiesComponent implements OnInit {
   @Input() currentField: Fields;
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
-  constructor(private appService: AppService) {
-       this.boxShadow={};
+  modelProps: string[];
+  constructor(private appService: AppService, public sharedService: SharedService) {
+    this.boxShadow = {};
   }
 
   ngOnInit() {
     this.currentField.classes = this.currentField.classes || [];
+    if (this.sharedService.model) {
+      this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
+      this.modelProps = this.modelProps.map(x =>
+        this.sharedService.rootModelName + '.' + x
+      )
+    }
   }
   addClass = className => {
     return this.currentField.classes.push(className);
