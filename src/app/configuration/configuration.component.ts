@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Framework } from './model/language';
+import { SharedService } from '../share/shared.service';
 
 @Component({
   selector: 'app-configuration',
@@ -7,10 +7,8 @@ import { Framework } from './model/language';
   styleUrls: ['./configuration.component.scss']
 })
 export class ConfigurationComponent implements OnInit {
-  selectedFramework: string
 
-  constructor() {
-    this.selectedFramework=Framework.Angular;
+  constructor(public sharedService:SharedService) {
    }
 
   ngOnInit() {

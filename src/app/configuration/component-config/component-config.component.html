@@ -8,11 +8,11 @@
         </div>
         <div>
             <mat-form-field>
-                <input matInput [(ngModel)]="modelName">
+                <input matInput [(ngModel)]="sharedService.rootModelName">
             </mat-form-field>
         </div>
     </div>
     <mat-divider></mat-divider>
-    <ngs-code-editor theme="vs-dark" [codeModel]="codeModel" [options]="options">
+  <ngs-code-editor  (valueChanged)="onCodeChanged($event)"  theme="vs-dark" [codeModel]="codeModel" [options]="options">
     </ngs-code-editor>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CodeModel } from '@ngstack/code-editor';
 import { interfacePropertyToString } from 'src/app/share/object-func';
 import { json2ts } from "json-ts"
+import { SharedService } from 'src/app/share/shared.service';
 @Component({
   selector: "app-component-config",
   templateUrl: "./component-config.component.html",
@@ -21,18 +22,20 @@ export class ComponentConfigComponent implements OnInit {
       enabled: true
     }
   };
-  modelName: string="ModelName";
-  constructor() {
+  
+  constructor(public sharedService: SharedService) {
 
   }
-
   ngOnInit() {
-    this.codeModel.value = 
-    `{
+    this.sharedService.model = this.codeModel.value =
+      `{
       "prop1": "Shane",
       "prop2": 0,
       "prop3": true
 }`
-    console.log(json2ts(this.codeModel.value,{rootName:this.modelName,namespace:'MyNamespace'}))
+ 
+  }
+  onCodeChanged(code) {
+    this.sharedService.model = code;
   }
 }

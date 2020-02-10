@@ -18,6 +18,7 @@ export class CodePreviewComponent implements OnInit {
   tsCodeModel: CodeModel = { ...this.currentCodeModel, language: 'typescript' }
   htmlCodeModel: CodeModel = { ...this.currentCodeModel, language: 'html' }
   cssCodeModel: CodeModel = { ...this.currentCodeModel, language: 'css' }
+  ModelCodeModel: CodeModel = { ...this.currentCodeModel, language: 'typescript' }
   options = {
     contextmenu: true,
     minimap: {
@@ -31,6 +32,7 @@ export class CodePreviewComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.tsCodeModel.value = data.tsCode || ''
     this.htmlCodeModel.value = data.htmlCode;
+    this.ModelCodeModel.value = data.modelCode;
     this.currentCodeModel = { ...this.htmlCodeModel };
   }
   setCurrentCodeModel(event) {
@@ -43,6 +45,9 @@ export class CodePreviewComponent implements OnInit {
         break;
       case "CSS":
         this.currentCodeModel = { ...this.cssCodeModel }
+        break;
+      case "Model":
+        this.currentCodeModel = { ...this.ModelCodeModel }
         break;
       default:
         break;

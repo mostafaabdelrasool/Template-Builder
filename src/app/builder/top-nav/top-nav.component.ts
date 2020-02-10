@@ -5,6 +5,8 @@ import { Manager_Type } from '../model/manager';
 import { ComponentCodeService } from '../../code-generator/angular/component-code.service';
 import { HtmlCodeService } from '../../code-generator/angular/HtmlCodeService';
 import { AppService } from '../share/Render/app.service';
+import { SharedService } from 'src/app/share/shared.service';
+import { json2ts } from 'json-ts';
 
 @Component({
   selector: "app-top-nav",
@@ -15,7 +17,7 @@ import { AppService } from '../share/Render/app.service';
 export class TopNavComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public appService: AppService,
-    componentCode: ComponentCodeService, private htmlCodeService: HtmlCodeService, 
+    private sharedService: SharedService, private htmlCodeService: HtmlCodeService,
     private componentCodeService: ComponentCodeService) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
@@ -23,7 +25,9 @@ export class TopNavComponent implements OnInit {
       height: '90vh',
       data: {
         htmlCode: this.htmlCodeService.generate(this.appService.containers),
-        tsCode: this.componentCodeService.generate(this.appService.containers)
+        tsCode: this.componentCodeService.generate(this.appService.containers),
+        modelCode:this.sharedService.model?
+         json2ts(this.sharedService.model, { rootName: this.sharedService.rootModelName, namespace: 'MyNamespace' }):''
       }
     });
 

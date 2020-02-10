@@ -8,6 +8,7 @@ import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { BuilderModule } from './builder/builder.module';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedService } from './share/shared.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
     ConfigurationModule,
     RouterModule.forRoot([]),
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent],
  
 })
