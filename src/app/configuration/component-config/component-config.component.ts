@@ -32,7 +32,7 @@ export class ComponentConfigComponent implements OnInit {
       "prop1": "Shane",
       "prop2": 0,
       "prop3": true
-    }`
+}`
     console.log(json2ts(this.codeModel.value,{rootName:this.modelName,namespace:'MyNamespace'}))
   }
 }

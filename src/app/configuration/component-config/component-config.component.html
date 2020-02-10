@@ -1,16 +1,18 @@
-<div class="header">
-    <div fxLayoutAlign="space-between center">
-        <h3>Enter the model binder definision interface</h3>
-        <button mat-raised-button routerLink="/builder" color="accent">
-            Next
-        </button>
+<div class="conf-container">
+    <div class="header">
+        <div fxLayoutAlign="space-between center">
+            <h3>Enter the model binder definision Object</h3>
+            <button mat-raised-button routerLink="/builder" color="accent">
+                Next
+            </button>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput [(ngModel)]="modelName">
+            </mat-form-field>
+        </div>
     </div>
-    <div >
-        <mat-form-field>
-            <input matInput [(ngModel)]="modelName">
-        </mat-form-field>
-    </div>
+    <mat-divider></mat-divider>
+    <ngs-code-editor theme="vs-dark" [codeModel]="codeModel" [options]="options">
+    </ngs-code-editor>
 </div>
-<mat-divider></mat-divider>
-<ngs-code-editor theme="vs-dark" [codeModel]="codeModel" [options]="options">
-</ngs-code-editor>
