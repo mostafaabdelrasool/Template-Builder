@@ -23,9 +23,11 @@ export class PropertiesComponent implements OnInit {
     this.currentField.classes = this.currentField.classes || [];
     if (this.sharedService.model) {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
-      this.modelProps = this.modelProps.map(x =>
-        this.sharedService.rootModelName + '.' + x
-      )
+      if (this.sharedService.rootModelName) {
+        this.modelProps = this.modelProps.map(x =>
+          this.sharedService.rootModelName + '.' + x
+        )
+      }
     }
   }
   addClass = className => {

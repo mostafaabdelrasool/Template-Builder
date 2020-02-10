@@ -25,14 +25,14 @@ export class ApplyStyleDirective {
 
   }
   private applyFlex(key: string, value: string): boolean {
-    if(this.appService.currentField.isContainer)
-    this.el.nativeElement.style.display = "flex";
+    if (this.appService.currentField.isContainer)
+      this.el.nativeElement.style.display = "flex";
     switch (key) {
       case "fxLayout":
         this.el.nativeElement.style.flexDirection = value;
         return true;
       case "fxLayoutAlignV":
-        this.el.nativeElement.style.alignContent = value;
+        this.el.nativeElement.style.alignItems = value;
         return true;
       case "fxLayoutAlignH":
         this.el.nativeElement.style.justifyContent = value;
@@ -46,9 +46,12 @@ export class ApplyStyleDirective {
         this.el.nativeElement.style.minWidth = "100%";
         this.el.nativeElement.style.width = "100%";
         return true;
-        case "wrap":
-          this.el.nativeElement.style.flexWrap= "wrap";;
-          return true;
+      case "wrap":
+        this.el.nativeElement.style.flexWrap = "wrap";;
+        return true;
+      case "fxFlex":
+        this.el.nativeElement.style.width = value+'%';
+        return true;
       default:
         return false;
     }
