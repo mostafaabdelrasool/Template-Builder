@@ -6,3 +6,18 @@ button{
   margin-right: 8px;
   margin-bottom: 8px;
 }
+.type-container{
+  div{
+    font-size: 14px;
+    height: 100px ;
+    width: 43%;
+    display: flex;
+    place-content: center center;
+    align-items: center;
+    cursor: move;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+  margin: 5px;
+  flex-direction: column;
+  }
+}

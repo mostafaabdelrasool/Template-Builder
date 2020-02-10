@@ -76,6 +76,9 @@ export class HtmlCodeService {
                 case FieldType.BUTTON:
                     code += '\n' + this.buttonCode(<ButtonField>x);
                     break;
+                case FieldType.CHILD_DIV:
+                    code += '\n' + this.divCode(<Containers>x);
+                    break;
                 default:
                     break;
             }
@@ -99,9 +102,12 @@ export class HtmlCodeService {
     }
     private getStyle(style: Style) {
         let result = '{';
-        Object.keys(style).forEach(key => {
-            if (key !== 'fxFlex')
-                result += key + ":" + style[key] + ',';
+        Object.keys(style).forEach((key, i) => {
+            if (key !== 'fxFlex') {
+                //to add , after each style
+                result += i !== 0 ? ',' : '';
+                result += `${key}: '${style[key]}'`;
+            }
         });
         result += '}';
         return result;
