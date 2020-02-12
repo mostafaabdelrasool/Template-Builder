@@ -24,6 +24,7 @@
     "@angular/router": "~8.2.14",
     "@ng-select/ng-select": "^3.7.1",
     "@ngstack/code-editor": "^0.4.8",
+    "angular-cli-ghpages": "^0.6.2",
     "angular-resizable-element": "^3.2.6",
     "hammerjs": "^2.0.8",
     "json-ts": "^1.6.4",

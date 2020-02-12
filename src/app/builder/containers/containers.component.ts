@@ -62,7 +62,7 @@ export class ContainersComponent implements OnInit {
   ngOnInit() {
 
   }
-  onDragOver(event, container: Containers) {
+  onDragOver(event, container: Containers=null) {
     if (container)
       this.selectItem(event, container, true);
     event.preventDefault();

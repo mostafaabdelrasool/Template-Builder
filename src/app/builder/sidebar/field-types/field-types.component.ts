@@ -20,7 +20,7 @@ export class FieldTypesComponent implements OnInit {
 
   }
 
-  onDragStart(event, type, isContainer, isChildContainer) {
+  onDragStart(event, type, isContainer=null, isChildContainer=null) {
     const data = { type, isContainer, isChildContainer };
     event.dataTransfer.effectAllowed='move';
     event

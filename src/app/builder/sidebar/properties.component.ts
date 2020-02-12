@@ -35,9 +35,9 @@ export class PropertiesComponent implements OnInit {
   }
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
-    this.filedValueChanged('');
+    this.filedValueChanged();
   }
-  filedValueChanged(event) {
+  filedValueChanged() {
     const style = { ...this.currentField.style }
     //this work around to detect child property change;
     this.currentField.style = undefined;
@@ -45,7 +45,7 @@ export class PropertiesComponent implements OnInit {
   }
   setFlexSetting(flexType, value) {
     this.currentField.style[flexType] = value;
-    this.filedValueChanged('');
+    this.filedValueChanged();
   }
   addNewCardAction() {
     const length = (<CardField>this.currentField).cardActions.length;
@@ -79,6 +79,6 @@ export class PropertiesComponent implements OnInit {
         break;
     }
     this.currentField.style.boxShadow = result.join(' ');
-    this.filedValueChanged('');
+    this.filedValueChanged();
   }
 }

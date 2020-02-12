@@ -21,6 +21,7 @@ export class Fields {
   radioButtonGroup?: any[];
   fieldEvent?:FieldEvent[];
   applyStyleInClass?:boolean;
+  inputTextType?:string;
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -75,7 +76,7 @@ export class Style {
   boxShadow?:string;
   borderRadius?:string;
   minHeight?:string;
-  fxFlex?:FxFlex={}
+  fxFlex?:FxFlex={};
 }
 export interface FxFlex{
   fxFill?:boolean;

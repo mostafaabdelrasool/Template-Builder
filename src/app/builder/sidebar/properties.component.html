@@ -6,7 +6,7 @@
 </div>
 <mat-divider></mat-divider>
 
-<fieldset (change)=filedValueChanged($event)>
+<fieldset (change)=filedValueChanged()>
     <mat-accordion>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -23,7 +23,11 @@
                     <input matInput placeholder="Name" [(ngModel)]="currentField.name">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput readonly=true placeholder="Type" [(ngModel)]="currentField.type">
+                    <mat-select placeholder="Type" [(ngModel)]="currentField.inputTextType">
+                        <mat-option value="text">text</mat-option>
+                        <mat-option value="passwork">passwork</mat-option>
+                        <mat-option value="email">email</mat-option>
+                    </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
@@ -87,7 +91,7 @@
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex="1 1 49%">
-                    <mat-select placeholder="Display" (selectionChange)="filedValueChanged($event)"
+                    <mat-select placeholder="Display" (selectionChange)="filedValueChanged()"
                         [(value)]="currentField.style.display">
                         <mat-option value="none">
                             none
@@ -107,7 +111,7 @@
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <mat-select placeholder="Position" (selectionChange)="filedValueChanged($event)"
+                    <mat-select placeholder="Position" (selectionChange)="filedValueChanged()"
                         [(value)]="currentField.style.position">
                         <mat-option value="absolute">
                             absolute
