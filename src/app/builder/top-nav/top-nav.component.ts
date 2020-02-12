@@ -6,7 +6,6 @@ import { ComponentCodeService } from '../../code-generator/angular/component-cod
 import { HtmlCodeService } from '../../code-generator/angular/HtmlCodeService';
 import { AppService } from '../share/Render/app.service';
 import { SharedService } from 'src/app/share/shared.service';
-import { json2ts } from 'json-ts';
 
 @Component({
   selector: "app-top-nav",
@@ -26,8 +25,9 @@ export class TopNavComponent implements OnInit {
       data: {
         htmlCode: this.htmlCodeService.generate(this.appService.containers),
         tsCode: this.componentCodeService.generate(this.appService.containers),
-        modelCode:this.sharedService.model?
-         json2ts(this.sharedService.model, { rootName: this.sharedService.rootModelName, namespace: 'MyNamespace' }):''
+        modelCode:"{}"
+        // this.sharedService.model?
+        //  json2ts(this.sharedService.model, { rootName: this.sharedService.rootModelName, namespace: 'MyNamespace' }):''
       }
     });
 

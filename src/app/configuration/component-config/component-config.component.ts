@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { CodeModel } from '@ngstack/code-editor';
-import { interfacePropertyToString } from 'src/app/share/object-func';
-import { json2ts } from "json-ts"
 import { SharedService } from 'src/app/share/shared.service';
 @Component({
   selector: "app-component-config",
