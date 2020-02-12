@@ -105,7 +105,7 @@ export class HtmlCodeService {
         Object.keys(style).forEach((key, i) => {
             if (key !== 'fxFlex') {
                 //to add , after each style
-                result += '{' ? ',' : '';
+                result += result==='{' ? '' : ',';
                 result += `${key}: '${style[key]}'`;
             }
         });

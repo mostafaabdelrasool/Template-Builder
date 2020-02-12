@@ -7,6 +7,7 @@ export class SharedService {
   model: any;
   selectedFrameWork: string="Angular";
   rootModelName:string="InterfaceName";
+  instanceName:string="instanceName";
   constructor() { }
 
 }
