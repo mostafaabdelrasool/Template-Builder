@@ -6,6 +6,7 @@ import { ComponentCodeService } from '../../code-generator/angular/component-cod
 import { HtmlCodeService } from '../../code-generator/angular/HtmlCodeService';
 import { AppService } from '../share/Render/app.service';
 import { SharedService } from 'src/app/share/shared.service';
+import JsonToTS from 'src/app/share/json-parser';
 
 @Component({
   selector: "app-top-nav",
@@ -19,15 +20,15 @@ export class TopNavComponent implements OnInit {
     private sharedService: SharedService, private htmlCodeService: HtmlCodeService,
     private componentCodeService: ComponentCodeService) { }
   generateCode(): void {
+     const model = this.sharedService.model ?
+     JsonToTS(this.sharedService.model,{rootName:this.sharedService.rootModelName}).map(x => x).join('\n') : ''
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',
       height: '90vh',
       data: {
         htmlCode: this.htmlCodeService.generate(this.appService.containers),
         tsCode: this.componentCodeService.generate(this.appService.containers),
-        modelCode:"{}"
-        // this.sharedService.model?
-        //  json2ts(this.sharedService.model, { rootName: this.sharedService.rootModelName, namespace: 'MyNamespace' }):''
+        modelCode: model
       }
     });
 
