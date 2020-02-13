@@ -21,7 +21,6 @@ export class Fields {
   radioButtonGroup?: any[];
   fieldEvent?:FieldEvent[];
   applyStyleInClass?:boolean;
-  inputTextType?:string;
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;

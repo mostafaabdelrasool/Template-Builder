@@ -17,7 +17,7 @@ export class AppService {
   containerStyle: Style
   constructor() {
     this.containerStyle = {
-      height: 'auto',
+      height: '100%',
       border: "1px dashed #e9e4e4",
       boxShadow: "0 0 4px #eee2e2",
       borderRadius:"5px",
