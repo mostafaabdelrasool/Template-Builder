@@ -184,4 +184,28 @@
             </div>
         </div>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Text
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="type-container" fxLayout="row wrap">
+            <div draggable='true' (dragstart)='onTextDragStart($event,18,"title");'
+                aria-label="Example icon-div with a text_fields icon">
+                Title
+                <mat-icon>text_fields</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onTextDragStart($event,19,"Subtitle");'
+                aria-label="Example icon-div with a subtitles icon">
+                Subtitle
+                <mat-icon>subtitles</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onTextDragStart($event,20,"Write paragraph");'
+                aria-label="Example icon-div with a title icon">
+                Text
+                <mat-icon>title</mat-icon>
+            </div>
+        </div>
+    </mat-expansion-panel>
 </mat-accordion>

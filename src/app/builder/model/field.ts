@@ -21,6 +21,7 @@ export class Fields {
   radioButtonGroup?: any[];
   fieldEvent?:FieldEvent[];
   applyStyleInClass?:boolean;
+  fullWidth?:boolean
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -36,7 +37,7 @@ export enum ButtonFieldCOLOR {
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
-  CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP
+  CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP,TITLE,SUBTITLE,TEXT
 }
 export interface FieldEvent{
   name:string;

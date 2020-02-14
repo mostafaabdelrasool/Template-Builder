@@ -62,7 +62,7 @@ export class ContainersComponent implements OnInit {
   ngOnInit() {
 
   }
-  onDragOver(event, container: Containers=null) {
+  onDragOver(event, container: Containers = null) {
     if (container)
       this.selectItem(event, container, true);
     event.preventDefault();
@@ -85,18 +85,18 @@ export class ContainersComponent implements OnInit {
     this.appService.containers.push(container)
     this.appService.currentContainer = container;
   }
-  addField(type: FieldType, isContainer: boolean, isChildContainer: boolean) {
+  addField(option) {
     let field: Fields = {
-      type: type, model: 'text',
+      type: option.type, model: 'text', value: option.text || '',fullWidth:option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'label', isContainer: isContainer, fieldEvent: []
+      placeholder: 'label', isContainer: option.isContainer, fieldEvent: []
     };
-    if (isChildContainer) {
+    if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field
       field["fields"] = [];
       field.isContainer = true;
     }
-    switch (type) {
+    switch (option.type) {
       case FieldType.RADIO_BUTTON_GROUP:
         field.radioButtonGroup = [{ value: '1', placeholder: 'Label' }];
         break;
@@ -136,7 +136,7 @@ export class ContainersComponent implements OnInit {
     else if (data.isContainer) {
       this.addContainer(data.type);
     } else {
-      this.addField(data.type, data.isContainer, data.isChildContainer)
+      this.addField(data)
     }
   }
 }

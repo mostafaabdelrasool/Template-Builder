@@ -19,18 +19,23 @@ export class FieldTypesComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  onDragStart(event, type, isContainer=null, isChildContainer=null) {
-    const data = { type, isContainer, isChildContainer };
-    event.dataTransfer.effectAllowed='move';
+  onTextDragStart(event, type, text) {
+    const data = { type, text,fullWidth:true };
+    this.transferData(event, data);
+  }
+  transferData(event, data) {
+    event.dataTransfer.effectAllowed = 'move';
     event
       .dataTransfer
       .setData('text/plain', JSON.stringify(data));
   }
-  onButtonDragStart(type, color,event) {
+  onDragStart(event, type, isContainer = null, isChildContainer = null) {
+    const data = { type, isContainer, isChildContainer };
+    event.dataTransfer.effectAllowed = 'move';
+    this.transferData(event, data);
+  }
+  onButtonDragStart(type, color, event) {
     const data = { type: FieldType.BUTTON, buttonType: type, color: color }
-    event
-      .dataTransfer
-      .setData('text/plain', JSON.stringify(data));
+    this.transferData(event, data);
   }
 }

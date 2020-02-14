@@ -11,7 +11,8 @@
                 (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
                 <div *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style"
                     id="{{field.id}}" (click)="appService.selectField(field)" 
-                    [ngClass]="{'field-selected':field.id===appService.currentField?.id,'child-field-container':field.isContainer}" >
+                    [ngClass]="{'field-selected':field.id===appService.currentField?.id,
+                    'full-width':field.isContainer || field.fullWidth}" >
                     <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
                     <app-child-container  *ngIf="field.isContainer" [container]="field">
                     </app-child-container>
@@ -27,7 +28,8 @@
                     </mat-card-header>
                     <mat-card-content (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
                         <div *ngFor="let field of item.fields"  (click)="appService.selectField(field)" [appStyle]="field.style"
-                        [ngClass]="{'field-selected':field.id===appService.currentField?.id,'child-field-container':field.isContainer}">
+                        [ngClass]="{'field-selected':field.id===appService.currentField?.id,
+                        'full-width':field.isContainer || field.fullWidth}">
                             <app-fields  *ngIf="!field.isContainer" [field]="field"></app-fields>
                             <app-child-container style="width: 100%;" *ngIf="field.isContainer" [container]="field">
                             </app-child-container>
