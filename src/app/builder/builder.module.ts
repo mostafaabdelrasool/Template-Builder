@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuilderRoutes } from './builder.routing';
 import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.component';
 import { TypographyComponent } from './sidebar/typography/typography.component';
+import { FieldActionComponent } from './containers/field-action/field-action.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { TypographyComponent } from './sidebar/typography/typography.component';
     ChildContainerComponent,
     BuilderComponent,
     TypographyComponent,
+    FieldActionComponent,
     FlexSettingComponent],
   providers: [AppService],
   // exports: [BuilderComponent]

@@ -15,7 +15,7 @@ export class HighlightDirective {
   }
   private highlight(color: HighlightColors) {
     if (!this.highlightColor.disabled) {
-      this.el.nativeElement.style.border = color ? '2px solid ' + color : null;
+      this.el.nativeElement.style.border = color ? '1px dashed ' + color : null;
 
     }
   }

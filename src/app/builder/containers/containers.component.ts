@@ -87,7 +87,7 @@ export class ContainersComponent implements OnInit {
   }
   addField(option) {
     let field: Fields = {
-      type: option.type, model: 'text', value: option.text || '',fullWidth:option.fullWidth,
+      type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
       placeholder: 'label', isContainer: option.isContainer, fieldEvent: []
     };
@@ -137,6 +137,22 @@ export class ContainersComponent implements OnInit {
       this.addContainer(data.type);
     } else {
       this.addField(data)
+    }
+  }
+  handleFieldAction(event, field) {
+    const action = event.target.innerText;
+    const index = this.appService.currentContainer.fields.findIndex(x => x.id === field.id);
+    switch (action) {
+      case 'delete':
+        this.appService.currentContainer.fields.splice(index, 1);
+        break;
+        case 'file_copy':
+          const newField={...field,id:new Date().toString()}
+          this.appService.currentContainer.fields.splice(index,0, newField);
+          break;
+        
+      default:
+        break;
     }
   }
 }

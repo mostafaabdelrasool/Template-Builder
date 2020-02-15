@@ -2,6 +2,7 @@
     transition: all ease .5s;
     div{
         display: inline-table;
+        position: relative;
     }
     .full-width{
         width: 100%;
@@ -10,4 +11,5 @@
         border: 2px double gold !important;
         transition: all ease .5s;
     }
+   
 }

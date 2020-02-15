@@ -39,6 +39,10 @@ export class AppService {
     this.containers = [Object.assign({}, this.currentContainer)];
   }
   selectField(field: Fields) {
+    if (this.currentField && field.id === this.currentField.id) {
+      event.stopPropagation();
+      return;
+    }
     field.isSelected = true;
     this.sidebarOpened = true;
     this.currentManager = Manager_Type.STYLES;
