@@ -1,47 +1,40 @@
 <div style="height:100%" (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
-    <div  *ngFor="let item of appService.containers" id="{{item.id}}"
-        (dragover)='onDragOver($event,item);'>
-        <div  [ngSwitch]="item.type">
-            <!-- [appHighlight]='{color:color}' -->
-            <mat-icon matTooltip="Drag containers" cdkDragHandle aria-hidden="false"
-                aria-label="Example drag_handle icon">
-                drag_handle</mat-icon>
-            <div *ngSwitchCase="divType" class="field-container" [appStyle]="item.style"
-                [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
-                cdkDropList [cdkDropListData]="item.fields" (cdkDropListDropped)="dropField($event)"
-                (dragover)='onDragOver($event);' (drop)='onDrop($event);' [appHighlight]='{color:"black"}'>
-                <div *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style" id="{{field.id}}"
-                    (click)="appService.selectField(field)" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
+    <div *ngFor="let item of appService.containers" id="{{item.id}}" (dragover)='onDragOver($event,item);'
+        [ngSwitch]="item.type" class="field-container" [appStyle]="item.style"
+        [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
+        [appHighlight]='{color:"black"}'>
+        <div style="display: contents;" *ngSwitchCase="divType" cdkDropList [cdkDropListData]="item.fields"
+            (cdkDropListDropped)="dropField($event)" (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
+            <div class="field" *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style" id="{{field.id}}"
+                (click)="appService.selectField(field)" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
                     'full-width':field.isContainer || field.fullWidth}" [appHighlight]='{color:"black"}'>
-                    <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
-                    <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
-                    <app-child-container *ngIf="field.isContainer" [container]="field">
-                    </app-child-container>
-                </div>
-                <div *ngSwitchDefault>output2</div>
+                <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
+                <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
+                <app-child-container *ngIf="field.isContainer" [container]="field">
+                </app-child-container>
             </div>
-            <div *ngSwitchCase="15" [appStyle]="item.style"
-                [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)">
-                <mat-card class="example-card">
-                    <mat-card-header>
-                        <mat-card-title>{{item["cardTitle"]}}</mat-card-title>
-                        <mat-card-subtitle> {{item["cardSubTitle"]}}</mat-card-subtitle>
-                    </mat-card-header>
-                    <mat-card-content (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
-                        <div *ngFor="let field of item.fields" (click)="appService.selectField(field)"
-                            [appStyle]="field.style" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
+        </div>
+        <div *ngSwitchCase="15">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>{{item["cardTitle"]}}</mat-card-title>
+                    <mat-card-subtitle> {{item["cardSubTitle"]}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
+                    <div *ngFor="let field of item.fields" (click)="appService.selectField(field)"
+                        [appStyle]="field.style" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
                         'full-width':field.isContainer || field.fullWidth}">
-                        <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
-                            <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
-                            <app-child-container style="width: 100%;" *ngIf="field.isContainer" [container]="field">
-                            </app-child-container>
-                        </div>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button *ngFor="let action of item['cardActions']" mat-button>{{action.title}}</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
+                        <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id">
+                        </app-field-action>
+                        <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
+                        <app-child-container style="width: 100%;" *ngIf="field.isContainer" [container]="field">
+                        </app-child-container>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button *ngFor="let action of item['cardActions']" mat-button>{{action.title}}</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 </div>

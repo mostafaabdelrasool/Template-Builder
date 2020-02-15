@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Fields } from '../../model/field';
+import { Fields, FieldType } from '../../model/field';
 import { AppService } from '../../share/Render/app.service';
 
 @Component({
@@ -32,5 +32,8 @@ export class FieldActionComponent implements OnInit {
       default:
         break;
     }
+  }
+  getType(type){
+   return FieldType[type].toLowerCase()
   }
 }

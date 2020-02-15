@@ -1,8 +1,9 @@
 .field-container,mat-card-content{
     transition: all ease .5s;
-    div{
+    .field{
         display: inline-table;
-        position: relative;
+         position: relative;
+        // min-width: 8em;
     }
     .full-width{
         width: 100%;

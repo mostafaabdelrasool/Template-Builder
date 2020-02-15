@@ -1,4 +1,4 @@
-<div class="field-action" *ngIf="field.id===appService.currentField?.id" (click)=handleFieldAction($event,field)>
+<div fxLayout class="field-action" (click)=handleFieldAction($event,field)>
     <mat-icon>file_copy</mat-icon>
     <mat-icon>delete</mat-icon>
 </div>

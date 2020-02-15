@@ -140,7 +140,7 @@ export class HtmlCodeService {
 
     }
     private commonProps(field: Fields): string {
-        const style = !field.applyStyleInClass ? `[style]="${this.getStyle(field.style)}"` : '';
+        const style = !field.applyStyleInClass ? `[ngStyle]="${this.getStyle(field.style)}"` : '';
         let code = `id="${field.id}" ${style} class="${field.classes ? field.classes.join(' ') : ''}"`;
         return code;
     }

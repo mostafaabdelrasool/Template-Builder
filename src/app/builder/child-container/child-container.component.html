@@ -1,4 +1,4 @@
-<div [ngSwitch]="container.type" >
+<div [ngSwitch]="container.type" style="height: 100%;">
     <div *ngSwitchCase="13" class="child-container" id="{{container.id}}"
      (dragover)='onDragOver($event,container);' (drop)='onDrop($event);'>
         <app-fields *ngFor="let field of container.fields" [field]="field"></app-fields>
