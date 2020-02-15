@@ -16,6 +16,16 @@
                 Input number
                 <mat-icon>looks_5</mat-icon>
             </div>
+            <div draggable='true' (dragstart)='onDragStart($event,21);'
+                aria-label="Example icon-button with a email icon">
+                Input Email
+                <mat-icon>email</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onDragStart($event,22);'
+                aria-label="Example icon-button with a looks_5 icon">
+                Input Password
+                <mat-icon>vpn_key</mat-icon>
+            </div>
             <div draggable='true' (dragstart)='onDragStart($event,6);'
                 aria-label="Example icon-button with a check_box icon">
                 Check box

@@ -1,7 +1,7 @@
 <div style="height:100%" (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
-    <div style="height:100%" *ngFor="let item of appService.containers" id="{{item.id}}"
+    <div  *ngFor="let item of appService.containers" id="{{item.id}}"
         (dragover)='onDragOver($event,item);'>
-        <div style="height:100%" [ngSwitch]="item.type">
+        <div  [ngSwitch]="item.type">
             <!-- [appHighlight]='{color:color}' -->
             <mat-icon matTooltip="Drag containers" cdkDragHandle aria-hidden="false"
                 aria-label="Example drag_handle icon">
