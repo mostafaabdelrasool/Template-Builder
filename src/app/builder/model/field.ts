@@ -76,6 +76,12 @@ export class Style {
   boxShadow?:string;
   borderRadius?:string;
   minHeight?:string;
+  fontFamily?:string;
+  fontSize?:string;
+  lineHeight?:string;
+  fontColor?:string;
+  textAlign?:string;
+  fontWeight?:string;
   fxFlex?:FxFlex={};
 }
 export interface FxFlex{

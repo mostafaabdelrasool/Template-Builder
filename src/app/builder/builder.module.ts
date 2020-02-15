@@ -20,6 +20,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuilderRoutes } from './builder.routing';
 import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.component';
+import { TypographyComponent } from './sidebar/typography/typography.component';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.compon
     ContainersComponent,
     ChildContainerComponent,
     BuilderComponent,
+    TypographyComponent,
     FlexSettingComponent],
   providers: [AppService],
   // exports: [BuilderComponent]

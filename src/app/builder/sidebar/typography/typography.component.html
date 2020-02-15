@@ -1,0 +1,60 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <mat-form-field fxFlex="1 1 49%">
+        <mat-select placeholder="Font Family" [value]="'inherit'" (valueChange)="updateStyle($event,'fontFamily')"
+         [(ngModel)]="currentField.style.fontFamily">
+            <mat-option value="inherit">inherit</mat-option>
+            <mat-option value="Arial, Helvetica, sans-serif">Arial</mat-option>
+            <mat-option value="Arial Black, Gadget, sans-serif">Arial Black</mat-option>
+            <mat-option value="Brush Script MT, sans-serif">Brush Script MT</mat-option>
+            <mat-option value="Comic Sans MS, cursive, sans-serif">Comic Sans MS</mat-option>
+            <mat-option value="Courier New, Courier, monospace">Courier New</mat-option>
+            <mat-option value="Georgia, serif">Georgia</mat-option>
+            <mat-option value="Helvetica, serif">Helvetica</mat-option>
+            <mat-option value="Impact, Charcoal, sans-serif">Impact</mat-option>
+            <mat-option value="Lucida Sans Unicode, Lucida Grande, sans-serif">Lucida Sans Unicode</mat-option>
+            <mat-option value="Tahoma, Geneva, sans-serif">Tahoma</mat-option>
+            <mat-option value="Times New Roman, Times, serif">Times New Roman</mat-option>
+            <mat-option value="Trebuchet MS, Helvetica, sans-serif">Trebuchet MS</mat-option>
+            <mat-option value="Verdana, Geneva, sans-serif">Verdana</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-measureUnit [item]="{name:'Font Size',model:'fontSize',modelValue:currentField.style.fontSize}"
+        (valueUpdated)="updateStyle($event,'fontSize')"></app-measureUnit>
+    <mat-form-field fxFlex="1 1 49%">
+        <mat-select placeholder="Weight" [(ngModel)]="currentField.style.fontWeight">
+            <mat-option value="100">Thin</mat-option>
+            <mat-option value="200">Extra-Light</mat-option>
+            <mat-option value="300">Light</mat-option>
+            <mat-option value="400">Normal</mat-option>
+            <mat-option value="500">Medium</mat-option>
+            <mat-option value="600">Semi-Bold</mat-option>
+            <mat-option value="700">Bold</mat-option>
+            <mat-option value="800">Extra-Bold</mat-option>
+            <mat-option value="900">Ultra-Bold</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-measureUnit [item]="{name:'Line Height',model:'lineHeight',modelValue:currentField.style.lineHeight}"
+        (valueUpdated)="updateStyle($event,'lineHeight')"></app-measureUnit>
+    <div>
+        Font color
+        <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="currentField.style.fontColor"
+            [colorPicker]="currentField.style.fontColor" (colorPickerChange)="updateStyle($event,'fontColor')" />
+    </div>
+    <div>
+        Text Align
+        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+            <mat-button-toggle (click)="updateTextAlign('left')">
+                <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="updateTextAlign('center')">
+                <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="updateTextAlign('end')">
+                <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+            </mat-button-toggle>
+            <mat-button-toggle (click)="updateTextAlign('right')">
+                <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>

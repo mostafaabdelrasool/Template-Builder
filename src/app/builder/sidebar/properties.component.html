@@ -23,13 +23,6 @@
                     <input matInput placeholder="Name" [(ngModel)]="currentField.name">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <mat-select placeholder="Type" [(ngModel)]="currentField.inputTextType">
-                        <mat-option value="text">text</mat-option>
-                        <mat-option value="passwork">passwork</mat-option>
-                        <mat-option value="email">email</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
                 </mat-form-field>
             </div>
@@ -232,6 +225,14 @@
                     </div>
                 </div>
             </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Typography
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-typography [currentField]="currentField"></app-typography>
         </mat-expansion-panel>
         <mat-expansion-panel>
             <mat-expansion-panel-header>
