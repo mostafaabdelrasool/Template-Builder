@@ -11,7 +11,7 @@ import { AppService } from '../../share/Render/app.service';
 export class FieldActionComponent implements OnInit {
   
   @Input() field: Fields;
-  constructor(private appService: AppService) {
+  constructor(public appService: AppService) {
   }
 
   ngOnInit() {

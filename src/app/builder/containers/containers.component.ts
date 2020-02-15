@@ -147,7 +147,7 @@ export class ContainersComponent implements OnInit {
         this.appService.currentContainer.fields.splice(index, 1);
         break;
         case 'file_copy':
-          const newField={...field,id:new Date().toString()}
+          const newField={...field,id:Date.now().toString()}
           this.appService.currentContainer.fields.splice(index,0, newField);
           break;
         

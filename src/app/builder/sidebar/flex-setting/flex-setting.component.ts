@@ -11,7 +11,7 @@ import { AppService } from '../../share/Render/app.service';
 export class FlexSettingComponent implements OnInit {
   
   @Input() currentField: Fields;
-  constructor(private appService: AppService) {
+  constructor(public appService: AppService) {
   }
 
 
