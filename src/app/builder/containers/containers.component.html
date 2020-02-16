@@ -3,18 +3,19 @@
         [ngSwitch]="item.type" class="field-container" [appStyle]="item.style"
         [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
         [appHighlight]='{color:"black"}'>
-        <div style="display: contents;" *ngSwitchCase="divType" cdkDropList [cdkDropListData]="item.fields"
-            (cdkDropListDropped)="dropField($event)" (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
+        <ng-container *ngSwitchCase="divType">
             <div class="field" *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style" id="{{field.id}}"
                 (click)="appService.selectField(field)" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
-                    'full-width':field.isContainer || field.fullWidth}" [appHighlight]='{color:"black"}'>
+                    'full-width':field.isContainer || field.fullWidth}" [appHighlight]='{color:"black"}' cdkDropList
+                [cdkDropListData]="item.fields" (cdkDropListDropped)="dropField($event)"
+                (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
                 <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
                 <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
                 <app-child-container *ngIf="field.isContainer" [container]="field">
                 </app-child-container>
             </div>
-        </div>
-        <div *ngSwitchCase="15">
+        </ng-container>
+        <ng-container *ngSwitchCase="15">
             <mat-card class="example-card">
                 <mat-card-header>
                     <mat-card-title>{{item["cardTitle"]}}</mat-card-title>
@@ -35,6 +36,6 @@
                     <button *ngFor="let action of item['cardActions']" mat-button>{{action.title}}</button>
                 </mat-card-actions>
             </mat-card>
-        </div>
+        </ng-container>
     </div>
 </div>
