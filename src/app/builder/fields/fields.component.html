@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.type" style="display: inline-table;">
+<ng-container [ngSwitch]="field.type">
     <mat-form-field *ngSwitchCase="0">
         <input matInput  placeholder="{{field.placeholder}}"
             value="{{field.value}}">
@@ -64,4 +64,4 @@
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <p *ngSwitchCase="20">{{field.value}}</p>
-</div>
+</ng-container>

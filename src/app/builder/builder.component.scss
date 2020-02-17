@@ -57,3 +57,12 @@
     min-height: 10em;
     width: 98%;
   }
+  .field-selected{
+    border: 2px double gold !important;
+    transition: all ease .5s;
+}
+.field{
+  display: inline-table;
+   position: relative;
+  // min-width: 8em;
+}

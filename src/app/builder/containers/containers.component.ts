@@ -20,7 +20,7 @@ export class ContainersComponent implements OnInit {
     this.color = HighlightColors.BLACK;
     this.divType = FieldType.DIV
   }
-  selectItem(event, container: Containers, selectItemOnly = false) {
+  selectItem = (event, container: Containers, selectItemOnly = false) => {
     if (this.appService.currentField && container.id === this.appService.currentField.id) {
       return;
     }
@@ -62,10 +62,11 @@ export class ContainersComponent implements OnInit {
   ngOnInit() {
 
   }
-  onDragOver(event, container: Containers = null) {
-    if (container)
-      this.selectItem(event, container, true);
+  onDragOver(event, field: Containers = null) {
+    if (field && field.isContainer)
+        this.selectItem(event, field, true)
     event.preventDefault();
+    event.stopPropagation();
   }
   onDrop(event) {
     const data = JSON.parse(event.dataTransfer.getData('text'));
@@ -89,7 +90,7 @@ export class ContainersComponent implements OnInit {
     let field: Fields = {
       type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'label', isContainer: option.isContainer, fieldEvent: [],container:this.appService.currentContainer
+      placeholder: 'label', isContainer: option.isContainer, fieldEvent: [], container: this.appService.currentContainer
     };
     if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field
@@ -146,11 +147,11 @@ export class ContainersComponent implements OnInit {
       case 'delete':
         this.appService.currentContainer.fields.splice(index, 1);
         break;
-        case 'file_copy':
-          const newField={...field,id:Date.now().toString()}
-          this.appService.currentContainer.fields.splice(index,0, newField);
-          break;
-        
+      case 'file_copy':
+        const newField = { ...field, id: Date.now().toString() }
+        this.appService.currentContainer.fields.splice(index, 0, newField);
+        break;
+
       default:
         break;
     }

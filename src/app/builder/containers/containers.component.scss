@@ -1,16 +1,16 @@
 .field-container,mat-card-content{
     transition: all ease .5s;
-    .field{
-        display: inline-table;
-         position: relative;
-        // min-width: 8em;
-    }
+
     .full-width{
         width: 100%;
     }
-    .field-selected{
-        border: 2px double gold !important;
+
+    .child-container{
+        min-height: 4em !important;
+        height: auto;
+        border: 1px dashed black;
+        width: 100%;
         transition: all ease .5s;
     }
-   
+    
 }
