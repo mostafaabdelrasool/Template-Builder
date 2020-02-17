@@ -89,7 +89,7 @@ export class ContainersComponent implements OnInit {
     let field: Fields = {
       type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'label', isContainer: option.isContainer, fieldEvent: []
+      placeholder: 'label', isContainer: option.isContainer, fieldEvent: [],container:this.appService.currentContainer
     };
     if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field

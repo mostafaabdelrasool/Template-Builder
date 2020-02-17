@@ -1,3 +1,5 @@
+import { Containers } from './containers';
+
 export class Fields {
   type: FieldType;
   model: string;
@@ -21,7 +23,8 @@ export class Fields {
   radioButtonGroup?: any[];
   fieldEvent?:FieldEvent[];
   applyStyleInClass?:boolean;
-  fullWidth?:boolean
+  fullWidth?:boolean;
+  container?:Containers
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
