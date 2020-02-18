@@ -16,6 +16,7 @@ import { MatSnackBar } from '@angular/material';
 export class ContainersComponent implements OnInit {
   color: HighlightColors;
   divType: FieldType;
+  currentHoverField: Fields;
   constructor(public appService: AppService, private _snackBar: MatSnackBar) {
     this.color = HighlightColors.BLACK;
     this.divType = FieldType.DIV
@@ -58,19 +59,35 @@ export class ContainersComponent implements OnInit {
         event.currentIndex);
     }
   }
-
+  startReposition(event, field: Fields) {
+    const data = { id: field.id, containerId: field.containerId, changePosition: true }
+    event.dataTransfer.effectAllowed = 'move';
+    event
+      .dataTransfer
+      .setData('text/plain', JSON.stringify(data));
+  }
   ngOnInit() {
 
   }
   onDragOver(event, field: Containers = null) {
+    this.currentHoverField = field;
     if (field && field.isContainer)
-        this.selectItem(event, field, true)
+      this.selectItem(event, field, true)
     event.preventDefault();
     event.stopPropagation();
   }
   onDrop(event) {
-    const data = JSON.parse(event.dataTransfer.getData('text'));
-    this.addElement(data)
+    const trans = event.dataTransfer.getData('text');
+    if (trans) {
+      const data = JSON.parse(trans);
+      if (data.changePosition) {
+        const prev = this.appService.currentContainer.fields.findIndex(x => x.id === data.id);
+        const current = this.appService.currentContainer.fields.findIndex(x => x.id === this.currentHoverField.id);
+        moveItemInArray(this.appService.currentContainer.fields, prev, current);
+      } else {
+        this.addElement(data)
+      }
+    }
     event.stopPropagation();
   }
   addContainer(type: FieldType) {
