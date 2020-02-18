@@ -3,7 +3,7 @@
         <div class="field" *ngFor="let field of container.fields" [appStyle]="field.style"
             id="{{field.id}}" (click)="appService.selectField(field)" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
          'full-width':field.isContainer || field.fullWidth}" [appHighlight]='{color:"black"}'
-          (drop)='onDrop($event);'>
+          (drop)='onDrop($event);' [appStyle]="field.style">
             <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
             <app-fields [field]="field"></app-fields>
         </div>

@@ -4,13 +4,13 @@
         [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
         [appHighlight]='{color:"black"}'   (drop)='onDrop($event);'>
         <ng-container *ngSwitchCase="divType">
-            <div class="field" *ngFor="let field of item.fields" cdkDrag [appStyle]="field.style" id="{{field.id}}"
+            <div class="field" *ngFor="let field of item.fields" cdkDrag  id="{{field.id}}"
                 (click)="appService.selectField(field)" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
                     'full-width':field.isContainer || field.fullWidth,'child-container':field.isContainer}" [appHighlight]='{color:"black"}' cdkDropList
                 [cdkDropListData]="item.fields" (cdkDropListDropped)="dropField($event)" (dragover)='onDragOver($event,field);'>
                 <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
                 <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
-                <app-child-container *ngIf="field.isContainer" [container]="field">
+                <app-child-container  *ngIf="field.isContainer" [container]="field">
                 </app-child-container>
             </div>
         </ng-container>
