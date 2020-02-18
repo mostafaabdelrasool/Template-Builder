@@ -12,5 +12,8 @@
         width: 100%;
         transition: all ease .5s;
     }
-    
+    app-child-container{
+        width: 100%;
+        display: block;
+    }
 }
