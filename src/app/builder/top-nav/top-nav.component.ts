@@ -20,14 +20,19 @@ export class TopNavComponent implements OnInit {
     private sharedService: SharedService, private htmlCodeService: HtmlCodeService,
     private componentCodeService: ComponentCodeService) { }
   generateCode(): void {
-     const model = this.sharedService.model ?
-     JsonToTS(this.sharedService.model,{rootName:this.sharedService.rootModelName}).map(x => x).join('\n') : ''
+    let dependecies = [];
+    const model = this.sharedService.model ?
+      JsonToTS(this.sharedService.model, { rootName: this.sharedService.rootModelName }).map(x => {
+        dependecies.push(this.getInterfaceName(x))
+        return 'export ' + x;
+      }).join('\n') : '';
+
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',
       height: '90vh',
       data: {
         htmlCode: this.htmlCodeService.generate(this.appService.containers),
-        tsCode: this.componentCodeService.generate(this.appService.containers),
+        tsCode: this.componentCodeService.generate(this.appService.containers, `import {${dependecies.join(',')}} from './${this.sharedService.instanceName}'`),
         modelCode: model
       }
     });
@@ -35,6 +40,10 @@ export class TopNavComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+  getInterfaceName(interfaceCode: string): string {
+    const instanceName = interfaceCode.split('\n')[0].replace('interface', '').replace('{','');
+    return instanceName;
   }
   ngOnInit() {
 

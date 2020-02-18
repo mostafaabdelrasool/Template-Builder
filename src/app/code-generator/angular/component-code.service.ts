@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Fields, AngularFieldEventType } from 'src/app/builder/model/field';
 import { Containers } from 'src/app/builder/model/containers';
 
 @Injectable({
@@ -8,10 +7,10 @@ import { Containers } from 'src/app/builder/model/containers';
 export class ComponentCodeService {
   code: string;
   constructor() { }
-  generate(containers: Containers[]): string {
+  generate(containers: Containers[],dependencies=''): string {
     this.code = `
   import { Component, OnInit } from "@angular/core";
-
+  ${dependencies}
   @Component({
   selector: "app-angularMaterial",
   templateUrl: "./angularMaterial.component.html",
