@@ -6,7 +6,7 @@
         <ng-container *ngSwitchCase="divType">
             <div class="field"  *ngFor="let field of item.fields"   id="{{field.id}}"
                 (click)="appService.selectField(field)" draggable="true" (dragstart)="startReposition($event,field)" 
-                 (dragover)='onDragOver($event,field);'>
+                 (dragover)='onDragOver($event,field);' [ngClass]="{'container-container':field.isContainer}">
                 <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
                 <app-fields  [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
                  [appStyle]="field.style"  *ngIf="!field.isContainer" [field]="field"></app-fields>
