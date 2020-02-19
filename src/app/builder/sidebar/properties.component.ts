@@ -4,6 +4,9 @@ import { Fields } from '../model/field';
 import { CardField } from '../model/containers';
 import { SharedService } from 'src/app/share/shared.service';
 import { objectKeys } from 'src/app/share/object-func';
+import { CodeService } from '../share/Render/code-service.service';
+import { MatDialog } from '@angular/material';
+import { CodePreviewComponent } from 'src/app/code-generator/code-preview/code-preview.component';
 
 @Component({
   selector: 'app-properties',
@@ -15,7 +18,8 @@ export class PropertiesComponent implements OnInit {
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
   modelProps: string[];
-  constructor(private appService: AppService, public sharedService: SharedService) {
+  constructor(public appService: AppService, public sharedService: SharedService,
+    public codeService: CodeService, public dialog: MatDialog) {
     this.boxShadow = {};
   }
 
@@ -80,5 +84,19 @@ export class PropertiesComponent implements OnInit {
     }
     this.currentField.style.boxShadow = result.join(' ');
     this.filedValueChanged();
+  }
+  openCssCode() {
+    if (this.currentField.applyStyleInClass) {
+      this.codeService.convertStyleTOCss(this.currentField.style,"className");
+      const dialogRef = this.dialog.open(CodePreviewComponent, {
+        width: '90vw',
+        height: '90vh',
+        data: this.codeService.getAllCode()
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+      });
+    }
   }
 }

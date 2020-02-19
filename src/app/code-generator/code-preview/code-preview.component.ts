@@ -33,6 +33,7 @@ export class CodePreviewComponent implements OnInit {
     this.tsCodeModel.value = data.tsCode || ''
     this.htmlCodeModel.value = data.htmlCode;
     this.ModelCodeModel.value = data.modelCode;
+    this.cssCodeModel.value = data.cssCode;
     this.currentCodeModel = { ...this.htmlCodeModel };
   }
   setCurrentCodeModel(event) {

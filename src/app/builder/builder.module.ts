@@ -22,6 +22,7 @@ import { BuilderRoutes } from './builder.routing';
 import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.component';
 import { TypographyComponent } from './sidebar/typography/typography.component';
 import { FieldActionComponent } from './containers/field-action/field-action.component';
+import { CodeService } from './share/Render/code-service.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,7 @@ import { FieldActionComponent } from './containers/field-action/field-action.com
     TypographyComponent,
     FieldActionComponent,
     FlexSettingComponent],
-  providers: [AppService],
+  providers: [AppService, CodeService],
   // exports: [BuilderComponent]
 })
 export class BuilderModule { }
