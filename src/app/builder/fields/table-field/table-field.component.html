@@ -1,0 +1,17 @@
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th *ngFor="let item of field.tableSetting.header">
+                {{item.header}}
+                <mat-checkbox [(ngModel)]="item.isSelected"></mat-checkbox>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data">
+            <td *ngFor="let cell of field.tableSetting.header">
+                {{item[cell.binding]}}
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -218,4 +218,28 @@
             </div>
         </div>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Data
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="type-container" fxLayout="row wrap">
+            <div draggable='true' (dragstart)='onDragStart($event,23);'
+                aria-label="Example icon-div with a table_chart icon">
+                Table
+                <mat-icon>table_chart</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onDragStart($event,24);'
+                aria-label="Example icon-div with a menu icon">
+                List
+                <mat-icon>menu</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onDragStart($event,25);'
+                aria-label="Example icon-div with a clear_all icon">
+                Drop Down List
+                <mat-icon>clear_all</mat-icon>
+            </div>
+        </div>
+    </mat-expansion-panel>
 </mat-accordion>

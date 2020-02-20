@@ -2,7 +2,7 @@ export const   interfacePropertyToString = ( property ) => {
     var arr = property.match( /[\s\S]*{[\s\S]*\.([^\.; ]*)[ ;\n]*}/ );
     return arr[1];
 };
-export const objectKeys = (obj, prefix = '') => 
+export const objectKeys = (obj, prefix = ''):any[] => 
   Object.keys(obj).reduce((res, el) => {
     if( Array.isArray(obj[el]) ) {
       return res;

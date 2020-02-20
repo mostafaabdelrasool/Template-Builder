@@ -24,6 +24,8 @@ import { TypographyComponent } from './sidebar/typography/typography.component';
 import { FieldActionComponent } from './containers/field-action/field-action.component';
 import { CodeService } from './share/Render/code-service.service';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
+import { TableFieldComponent } from './fields/table-field/table-field.component';
+import { DataSettingComponent } from './sidebar/data-setting/data-setting.component';
 
 @NgModule({
   imports: [
@@ -49,9 +51,11 @@ import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.compo
     TypographyComponent,
     FieldActionComponent,
     FlexSettingComponent,
-    StyleToCssComponent],
+    StyleToCssComponent,
+    TableFieldComponent,
+    DataSettingComponent],
   providers: [AppService, CodeService],
-  entryComponents: [StyleToCssComponent]
+  entryComponents: [StyleToCssComponent,DataSettingComponent]
   // exports: [BuilderComponent]
 })
 export class BuilderModule { }

@@ -21,18 +21,22 @@ export class Fields {
   minLength?: number;
   required?: boolean;
   radioButtonGroup?: any[];
-  fieldEvent?:FieldEvent[];
-  applyStyleInClass?:boolean;
-  fullWidth?:boolean;
-  container?:Containers
+  fieldEvent?: FieldEvent[];
+  applyStyleInClass?: boolean;
+  fullWidth?: boolean;
+  container?: Containers;
+  tableSetting?: TableSetting
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
   buttonColor: string;
 }
+export class TableSetting {
+  header: [{ name: string, isSelected: Boolean }]
+}
 export enum ButtonFieldTypes {
   BASIC = 'mat-button', RASIED = 'mat-raised-button', STROCK = 'mat-stroked-button',
-  FLAT = 'mat-flat-button', ICON='mat-icon-button', FAB='mat-fab', MINI_FAB='mat-mini-fab'
+  FLAT = 'mat-flat-button', ICON = 'mat-icon-button', FAB = 'mat-fab', MINI_FAB = 'mat-mini-fab'
 }
 export enum ButtonFieldCOLOR {
   Basic = 'basic', Primary = 'primary', Accent = 'accent', Warn = 'warn'
@@ -40,14 +44,14 @@ export enum ButtonFieldCOLOR {
 export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
-  CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP,TITLE,SUBTITLE,TEXT,INPUT_EMAIL,INPUT_PASSWORD
+  CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP, TITLE, SUBTITLE, TEXT, INPUT_EMAIL, INPUT_PASSWORD, TABLE, LIST, DROPDOWNLIST
 }
-export interface FieldEvent{
-  name:string;
-  type:string;
+export interface FieldEvent {
+  name: string;
+  type: string;
 }
 export enum AngularFieldEventType {
-  Click="click",Change="change"
+  Click = "click", Change = "change"
 }
 export class Style {
   borderColor?: string;
@@ -75,25 +79,25 @@ export class Style {
   alignItems?: string;
   justifyContent?: string;
   flexWrap?: string;
-  border?:string;
-  boxShadow?:string;
-  borderRadius?:string;
-  minHeight?:string;
-  fontFamily?:string;
-  fontSize?:string;
-  lineHeight?:string;
-  fontColor?:string;
-  textAlign?:string;
-  fontWeight?:string;
-  fxFlex?:FxFlex={};
+  border?: string;
+  boxShadow?: string;
+  borderRadius?: string;
+  minHeight?: string;
+  fontFamily?: string;
+  fontSize?: string;
+  lineHeight?: string;
+  fontColor?: string;
+  textAlign?: string;
+  fontWeight?: string;
+  fxFlex?: FxFlex = {};
 }
-export interface FxFlex{
-  fxFill?:boolean;
-  fxLayoutGap?:string;
-  fxFlexAlign?:string;
-  fxLayout?:string;
-  fxLayoutAlignH?:string;
-  fxLayoutAlignV?:string;
-  wrap?:string;
-  fxFlex?:string;
+export interface FxFlex {
+  fxFill?: boolean;
+  fxLayoutGap?: string;
+  fxFlexAlign?: string;
+  fxLayout?: string;
+  fxLayoutAlignH?: string;
+  fxLayoutAlignV?: string;
+  wrap?: string;
+  fxFlex?: string;
 }
