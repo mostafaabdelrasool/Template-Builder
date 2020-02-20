@@ -9,8 +9,8 @@ export class HtmlCodeService {
     }
     inputCode(field: Fields): string {
         let code = `
-<mat-form-field [(ngModel)]="${field.model}" ${this.commonProps(field)} ${this.addFxFlex(field)}>
- <input ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}"/>
+<mat-form-field  ${this.commonProps(field)} ${this.addFxFlex(field)}>
+ <input [(ngModel)]="${field.model}" ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}"/>
 </mat-form-field>`;
         return code;
     }

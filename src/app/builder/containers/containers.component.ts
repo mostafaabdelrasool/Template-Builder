@@ -114,25 +114,9 @@ export class ContainersComponent implements OnInit {
       field["fields"] = [];
       field.isContainer = true;
     }
-    // switch (option.type) {
-    //   case FieldType.RADIO_BUTTON_GROUP:
-    //     field.radioButtonGroup = [{ value: '1', placeholder: 'Label' }];
-    //     break;
-    //   case FieldType.RADIO_BUTTON:
-    //     if (!this.appService.currentField
-    //       || this.appService.currentField.type !== FieldType.RADIO_BUTTON_GROUP) {
-    //       this.openSnackBar("Please select Radio button group", "close");
-    //       return;
-    //     }
-    //     this.appService.currentField.radioButtonGroup.push({
-    //       value: this.appService.currentField.radioButtonGroup.length,
-    //       placeholder: 'Label'
-    //     })
-    //     break;
-
-    //   default:
-    //     break;
-    // }
+    if (field.type===FieldType.TABLE) {
+      field.fullWidth=true
+    }
     this.appService.currentContainer.fields.push(field);
   }
   addButton(buttonType: ButtonFieldTypes, color) {
@@ -174,3 +158,22 @@ export class ContainersComponent implements OnInit {
     }
   }
 }
+  // switch (option.type) {
+    //   case FieldType.RADIO_BUTTON_GROUP:
+    //     field.radioButtonGroup = [{ value: '1', placeholder: 'Label' }];
+    //     break;
+    //   case FieldType.RADIO_BUTTON:
+    //     if (!this.appService.currentField
+    //       || this.appService.currentField.type !== FieldType.RADIO_BUTTON_GROUP) {
+    //       this.openSnackBar("Please select Radio button group", "close");
+    //       return;
+    //     }
+    //     this.appService.currentField.radioButtonGroup.push({
+    //       value: this.appService.currentField.radioButtonGroup.length,
+    //       placeholder: 'Label'
+    //     })
+    //     break;
+
+    //   default:
+    //     break;
+    // }

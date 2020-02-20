@@ -5,7 +5,7 @@
         [appHighlight]='{color:"black"}' (drop)='onDrop($event);'>
         <ng-container *ngSwitchCase="divType">
             <ng-container *ngFor="let field of item.fields">
-                <app-fields [ngClass]="{'field-selected':field.id===appService.currentField?.id}"
+                <app-fields [ngClass]="{'field-selected':field.id===appService.currentField?.id,'full-width':field.fullWidth}"
                     [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="!field.isContainer" [field]="field"
                     (click)="appService.selectField(field)" draggable="true" (dragstart)="startReposition($event,field)"
                     (dragover)='onDragOver($event,field);'></app-fields>

@@ -1,6 +1,6 @@
-<div fxLayout="column ">
-    <mat-form-field [(ngModel)]="className" fxFlex='100'>
-        <input [required]="true" type="text" matInput placeholder="URL" />
+<div fxLayout="column">
+    <mat-form-field  fxFlex='100'>
+        <input [required]="true" type="text" [(ngModel)]="URL" matInput placeholder="URL" />
     </mat-form-field>
     <button fxFlexAlign='end' (click)="fetchData()" mat-raised-button color="primary">
         Add

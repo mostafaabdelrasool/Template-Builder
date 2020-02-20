@@ -26,6 +26,7 @@ import { CodeService } from './share/Render/code-service.service';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 import { TableFieldComponent } from './fields/table-field/table-field.component';
 import { DataSettingComponent } from './sidebar/data-setting/data-setting.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { DataSettingComponent } from './sidebar/data-setting/data-setting.compon
     FlexLayoutModule,
     NgSelectModule,
     ColorPickerModule,
-    BuilderRoutes
+    BuilderRoutes,
+    HttpClientModule
   ],
   declarations: [
     SanitizeHtmlPipe,

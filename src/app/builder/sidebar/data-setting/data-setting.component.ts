@@ -20,8 +20,9 @@ export class DataSettingComponent implements OnInit {
   }
   fetchData() {
     this.http.get(this.URL).subscribe(x => {
-      const setting = objectKeys(x).map(key => { return { name: key, isSelcted: true } });
-      this.dialogRef.close({ data: x, setting:setting});
+      const data = Array.isArray(x) ? x[0] : x
+      const setting = objectKeys(data).map(key => { return { name: key, isSelcted: true, binding: key, url: this.URL } });
+      this.dialogRef.close({ data: x, setting: setting });
     })
   }
 }

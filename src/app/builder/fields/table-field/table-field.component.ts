@@ -21,8 +21,10 @@ export class TableFieldComponent implements OnInit {
     const dialogRef = this.dialog.open(DataSettingComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.field.tableSetting = result.setting;
+      this.field.tableSetting = { header: [], url: '' }
+      this.field.tableSetting.header = result.setting;
       this.data = result.data;
+      this.field.tableSetting.url = result.url
     });
   }
 }

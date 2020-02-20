@@ -32,7 +32,13 @@ export class ButtonField extends Fields {
   buttonColor: string;
 }
 export class TableSetting {
-  header: [{ name: string, isSelected: Boolean }]
+  header: TableHeader[]
+  url: any;
+}
+export class TableHeader {
+  name: string;
+  binding:string;
+  isSelected: Boolean
 }
 export enum ButtonFieldTypes {
   BASIC = 'mat-button', RASIED = 'mat-raised-button', STROCK = 'mat-stroked-button',
