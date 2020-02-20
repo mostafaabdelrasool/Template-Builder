@@ -11,6 +11,9 @@
         width: 100%;
         display: block;
     }
+    app-fields,app-child-container{
+        position: relative;
+    }
     .container-container{
         width: 100%;
         min-width: 100%;

@@ -2,18 +2,20 @@
     <div *ngFor="let item of appService.containers" id="{{item.id}}" (dragover)='onDragOver($event,item);'
         [ngSwitch]="item.type" class="field-container" [appStyle]="item.style"
         [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
-        [appHighlight]='{color:"black"}'   (drop)='onDrop($event);'>
+        [appHighlight]='{color:"black"}' (drop)='onDrop($event);'>
         <ng-container *ngSwitchCase="divType">
-            <div class="field"  *ngFor="let field of item.fields"   id="{{field.id}}"
-                (click)="appService.selectField(field)" draggable="true" (dragstart)="startReposition($event,field)" 
-                 (dragover)='onDragOver($event,field);' [ngClass]="{'container-container':field.isContainer}">
-                <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
-                <app-fields  [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
-                 [appStyle]="field.style"  *ngIf="!field.isContainer" [field]="field"></app-fields>
-                <app-child-container class="field full-width child-container" [ngClass]="{'field-selected':field.id===appService.currentField?.id}" 
-                [appHighlight]='{color:"black"}' [appStyle]="field.style"  *ngIf="field.isContainer" [container]="field">
+            <ng-container *ngFor="let field of item.fields">
+                <app-fields [ngClass]="{'field-selected':field.id===appService.currentField?.id}"
+                    [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="!field.isContainer" [field]="field"
+                    (click)="appService.selectField(field)" draggable="true" (dragstart)="startReposition($event,field)"
+                    (dragover)='onDragOver($event,field);'></app-fields>
+                <app-child-container class="field full-width child-container"
+                    [ngClass]="{'field-selected':field.id===appService.currentField?.id}"
+                    [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="field.isContainer"
+                    [container]="field" (click)="appService.selectField(field)" draggable="true"
+                    (dragstart)="startReposition($event,field)" (dragover)='onDragOver($event,field);'>
                 </app-child-container>
-            </div>
+            </ng-container>
         </ng-container>
         <ng-container *ngSwitchCase="15">
             <mat-card class="example-card">
