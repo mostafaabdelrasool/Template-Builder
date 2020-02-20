@@ -1,0 +1,8 @@
+<div fxLayout="column ">
+    <mat-form-field  [(ngModel)]="className" fxFlex='100'>
+        <input [required]="" type="text" matInput placeholder="Class Name" value="" />
+    </mat-form-field>
+    <button fxFlexAlign='end' (click)="addClass()" mat-raised-button color="primary">
+        Add
+    </button>
+</div>

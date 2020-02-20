@@ -38,8 +38,8 @@ export class CodeService {
     const instanceName = interfaceCode.split('\n')[0].replace('interface', '').replace('{', '');
     return instanceName;
   }
-  convertStyleTOCss(style: Style,className:string) {
-    this.sharedService.cssCode += this.cssCodeService.addCssFromStyle(style,className);
+  convertStyleTOCss(style: Style, className: string): string {
+    return  this.cssCodeService.addCssFromStyle(style, className);
   }
 
 }

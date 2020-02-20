@@ -23,6 +23,7 @@ import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.compon
 import { TypographyComponent } from './sidebar/typography/typography.component';
 import { FieldActionComponent } from './containers/field-action/field-action.component';
 import { CodeService } from './share/Render/code-service.service';
+import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 
 @NgModule({
   imports: [
@@ -47,8 +48,10 @@ import { CodeService } from './share/Render/code-service.service';
     BuilderComponent,
     TypographyComponent,
     FieldActionComponent,
-    FlexSettingComponent],
+    FlexSettingComponent,
+    StyleToCssComponent],
   providers: [AppService, CodeService],
+  entryComponents: [StyleToCssComponent]
   // exports: [BuilderComponent]
 })
 export class BuilderModule { }
