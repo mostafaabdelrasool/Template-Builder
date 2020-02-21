@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Fields } from '../../model/field';
+import { Fields, TableHeader } from '../../model/field';
 import { MatDialog } from '@angular/material';
 import { DataSettingComponent } from '../../sidebar/data-setting/data-setting.component';
 
@@ -11,7 +11,7 @@ import { DataSettingComponent } from '../../sidebar/data-setting/data-setting.co
 
 export class TableFieldComponent implements OnInit {
   @Input() field: Fields;
-  currentRows: [];
+  currentRows: TableHeader[];
   data: [];
   constructor(public dialog: MatDialog) {
 
@@ -23,8 +23,12 @@ export class TableFieldComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.field.tableSetting = { header: [], url: '' }
       this.field.tableSetting.header = result.setting;
+      this.currentRows = result.setting;
       this.data = result.data;
       this.field.tableSetting.url = result.url
     });
+  }
+  setHeaderVisability(event) {
+    this.currentRows = event.value;
   }
 }
