@@ -27,6 +27,7 @@ import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.compo
 import { TableFieldComponent } from './fields/table-field/table-field.component';
 import { DataSettingComponent } from './sidebar/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResizableModule } from 'angular-resizable-element';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgSelectModule,
     ColorPickerModule,
     BuilderRoutes,
-    HttpClientModule
+    HttpClientModule,
+    ResizableModule 
   ],
   declarations: [
     SanitizeHtmlPipe,

@@ -63,4 +63,10 @@ export class AppService {
     }
 
   }
+  filedValueChanged() {
+    const style = { ...this.currentField.style }
+    //this work around to detect child property change;
+    this.currentField.style = undefined;
+    this.currentField.style = style
+  }
 }

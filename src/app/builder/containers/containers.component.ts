@@ -6,6 +6,7 @@ import { FieldType, Fields, ButtonFieldTypes, ButtonField, ButtonFieldCOLOR } fr
 import { HighlightColors } from '../share/Render/highlight.directive';
 import { AppService } from '../share/Render/app.service';
 import { MatSnackBar } from '@angular/material';
+import { ResizeEvent } from 'angular-resizable-element';
 
 @Component({
   selector: "app-containers",
@@ -37,27 +38,6 @@ export class ContainersComponent implements OnInit {
       this.appService.currentContainer = container;
     }, 300);
     event.stopPropagation();
-  }
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(this.appService.containers, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
-  }
-
-  dropField(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(this.appService.currentContainer.fields, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
   }
   startReposition(event, field: Fields) {
     const data = { id: field.id, containerId: field.containerId, changePosition: true }
@@ -114,8 +94,8 @@ export class ContainersComponent implements OnInit {
       field["fields"] = [];
       field.isContainer = true;
     }
-    if (field.type===FieldType.TABLE) {
-      field.fullWidth=true
+    if (field.type === FieldType.TABLE) {
+      field.fullWidth = true
     }
     this.appService.currentContainer.fields.push(field);
   }
@@ -156,6 +136,16 @@ export class ContainersComponent implements OnInit {
       default:
         break;
     }
+  }
+  onResizeEnd(event: ResizeEvent, field: Fields): void {
+    const parent = document.getElementById(field.containerId)
+    const newWidthRatio=(event.rectangle.width /parent.offsetWidth)*100;
+    field.style.width = newWidthRatio.toFixed(2)+ '%';
+    if (field.isContainer) {
+      const newHeightRatio=(event.rectangle.height /parent.offsetHeight)*100;
+      field.style.height = newHeightRatio.toFixed(2)+ '%';
+    }
+    this.appService.filedValueChanged();
   }
 }
   // switch (option.type) {

@@ -38,17 +38,12 @@ export class PropertiesComponent implements OnInit {
   }
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
-    this.filedValueChanged();
+    this.appService.filedValueChanged();
   }
-  filedValueChanged() {
-    const style = { ...this.currentField.style }
-    //this work around to detect child property change;
-    this.currentField.style = undefined;
-    this.currentField.style = style
-  }
+ 
   setFlexSetting(flexType, value) {
     this.currentField.style[flexType] = value;
-    this.filedValueChanged();
+    this.appService.filedValueChanged();
   }
   addNewCardAction() {
     const length = (<CardField>this.currentField).cardActions.length;
@@ -82,7 +77,7 @@ export class PropertiesComponent implements OnInit {
         break;
     }
     this.currentField.style.boxShadow = result.join(' ');
-    this.filedValueChanged();
+    this.appService.filedValueChanged();
   }
   openCssCode() {
     if (this.currentField.applyStyleInClass) {

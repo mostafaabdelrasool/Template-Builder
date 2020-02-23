@@ -14,7 +14,9 @@ export class ApplyStyleDirective {
     if (value) {
       // to detect change in fxFlex or style Object
       Object.keys(value).forEach(key => {
-        this.el.nativeElement.style[key] = value[key]
+        if (key !== 'fxFlex') {
+          this.el.nativeElement.style[key] = value[key]
+        }
       })
       if (value.fxFlex) {
         Object.keys(value.fxFlex).forEach(key => {
@@ -50,7 +52,7 @@ export class ApplyStyleDirective {
         this.el.nativeElement.style.flexWrap = "wrap";;
         return true;
       case "fxFlex":
-        this.el.nativeElement.style.width = value+'%';
+        this.el.nativeElement.style.width = value + '%';
         return true;
       default:
         return false;
