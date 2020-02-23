@@ -28,7 +28,7 @@ import { TableFieldComponent } from './fields/table-field/table-field.component'
 import { DataSettingComponent } from './sidebar/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResizableModule } from 'angular-resizable-element';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
@@ -39,7 +39,8 @@ import { ResizableModule } from 'angular-resizable-element';
     ColorPickerModule,
     BuilderRoutes,
     HttpClientModule,
-    ResizableModule 
+    ResizableModule ,
+    NgxPaginationModule
   ],
   declarations: [
     SanitizeHtmlPipe,
