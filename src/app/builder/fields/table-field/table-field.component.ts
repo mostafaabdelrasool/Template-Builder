@@ -13,6 +13,7 @@ export class TableFieldComponent implements OnInit {
   @Input() field: Fields;
   currentRows: TableHeader[];
   data: [];
+  pageNo:number
   constructor(public dialog: MatDialog) {
 
   }

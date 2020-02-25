@@ -21,11 +21,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: p }">
+        <tr *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: pageNo }">
             <td *ngFor="let cell of currentRows">
                 {{item[cell.binding]}}
             </td>
         </tr>
     </tbody>
 </table>
-<pagination-controls fxLayout="row" fxLayoutAlign="center center"    autoHide="true" responsive="true"(pageChange)="p = $event"></pagination-controls>
+<pagination-controls fxLayout="row" fxLayoutAlign="center center"    autoHide="true" responsive="true" (pageChange)="pageNo = $event"></pagination-controls>
