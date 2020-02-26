@@ -1,8 +1,42 @@
-<div fxLayout="column">
-    <mat-form-field  fxFlex='100'>
-        <input [required]="true" type="text" [(ngModel)]="URL" matInput placeholder="URL" />
+<div fxLayout>
+    <mat-form-field>
+        <input [(ngModel)]="dataSource.url" matInput placeholder="URL" />
     </mat-form-field>
     <button fxFlexAlign='end' (click)="fetchData()" mat-raised-button color="primary">
         Add
     </button>
+</div>
+<mat-form-field>
+    <input type="text" [(ngModel)]="dataSource.name" matInput placeholder="Name" />
+</mat-form-field>
+<div>
+    <button mat-raised-button color="primary" (click)="addNewRow()">Add</button>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Discription
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataSource.staticData">
+                <td>
+                    <app-edit-in-place [status]='1' [(data)]="item.id"></app-edit-in-place>
+                </td>
+                <td>
+                    <app-edit-in-place [status]='1' [(data)]="item.discription"></app-edit-in-place>
+                </td>
+                <td>
+                    <mat-icon (click)="deleteItem(item)">delete</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

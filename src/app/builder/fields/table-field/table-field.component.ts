@@ -19,7 +19,7 @@ export class TableFieldComponent implements OnInit {
   }
 
   ngOnInit() {
-    const dialogRef = this.dialog.open(DataSettingComponent);
+    const dialogRef = this.dialog.open(DataSettingComponent,{width:'40vw',height:'auto'});
 
     dialogRef.afterClosed().subscribe(result => {
       this.field.tableSetting = { header: [], url: '' }

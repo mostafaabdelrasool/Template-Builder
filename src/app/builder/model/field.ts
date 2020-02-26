@@ -1,4 +1,5 @@
 import { Containers } from './containers';
+import { FieldDataSource } from './data-source';
 
 export class Fields {
   type: FieldType;
@@ -46,6 +47,11 @@ export class TableHeader {
   name: string;
   binding: string;
   isSelected: Boolean
+}
+export class SelectField extends Fields{
+  dispalyMember:string;
+  valueMember:string;
+  dataSource:FieldDataSource;
 }
 export enum ButtonFieldTypes {
   BASIC = 'mat-button', RASIED = 'mat-raised-button', STROCK = 'mat-stroked-button',

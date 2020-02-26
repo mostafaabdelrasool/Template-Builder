@@ -1,13 +1,16 @@
 .field-action{
-    position: absolute;
-    top: -1.9em;
+    top: -1.6em;
     background: gold;
     color: white;
     left: -2px;
-    padding: 3px;
+    padding: 1px;
     text-align: center;
     cursor: pointer;
+    position: absolute;
     mat-icon{
-        font-size: 19px;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

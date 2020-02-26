@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Fields, Style, FieldType } from 'src/app/builder/model/field';
 import { Manager_Type } from 'src/app/builder/model/manager';
 import { Containers } from 'src/app/builder/model/containers';
+import { FieldDataSource } from '../../model/data-source';
 
 /**
  * @description
@@ -14,7 +15,8 @@ export class AppService {
   sidebarOpened: boolean = false;
   currentManager = Manager_Type.NONE;
   currentContainer: Containers;
-  containerStyle: Style
+  containerStyle: Style;
+  dataSources:FieldDataSource[]=[];
   constructor() {
     this.containerStyle = {
       height: 'auto',
