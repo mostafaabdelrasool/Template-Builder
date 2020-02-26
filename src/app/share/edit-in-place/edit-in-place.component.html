@@ -1,0 +1,11 @@
+<div *ngIf="status===1">
+    <mat-form-field>
+        <input matInput placeholder="Type here" [(ngModel)]="_tempData" name="name">
+    </mat-form-field>
+    <mat-icon (click)="changeEditStatus(2)">done</mat-icon>
+    <mat-icon (click)="changeEditStatus(4)">close</mat-icon>
+</div>
+<div *ngIf="status===4">
+   {{data}}
+   <mat-icon (click)="changeEditStatus(1)">edit</mat-icon>
+</div>

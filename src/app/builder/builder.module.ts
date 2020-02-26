@@ -29,6 +29,8 @@ import { DataSettingComponent } from './sidebar/data-setting/data-setting.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ResizableModule } from 'angular-resizable-element';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { TabFieldComponent } from './child-container/tab-field/tab-field.component';
+import { SharedModule } from '../share/shared.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     BuilderRoutes,
     HttpClientModule,
     ResizableModule ,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ],
   declarations: [
     SanitizeHtmlPipe,
@@ -58,7 +61,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FlexSettingComponent,
     StyleToCssComponent,
     TableFieldComponent,
-    DataSettingComponent],
+    DataSettingComponent,
+    TabFieldComponent],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent,DataSettingComponent]
   // exports: [BuilderComponent]

@@ -4,9 +4,11 @@
         <div class="field" style="display: inline-block;" *ngFor="let field of container.fields"
             [appStyle]="field.style" id="{{field.id}}" (click)="appService.selectField(field)"
             [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
-            (drop)='onDrop($event);' [appStyle]="field.style">
-            <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
+            (drop)='onDrop($event);'>
             <app-fields [field]="field"></app-fields>
         </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="26">
+        <app-tab-field [field]="container" ></app-tab-field>
     </ng-container>
 </ng-container>

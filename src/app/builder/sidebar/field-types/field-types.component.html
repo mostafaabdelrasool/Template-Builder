@@ -75,6 +75,11 @@
                 Child Container
                 <mat-icon>flip_to_back</mat-icon>
             </div>
+            <div draggable='true' (dragstart)='onDragStart($event,26,false,true);'
+                aria-label="Example icon-div with a tab icon">
+                Tabs
+                <mat-icon>tab</mat-icon>
+            </div>
         </div>
     </mat-expansion-panel>
     <mat-expansion-panel>
@@ -230,8 +235,7 @@
                 Table
                 <mat-icon>table_chart</mat-icon>
             </div>
-            <div draggable='true' (dragstart)='onDragStart($event,24);'
-                aria-label="Example icon-div with a menu icon">
+            <div draggable='true' (dragstart)='onDragStart($event,24);' aria-label="Example icon-div with a menu icon">
                 List
                 <mat-icon>menu</mat-icon>
             </div>

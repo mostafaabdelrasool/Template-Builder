@@ -47,7 +47,7 @@ export class AppService {
     this.sidebarOpened = true;
     this.currentManager = Manager_Type.STYLES;
     this.currentField = undefined;
-    this.selectFieldContainer(field);
+   // this.selectFieldContainer(field);
     setTimeout(() => {
       //this is a work around because angular doesn't detect change of child properties so i clear all and set again
       this.currentField = field;
@@ -68,5 +68,11 @@ export class AppService {
     //this work around to detect child property change;
     this.currentField.style = undefined;
     this.currentField.style = style
+  }
+  getDefaultContainer():Containers {
+    return Object.assign({}, {
+      model: undefined,
+      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
+    });
   }
 }
