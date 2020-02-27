@@ -25,7 +25,7 @@ import { FieldActionComponent } from './containers/field-action/field-action.com
 import { CodeService } from './share/Render/code-service.service';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 import { TableFieldComponent } from './fields/table-field/table-field.component';
-import { DataSettingComponent } from './sidebar/data-setting/data-setting.component';
+import { DataSettingComponent } from './data-source/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResizableModule } from 'angular-resizable-element';
 import {NgxPaginationModule} from 'ngx-pagination';

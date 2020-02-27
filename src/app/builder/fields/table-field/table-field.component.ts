@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { Fields, TableHeader, TableField } from '../../model/field';
 import { MatDialog } from '@angular/material';
-import { DataSettingComponent } from '../../sidebar/data-setting/data-setting.component';
+import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
 import { FieldDataSource } from '../../model/data-source';
 import { EventEmitter } from 'protractor';
 

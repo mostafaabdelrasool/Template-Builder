@@ -2,6 +2,13 @@
     <button (click)="save()" fxFlexAlign='flex-end' mat-raised-button color="primary">
         Save
     </button>
+    <mat-form-field>
+        <mat-select placeholder="Data Source" >
+            <mat-option *ngFor="let item of appService.dataSources" (onSelectionChange)="dataSourceChange(item)">
+                {{item.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
     <mat-form-field class="">
         <input [(ngModel)]="dataSource.name" [required]="" type="text" matInput placeholder="Name" value="" />
     </mat-form-field>

@@ -55,4 +55,7 @@ export class DataSettingComponent implements OnInit {
     const index = this.dataSource.staticData.indexOf(item);
     this.dataSource.staticData.splice(index, 1);
   }
+  dataSourceChange(dataSource: FieldDataSource) {
+    this.dataSource = dataSource
+  }
 }
