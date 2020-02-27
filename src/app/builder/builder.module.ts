@@ -32,6 +32,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { TabFieldComponent } from './child-container/tab-field/tab-field.component';
 import { SharedModule } from '../share/shared.module';
 import { DataSourceComponent } from './data-source/data-source.component';
+import { SelectFieldComponent } from './fields/select-field/select-field.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -64,7 +65,8 @@ import { DataSourceComponent } from './data-source/data-source.component';
     TableFieldComponent,
     DataSettingComponent,
     TabFieldComponent,
-    DataSourceComponent],
+    DataSourceComponent,
+    SelectFieldComponent],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent,DataSettingComponent]
   // exports: [BuilderComponent]

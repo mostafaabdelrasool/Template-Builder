@@ -1,16 +1,10 @@
 <mat-form-field >
     <mat-select  placeholder="{{field.placeholder}}">
-        <mat-option value="absolute">
-            absolute
-        </mat-option>
-        <mat-option value="relative">
-            relative
-        </mat-option>
-        <mat-option value="static">
-            static
-        </mat-option>
-        <mat-option value="fixed">
-            fixed
-        </mat-option>
+        <ng-container *ngIf="field.dataSource?.staticData?.length>0">
+            <mat-option *ngFor="let item of field.dataSource.staticData">
+                {{item.discription}}
+            </mat-option>
+        </ng-container>
+       
     </mat-select>
 </mat-form-field>

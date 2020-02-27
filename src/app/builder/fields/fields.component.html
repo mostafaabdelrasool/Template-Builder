@@ -3,19 +3,16 @@
         <mat-icon *ngIf="field.hasAction" (click)="handleAction()">edit</mat-icon>
     </app-field-action>
     <mat-form-field *ngSwitchCase="0">
-        <input matInput  placeholder="{{field.placeholder}}"
-            value="{{field.value}}">
+        <input matInput placeholder="{{field.placeholder}}" value="{{field.value}}">
     </mat-form-field>
     <mat-form-field *ngSwitchCase="1">
         <input type="number" matInput placeholder="{{field.placeholder}}" value="{{field.value}}">
     </mat-form-field>
     <mat-form-field *ngSwitchCase="21">
-        <input matInput type="email"  placeholder="{{field.placeholder}}"
-            value="{{field.value}}">
+        <input matInput type="email" placeholder="{{field.placeholder}}" value="{{field.value}}">
     </mat-form-field>
     <mat-form-field *ngSwitchCase="22">
-        <input matInput type="password"  placeholder="{{field.placeholder}}"
-            value="{{field.value}}">
+        <input matInput type="password" placeholder="{{field.placeholder}}" value="{{field.value}}">
     </mat-form-field>
     <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
     <mat-form-field *ngSwitchCase="7">
@@ -68,5 +65,5 @@
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <p *ngSwitchCase="20">{{field.value}}</p>
     <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
-   
+    <app-select-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="25"></app-select-field>
 </ng-container>
