@@ -1,5 +1,7 @@
 <ng-container [ngSwitch]="field.type">
-    <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id"></app-field-action>
+    <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id">
+        <mat-icon *ngIf="field.hasAction" (click)="handleAction()">edit</mat-icon>
+    </app-field-action>
     <mat-form-field *ngSwitchCase="0">
         <input matInput  placeholder="{{field.placeholder}}"
             value="{{field.value}}">
@@ -65,6 +67,6 @@
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <p *ngSwitchCase="20">{{field.value}}</p>
-    <app-table-field [field]="field" *ngSwitchCase="23"></app-table-field>
+    <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
    
 </ng-container>

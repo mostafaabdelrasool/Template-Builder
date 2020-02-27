@@ -26,15 +26,15 @@ export class Fields {
   applyStyleInClass?: boolean;
   fullWidth?: boolean;
   container?: Containers;
-  tableSetting?: TableSetting
+  hasAction?:boolean
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
   buttonColor: string;
 }
-export class TableSetting {
+export class TableField extends Fields{
   header: TableHeader[]
-  url: any;
+  dataSource:FieldDataSource;
 }
 export class TabField extends Fields {
   tabs: TabsConatiner[]

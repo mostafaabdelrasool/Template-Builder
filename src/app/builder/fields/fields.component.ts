@@ -10,11 +10,19 @@ import { AppService } from '../share/Render/app.service';
 
 export class FieldsComponent implements OnInit {
   @Input() field: Fields;
+  performAction: boolean;
+  xxx = 'ss'
   constructor(public appService: AppService) {
+  }
+  handleAction() {
+    this.performAction = true;
+    //to fire this set event 
+    setTimeout(() => {
+      this.performAction = false;
+    });
   }
 
 
- 
 
   ngOnInit() {
   }

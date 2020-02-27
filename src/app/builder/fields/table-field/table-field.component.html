@@ -1,7 +1,7 @@
 <mat-form-field>
     <mat-label>Columns</mat-label>
 
-    <mat-select multiple (selectionChange)="setHeaderVisability($event)" [value]="field.tableSetting?.header">
+    <mat-select multiple (selectionChange)="setHeaderVisability($event)" [value]="field?.header">
         <mat-select-trigger>
             {{currentRows && currentRows[0] ? currentRows[0].name : ''}}
             <span *ngIf="currentRows?.length > 1">
@@ -9,7 +9,7 @@
                 {{currentRows?.length === 2 ? 'other' : 'others'}})
             </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let item of field.tableSetting?.header" [value]="item"> {{item.name}}</mat-option>
+        <mat-option *ngFor="let item of field?.header" [value]="item"> {{item.name}}</mat-option>
     </mat-select>
 </mat-form-field>
 <table class="table table-hover table-bordered">

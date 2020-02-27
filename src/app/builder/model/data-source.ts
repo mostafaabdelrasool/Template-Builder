@@ -3,4 +3,5 @@ export class FieldDataSource{
     url?:string;
     dataStructure:any[];
     staticData?:any[];
+    data:any;
 }

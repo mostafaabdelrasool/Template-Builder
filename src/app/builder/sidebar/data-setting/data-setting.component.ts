@@ -21,7 +21,7 @@ export class DataSettingComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = this.data || new FieldDataSource();
-    this.dataSource.name = 'dataSource ' + (this.appService.dataSources.length + 1);
+    this.dataSource.name = this.data ? this.data.name : 'dataSource ' + (this.appService.dataSources.length + 1);
   }
   fetchData() {
     if (!this.dataSource.url) {
@@ -29,12 +29,13 @@ export class DataSettingComponent implements OnInit {
     }
     this.http.get(this.dataSource.url).subscribe(x => {
       const data = Array.isArray(x) ? x[0] : x
-      const setting = objectKeys(data).map(key => { return { name: key, isSelcted: true, binding: key, url: this.dataSource.url } });
-      this.dataSource.dataStructure = setting.map(x => x.name);
+      const setting = objectKeys(data).map(key => { return { name: key, isSelcted: true, binding: key } });
+      this.dataSource.dataStructure = setting;
       if (!this.data) {
-        this.appService.dataSources.push(this.dataSource); 
+        this.appService.dataSources.push(this.dataSource);
       }
-      this.dialogRef.close({ data: x, setting: setting });
+      this.dataSource.data = x;
+      this.dialogRef.close(this.dataSource);
     })
   }
   save() {
