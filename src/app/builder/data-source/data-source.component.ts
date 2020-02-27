@@ -20,11 +20,11 @@ export class DataSourceComponent implements OnInit {
 
   }
   openDataSource(dataSource: FieldDataSource) {
-    const dialogRef = this.dialog.open(DataSettingComponent, {
-      width: '40vw',
-      height: 'auto',
-      data: dataSource
-    });
+    let setting = { width: '40vw', height: 'auto' };
+    if(dataSource) {
+      setting["data"] = dataSource
+    }
+    const dialogRef = this.dialog.open(DataSettingComponent, setting);
 
     dialogRef.afterClosed().subscribe(result => {
       if(result)

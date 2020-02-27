@@ -20,7 +20,7 @@ export class DataSettingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSource = this.data || new FieldDataSource();
+    this.dataSource = {...this.data} || new FieldDataSource();
     this.dataSource.name = this.data ? this.data.name : 'dataSource ' + (this.appService.dataSources.length + 1);
   }
   fetchData() {
