@@ -1,6 +1,6 @@
 export class FieldDataSource{
     name:string;
     url?:string;
-    dataStructure:[];
+    dataStructure:any[];
     staticData?:any[];
 }

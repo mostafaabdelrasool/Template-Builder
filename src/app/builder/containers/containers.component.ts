@@ -23,7 +23,7 @@ export class ContainersComponent implements OnInit {
     this.divType = FieldType.DIV
   }
   selectItem = (event, container: Containers, selectItemOnly = false) => {
-    if (this.appService.currentField && container.id === this.appService.currentContainer.id) {
+    if (this.appService.currentField && container.id === this.appService.currentField.id) {
       return;
     }
     container.isSelected = true;

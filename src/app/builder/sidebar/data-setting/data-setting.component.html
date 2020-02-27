@@ -1,17 +1,24 @@
-<div fxLayout>
-    <mat-form-field>
-        <input [(ngModel)]="dataSource.url" matInput placeholder="URL" />
-    </mat-form-field>
-    <button fxFlexAlign='end' (click)="fetchData()" mat-raised-button color="primary">
-        Add
+<div fxLayout="column">
+    <button (click)="save()" fxFlexAlign='flex-end' mat-raised-button color="primary">
+        Save
     </button>
+    <mat-form-field class="">
+        <input [(ngModel)]="dataSource.name" [required]="" type="text" matInput placeholder="Name" value="" />
+    </mat-form-field>
+    <div>
+        <mat-form-field [ngStyle]="{}" class="" fxFlex='50'>
+            <input [(ngModel)]="dataSource.url" matInput placeholder="URL" value="" />
+        </mat-form-field>
+        <div>
+            <button (click)="fetchData()" mat-raised-button color="accent">
+                Fetch
+            </button>
+        </div>
+    </div>
 </div>
-<mat-form-field>
-    <input type="text" [(ngModel)]="dataSource.name" matInput placeholder="Name" />
-</mat-form-field>
 <div>
     <button mat-raised-button color="primary" (click)="addNewRow()">Add</button>
-    <table>
+    <table class="table table-hover table-bordered">
         <thead>
             <tr>
                 <th>

@@ -1,0 +1,6 @@
+<div fxLayout class="data-source" *ngIf="appService.dataSources.length>0">
+    <button mat-raised-button *ngFor="let item of appService.dataSources" (click)="openDataSource(item)">
+        {{item.name}}
+        <mat-icon>perm_data_setting</mat-icon>
+    </button>
+</div>

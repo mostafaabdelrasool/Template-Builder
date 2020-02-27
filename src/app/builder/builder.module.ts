@@ -31,6 +31,7 @@ import { ResizableModule } from 'angular-resizable-element';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { TabFieldComponent } from './child-container/tab-field/tab-field.component';
 import { SharedModule } from '../share/shared.module';
+import { DataSourceComponent } from './data-source/data-source.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -62,7 +63,8 @@ import { SharedModule } from '../share/shared.module';
     StyleToCssComponent,
     TableFieldComponent,
     DataSettingComponent,
-    TabFieldComponent],
+    TabFieldComponent,
+    DataSourceComponent],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent,DataSettingComponent]
   // exports: [BuilderComponent]
