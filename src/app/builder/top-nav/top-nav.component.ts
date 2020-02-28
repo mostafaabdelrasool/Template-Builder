@@ -37,4 +37,8 @@ export class TopNavComponent implements OnInit {
     this.appService.currentManager = managerName;
 
   }
+  preview(){
+   localStorage.setItem('containers',JSON.stringify(this.appService.containers)) 
+   window.open(window.location.host+'/render','_blank') 
+  }
 }

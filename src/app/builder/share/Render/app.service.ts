@@ -56,15 +56,15 @@ export class AppService {
     });
     event.stopPropagation();
   }
-  selectFieldContainer(field: Fields) {
-    if (field.containerId !== this.currentContainer.id) {
-      this.currentContainer = undefined;
-      setTimeout(() => {
-        this.currentContainer = field.container;
-      });
-    }
+  // selectFieldContainer(field: Fields) {
+  //   if (field.containerId !== this.currentContainer.id) {
+  //     this.currentContainer = undefined;
+  //     setTimeout(() => {
+  //       this.currentContainer = field.container;
+  //     });
+  //   }
 
-  }
+  // }
   filedValueChanged() {
     const style = { ...this.currentField.style }
     //this work around to detect child property change;

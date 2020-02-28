@@ -25,7 +25,7 @@ export class Fields {
   fieldEvent?: FieldEvent[];
   applyStyleInClass?: boolean;
   fullWidth?: boolean;
-  container?: Containers;
+  // container?: Containers;
   hasAction?:boolean
 }
 export class ButtonField extends Fields {

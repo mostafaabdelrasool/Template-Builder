@@ -8,6 +8,7 @@ import { PageRendererRoutes } from './page-renderer.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BuilderModule } from '../builder/builder.module';
+import { FieldRenderComponent } from './field-render/field-render.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { BuilderModule } from '../builder/builder.module';
     NgxPaginationModule,
     BuilderModule
   ],
-  declarations: [PageRendererComponent]
+  declarations: [PageRendererComponent,FieldRenderComponent]
 })
 export class PageRendererModule { }

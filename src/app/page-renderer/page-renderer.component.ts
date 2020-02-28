@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Containers } from '../builder/model/containers';
+import { SharedService } from '../share/shared.service';
 
 @Component({
   selector: 'app-page-renderer',
@@ -8,9 +9,16 @@ import { Containers } from '../builder/model/containers';
 })
 export class PageRendererComponent implements OnInit {
   containers: Containers[];
-  constructor() { }
+  data:any={};
+  constructor(public sharedService:SharedService) {
+   }
 
   ngOnInit() {
+    this.getSetting();
+    this.data[this.sharedService.instanceName]={};
+  }
+  getSetting() {
+    this.containers = JSON.parse(localStorage.getItem("containers"));
   }
 
 }

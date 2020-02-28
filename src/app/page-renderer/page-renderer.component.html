@@ -1,9 +1,10 @@
 <div style="height:100%" >
-  <div *ngFor="let item of containers" [ngSwitch]="item.type">
-      <ng-container *ngSwitchCase="1">
+    {{data |json}}
+  <div *ngFor="let item of containers" [ngSwitch]="item.type" [ngStyle]="item.style">
+      <ng-container *ngSwitchCase="3">
           <ng-container *ngFor="let field of item.fields">
-              <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
-              <app-child-container  *ngIf="field.isContainer" [container]="field">
+              <app-field-render *ngIf="!field.isContainer" [data]="data" [field]="field" [ngStyle]="field.style"></app-field-render>
+              <app-child-container  *ngIf="field.isContainer" [container]="field" [ngStyle]="field.style">
               </app-child-container>
           </ng-container>
       </ng-container>

@@ -14,7 +14,7 @@
     </mat-form-field>
     <div>
         <mat-form-field [ngStyle]="{}" class="" fxFlex='50'>
-            <input [(ngModel)]="dataSource.url" matInput placeholder="URL" value="" />
+            <input [(ngModel)]="dataSource.url" type="url" matInput placeholder="URL" value="" />
         </mat-form-field>
         <div>
             <button (click)="fetchData()" mat-raised-button color="accent">
