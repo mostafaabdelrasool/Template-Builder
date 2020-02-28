@@ -1,0 +1,29 @@
+<div style="height:100%" >
+  <div *ngFor="let item of containers" [ngSwitch]="item.type">
+      <ng-container *ngSwitchCase="1">
+          <ng-container *ngFor="let field of item.fields">
+              <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
+              <app-child-container  *ngIf="field.isContainer" [container]="field">
+              </app-child-container>
+          </ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="15">
+          <mat-card class="example-card">
+              <mat-card-header>
+                  <mat-card-title>{{item["cardTitle"]}}</mat-card-title>
+                  <mat-card-subtitle> {{item["cardSubTitle"]}}</mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                  <ng-container *ngFor="let field of item.fields">
+                      <app-fields *ngIf="!field.isContainer" [field]="field"></app-fields>
+                      <app-child-container  *ngIf="field.isContainer" [container]="field">
+                      </app-child-container>
+                  </ng-container>
+              </mat-card-content>
+              <mat-card-actions>
+                  <button *ngFor="let action of item['cardActions']" mat-button>{{action.title}}</button>
+              </mat-card-actions>
+          </mat-card>
+      </ng-container>
+  </div>
+</div>

@@ -7,8 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { BuilderModule } from './builder/builder.module';
 import { ConfigurationModule } from './configuration/configuration.module';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { SharedService } from './share/shared.service';
+import { PageRendererModule } from './page-renderer/page-renderer.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { SharedService } from './share/shared.service';
     BuilderModule,
     ConfigurationModule,
     RouterModule.forRoot([]),
+    PageRendererModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

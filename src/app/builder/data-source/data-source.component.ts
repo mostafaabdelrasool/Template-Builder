@@ -19,7 +19,7 @@ export class DataSourceComponent implements OnInit {
   ngOnInit() {
 
   }
-  openDataSource(dataSource: FieldDataSource) {
+  openDataSource(dataSource: FieldDataSource=null) {
     let setting = { width: '40vw', height: 'auto' };
     if(dataSource) {
       setting["data"] = dataSource

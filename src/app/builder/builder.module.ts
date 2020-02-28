@@ -28,11 +28,12 @@ import { TableFieldComponent } from './fields/table-field/table-field.component'
 import { DataSettingComponent } from './data-source/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ResizableModule } from 'angular-resizable-element';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { TabFieldComponent } from './child-container/tab-field/tab-field.component';
 import { SharedModule } from '../share/shared.module';
 import { DataSourceComponent } from './data-source/data-source.component';
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
+import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,7 @@ import { SelectFieldComponent } from './fields/select-field/select-field.compone
     ColorPickerModule,
     BuilderRoutes,
     HttpClientModule,
-    ResizableModule ,
+    ResizableModule,
     NgxPaginationModule,
     SharedModule
   ],
@@ -66,9 +67,11 @@ import { SelectFieldComponent } from './fields/select-field/select-field.compone
     DataSettingComponent,
     TabFieldComponent,
     DataSourceComponent,
-    SelectFieldComponent],
+    SelectFieldComponent
+    ],
   providers: [AppService, CodeService],
-  entryComponents: [StyleToCssComponent,DataSettingComponent]
-  // exports: [BuilderComponent]
+  entryComponents: [StyleToCssComponent, DataSettingComponent],
+  exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent, 
+    TableFieldComponent, EditInPlaceComponent,ChildContainerComponent,ContainersComponent]
 })
 export class BuilderModule { }
