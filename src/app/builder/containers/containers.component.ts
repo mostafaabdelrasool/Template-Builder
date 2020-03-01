@@ -121,30 +121,11 @@ export class ContainersComponent implements OnInit {
       this.addField(data)
     }
   }
-  handleFieldAction(event, field) {
-    const action = event.target.innerText;
-    const index = this.appService.currentContainer.fields.findIndex(x => x.id === field.id);
-    switch (action) {
-      case 'delete':
-        this.appService.currentContainer.fields.splice(index, 1);
-        break;
-      case 'file_copy':
-        const newField = { ...field, id: Date.now().toString() }
-        this.appService.currentContainer.fields.splice(index, 0, newField);
-        break;
-
-      default:
-        break;
-    }
-  }
   onResizeEnd(event: ResizeEvent, field: Fields): void {
     const parent = document.getElementById(field.containerId)
     const newWidthRatio=(event.rectangle.width /parent.offsetWidth)*100;
     field.style.width = newWidthRatio.toFixed(2)+ '%';
-    if (field.isContainer) {
-      const newHeightRatio=(event.rectangle.height /parent.offsetHeight)*100;
-      field.style.height = newHeightRatio.toFixed(2)+ '%';
-    }
+    field.style.height = event.rectangle.height+ 'px';
     this.appService.filedValueChanged();
   }
 }

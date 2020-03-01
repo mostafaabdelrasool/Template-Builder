@@ -9,7 +9,7 @@ import { AppService } from '../../share/Render/app.service';
 })
 
 export class FieldActionComponent implements OnInit {
-  
+
   @Input() field: Fields;
   constructor(public appService: AppService) {
   }
@@ -24,16 +24,18 @@ export class FieldActionComponent implements OnInit {
       case 'delete':
         this.appService.currentContainer.fields.splice(index, 1);
         break;
-        case 'file_copy':
-          const newField={...field,id:new Date().toString()}
-          this.appService.currentContainer.fields.splice(index,0, newField);
-          break;
-        
+      case 'file_copy':
+        const newField =JSON.parse(JSON.stringify(field));
+        newField.id = Date.now().toString();
+        this.appService.currentField={...newField};
+        this.appService.currentContainer.fields.splice(index, 0, newField);
+        break;
+
       default:
         break;
     }
   }
-  getType(type){
-   return FieldType[type].toLowerCase()
+  getType(type) {
+    return FieldType[type].toLowerCase()
   }
 }
