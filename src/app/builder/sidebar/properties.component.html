@@ -73,6 +73,24 @@
                 <mat-form-field fxFlex="1 1 49%">
                     <input matInput placeholder="value" [(ngModel)]="currentField.value">
                 </mat-form-field>
+                <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="1 1 100%">
+                    <mat-form-field fxFlex="1 1 49%">
+                        <mat-label>Display Member</mat-label>
+                        <mat-select [(ngModel)]="currentField['dispalyMember']">
+                            <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="1 1 49%">
+                        <mat-label>Value Member</mat-label>
+                        <mat-select [(ngModel)]="currentField['valueMember']">
+                            <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
                 <mat-checkbox [(ngModel)]="currentField.required">Required</mat-checkbox>
             </div>
         </mat-expansion-panel>
@@ -166,7 +184,8 @@
                 <div>
                     <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
                         [style.background]="currentField.style.borderColor"
-                        [colorPicker]="currentField.style.borderColor" (colorPickerChange)="appService.filedValueChanged()" />
+                        [colorPicker]="currentField.style.borderColor"
+                        (colorPickerChange)="appService.filedValueChanged()" />
                 </div>
                 <app-measureUnit
                     [item]="{name:'Border Raduis',model:'borderRadius',modelValue:currentField.style.borderRadius}"

@@ -43,6 +43,9 @@ export class DataSettingComponent implements OnInit {
     if (!this.data) {
       this.appService.dataSources.push(this.dataSource);
     }
+    if (!this.dataSource.dataStructure && this.dataSource.staticData) {
+      this.dataSource.dataStructure=[{name:'id'},{name:'discription'}]
+    }
     this.dialogRef.close(this.dataSource);
   }
   addNewRow() {
