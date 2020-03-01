@@ -39,6 +39,6 @@ export class TopNavComponent implements OnInit {
   }
   preview(){
    localStorage.setItem('containers',JSON.stringify(this.appService.containers)) 
-   window.open(window.location.host+'/render','_blank') 
+   window.open(window.location.origin+'/render','_blank') 
   }
 }

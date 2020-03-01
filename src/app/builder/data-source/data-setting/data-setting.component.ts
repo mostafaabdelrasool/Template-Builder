@@ -34,7 +34,7 @@ export class DataSettingComponent implements OnInit {
       if (!this.data) {
         this.appService.dataSources.push(this.dataSource);
       }
-      this.dataSource.data = x;
+     // this.dataSource.data = x;
       this.dialogRef.close(this.dataSource);
     })
   }
