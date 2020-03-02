@@ -1,0 +1,30 @@
+<mat-form-field *ngIf="typeName!==''">
+    <input [type]="typeName" matInput placeholder="{{field.placeholder}}" value="{{field.value}}">
+    <mat-hint>{{field.hint}}</mat-hint>
+    <button mat-button *ngIf="field.clearButton" matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+<ng-container *ngIf="typeName===''">
+    <ng-container [ngSwitch]="field.type">
+        <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
+        <mat-form-field *ngSwitchCase="7">
+            <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year"></mat-datepicker>
+            <mat-hint>{{field['hint']}}</mat-hint>
+            <button mat-button *ngIf="field['clearButton']" matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-radio-group *ngSwitchCase="9" fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
+            <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <div *ngSwitchCase="11">
+            <label>{{field.placeholder}}</label>
+            <mat-slider [max]="field.max" [min]="field.min" [step]="field.step"></mat-slider>
+        </div>
+    </ng-container>
+
+</ng-container>

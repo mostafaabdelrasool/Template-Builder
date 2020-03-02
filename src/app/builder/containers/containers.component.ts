@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Containers, CardField } from '../model/containers';
 import { Manager_Type } from '../model/manager';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { FieldType, Fields, ButtonFieldTypes, ButtonField, ButtonFieldCOLOR } from '../model/field';
+import { FieldType, Fields, ButtonFieldTypes, ButtonField, ButtonFieldCOLOR, FieldCategory } from '../model/field';
 import { HighlightColors } from '../share/Render/highlight.directive';
 import { AppService } from '../share/Render/app.service';
 import { MatSnackBar } from '@angular/material';
@@ -94,6 +94,9 @@ export class ContainersComponent implements OnInit {
       field["fields"] = [];
       field.isContainer = true;
     }
+    if (option.isInput) {
+      field.category = FieldCategory.Input
+    }
     if (field.type === FieldType.TABLE) {
       field.fullWidth = true
     }
@@ -123,9 +126,9 @@ export class ContainersComponent implements OnInit {
   }
   onResizeEnd(event: ResizeEvent, field: Fields): void {
     const parent = document.getElementById(field.containerId)
-    const newWidthRatio=(event.rectangle.width /parent.offsetWidth)*100;
-    field.style.width = newWidthRatio.toFixed(2)+ '%';
-    field.style.height = event.rectangle.height+ 'px';
+    const newWidthRatio = (event.rectangle.width / parent.offsetWidth) * 100;
+    field.style.width = newWidthRatio.toFixed(2) + '%';
+    field.style.height = event.rectangle.height + 'px';
     this.appService.filedValueChanged();
   }
 }

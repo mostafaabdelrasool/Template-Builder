@@ -13,7 +13,7 @@ import { RenderService } from '../render.service';
 
 export class FieldRenderComponent implements OnInit {
   @Input() field: Fields;
-  constructor(private http: HttpClient,public renderService: RenderService) {
+  constructor(private http: HttpClient, public renderService: RenderService) {
 
   }
 
@@ -31,10 +31,10 @@ export class FieldRenderComponent implements OnInit {
     }
   }
   valueChange(modelName, event) {
-    setPathData(this.renderService.data, modelName, event.value || event.target.value);
+    setPathData(this.renderService.data, modelName, event.target ? event.target.value : event.value);
   }
   getFieldValue(modelName) {
     const value = getPathData(this.renderService.data, modelName);
     return value || null;
   }
- }
+}

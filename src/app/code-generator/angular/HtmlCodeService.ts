@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes, FieldEvent, AngularFieldEventType } from 'src/app/builder/model/field';
+import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes, FieldEvent, AngularFieldEventType, InputField } from 'src/app/builder/model/field';
 import { Containers } from 'src/app/builder/model/containers';
 @Injectable({
     providedIn: 'root'
@@ -7,25 +7,25 @@ import { Containers } from 'src/app/builder/model/containers';
 export class HtmlCodeService {
     constructor() {
     }
-    inputCode(field: Fields): string {
+    inputCode(field: InputField): string {
         let code = `
 <mat-form-field  ${this.commonProps(field)} ${this.addFxFlex(field)}>
  <input [(ngModel)]="${field.model}" ${this.generateEvent(field.fieldEvent)} [required]="${field.required || ''}" type="${this.getTypeName(field.type)}" matInput placeholder="${field.placeholder || ''}" value="${field.value || ''}"/>
 </mat-form-field>`;
         return code;
     }
-    checkBoxCode(field: Fields): string {
+    checkBoxCode(field: InputField): string {
         return `<mat-checkbox ${this.addFxFlex(field)} [required]="${field.required || ''}" [(ngModel)]="${field.model}" ${this.commonProps(field)}>
         ${field.placeholder || ''}</mat-checkbox>`;
     }
-    datepickerCode(field: Fields): string {
+    datepickerCode(field: InputField): string {
         return `<mat-form-field ${this.addFxFlex(field)}   id="${field.id}" ${this.commonProps(field)}>
                 <input readonly="true" [required]="${field.required || ''}" [min]="${field.min}" [max]="${field.max}" [(ngModel)]="${field.model}" matInput [matDatepicker]="picker" placeholder="${field.placeholder || ''}">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker [startAt]="${field.startDate || ''}" #picker startView="year"></mat-datepicker>
             </mat-form-field>`;
     }
-    RadioButtonGroupCode(field: Fields): string {
+    RadioButtonGroupCode(field: InputField): string {
         let code = `<mat-radio-group ${this.addFxFlex(field)} [required]="${field.required || ''}" fxLayout="row" fxLayoutGap="5px" [(ngModel)]="${field.model}" 
         ${this.commonProps(field)}>`;
         field.radioButtonGroup.forEach(r => {
@@ -34,7 +34,7 @@ export class HtmlCodeService {
         code += '</mat-radio-group>'
         return code;
     }
-    sliderCode(field: Fields): string {
+    sliderCode(field: InputField): string {
         let code =
             `<div ${this.addFxFlex(field)}> 
          <label>${field.placeholder}</label>
@@ -59,19 +59,19 @@ export class HtmlCodeService {
             switch (x.type) {
                 case FieldType.INPUT_NUMBER:
                 case FieldType.INPUT_TEXT:
-                    code += this.inputCode(x)
+                    code += this.inputCode(<InputField>x)
                     break;
                 case FieldType.CHECKBOX:
-                    code += '\n' + this.checkBoxCode(x);
+                    code += '\n' + this.checkBoxCode(<InputField>x);
                     break;
                 case FieldType.DATEPICKER:
-                    code += '\n' + this.datepickerCode(x);
+                    code += '\n' + this.datepickerCode(<InputField>x);
                     break;
                 case FieldType.RADIO_BUTTON_GROUP:
-                    code += '\n' + this.RadioButtonGroupCode(x);
+                    code += '\n' + this.RadioButtonGroupCode(<InputField>x);
                     break;
                 case FieldType.SLIDER:
-                    code += '\n' + this.sliderCode(x);
+                    code += '\n' + this.sliderCode(<InputField>x);
                     break;
                 case FieldType.BUTTON:
                     code += '\n' + this.buttonCode(<ButtonField>x);

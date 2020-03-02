@@ -7,4 +7,8 @@
         </ng-container>
        
     </mat-select>
+    <mat-hint>{{field['hint']}}</mat-hint>
+    <button mat-button *ngIf="field['clearButton']" matSuffix mat-icon-button aria-label="Clear">
+        <mat-icon>close</mat-icon>
+    </button>
 </mat-form-field>

@@ -27,7 +27,7 @@
                 </mat-form-field>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel>
+        <mat-expansion-panel *ngIf="currentField.category===0">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     Value Setting
@@ -35,26 +35,26 @@
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput type="number" placeholder="Min" [(ngModel)]="currentField.min">
+                    <input matInput type="number" placeholder="Min" [(ngModel)]="currentField['min']">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput type="number" placeholder="Max" [(ngModel)]="currentField.max">
+                    <input matInput type="number" placeholder="Max" [(ngModel)]="currentField['max']">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput type="number" placeholder="Max Length" [(ngModel)]="currentField.maxLength">
+                    <input matInput type="number" placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
                 </mat-form-field>
                 <mat-form-field fxFlex="1 1 49%">
-                    <input matInput type="number" placeholder="Min Length" [(ngModel)]="currentField.minLength">
+                    <input matInput type="number" placeholder="Min Length" [(ngModel)]="currentField['minLength']">
                 </mat-form-field>
                 <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
                     <mat-form-field fxFlex="1 1 49%">
-                        <input readonly="true" [(ngModel)]="currentField.startDate" matInput [matDatepicker]="z"
+                        <input readonly="true" [(ngModel)]="currentField['startDate']" matInput [matDatepicker]="z"
                             placeholder="Start Date">
                         <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
                         <mat-datepicker #z startView="month"></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field fxFlex="1 1 49%">
-                        <input readonly="true" [(ngModel)]="currentField.endData" matInput [matDatepicker]="x"
+                        <input readonly="true" [(ngModel)]="currentField['endData']" matInput [matDatepicker]="x"
                             placeholder="End Date">
                         <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
                         <mat-datepicker #x startView="month"></mat-datepicker>
@@ -70,10 +70,11 @@
                     </mat-autocomplete>
                 </mat-form-field>
 
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="100">
                     <input matInput placeholder="value" [(ngModel)]="currentField.value">
                 </mat-form-field>
-                <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="1 1 100%">
+                <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center"
+                    fxFlex="1 1 100%">
                     <mat-form-field fxFlex="1 1 49%">
                         <mat-label>Display Member</mat-label>
                         <mat-select [(ngModel)]="currentField['dispalyMember']">
@@ -91,7 +92,15 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <mat-checkbox [(ngModel)]="currentField.required">Required</mat-checkbox>
+                <mat-form-field fxFlex="1 1 100%">
+                    <input matInput placeholder="Hint" [(ngModel)]="currentField['hint']">
+                    <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear" 
+                    (click)="currentField['hint']=''">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-checkbox [(ngModel)]="currentField['required']">Required</mat-checkbox>
+                <mat-checkbox [(ngModel)]="currentField['clearButton']">Clear Button</mat-checkbox>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel>

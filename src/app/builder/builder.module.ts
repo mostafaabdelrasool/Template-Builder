@@ -34,6 +34,7 @@ import { SharedModule } from '../share/shared.module';
 import { DataSourceComponent } from './data-source/data-source.component';
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
 import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
+import { InputFieldComponent } from './fields/input-field/input-field.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -67,7 +68,8 @@ import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.compo
     DataSettingComponent,
     TabFieldComponent,
     DataSourceComponent,
-    SelectFieldComponent
+    SelectFieldComponent,
+    InputFieldComponent
     ],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent, DataSettingComponent],

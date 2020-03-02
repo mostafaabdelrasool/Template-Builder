@@ -11,34 +11,39 @@ export class Fields {
   style?: Style;
   containerId?: string;
   placeholder?: string;
-  value?: string;
-  min?: number;
-  max?: number;
-  step?: number;
-  startDate?: Date;
-  endData?: Date;
   isContainer?: boolean;
-  maxLength?: number;
-  minLength?: number;
-  required?: boolean;
   radioButtonGroup?: any[];
   fieldEvent?: FieldEvent[];
   applyStyleInClass?: boolean;
   fullWidth?: boolean;
   // container?: Containers;
-  hasAction?:boolean
+  hasAction?: boolean;
+  value?: string;
+  category?: FieldCategory
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
   buttonColor: string;
 }
-export class InputField extends Fields{
-  hints:[];
-  validations:[]
+export enum FieldCategory {
+  Input, Container,Button,Typograpghy
 }
-export class TableField extends Fields{
+export class InputField extends Fields {
+  hints: string;
+  validations: [];
+  maxLength?: number;
+  minLength?: number;
+  required?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
+  startDate?: Date;
+  endData?: Date;
+  clearButton?:boolean;
+}
+export class TableField extends Fields {
   header: TableHeader[]
-  dataSource:FieldDataSource;
+  dataSource: FieldDataSource;
 }
 export class TabField extends Fields {
   tabs: TabsConatiner[]
@@ -52,10 +57,10 @@ export class TableHeader {
   binding: string;
   isSelected: Boolean
 }
-export class SelectField extends Fields{
-  dispalyMember:string;
-  valueMember:string;
-  dataSource:FieldDataSource;
+export class SelectField extends Fields {
+  dispalyMember: string;
+  valueMember: string;
+  dataSource: FieldDataSource;
 }
 export enum ButtonFieldTypes {
   BASIC = 'mat-button', RASIED = 'mat-raised-button', STROCK = 'mat-stroked-button',

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Fields } from '../model/field';
+import { Fields, InputField } from '../model/field';
 import { AppService } from '../share/Render/app.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AppService } from '../share/Render/app.service';
 })
 
 export class FieldsComponent implements OnInit {
-  @Input() field: Fields;
+  @Input() field: InputField;
   performAction: boolean;
   xxx = 'ss'
   constructor(public appService: AppService) {
