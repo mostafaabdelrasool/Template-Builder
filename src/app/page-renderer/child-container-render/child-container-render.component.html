@@ -1,0 +1,23 @@
+<ng-container [ngSwitch]="container.type">
+    <ng-container *ngSwitchCase="13">
+        <div class="field" style="display: inline-block;" *ngFor="let field of container.fields"
+            [appStyle]="field.style">
+            <app-field-render [field]="field" [appStyle]="field.style"></app-field-render>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="26">
+        <mat-tab-group>
+            <mat-tab *ngFor="let tab of container['tabs']">
+                <ng-template mat-tab-label>
+                    {{tab.tabName}}
+                </ng-template>
+                <div class="field" [appStyle]="tab.container.style">
+                    <ng-container *ngFor="let item of tab.container.fields">
+                        <app-field-render [field]="item" [appStyle]="item.style"></app-field-render>
+                    </ng-container>
+                </div>
+
+            </mat-tab>
+        </mat-tab-group>
+    </ng-container>
+</ng-container>

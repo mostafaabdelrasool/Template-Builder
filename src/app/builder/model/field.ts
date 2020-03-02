@@ -32,6 +32,10 @@ export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
   buttonColor: string;
 }
+export class InputField extends Fields{
+  hints:[];
+  validations:[]
+}
 export class TableField extends Fields{
   header: TableHeader[]
   dataSource:FieldDataSource;

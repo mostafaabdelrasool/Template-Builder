@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BuilderModule } from '../builder/builder.module';
 import { FieldRenderComponent } from './field-render/field-render.component';
+import { RenderService } from './render.service';
+import { ChildContainerRenderComponent } from './child-container-render/child-container-render.component';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { FieldRenderComponent } from './field-render/field-render.component';
     NgxPaginationModule,
     BuilderModule
   ],
-  declarations: [PageRendererComponent,FieldRenderComponent]
+  declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent],
+  providers:[RenderService]
 })
 export class PageRendererModule { }

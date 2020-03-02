@@ -3,6 +3,7 @@ import { Fields } from 'src/app/builder/model/field';
 import { setPathData, getPathData } from 'src/app/share/object-func';
 import { FieldDataSource } from 'src/app/builder/model/data-source';
 import { HttpClient } from '@angular/common/http';
+import { RenderService } from '../render.service';
 
 @Component({
   selector: "app-field-render",
@@ -12,9 +13,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class FieldRenderComponent implements OnInit {
   @Input() field: Fields;
-  @Input() data;
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,public renderService: RenderService) {
 
   }
 
@@ -32,10 +31,10 @@ export class FieldRenderComponent implements OnInit {
     }
   }
   valueChange(modelName, event) {
-    setPathData(this.data, modelName, event.value || event.target.value);
+    setPathData(this.renderService.data, modelName, event.value || event.target.value);
   }
   getFieldValue(modelName) {
-    const value = getPathData(this.data, modelName);
+    const value = getPathData(this.renderService.data, modelName);
     return value || null;
   }
  }

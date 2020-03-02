@@ -17,8 +17,8 @@
     </mat-form-field>
     <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
     <mat-form-field *ngSwitchCase="7">
-        <input readonly="true" (dateChange)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)" matInput
-            [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+        <input readonly="true" (dateChange)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)"
+            matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker startView="year"></mat-datepicker>
     </mat-form-field>
@@ -71,11 +71,11 @@
     <mat-form-field *ngSwitchCase="25">
         <mat-label>{{field.placeholder}}</mat-label>
         <mat-select (selectionChange)="valueChange(field.model,$event)">
-          <mat-option *ngFor="let item of field['dataSource'].data" [value]="item[field['valueMember']]">
-            {{item[field['dispalyMember']]}}
-          </mat-option>
+            <mat-option *ngFor="let item of field['dataSource'].data" [value]="item[field['valueMember']]">
+                {{item[field['dispalyMember']]}}
+            </mat-option>
         </mat-select>
-      </mat-form-field>
+    </mat-form-field>
     <!-- <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
     <app-select-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="25"></app-select-field> -->
 </ng-container>
