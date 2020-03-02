@@ -1,19 +1,23 @@
 <mat-form-field *ngIf="typeName!==''">
-    <input [type]="typeName" matInput placeholder="{{field.placeholder}}" value="{{field.value}}">
+    <input [type]="typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
+        (change)="onValueChange($event)">
     <mat-hint>{{field.hint}}</mat-hint>
-    <button mat-button *ngIf="field.clearButton" matSuffix mat-icon-button aria-label="Clear">
+    <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix mat-icon-button
+        aria-label="Clear">
         <mat-icon>close</mat-icon>
     </button>
 </mat-form-field>
 <ng-container *ngIf="typeName===''">
     <ng-container [ngSwitch]="field.type">
-        <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
+        <mat-checkbox *ngSwitchCase="6" [value]="value" (change)="onValueChange($event)">Label</mat-checkbox>
         <mat-form-field *ngSwitchCase="7">
-            <input readonly="true" matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
+            <input readonly="true" [value]="value" (dateChange)="onValueChange($event)" matInput
+                [matDatepicker]="picker" placeholder="{{field.placeholder}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker startView="year"></mat-datepicker>
             <mat-hint>{{field['hint']}}</mat-hint>
-            <button mat-button *ngIf="field['clearButton']" matSuffix mat-icon-button aria-label="Clear">
+            <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix
+                mat-icon-button aria-label="Clear">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>

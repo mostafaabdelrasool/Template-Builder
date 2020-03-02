@@ -1,42 +1,8 @@
 <ng-container [ngSwitch]="field.type">
-    <mat-form-field *ngSwitchCase="0">
-        <input (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)" matInput
-            placeholder="{{field.placeholder}}">
-            <mat-hint>{{field['hint']}}</mat-hint>
-            <button mat-button *ngIf="field['clearButton']" 
-            (click)="valueChange(field.model,{value:''})" matSuffix mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="1">
-        <input type="number" (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)" matInput
-            placeholder="{{field.placeholder}}">
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="21">
-        <input matInput type="email" (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)"
-            placeholder="{{field.placeholder}}">
-    </mat-form-field>
-    <mat-form-field *ngSwitchCase="22">
-        <input matInput type="password" (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)"
-            placeholder="{{field.placeholder}}">
-    </mat-form-field>
-    <mat-checkbox *ngSwitchCase="6">Label</mat-checkbox>
-    <mat-form-field *ngSwitchCase="7">
-        <input readonly="true" (dateChange)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)"
-            matInput [matDatepicker]="picker" placeholder="{{field.placeholder}}">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="year"></mat-datepicker>
-    </mat-form-field>
-    <mat-radio-group *ngSwitchCase="9" fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
-        <mat-radio-button (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)"
-            *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
-        </mat-radio-button>
-    </mat-radio-group>
-    <div *ngSwitchCase="11">
-        <label>{{field.placeholder}}</label>
-        <mat-slider (change)="valueChange(field.model,$event)" [value]="getFieldValue(field.model)" [max]="field['max']"
-            [min]="field['min']" [step]="field['step']"></mat-slider>
-    </div>
+    {{renderService.data | json}}
+    <ng-container *ngIf="field.category===0">
+        <app-input-field [field]="field" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-input-field>
+    </ng-container>
     <ng-container *ngSwitchCase="16">
         <ng-container [ngSwitch]="field['buttonType']">
             <ng-container *ngSwitchCase="'mat-button'">

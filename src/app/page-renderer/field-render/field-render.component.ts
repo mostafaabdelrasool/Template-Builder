@@ -31,7 +31,7 @@ export class FieldRenderComponent implements OnInit {
     }
   }
   valueChange(modelName, event) {
-    setPathData(this.renderService.data, modelName, event.target ? event.target.value : event.value);
+    setPathData(this.renderService.data, modelName, event);
   }
   getFieldValue(modelName) {
     const value = getPathData(this.renderService.data, modelName);

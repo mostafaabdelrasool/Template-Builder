@@ -70,10 +70,11 @@ import { InputFieldComponent } from './fields/input-field/input-field.component'
     DataSourceComponent,
     SelectFieldComponent,
     InputFieldComponent
-    ],
+  ],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent, DataSettingComponent],
-  exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent, 
-    TableFieldComponent, EditInPlaceComponent,ChildContainerComponent,ContainersComponent,ApplyStyleDirective]
+  exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,
+    TableFieldComponent, EditInPlaceComponent, ChildContainerComponent, ContainersComponent, ApplyStyleDirective,
+    InputFieldComponent]
 })
 export class BuilderModule { }

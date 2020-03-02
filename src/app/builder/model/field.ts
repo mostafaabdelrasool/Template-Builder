@@ -29,7 +29,7 @@ export enum FieldCategory {
   Input, Container,Button,Typograpghy
 }
 export class InputField extends Fields {
-  hints: string;
+  hint: string;
   validations: [];
   maxLength?: number;
   minLength?: number;
