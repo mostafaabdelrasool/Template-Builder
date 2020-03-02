@@ -72,6 +72,6 @@ import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.compo
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent, DataSettingComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent, 
-    TableFieldComponent, EditInPlaceComponent,ChildContainerComponent,ContainersComponent]
+    TableFieldComponent, EditInPlaceComponent,ChildContainerComponent,ContainersComponent,ApplyStyleDirective]
 })
 export class BuilderModule { }

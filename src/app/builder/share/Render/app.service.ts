@@ -52,7 +52,7 @@ export class AppService {
    // this.selectFieldContainer(field);
     setTimeout(() => {
       //this is a work around because angular doesn't detect change of child properties so i clear all and set again
-      this.currentField = {...field};
+      this.currentField = field;
     });
     event.stopPropagation();
   }

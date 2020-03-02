@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef } from '@angular/core';
-import { Style } from 'src/app/builder/model/field';
+import { Style, Fields } from 'src/app/builder/model/field';
 import { AppService } from './app.service';
 
 @Directive({
@@ -10,6 +10,7 @@ export class ApplyStyleDirective {
   constructor(private el: ElementRef, private appService: AppService) {
     this._style = {};
   }
+  @Input() styleField:Fields
   @Input('appStyle') set appStyle(value: Style) {
     if (value) {
       // to detect change in fxFlex or style Object
@@ -27,7 +28,8 @@ export class ApplyStyleDirective {
 
   }
   private applyFlex(key: string, value: string): boolean {
-    if (this.appService.currentField.isContainer)
+    if ((this.appService.currentField && this.appService.currentField.isContainer) 
+     || (this.styleField && this.styleField.isContainer))
       this.el.nativeElement.style.display = "flex";
     switch (key) {
       case "fxLayout":

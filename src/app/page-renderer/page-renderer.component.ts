@@ -5,7 +5,7 @@ import { SharedService } from '../share/shared.service';
 @Component({
   selector: 'app-page-renderer',
   templateUrl: './page-renderer.component.html',
-  styleUrls: ['./page-renderer.component.css']
+  styleUrls: ['./page-renderer.component.scss']
 })
 export class PageRendererComponent implements OnInit {
   containers: Containers[];
