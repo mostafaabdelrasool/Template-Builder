@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { Fields, ComplexValueCalculation, InputField, WhenToCalculate } from '../model/field';
+import { Fields, ComplexValueCalculation, InputField, WhenToCalculate, FieldEquation } from '../model/field';
 import { AppService } from '../share/Render/app.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -22,16 +22,25 @@ export class ComplexValueComponent implements OnInit {
     if (!this.data.complexValueCalculation) {
       this.valueCalc = new ComplexValueCalculation();
       this.valueCalc.equation = [];
-      this.valueCalc.resultModel = this.data.model;
     } else {
       this.valueCalc = this.data.complexValueCalculation
       this.getEqText();
     }
     this.getFields();
-
+    this.valueCalc.resultModel = this.data.model;
   }
   getFields() {
-    this.fields = this.appService.allFields.filter(x => x.id != this.data.id);
+    this.fields = [];
+    this.appService.allFields.forEach(x => {
+      if (x.id != this.data.id) {
+        this.fields.push(x);
+      }
+      let eq = this.valueCalc.equation.find(e => e.fieldModel && e.fieldId === x.id);
+      if (eq) {
+        eq.fieldModel = x.model;
+        eq.fieldName = x.name;
+      }
+    });
   }
   addFieldToEq(field: Fields) {
     //to not to add two field without operator

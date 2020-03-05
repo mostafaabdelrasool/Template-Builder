@@ -27,10 +27,7 @@ export class FieldActionComponent implements OnInit {
         this.appService.currentContainer.fields.splice(index, 1);
         break;
       case 'file_copy':
-        const newField = JSON.parse(JSON.stringify(field));
-        newField.id = Date.now().toString();
-        this.appService.currentField = { ...newField };
-        this.appService.currentContainer.fields.splice(index, 0, newField);
+        this.appService.copyField(field, index);
         break;
       case 'functions':
         this.openComplexValueSetting();

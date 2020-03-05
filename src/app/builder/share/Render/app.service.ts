@@ -78,4 +78,11 @@ export class AppService {
       type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
     });
   }
+  copyField(field: Fields, index: number) {
+    const newField = JSON.parse(JSON.stringify(field));
+    newField.id = Date.now().toString();
+    this.currentField = { ...newField };
+    this.currentContainer.fields.splice(index, 0, newField);
+    this.allFields.push(newField);
+  }
 }
