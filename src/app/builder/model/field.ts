@@ -19,7 +19,8 @@ export class Fields {
   // container?: Containers;
   hasAction?: boolean;
   value?: string;
-  category?: FieldCategory
+  category?: FieldCategory;
+  complexValueCalculation?: ComplexValueCalculation
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -40,7 +41,6 @@ export class InputField extends Fields {
   startDate?: Date;
   endData?: Date;
   clearButton?: boolean;
-  complexValueCalculation?: ComplexValueCalculation
 }
 export class ComplexValueCalculation {
   when: WhenToCalculate;
@@ -52,6 +52,7 @@ export class FieldEquation {
   fieldModel?: string;
   operator?: string;
   fieldId?:string;
+  fieldName?:string;
 }
 export enum WhenToCalculate {
   OnChange, OnSelect, OnClick, OnInit

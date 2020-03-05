@@ -19,10 +19,16 @@ export class ComplexValueComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.valueCalc = new ComplexValueCalculation();
-    this.valueCalc.equation = [];
-    this.valueCalc.resultModel = this.data.model;
+    if (!this.data.complexValueCalculation) {
+      this.valueCalc = new ComplexValueCalculation();
+      this.valueCalc.equation = [];
+      this.valueCalc.resultModel = this.data.model;
+    } else {
+      this.valueCalc = this.data.complexValueCalculation
+      this.getEqText();
+    }
     this.getFields();
+
   }
   getFields() {
     this.fields = this.appService.allFields.filter(x => x.id != this.data.id);
@@ -30,7 +36,7 @@ export class ComplexValueComponent implements OnInit {
   addFieldToEq(field: Fields) {
     //to not to add two field without operator
     if (this.valueCalc.equation.length === 0 || this.valueCalc.equation[this.valueCalc.equation.length - 1].operator) {
-      this.valueCalc.equation.push({ fieldModel: field.model, fieldId: field.id });
+      this.valueCalc.equation.push({ fieldModel: field.model, fieldId: field.id, fieldName: field.name });
       this.equationText += field.name;
     }
   }
@@ -43,7 +49,10 @@ export class ComplexValueComponent implements OnInit {
   }
   remove() {
     this.valueCalc.equation.splice(this.valueCalc.equation.length - 1, 1);
-    this.equationText = this.valueCalc.equation.map(x => x.operator || x.fieldModel).join('');
+    this.getEqText();
+  }
+  getEqText() {
+    this.equationText = this.valueCalc.equation.map(x => x.operator || x.fieldName).join('');
   }
   save() {
     this.valueCalc.equation.forEach(x => {
@@ -51,6 +60,7 @@ export class ComplexValueComponent implements OnInit {
         (<InputField>this.appService.allFields.find(f => f.id === x.fieldId)).complexValueCalculation = this.valueCalc
       }
     })
+    this.data.complexValueCalculation = this.valueCalc;
     this.dialogRef.close();
   }
 }
