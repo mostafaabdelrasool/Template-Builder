@@ -18,6 +18,7 @@ export class AppService {
   containerStyle: Style;
   dataSources: FieldDataSource[] = [];
   allFields: Fields[] = [];
+
   constructor() {
     this.containerStyle = {
       height: 'auto',
@@ -84,5 +85,10 @@ export class AppService {
     this.currentField = { ...newField };
     this.currentContainer.fields.splice(index, 0, newField);
     this.allFields.push(newField);
+  }
+  deleteField(field: Fields, index: number) {
+    const allIndex = this.allFields.findIndex(x => x.id === field.id)
+    this.allFields.splice(allIndex, 1);
+    this.currentContainer.fields.splice(index, 1);
   }
 }
