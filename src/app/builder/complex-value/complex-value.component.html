@@ -17,8 +17,8 @@
     </div>
     <div fxLayout="row wrap">
         <mat-list role="list">
-            <mat-list-item *ngFor="let item of appService.allFields;last as last" role="listitem"
-                (click)="addFieldToEq(item)">
+            <mat-list-item *ngFor="let item of fields;last as last" role="listitem"
+                (click)="addFieldToEq(item)" >
                 {{item.name}}
                 <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
             </mat-list-item>

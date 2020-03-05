@@ -46,6 +46,10 @@
             </mat-option>
         </mat-select>
     </mat-form-field>
+    <div *ngSwitchCase="27" class="calc-field">
+        <span>{{field.placeholder}}</span>
+        <span>{{this.getFieldValue(field.model)}}</span>
+    </div>
     <!-- <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
     <app-select-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="25"></app-select-field> -->
 </ng-container>

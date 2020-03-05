@@ -88,7 +88,7 @@ export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
   CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP, TITLE, SUBTITLE, TEXT, INPUT_EMAIL, INPUT_PASSWORD,
-  TABLE, LIST, DROPDOWNLIST, TABS
+  TABLE, LIST, DROPDOWNLIST, TABS,CALC_Label
 }
 export interface FieldEvent {
   name: string;
@@ -130,7 +130,7 @@ export class Style {
   fontFamily?: string;
   fontSize?: string;
   lineHeight?: string;
-  fontColor?: string;
+  color?: string;
   textAlign?: string;
   fontWeight?: string;
   fxFlex?: FxFlex = {};

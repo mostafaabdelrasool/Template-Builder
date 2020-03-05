@@ -20,7 +20,7 @@ export class FieldTypesComponent implements OnInit {
 
   }
   onTextDragStart(event, type, text) {
-    const data = { type, text, fullWidth: true };
+    const data = { type, text, fullWidth: true, category: 3 };
     this.transferData(event, data);
   }
   transferData(event, data) {
@@ -29,8 +29,8 @@ export class FieldTypesComponent implements OnInit {
       .dataTransfer
       .setData('text/plain', JSON.stringify(data));
   }
-  onDragStart(event, type, isContainer = null, isChildContainer = null, isInput: boolean = null) {
-    const data = { type, isContainer, isChildContainer, isInput };
+  onDragStart(event, type, isContainer = null, isChildContainer = null, category = null) {
+    const data = { type, isContainer, isChildContainer, category };
     event.dataTransfer.effectAllowed = 'move';
     this.transferData(event, data);
   }

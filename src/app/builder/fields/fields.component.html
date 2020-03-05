@@ -41,6 +41,9 @@
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <p *ngSwitchCase="20">{{field.value}}</p>
+    <div *ngSwitchCase="27">
+        <span>{{field.placeholder}}</span>
+    </div>
     <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
     <app-select-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="25"></app-select-field>
 </ng-container>

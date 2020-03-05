@@ -43,7 +43,7 @@ export class FieldActionComponent implements OnInit {
     return FieldType[type].toLowerCase()
   }
   openComplexValueSetting() {
-    let setting = { width: '40vw', height: 'auto' };
+    let setting = { width: '40vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(ComplexValueComponent, setting);
   }
 }

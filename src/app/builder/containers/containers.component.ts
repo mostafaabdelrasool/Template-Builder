@@ -88,15 +88,12 @@ export class ContainersComponent implements OnInit {
       type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
       placeholder: 'label', isContainer: option.isContainer, fieldEvent: [],
-      name: 'Field' + (this.appService.allFields.length+1)
+      name: 'Field' + (this.appService.allFields.length + 1), category: option.category
     };
     if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field
       field["fields"] = [];
       field.isContainer = true;
-    }
-    if (option.isInput) {
-      field.category = FieldCategory.Input
     }
     if (field.type === FieldType.TABLE) {
       field.fullWidth = true

@@ -37,8 +37,8 @@
         (valueUpdated)="updateStyle($event,'lineHeight')"></app-measureUnit>
     <div>
         Font color
-        <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="currentField.style.fontColor"
-            [colorPicker]="currentField.style.fontColor" (colorPickerChange)="updateStyle($event,'fontColor')" />
+        <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="currentField.style.color"
+            [colorPicker]="currentField.style.color" (colorPickerChange)="updateStyle($event,'color')" />
     </div>
     <div>
         Text Align
