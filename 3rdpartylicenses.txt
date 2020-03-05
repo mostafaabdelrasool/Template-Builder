@@ -134,6 +134,8 @@ THE SOFTWARE.
 
 @angular/material/icon
 
+@angular/material/list
+
 @angular/material/radio
 
 @angular/material/select
