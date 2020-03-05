@@ -1,0 +1,41 @@
+<mat-dialog-content>
+    <div fxLayout="row wrap" fxLayoutGap="5px">
+        <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="valueCalc.name">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="When to calculate" [(ngModel)]="valueCalc.when">
+                <mat-option value="0">On Select</mat-option>
+                <mat-option value="1">On Change</mat-option>
+                <mat-option value="2">On Click</mat-option>
+                <mat-option value="4">On Initializtion</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="equation">
+        <textarea [(ngModel)]="equationText"></textarea>
+    </div>
+    <div fxLayout="row wrap">
+        <mat-list role="list">
+            <mat-list-item *ngFor="let item of appService.allFields;last as last" role="listitem"
+                (click)="addFieldToEq(item)">
+                {{item.name}}
+                <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+        </mat-list>
+        <div class="operator" fxLayout="column" fxLayoutGap="5px" >
+            <div fxLayout="column" fxLayoutGap="5px" (click)="addOperatorToEq($event)">
+                <button mat-raised-button color="accent">+</button>
+                <button mat-raised-button color="accent">-</button>
+                <button mat-raised-button color="accent">*</button>
+                <button mat-raised-button color="accent">/</button>
+            </div>
+            <button mat-raised-button color="accent" (click)="remove()">
+                <mat-icon>backspace</mat-icon>
+            </button>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="save()" color="primary">Save</button>
+</mat-dialog-actions>

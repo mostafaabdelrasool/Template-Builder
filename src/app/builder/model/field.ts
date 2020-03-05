@@ -26,7 +26,7 @@ export class ButtonField extends Fields {
   buttonColor: string;
 }
 export enum FieldCategory {
-  Input, Container,Button,Typograpghy
+  Input, Container, Button, Typograpghy
 }
 export class InputField extends Fields {
   hint: string;
@@ -39,7 +39,22 @@ export class InputField extends Fields {
   step?: number;
   startDate?: Date;
   endData?: Date;
-  clearButton?:boolean;
+  clearButton?: boolean;
+  complexValueCalculation?: ComplexValueCalculation
+}
+export class ComplexValueCalculation {
+  when: WhenToCalculate;
+  equation: FieldEquation[];
+  name: string;
+  resultModel?:string
+}
+export class FieldEquation {
+  fieldModel?: string;
+  operator?: string;
+  fieldId?:string;
+}
+export enum WhenToCalculate {
+  OnChange, OnSelect, OnClick, OnInit
 }
 export class TableField extends Fields {
   header: TableHeader[]

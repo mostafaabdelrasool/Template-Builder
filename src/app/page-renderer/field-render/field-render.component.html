@@ -1,5 +1,4 @@
 <ng-container [ngSwitch]="field.type">
-    {{renderService.data | json}}
     <ng-container *ngIf="field.category===0">
         <app-input-field [field]="field" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-input-field>
     </ng-container>

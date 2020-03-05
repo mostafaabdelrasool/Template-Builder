@@ -1,7 +1,8 @@
 <div fxLayout class="field-action" (click)=handleFieldAction($event,field)>
-    <mat-icon>file_copy</mat-icon>
-    <mat-icon>delete</mat-icon>
+    <mat-icon matTooltip="Copy">file_copy</mat-icon>
+    <mat-icon matTooltip="Delete">delete</mat-icon>
+    <mat-icon matTooltip="Equation and binding" *ngIf="field.category===0">functions</mat-icon>
     <ng-content>
-        
+
     </ng-content>
 </div>

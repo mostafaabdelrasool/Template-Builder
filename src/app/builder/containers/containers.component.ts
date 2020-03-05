@@ -87,7 +87,8 @@ export class ContainersComponent implements OnInit {
     let field: Fields = {
       type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'label', isContainer: option.isContainer, fieldEvent: []
+      placeholder: 'label', isContainer: option.isContainer, fieldEvent: [],
+      name: 'Field' + (this.appService.allFields.length+1)
     };
     if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field
@@ -101,6 +102,7 @@ export class ContainersComponent implements OnInit {
       field.fullWidth = true
     }
     this.appService.currentContainer.fields.push(field);
+    this.appService.allFields.push(field);
   }
   addButton(buttonType: ButtonFieldTypes, color) {
     let button: ButtonField = {

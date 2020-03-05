@@ -35,6 +35,7 @@ import { DataSourceComponent } from './data-source/data-source.component';
 import { SelectFieldComponent } from './fields/select-field/select-field.component';
 import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
 import { InputFieldComponent } from './fields/input-field/input-field.component';
+import { ComplexValueComponent } from './complex-value/complex-value.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -69,10 +70,11 @@ import { InputFieldComponent } from './fields/input-field/input-field.component'
     TabFieldComponent,
     DataSourceComponent,
     SelectFieldComponent,
-    InputFieldComponent
+    InputFieldComponent,
+    ComplexValueComponent
   ],
   providers: [AppService, CodeService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent],
+  entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,
     TableFieldComponent, EditInPlaceComponent, ChildContainerComponent, ContainersComponent, ApplyStyleDirective,
     InputFieldComponent]

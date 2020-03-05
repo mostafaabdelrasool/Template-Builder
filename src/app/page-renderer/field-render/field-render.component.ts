@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Fields } from 'src/app/builder/model/field';
+import { Fields, InputField } from 'src/app/builder/model/field';
 import { setPathData, getPathData } from 'src/app/share/object-func';
 import { FieldDataSource } from 'src/app/builder/model/data-source';
 import { HttpClient } from '@angular/common/http';
@@ -32,6 +32,23 @@ export class FieldRenderComponent implements OnInit {
   }
   valueChange(modelName, event) {
     setPathData(this.renderService.data, modelName, event);
+    if (this.field.category === 0) {
+      this.calculateComplexValue()
+    }
+  }
+  calculateComplexValue() {
+    const caclc = (<InputField>this.field).complexValueCalculation;
+    let equation = [];
+    caclc.equation.forEach(x => {
+      if (x.fieldModel) {
+        const val = this.getFieldValue(x.fieldModel);
+        equation.push(val || 0)
+      } else {
+        equation.push(x.operator)
+      }
+    })
+    const result = eval(equation.join(''));
+    setPathData(this.renderService.data, caclc.resultModel, result);
   }
   getFieldValue(modelName) {
     const value = getPathData(this.renderService.data, modelName);
