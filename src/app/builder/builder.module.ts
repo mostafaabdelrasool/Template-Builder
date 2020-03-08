@@ -36,6 +36,8 @@ import { SelectFieldComponent } from './fields/select-field/select-field.compone
 import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
 import { InputFieldComponent } from './fields/input-field/input-field.component';
 import { ComplexValueComponent } from './complex-value/complex-value.component';
+import { CreateableTableSettingComponent } from './fields/createable-table/createable-table-setting/createable-table-setting.component';
+import { CreateableTableComponent } from './fields/createable-table/createable-table.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -71,10 +73,12 @@ import { ComplexValueComponent } from './complex-value/complex-value.component';
     DataSourceComponent,
     SelectFieldComponent,
     InputFieldComponent,
-    ComplexValueComponent
+    ComplexValueComponent,
+    CreateableTableSettingComponent,
+    CreateableTableComponent
   ],
   providers: [AppService, CodeService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent],
+  entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent,CreateableTableSettingComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,
     TableFieldComponent, EditInPlaceComponent, ChildContainerComponent, ContainersComponent, ApplyStyleDirective,
     InputFieldComponent]

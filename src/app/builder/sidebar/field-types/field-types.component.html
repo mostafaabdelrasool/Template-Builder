@@ -240,6 +240,11 @@
                 Table
                 <mat-icon>table_chart</mat-icon>
             </div>
+            <div draggable='true' (dragstart)='onDragStart($event,28);'
+                aria-label="Example icon-div with a table_chart icon">
+                Creatable table
+                <mat-icon>table_chart</mat-icon>
+            </div>
             <div draggable='true' (dragstart)='onDragStart($event,24);' aria-label="Example icon-div with a menu icon">
                 List
                 <mat-icon>menu</mat-icon>

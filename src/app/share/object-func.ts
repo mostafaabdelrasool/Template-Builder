@@ -5,11 +5,22 @@ export const interfacePropertyToString = (property) => {
 export const objectKeys = (obj, prefix = ''): any[] =>
   Object.keys(obj).reduce((res, el) => {
     if (Array.isArray(obj[el])) {
-      return res;
+      return [...res, prefix + el];
     } else if (typeof obj[el] === 'object' && obj[el] !== null) {
       return [...res, ...objectKeys(obj[el], prefix + el + '.')];
     } else {
       return [...res, prefix + el];
+    }
+  }, []);
+export const objectKeysDetail = (obj, prefix = ''): any[] =>
+  Object.keys(obj).reduce((res, el) => {
+    if (Array.isArray(obj[el])) {
+      return [...res, { name: prefix + el, type: 'array' }];
+    } else if (typeof obj[el] === 'object' && obj[el] !== null) {
+      return [...res, { name: prefix + el, type: 'object' }, ...objectKeys(obj[el], prefix + el + '.')
+      .map(x => { return { name: x, type: 'value' } })];
+    } else {
+      return [...res, { name: prefix + el, type: 'value' }];
     }
   }, []);
 export const getPathData = (schema, path) => {

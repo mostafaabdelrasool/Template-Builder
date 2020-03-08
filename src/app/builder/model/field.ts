@@ -61,6 +61,9 @@ export class TableField extends Fields {
   header: TableHeader[]
   dataSource: FieldDataSource;
 }
+export class CreateableTable extends Fields{
+  header: TableHeader[];
+}
 export class TabField extends Fields {
   tabs: TabsConatiner[]
 }
@@ -71,7 +74,8 @@ export class TabsConatiner {
 export class TableHeader {
   name: string;
   binding: string;
-  isSelected: Boolean
+  isSelected?: Boolean;
+  columnType?:string
 }
 export class SelectField extends Fields {
   dispalyMember: string;
@@ -89,7 +93,7 @@ export enum FieldType {
   INPUT_TEXT, INPUT_NUMBER, DD, DIV, FORM, ACCORDION, CHECKBOX,
   DATEPICKER, TEXT_AREA, RADIO_BUTTON_GROUP, SELECT, SLIDER, SLIDER_TOGGLE,
   CHILD_DIV, RADIO_BUTTON, CARD, BUTTON, BUTTON_GROUP, TITLE, SUBTITLE, TEXT, INPUT_EMAIL, INPUT_PASSWORD,
-  TABLE, LIST, DROPDOWNLIST, TABS,CALC_Label
+  TABLE, LIST, DROPDOWNLIST, TABS,CALC_Label,CREATABLE_TABLE
 }
 export interface FieldEvent {
   name: string;
