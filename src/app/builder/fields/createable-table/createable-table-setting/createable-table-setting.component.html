@@ -1,10 +1,11 @@
-<button mat-raised-button (click)="add()" color="accent">Add</button>
+
+<mat-form-field>
+    <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="data.model">
+        <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
+    </mat-select>
+</mat-form-field>
 <mat-dialog-content>
-    <mat-form-field>
-        <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="data.model">
-            <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <button mat-raised-button (click)="add()" color="accent">Add</button>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -16,6 +17,9 @@
                 </th>
                 <th>
                     Type
+                </th>
+                <th>
+                    Actions
                 </th>
             </tr>
         </thead>
@@ -43,6 +47,9 @@
                             <mat-option value="5">Number</mat-option>
                         </mat-select>
                     </mat-form-field>
+                </td>
+                <td>
+                    <mat-icon (click)="remove(item)">delete</mat-icon>
                 </td>
             </tr>
         </tbody>

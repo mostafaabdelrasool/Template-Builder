@@ -22,9 +22,7 @@ export class CreateableTableSettingComponent implements OnInit {
     if (this.sharedService.model) {
       this.mainModel = objectKeysDetail(JSON.parse(this.sharedService.model)).filter(x => x.type === "array").map(x => x.name);
     }
-    if (!this.data.header) {
-      this.data.header=new Array<TableHeader>();
-    }
+   
   }
   getModelProps() {
     const data = getPathData(JSON.parse(this.sharedService.model), this.data.model)[0];
@@ -35,5 +33,9 @@ export class CreateableTableSettingComponent implements OnInit {
   }
   save() {
     this.dialogRef.close(this.data);
+  }
+  remove(item){
+    const index=this.data.header.indexOf(item);
+    this.data.header.splice(index,1);
   }
 }

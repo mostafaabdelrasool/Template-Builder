@@ -1,0 +1,17 @@
+<button mat-raised-button (click)="add()" color="accent">Add</button>
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th *ngFor="let item of field.header">
+                {{item.name}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of  getFieldValue()">
+            <th *ngFor="let header of field.header">
+                {{item[header.name]}}
+            </th>
+        </tr>
+    </tbody>
+</table>

@@ -11,6 +11,7 @@ import { BuilderModule } from '../builder/builder.module';
 import { FieldRenderComponent } from './field-render/field-render.component';
 import { RenderService } from './render.service';
 import { ChildContainerRenderComponent } from './child-container-render/child-container-render.component';
+import { CreateableTableRenderComponent } from './field-render/createable-table-render/createable-table-render.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ChildContainerRenderComponent } from './child-container-render/child-co
     NgxPaginationModule,
     BuilderModule
   ],
-  declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent],
+  declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent,CreateableTableRenderComponent],
   providers:[RenderService]
 })
 export class PageRendererModule { }
