@@ -1,7 +1,7 @@
+<button mat-raised-button (click)="add()" color="accent">Add</button>
 <mat-dialog-content>
-    <button mat-raised-button (click)="add()" color="accent">Add</button>
     <mat-form-field>
-        <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="modelName">
+        <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="data.model">
             <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
         </mat-select>
     </mat-form-field>
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of header">
+            <tr *ngFor="let item of data.header">
                 <td>
                     <mat-form-field>
                         <input matInput placeholder="Name" [(ngModel)]="item.name">

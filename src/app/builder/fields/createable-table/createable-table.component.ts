@@ -12,9 +12,6 @@ import { CreateableTableSettingComponent } from './createable-table-setting/crea
 export class CreateableTableComponent implements OnInit {
 
   @Input() field: CreateableTable;
-  currentRows: TableHeader[];
-  data: any[];
-  pageNo: number;
   @Input() set perfomAction(val: boolean) {
     if (val) {
       this.openTableSetting();
@@ -29,11 +26,9 @@ export class CreateableTableComponent implements OnInit {
     this.openTableSetting();
   }
   openTableSetting() {
-    let setting = { width: '40vw', height: 'auto' };
+    let setting = { width: '40vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(CreateableTableSettingComponent, setting);
 
-    dialogRef.afterClosed().subscribe((result) => {
-    
-    });
+    dialogRef.afterClosed()
   }
 }
