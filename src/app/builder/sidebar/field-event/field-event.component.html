@@ -1,0 +1,20 @@
+<button mat-icon-button color="primary" aria-label="Example icon-button with a add icon" (click)="addFieldEvent()"
+    matTooltip='Add Event'>
+    <mat-icon>add</mat-icon>
+</button>
+<div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngFor="let event of currentField.fieldEvent">
+    <mat-form-field fxFlex="1 1 40%">
+        <input matInput placeholder="Name" [(ngModel)]="event.name">
+    </mat-form-field>
+    <mat-form-field fxFlex="1 1 40%">
+        <mat-select placeholder="Type" [(ngModel)]="event.type">
+            <mat-option value="click">click</mat-option>
+            <mat-option value="change">change</mat-option>
+            <mat-option value="select">On select</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="action">
+        <mat-icon (click)="deleteFieldEvent(event)" matTooltip='Delete Event'>delete </mat-icon>
+        <mat-icon (click)="advancedFieldEvent()" matTooltip='Advanced Event'>fireplace</mat-icon>
+    </div>
+</div>

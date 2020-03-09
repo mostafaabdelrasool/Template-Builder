@@ -38,6 +38,8 @@ import { InputFieldComponent } from './fields/input-field/input-field.component'
 import { ComplexValueComponent } from './complex-value/complex-value.component';
 import { CreateableTableSettingComponent } from './fields/createable-table/createable-table-setting/createable-table-setting.component';
 import { CreateableTableComponent } from './fields/createable-table/createable-table.component';
+import { DataMapperSettingComponent } from './data-mapper-setting/data-mapper-setting.component';
+import { FieldEventComponent } from './sidebar/field-event/field-event.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -75,10 +77,13 @@ import { CreateableTableComponent } from './fields/createable-table/createable-t
     InputFieldComponent,
     ComplexValueComponent,
     CreateableTableSettingComponent,
-    CreateableTableComponent
+    CreateableTableComponent,
+    DataMapperSettingComponent,
+    FieldEventComponent
   ],
   providers: [AppService, CodeService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent,CreateableTableSettingComponent],
+  entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent
+    ,CreateableTableSettingComponent,DataMapperSettingComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,
     TableFieldComponent, EditInPlaceComponent, ChildContainerComponent, ContainersComponent, ApplyStyleDirective,
     InputFieldComponent]

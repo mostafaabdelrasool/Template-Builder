@@ -1,4 +1,5 @@
 <ng-container [ngSwitch]="field.type">
+    {{this.renderService.data | json}}
     <ng-container *ngIf="field.category===0">
         <app-input-field [field]="field" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-input-field>
     </ng-container>
@@ -40,8 +41,9 @@
     <p *ngSwitchCase="20">{{field.value}}</p>
     <mat-form-field *ngSwitchCase="25">
         <mat-label>{{field.placeholder}}</mat-label>
-        <mat-select (selectionChange)="valueChange(field.model,$event)">
-            <mat-option *ngFor="let item of field['dataSource'].data" [value]="item[field['valueMember']]">
+        <mat-select>
+            <mat-option (onSelectionChange)="onSelectionChange(item,item[field['valueMember']])" *ngFor="let item of field['dataSource'].data"
+             [value]="item[field['valueMember']]">
                 {{item[field['dispalyMember']]}}
             </mat-option>
         </mat-select>

@@ -49,9 +49,7 @@ export class PropertiesComponent implements OnInit {
     const length = (<CardField>this.currentField).cardActions.length;
     (<CardField>this.currentField).cardActions.push({ title: 'Action title ' + length })
   }
-  addFieldEvent() {
-    this.currentField.fieldEvent.push({ name: '', type: '' });
-  }
+ 
   boxShawChange(type, event) {
     if (!this.currentField.style.boxShadow) {
       this.currentField.style.boxShadow = ''
@@ -92,4 +90,6 @@ export class PropertiesComponent implements OnInit {
     return (<SelectField>this.currentField).dataSource ?
       (<SelectField>this.currentField).dataSource.dataStructure : null;
   }
+
+  
 }

@@ -94,8 +94,8 @@
                 </div>
                 <mat-form-field fxFlex="1 1 100%">
                     <input matInput placeholder="Hint" [(ngModel)]="currentField['hint']">
-                    <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear" 
-                    (click)="currentField['hint']=''">
+                    <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="currentField['hint']=''">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-form-field>
@@ -358,21 +358,7 @@
                     Events
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon"
-                (click)="addFieldEvent()" matTooltip='Add Event'>
-                <mat-icon>add</mat-icon>
-            </button>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngFor="let event of currentField.fieldEvent">
-                <mat-form-field fxFlex="1 1 49%">
-                    <input matInput placeholder="Name" [(ngModel)]="event.name">
-                </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
-                    <mat-select placeholder="Type" [(ngModel)]="event.type">
-                        <mat-option value="click">click</mat-option>
-                        <mat-option value="change">change</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
+          <app-field-event  [currentField]="currentField"></app-field-event>
         </mat-expansion-panel>
         <mat-expansion-panel>
             <mat-expansion-panel-header>

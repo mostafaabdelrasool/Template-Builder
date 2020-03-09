@@ -1,0 +1,43 @@
+
+<mat-dialog-content>
+    <button mat-raised-button (click)="add()" color="accent">Add</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                   Source
+                </th>
+                <th>
+                    Destination
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of propMapper">
+                <td>
+                    <mat-form-field>
+                        <mat-select placeholder="Model" [(ngModel)]="item.source">
+                            <mat-option *ngFor="let model of sourceProps" [value]="model">{{model}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-select placeholder="Model" [(ngModel)]="item.destination">
+                            <mat-option *ngFor="let model of destinationProps" [value]="model">{{model}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-icon (click)="remove(item)">delete</mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="save()" color="primary">Save</button>
+</mat-dialog-actions>

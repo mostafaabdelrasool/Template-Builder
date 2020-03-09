@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Fields, InputField } from 'src/app/builder/model/field';
+import { Fields, InputField, FieldType, SelectField } from 'src/app/builder/model/field';
 import { setPathData, getPathData } from 'src/app/share/object-func';
 import { FieldDataSource } from 'src/app/builder/model/data-source';
 import { HttpClient } from '@angular/common/http';
@@ -34,6 +34,19 @@ export class FieldRenderComponent implements OnInit {
     setPathData(this.renderService.data, modelName, event);
     if (this.field.category === 0) {
       this.calculateComplexValue()
+    }
+
+  }
+  onSelectionChange(item,value) {
+    this.valueChange(this.field.model,value)
+    if ((<SelectField>this.field).onSelect) {
+      const selectField = (<SelectField>this.field)
+      if (selectField.onSelect.mapper) {
+        selectField.onSelect.mapper.forEach(x => {
+          const data = getPathData(item, x.source);
+          setPathData(this.renderService.data, x.destination, data);
+        })
+      }
     }
   }
   calculateComplexValue() {
