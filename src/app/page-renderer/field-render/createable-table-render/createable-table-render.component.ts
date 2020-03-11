@@ -26,7 +26,9 @@ export class CreateableTableRenderComponent implements OnInit {
     return value || null;
   }
   add() {
-    let result = this.getFieldValue()
-    result.push({})
+    let result = this.getFieldValue();
+    let data={};
+    this.field.header.forEach(x=>data[x.binding]='')
+    result.push(data)
   }
 }

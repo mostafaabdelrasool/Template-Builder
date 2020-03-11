@@ -24,7 +24,7 @@ export class FieldEventComponent implements OnInit {
     this.currentField.fieldEvent.splice(index, 1);
   }
   advancedFieldEvent() {
-    let setting = { width: '40vw', height: 'auto', data: {} };
+    let setting = { width: '70vw', height: 'auto', data: {} };
     if (this.currentField['dataSource']) {
       setting.data = { source: 'currentItem', field: this.currentField, destination: 'mainModel' }
     }
@@ -35,12 +35,13 @@ export class FieldEventComponent implements OnInit {
         let field = (<SelectField>this.currentField);
         field.onSelect = {
           destinationPath: 'mainModel',
-          mapper: result.map(x => {
+          mapper: result.mapper.map(x => {
             return {
               source: x.source,
               destination: x.destination
             }
-          })
+          }),
+          code:result.code
         }
       }
 

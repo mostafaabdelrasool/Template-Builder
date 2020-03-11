@@ -40,6 +40,7 @@ import { CreateableTableSettingComponent } from './fields/createable-table/creat
 import { CreateableTableComponent } from './fields/createable-table/createable-table.component';
 import { DataMapperSettingComponent } from './data-mapper-setting/data-mapper-setting.component';
 import { FieldEventComponent } from './sidebar/field-event/field-event.component';
+import { CodeEditorModule } from '@ngstack/code-editor';
 @NgModule({
   imports: [
     CommonModule,
@@ -52,7 +53,8 @@ import { FieldEventComponent } from './sidebar/field-event/field-event.component
     HttpClientModule,
     ResizableModule,
     NgxPaginationModule,
-    SharedModule
+    SharedModule,
+    CodeEditorModule.forRoot()
   ],
   declarations: [
     SanitizeHtmlPipe,

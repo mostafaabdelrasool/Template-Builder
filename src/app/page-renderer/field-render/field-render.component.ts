@@ -37,18 +37,26 @@ export class FieldRenderComponent implements OnInit {
     }
 
   }
-  onSelectionChange(item,value) {
-    this.valueChange(this.field.model,value)
+  onSelectionChange(event) {
+    this.valueChange(this.field.model,event.value)
     if ((<SelectField>this.field).onSelect) {
       const selectField = (<SelectField>this.field)
+      const selectedData=this.getSelectedData(event.value,selectField.valueMember);
       if (selectField.onSelect.mapper) {
         selectField.onSelect.mapper.forEach(x => {
-          const data = getPathData(item, x.source);
+          const data = getPathData(selectedData, x.source);
           setPathData(this.renderService.data, x.destination, data);
         })
       }
+      if (selectField.onSelect.code) {
+       const functionCode= this.functionParse(selectField.onSelect.code);
+       functionCode.apply(this,[selectedData,selectField])
+      }
     }
   }
+  functionParse(code){
+    return Function('"use strict";return (' + code + ')')();
+}
   calculateComplexValue() {
     const caclc = (<InputField>this.field).complexValueCalculation;
     let equation = [];
@@ -62,6 +70,10 @@ export class FieldRenderComponent implements OnInit {
     })
     const result = eval(equation.join(''));
     setPathData(this.renderService.data, caclc.resultModel, result);
+  }
+  getSelectedData(value,valueMemeberName){
+    const selectField = (<SelectField>this.field)
+    return selectField.dataSource.data.find(x=>x[valueMemeberName]===value)
   }
   getFieldValue(modelName) {
     const value = getPathData(this.renderService.data, modelName);

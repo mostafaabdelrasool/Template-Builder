@@ -40,8 +40,8 @@
     <p *ngSwitchCase="20">{{field.value}}</p>
     <mat-form-field *ngSwitchCase="25">
         <mat-label>{{field.placeholder}}</mat-label>
-        <mat-select>
-            <mat-option (onSelectionChange)="onSelectionChange(item,item[field['valueMember']])" *ngFor="let item of field['dataSource'].data"
+        <mat-select (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let item of field['dataSource'].data"
              [value]="item[field['valueMember']]">
                 {{item[field['dispalyMember']]}}
             </mat-option>
