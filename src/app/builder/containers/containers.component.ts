@@ -82,6 +82,7 @@ export class ContainersComponent implements OnInit {
     }
     this.appService.containers.push(container)
     this.appService.currentContainer = container;
+    this.appService.allContainers.push(container);
   }
   addField(option) {
     let field: Fields = {
