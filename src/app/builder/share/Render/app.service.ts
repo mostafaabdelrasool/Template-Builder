@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style, FieldType } from 'src/app/builder/model/field';
+import { Fields, FieldType } from 'src/app/builder/model/field';
 import { Manager_Type } from 'src/app/builder/model/manager';
 import { Containers } from 'src/app/builder/model/containers';
 import { FieldDataSource } from '../../model/data-source';
+import { Style } from '../../model/style';
 
 /**
  * @description

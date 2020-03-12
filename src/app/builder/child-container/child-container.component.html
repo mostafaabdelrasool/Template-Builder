@@ -8,7 +8,6 @@
             <app-fields [field]="field"></app-fields>
         </div>
     </ng-container>
-    <ng-container *ngSwitchCase="26">
-        <app-tab-field [field]="container" ></app-tab-field>
-    </ng-container>
+    <app-tab-field *ngSwitchCase="26" [field]="container"></app-tab-field>
+    <app-form-field [field]="container" *ngSwitchCase="4"></app-form-field>
 </ng-container>

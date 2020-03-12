@@ -1,6 +1,7 @@
 import { Directive, Input, ElementRef } from '@angular/core';
-import { Style, Fields } from 'src/app/builder/model/field';
+import { Fields } from 'src/app/builder/model/field';
 import { AppService } from './app.service';
+import { Style } from '../../model/style';
 
 @Directive({
   selector: '[appStyle]'

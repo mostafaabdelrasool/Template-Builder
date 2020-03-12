@@ -1,5 +1,6 @@
 import { Containers } from './containers';
 import { FieldDataSource } from './data-source';
+import { Style } from './style';
 
 export class Fields {
   type: FieldType;
@@ -71,6 +72,9 @@ export class TabsConatiner {
   tabName: string;
   container: Containers;
 }
+export class FormField extends Fields{
+  fields: Fields[];
+}
 export class TableHeader {
   name: string;
   binding: string;
@@ -107,52 +111,4 @@ export interface FieldEvent {
 }
 export enum AngularFieldEventType {
   Click = "click", Change = "change"
-}
-export class Style {
-  borderColor?: string;
-  borderWidth?: string;
-  borderStyle?: string;
-  position?: string;
-  display?: string;
-  width?: string;
-  height?: string;
-  top?: string;
-  right?: string;
-  left?: string;
-  bottom?: string;
-  maxWidth?: string;
-  maxHeight?: string;
-  marginTop?: string;
-  marginRight?: string;
-  marginBottom?: string;
-  marginLeft?: string;
-  paddingTop?: string;
-  paddingRight?: string;
-  paddingBottom?: string;
-  paddingLeft?: string;
-  flexDirection?: string;
-  alignItems?: string;
-  justifyContent?: string;
-  flexWrap?: string;
-  border?: string;
-  boxShadow?: string;
-  borderRadius?: string;
-  minHeight?: string;
-  fontFamily?: string;
-  fontSize?: string;
-  lineHeight?: string;
-  color?: string;
-  textAlign?: string;
-  fontWeight?: string;
-  fxFlex?: FxFlex = {};
-}
-export interface FxFlex {
-  fxFill?: boolean;
-  fxLayoutGap?: string;
-  fxFlexAlign?: string;
-  fxLayout?: string;
-  fxLayoutAlignH?: string;
-  fxLayoutAlignV?: string;
-  wrap?: string;
-  fxFlex?: string;
 }

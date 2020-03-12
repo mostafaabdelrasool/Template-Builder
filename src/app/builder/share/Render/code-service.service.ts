@@ -5,7 +5,7 @@ import { ComponentCodeService } from 'src/app/code-generator/angular/component-c
 import { HtmlCodeService } from 'src/app/code-generator/angular/HtmlCodeService';
 import JsonToTS from 'src/app/share/json-parser';
 import { CssCodeService } from 'src/app/code-generator/angular/css-code.service';
-import { Style } from '../../model/field';
+import { Style } from '../../model/style';
 
 /**
  * @description

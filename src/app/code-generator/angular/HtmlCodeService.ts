@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Fields, Style, FieldType, ButtonField, ButtonFieldTypes, FieldEvent, AngularFieldEventType, InputField } from 'src/app/builder/model/field';
+import { Fields, FieldType, ButtonField, ButtonFieldTypes, FieldEvent, AngularFieldEventType, InputField } from 'src/app/builder/model/field';
 import { Containers } from 'src/app/builder/model/containers';
+import { Style } from 'src/app/builder/model/style';
 @Injectable({
     providedIn: 'root'
 })

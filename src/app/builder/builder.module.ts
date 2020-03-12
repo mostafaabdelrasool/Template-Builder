@@ -41,6 +41,7 @@ import { CreateableTableComponent } from './fields/createable-table/createable-t
 import { DataMapperSettingComponent } from './data-mapper-setting/data-mapper-setting.component';
 import { FieldEventComponent } from './sidebar/field-event/field-event.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
+import { FormFieldComponent } from './child-container/form-field/form-field.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -81,7 +82,8 @@ import { CodeEditorModule } from '@ngstack/code-editor';
     CreateableTableSettingComponent,
     CreateableTableComponent,
     DataMapperSettingComponent,
-    FieldEventComponent
+    FieldEventComponent,
+    FormFieldComponent
   ],
   providers: [AppService, CodeService],
   entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent

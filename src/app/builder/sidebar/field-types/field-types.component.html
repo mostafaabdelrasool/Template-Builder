@@ -80,6 +80,11 @@
                 Tabs
                 <mat-icon>tab</mat-icon>
             </div>
+            <div draggable='true' (dragstart)='onDragStart($event,4,false,true);'
+                aria-label="Example icon-div with a form icon">
+                Form
+                <mat-icon>receipt</mat-icon>
+            </div>
         </div>
     </mat-expansion-panel>
     <mat-expansion-panel>

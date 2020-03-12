@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Style } from 'src/app/builder/model/field';
+import { Style } from 'src/app/builder/model/style';
 
 /**
  * @description

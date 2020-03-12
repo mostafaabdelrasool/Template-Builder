@@ -1,0 +1,10 @@
+<form class="field">
+    <ng-container *ngFor="let item of field.fields">
+        <app-fields mwlResizable [enableGhostResize]="true"
+            [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (resizeEnd)="onResizeEnd($event,item)"
+            [ngClass]="{'field-selected':item.id===appService.currentField?.id,'full-width':item.fullWidth}"
+            [appHighlight]='{color:"black"}' [appStyle]="item.style" *ngIf="!item.isContainer" [field]="item"
+            (click)="appService.selectField(item)" draggable="true" (dragstart)="startReposition($event,item)"
+            (dragover)='onDragOver($event,item);'></app-fields>
+    </ng-container>
+</form>
