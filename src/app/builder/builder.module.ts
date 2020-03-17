@@ -42,6 +42,7 @@ import { DataMapperSettingComponent } from './data-mapper-setting/data-mapper-se
 import { FieldEventComponent } from './sidebar/field-event/field-event.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { FormFieldComponent } from './child-container/form-field/form-field.component';
+import { BuilderService } from './builder.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -85,7 +86,7 @@ import { FormFieldComponent } from './child-container/form-field/form-field.comp
     FieldEventComponent,
     FormFieldComponent
   ],
-  providers: [AppService, CodeService],
+  providers: [AppService, CodeService,BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent
     ,CreateableTableSettingComponent,DataMapperSettingComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,

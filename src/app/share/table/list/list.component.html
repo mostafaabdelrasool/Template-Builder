@@ -1,0 +1,50 @@
+<div class="container-fluid">
+<button
+    color="primary"
+    mat-raised-button
+    (click)="addNewLine()"
+    class="float-right add-btn" 
+>
+    <mat-icon aria-label>add</mat-icon>
+</button>
+<mat-form-field class="filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let col of tableSetting.headerSetting">{{col.headerName}}</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of data">
+            <td *ngFor="let setting of tableSetting.headerSetting">
+                <p *ngIf="setting.type!=='img';else img">
+                    {{getData(row,setting.model)}}</p>
+                <ng-template #img>
+                    <img *ngIf="row[setting.model]" class="st-image item-image" [src]="row[setting.model]"/>
+                </ng-template>
+            </td>
+            <td>
+                <div>
+                    <button
+                        mat-icon-button
+                        color="primary"
+                        (click)="edit(row)"
+                    >
+                        <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+                    </button>
+                    <button
+                        mat-icon-button
+                        color="accent"
+                        (click)="delete(row)"
+                    >
+                        <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

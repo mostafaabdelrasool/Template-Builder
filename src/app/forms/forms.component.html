@@ -16,6 +16,9 @@
         <button mat-icon-button color="primary" (click)="deleteForm(item)">
           <mat-icon>delete</mat-icon>
         </button>
+        <a mat-raised-button [routerLink]="['/builder']" [queryParams]="{id:item.id}"> 
+          <mat-icon>code</mat-icon>
+        </a>
       </mat-card-actions>
     </mat-card>
   </div>

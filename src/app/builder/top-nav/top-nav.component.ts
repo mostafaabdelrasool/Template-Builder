@@ -4,6 +4,8 @@ import { CodePreviewComponent } from '../../code-generator/code-preview/code-pre
 import { Manager_Type } from '../model/manager';
 import { CodeService } from '../share/Render/code-service.service';
 import { AppService } from '../share/Render/app.service';
+import { BuilderService } from '../builder.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-top-nav",
@@ -13,7 +15,8 @@ import { AppService } from '../share/Render/app.service';
 
 export class TopNavComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private codeService: CodeService,public appService:AppService) { }
+  constructor(public dialog: MatDialog, private codeService: CodeService,
+    public appService:AppService,private builderService: BuilderService,private route: ActivatedRoute) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',
@@ -40,5 +43,11 @@ export class TopNavComponent implements OnInit {
   preview(){
    localStorage.setItem('containers',JSON.stringify(this.appService.containers)) 
    window.open(window.location.href.replace('builder','render'),'_blank') 
+  }
+  save(){
+    this.builderService.partialUpdate({id:+this.route.snapshot.queryParams['id'],
+    formSetting:JSON.stringify(this.appService.containers)},["formSetting"]).subscribe(x=>{
+      debugger
+    });
   }
 }

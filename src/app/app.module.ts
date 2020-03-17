@@ -12,6 +12,7 @@ import { SharedService } from './share/shared.service';
 import { PageRendererModule } from './page-renderer/page-renderer.module';
 import { CoreModule } from './core/core.module';
 import { FormModule } from './forms/forms.module';
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { FormModule } from './forms/forms.module';
     RouterModule.forRoot([]),
     PageRendererModule,
     CoreModule,
-    FormModule
+    FormModule,
+    AdminModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

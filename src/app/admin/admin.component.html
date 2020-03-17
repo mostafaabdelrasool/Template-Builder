@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <button matTooltip="Generate Code" (click)="sidebarOpened=!sidebarOpened" mat-icon-button
+    aria-label="Example icon-button with a code icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button matTooltip="Open Style Manager" mat-icon-button aria-label="Example icon-button with a style icon">
+    <mat-icon>style</mat-icon>
+  </button>
+
+</mat-toolbar>
+<div>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <a mat-flat-button [routerLink]="['group']">Groups</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item role="listitem">
+        <a mat-flat-button [routerLink]="['position']">Positions</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angularMaterial/angularMaterial.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EditInPlaceComponent } from './edit-in-place/edit-in-place.component';
+import { ListComponent } from './table/list/list.component';
+import { EditPopupComponent } from './table/editPopup/edit.popup.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import { EditInPlaceComponent } from './edit-in-place/edit-in-place.component';
     AngularMaterialModule,
     FlexLayoutModule,
   ],
-  declarations:[EditInPlaceComponent],
-  exports:[EditInPlaceComponent]
+  declarations: [EditInPlaceComponent, ListComponent,
+    EditPopupComponent],
+  exports: [ListComponent, EditInPlaceComponent],
+  entryComponents: [EditPopupComponent],
 })
 export class SharedModule { }
