@@ -10,6 +10,8 @@ import { ConfigurationModule } from './configuration/configuration.module';
 import { RouterModule } from '@angular/router';
 import { SharedService } from './share/shared.service';
 import { PageRendererModule } from './page-renderer/page-renderer.module';
+import { CoreModule } from './core/core.module';
+import { FormModule } from './forms/forms.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { PageRendererModule } from './page-renderer/page-renderer.module';
     BuilderModule,
     ConfigurationModule,
     RouterModule.forRoot([]),
-    PageRendererModule
+    PageRendererModule,
+    CoreModule,
+    FormModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-<form class="field">
+<form class="field" [appStyle]="field.style">
     <ng-container *ngFor="let item of field.fields">
         <app-fields mwlResizable [enableGhostResize]="true"
             [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (resizeEnd)="onResizeEnd($event,item)"

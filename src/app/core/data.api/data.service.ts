@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  private _url: string;
+  private _controller: string;
+  constructor(public http: HttpClient, controller: string) {
+    this._url = environment.apiUrl;
+    this._controller = controller;
+  }
+  get() {
+    return this.http.get(this._url +  this._controller);
+  }
+  post(data) {
+    return this.http.post(this._url +  this._controller, data);
+  }
+  put(data) {
+    return this.http.put(this._url +  this._controller, data);
+  }
+  delete(id) {
+    return this.http.delete(this._url +  this._controller, { params: { id: id } });
+  }
+  getUrl(url) {
+    return this.http.get(url);
+  }
+}
+

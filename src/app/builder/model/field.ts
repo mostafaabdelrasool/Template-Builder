@@ -72,14 +72,15 @@ export class TabsConatiner {
   tabName: string;
   container: Containers;
 }
-export class FormField extends Fields{
+export class FormField extends Fields {
   fields: Fields[];
 }
 export class TableHeader {
   name: string;
   binding: string;
   isSelected?: Boolean;
-  columnType?: string
+  columnType?: string;
+  actions?: [{ tooltip?: string, onClickCode?: string,actionType?:number, icon?: string }]
 }
 export class SelectField extends Fields {
   dispalyMember: string;

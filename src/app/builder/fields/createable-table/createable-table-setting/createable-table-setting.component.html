@@ -1,4 +1,3 @@
-
 <mat-form-field>
     <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="data.model">
         <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
@@ -23,8 +22,8 @@
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let item of data.header">
+        <tbody *ngFor="let item of data.header">
+            <tr>
                 <td>
                     <mat-form-field>
                         <input matInput placeholder="Name" [(ngModel)]="item.name">
@@ -45,11 +44,63 @@
                             <mat-option value="2">Search</mat-option>
                             <mat-option value="4">Image</mat-option>
                             <mat-option value="5">Number</mat-option>
+                            <mat-option value="6">Action</mat-option>
+                            <mat-option value="7">Checkbox</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </td>
                 <td>
                     <mat-icon (click)="remove(item)">delete</mat-icon>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="6" *ngIf="item.columnType==='6'">
+                    <button mat-raised-button (click)="addAction(item)" color="accent">Add Action</button>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    ToolTip
+                                </th>
+                                <th>
+                                    Icon
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                                <th>
+                                    Delete
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let action of item.actions;">
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Tooltip" [(ngModel)]="action.tooltip">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Icon" [(ngModel)]="action.icon">
+                                    </mat-form-field>
+                                </td>
+                                <td>
+                                    <mat-radio-group aria-label="Select an option" [(ngModel)]="action.actionType">
+                                        <mat-radio-button value="1">Delete Row</mat-radio-button>
+                                        <mat-radio-button value="2">Edit Row</mat-radio-button>
+                                    </mat-radio-group>
+                                    <mat-icon matTooltip="Advanced Action" (click)="openEventDialop(action,item)">code
+                                    </mat-icon>
+                                </td>
+                                <td>
+                                    <mat-icon matTooltip="Delete Action" (click)="deleteAction(action,item)">delete
+                                    </mat-icon>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
             </tr>
         </tbody>

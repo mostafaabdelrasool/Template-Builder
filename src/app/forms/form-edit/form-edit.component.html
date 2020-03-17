@@ -1,0 +1,11 @@
+<form name="form" (ngSubmit)="save()" #formData="ngForm">
+    <mat-form-field>
+        <input required matInput name="name" #name="ngModel" placeholder="Name" [(ngModel)]="form.name">
+        <mat-error *ngIf="name.touched && !name.valid">
+            Please enter form Name
+          </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formData.form.valid">
+        Save
+    </button>
+</form>

@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutGap="5px" style="padding: 5px;">
+  <div>
+    <button mat-raised-button color="primary" (click)="addForm()">Add</button>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="10px">
+    <mat-card *ngFor="let item of forms;" fxFlex="1 1 30%">
+      <mat-card-header>
+        <mat-card-title>{{item.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary" (click)="editForm(item)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" (click)="deleteForm(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>
