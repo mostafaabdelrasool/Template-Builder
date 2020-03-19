@@ -1,0 +1,17 @@
+<form name="login" (ngSubmit)="submit()" #login="ngForm">
+  <mat-form-field>
+      <input required matInput name="name" #name="ngModel" placeholder="UserName" [(ngModel)]="login.userName">
+      <mat-error *ngIf="name.touched && !name.valid">
+          Please enter form Name
+        </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input required matInput type="password" name="password" #password="ngModel" placeholder="Password" [(ngModel)]="login.password">
+    <mat-error *ngIf="password.touched && !password.valid">
+        Please enter form Name
+      </mat-error>
+</mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!login.form.valid">
+      Save
+  </button>
+</form>

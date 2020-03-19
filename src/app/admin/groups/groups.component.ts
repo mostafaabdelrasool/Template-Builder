@@ -16,7 +16,7 @@ export class GroupsComponent extends BaseComponent<Group> implements OnInit {
   tableSetting: TableSetting
   constructor(public dataService: DataService) {
     super("Group", dataService)
-    this.dataService._controller = "api/Form";
+    this.dataService._controller = "api/Group";
   }
 
   ngOnInit() {

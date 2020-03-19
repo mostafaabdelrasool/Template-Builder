@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../share/shared.module';
 import { AdminRoutes } from './admin.routing';
 import { GroupsComponent } from './groups/groups.component';
+import { PositionsComponent } from './positions/positions.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { GroupsComponent } from './groups/groups.component';
     SharedModule,
     AdminRoutes
   ],
-  declarations: [AdminComponent,GroupsComponent]
+  declarations: [AdminComponent,GroupsComponent,PositionsComponent]
 })
 export class AdminModule { }
