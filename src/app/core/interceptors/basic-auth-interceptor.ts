@@ -9,13 +9,15 @@ export class BasicAuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with basic auth credentials if available
-        const currentUser = this.authenticationService.currentUserValue;
-        if (currentUser) {
+        const token = localStorage.getItem('token');
+        if (token) {
             request = request.clone({
                 setHeaders: { 
-                    Authorization: `Basic ${currentUser.token}`
+                    Authorization: `Bearer ${token}`
                 }
             });
+        }else{
+            this.authenticationService.logout();
         }
 
         return next.handle(request);

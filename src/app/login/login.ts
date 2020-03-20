@@ -1,5 +1,5 @@
 export class Login{
-    userName:String;
+    userName:string;
     password:string;
     rememberMe:boolean;
 }

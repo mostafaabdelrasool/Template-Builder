@@ -12,7 +12,7 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -21,7 +21,7 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/Account/Login`, { username, password })
+    return this.http.post<any>(`${environment.apiUrl}api/Account/Login`, { username, password })
       .pipe(map(data => {
         // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
         // data.user.authdata = window.btoa(username + ':' + password);

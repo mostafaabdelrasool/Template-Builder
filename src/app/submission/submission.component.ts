@@ -9,6 +9,7 @@ import { SubmissionService } from './submission.service';
 })
 export class SubmissionComponent implements OnInit {
   submissions: Submission[] = [];
+  search:string;
   constructor(public submissionService: SubmissionService) { }
 
   ngOnInit() {

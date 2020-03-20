@@ -3,6 +3,7 @@ import { Login, LoginResponse } from './login';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AuthenticationService } from '../core/data.api/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,13 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   login: Login
-  constructor(private loginService: LoginService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.login = new Login();
   }
   submit() {
-    this.loginService.login(this.login).subscribe((x: LoginResponse) => {
-      localStorage.setItem('token', x.token)
-      localStorage.setItem('user', x.user)
+    this.authenticationService.login(this.login.userName, this.login.password).subscribe((x: LoginResponse) => {
       this.router.navigate(['/submission']);
     }, x => {
       this.openSnackBar("Wrong User or password", "close")

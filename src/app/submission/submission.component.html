@@ -1,22 +1,33 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Name</th>
-      <th>Step Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of submissions">
-      <td>{{item.number}}</td>
-      <td>{{item.workflowName}}</td>
-      <td>{{item.stepName}}</td>
-      <td>
-        <a mat-raised-button [routerLink]="['/submissionEdit']" [queryParams]="{id:item.id}">
-          <mat-icon>edit</mat-icon>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div fxLayout="column" fxLayoutGap="10px" class="p-1">
+  <div>
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="search">
+      <mat-icon *ngIf="!search" matSuffix>search</mat-icon>
+      <mat-icon matSuffix *ngIf="search" aria-label="Clear" (click)="search=''">close</mat-icon>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Step Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of submissions">
+        <td>{{item.number}}</td>
+        <td>{{item.workflowName}}</td>
+        <td>{{item.stepName}}</td>
+        <td>
+          <a mat-raised-button [routerLink]="['/submissionEdit']" [queryParams]="{id:item.id}">
+            <mat-icon>edit</mat-icon>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
