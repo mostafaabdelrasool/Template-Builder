@@ -1,17 +1,21 @@
-<form name="login" (ngSubmit)="submit()" #login="ngForm">
-  <mat-form-field>
-      <input required matInput name="name" #name="ngModel" placeholder="UserName" [(ngModel)]="login.userName">
-      <mat-error *ngIf="name.touched && !name.valid">
-          Please enter form Name
-        </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input required matInput type="password" name="password" #password="ngModel" placeholder="Password" [(ngModel)]="login.password">
-    <mat-error *ngIf="password.touched && !password.valid">
-        Please enter form Name
+<div  fxLayout="column" fxLayoutAlign="center center" style="height:100vh;">
+  <form name="loginForm" fxLayout="column" (ngSubmit)="submit()" #loginForm="ngForm" style="width: 50vw;">
+    <mat-form-field>
+      <input required matInput name="userName" #userName="ngModel" placeholder="UserName" [(ngModel)]="login.userName">
+      <mat-error *ngIf="userName.touched && !userName.valid">
+        Please enter username
       </mat-error>
-</mat-form-field>
-  <button mat-raised-button color="primary" type="submit" [disabled]="!login.form.valid">
+    </mat-form-field>
+    <mat-form-field>
+      <input required matInput type="password" name="password" #password="ngModel" placeholder="Password"
+        [(ngModel)]="login.password">
+      <mat-error *ngIf="password.touched && !password.valid">
+        Please enter password
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">
       Save
-  </button>
-</form>
+    </button>
+  </form>
+
+</div>

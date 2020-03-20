@@ -13,6 +13,8 @@ import { PageRendererModule } from './page-renderer/page-renderer.module';
 import { CoreModule } from './core/core.module';
 import { FormModule } from './forms/forms.module';
 import { AdminModule } from './admin/admin.module';
+import { LoginModule } from './login/login.module';
+import { SubmissionModule } from './submission/submission.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { AdminModule } from './admin/admin.module';
     PageRendererModule,
     CoreModule,
     FormModule,
-    AdminModule
+    AdminModule,
+    LoginModule,
+    SubmissionModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent],

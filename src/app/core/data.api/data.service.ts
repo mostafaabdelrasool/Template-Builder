@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  private _url: string;
-  public _controller: string;
+   _url: string;
+  _controller: string;
   constructor(public http: HttpClient) {
     this._url = environment.apiUrl;
   }

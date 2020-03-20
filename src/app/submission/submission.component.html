@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>Step Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of submissions">
+      <td>{{item.number}}</td>
+      <td>{{item.workflowName}}</td>
+      <td>{{item.stepName}}</td>
+      <td>
+        <a mat-raised-button [routerLink]="['/submissionEdit']" [queryParams]="{id:item.id}">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -24,6 +24,7 @@ import { CreateableTableRenderComponent } from './field-render/createable-table-
     BuilderModule
   ],
   declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent,CreateableTableRenderComponent],
-  providers:[RenderService]
+  providers:[RenderService],
+  exports:[PageRendererComponent]
 })
 export class PageRendererModule { }
