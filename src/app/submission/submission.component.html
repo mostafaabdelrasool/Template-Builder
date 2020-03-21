@@ -1,3 +1,9 @@
+<mat-toolbar>
+  <button matTooltip="Generate Code" (click)="sidebarOpened=!sidebarOpened" mat-icon-button
+    aria-label="Example icon-button with a code icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
 <div fxLayout="column" fxLayoutGap="10px" class="p-1">
   <div>
     <mat-form-field>
@@ -6,6 +12,11 @@
       <mat-icon *ngIf="!search" matSuffix>search</mat-icon>
       <mat-icon matSuffix *ngIf="search" aria-label="Clear" (click)="search=''">close</mat-icon>
     </mat-form-field>
+    <button matTooltip="Generate Code" (click)="createNew()" mat-raised-button color="primary"
+      aria-label="Example icon-button with a code icon">
+      Create
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
   <mat-divider></mat-divider>
   <table class="table table-striped">
@@ -31,3 +42,15 @@
     </tbody>
   </table>
 </div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
+    <h3>Workflows</h3>
+    <mat-divider></mat-divider>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of workflows;">
+        <a mat-flat-button (click)="getWorkflowSubmissions(item.id)">{{item.name}}</a>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>

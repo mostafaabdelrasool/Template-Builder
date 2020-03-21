@@ -1,0 +1,12 @@
+mat-sidenav-container{  
+    height: 100%;
+  position: absolute;
+  top: 65px;
+  overflow: visible;
+  h3{
+      text-align: center;
+  }
+  mat-sidenav{
+   width: 15vw;
+  }
+}

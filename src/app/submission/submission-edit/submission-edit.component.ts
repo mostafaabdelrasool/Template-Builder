@@ -18,10 +18,12 @@ export class SubmissionEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.submissionService.getById(this.route.snapshot.queryParams['id']).subscribe((x: Submission) => {
-      this.submission = x;
-    });
-    this.submissionService.getForm(this.route.snapshot.queryParams['formId']).subscribe((x: Containers[]) => {
+    if (this.route.snapshot.params['id']) {
+      this.submissionService.getById(this.route.snapshot.params['id']).subscribe((x: Submission) => {
+        this.submission = x;
+      });
+    }
+    this.submissionService.getForm(this.route.snapshot.params['formId']).subscribe((x: Containers[]) => {
       this.containers = x;
     });
   }
