@@ -4,8 +4,8 @@ import { SubmissionEditComponent } from './submission-edit/submission-edit.compo
 
 const routes: Routes = [
   {path: 'submission', component: SubmissionComponent},
-  { path: 'submissione-edit/:id/:workflowId/:formId', component: SubmissionEditComponent },
-  { path: 'submissione-edit/:workflowId/:formId', component: SubmissionEditComponent }
+  { path: 'submissione-edit/:id/:workflowId', component: SubmissionEditComponent },
+  { path: 'submissione-edit/:workflowId', component: SubmissionEditComponent }
 ];
 
 export const SubmissionRoutes = RouterModule.forChild(routes);

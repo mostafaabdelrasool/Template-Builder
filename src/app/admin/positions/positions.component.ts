@@ -4,6 +4,7 @@ import { BaseComponent } from 'src/app/core/base-component';
 import { DataService } from 'src/app/core/data.api/data.service';
 import { Postion } from '../model/positions';
 import { PositionSetting } from '../setting/position.setting';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-positions",
@@ -12,14 +13,16 @@ import { PositionSetting } from '../setting/position.setting';
 })
 
 export class PositionsComponent extends BaseComponent<Postion> implements OnInit {
-  postion: Postion[]=[];
+  position$: Observable<Postion[]>;
   tableSetting: TableSetting
   constructor(public dataService: DataService) {
-    super("Group", dataService)
-    this.dataService._controller = "api/Form";
+    super("Position", dataService)
+    this.dataService._controller = "api/Position";
+    this.position$ = this.dataSubject.asObservable();
   }
 
   ngOnInit() {
     this.tableSetting = PositionSetting.TableSetting;
+    this.load();
   }
 }

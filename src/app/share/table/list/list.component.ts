@@ -16,18 +16,19 @@ export class ListComponent implements OnInit {
   @Input() updateData: Function;
   @Input() tableSetting: TableSetting;
   @Output() onSave: EventEmitter<any>;
- 
-  popupFields: Array<PopupFields>=[];
+
+  popupFields: Array<PopupFields> = [];
   constructor(private editpopupServiceService: EditpopupService,
     private dataService: DataService,
-    private objectUtilityService:ObjectUtilityService) {
+    private objectUtilityService: ObjectUtilityService) {
     this.onSave = new EventEmitter<any>();
   }
   ngOnInit() {
+    this.data = [];
     this.validateTableSettings();
     // this.data.push(this.item) ;
     this.popupFields = this.tableSetting.popupFields;
-      console.log('data =>',  this.data);
+    console.log('data =>', this.data);
   }
 
   private validateTableSettings() {
@@ -39,7 +40,6 @@ export class ListComponent implements OnInit {
     this.editpopupServiceService.openDialog(this.tableSetting.popupFields).subscribe(x => {
       // this.onSave.emit(x);
       if (x) {
-        this.data.push(x);
         if (this.saveData) {
           this.saveData.apply(this, [x]);
         }
@@ -71,9 +71,9 @@ export class ListComponent implements OnInit {
   }
 
   applyFilter(filterValue: string) {
-   
+
   }
-  getData(row,model){
-  return getPathData(row,model)
+  getData(row, model) {
+    return getPathData(row, model)
   }
 }

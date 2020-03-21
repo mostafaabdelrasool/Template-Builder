@@ -1,7 +1,2 @@
-<app-list
-    [data]="groups"
-    [saveData]="save"
-    [tableSetting]="tableSetting"
-    [updateData]='update'
-    [deleteData]='delete'
-></app-list>
+<app-list [data]="groups$ | async" [saveData]="save" [tableSetting]="tableSetting" [updateData]='update' [deleteData]='delete'>
+</app-list>

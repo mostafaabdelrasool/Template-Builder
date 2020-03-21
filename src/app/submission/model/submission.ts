@@ -1,14 +1,15 @@
 export class Submission {
-    CurrentStepId: number;
-    PreviousStepId: number;
-    NextStepId: number;
-    ActorId: number;
-    AssignToGroupId: number;
-    AssignToPositionId: number;
-    ActionId: number;
-    WorkFlowId: number;
-    FormId: number;
-    CreatorId: number;
+    id:string;
+    currentStepId: number;
+    previousStepId: number;
+    nextStepId: number;
+    actorId: number;
+    assignToGroupId: number;
+    assignToPositionId: number;
+    actionId: number;
+    workFlowId: number;
+    formId: number;
+    creatorId: number;
     stepName: string;
     workflowName: string;
     number: string;

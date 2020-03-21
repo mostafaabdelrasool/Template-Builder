@@ -32,6 +32,6 @@ export class SubmissionComponent implements OnInit {
     })
   }
   createNew(){
-    this.router.navigate(['/submissione-edit',this.currentWorkflowId,0])
+    this.router.navigate(['/submissione-edit',this.currentWorkflowId])
   }
 }

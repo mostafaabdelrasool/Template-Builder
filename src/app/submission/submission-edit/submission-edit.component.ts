@@ -21,9 +21,15 @@ export class SubmissionEditComponent implements OnInit {
     if (this.route.snapshot.params['id']) {
       this.submissionService.getById(this.route.snapshot.params['id']).subscribe((x: Submission) => {
         this.submission = x;
+        this.getForm(0,x.formId)
       });
+    }else{
+      this.getForm(this.route.snapshot.params['workflowId'])
     }
-    this.submissionService.getForm(this.route.snapshot.params['formId']).subscribe((x: Containers[]) => {
+
+  }
+  getForm(workflowId=null,formId=null){
+    this.submissionService.getForm(workflowId,formId).subscribe((x: Containers[]) => {
       this.containers = x;
     });
   }
