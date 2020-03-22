@@ -3,6 +3,7 @@ import { SubmissionService } from '../submission.service';
 import { Submission } from '../model/submission';
 import { ActivatedRoute } from '@angular/router';
 import { Containers } from 'src/app/builder/model/containers';
+import { Form } from 'src/app/forms/model/forms';
 
 @Component({
   selector: "app-submission-edit",
@@ -12,7 +13,8 @@ import { Containers } from 'src/app/builder/model/containers';
 
 export class SubmissionEditComponent implements OnInit {
   submission: Submission;
-  containers: Containers[];
+  form: Form;
+  containers:Containers[];
   constructor(public submissionService: SubmissionService, private route: ActivatedRoute) {
 
   }
@@ -29,8 +31,10 @@ export class SubmissionEditComponent implements OnInit {
 
   }
   getForm(workflowId=null,formId=null){
-    this.submissionService.getForm(workflowId,formId).subscribe((x: Containers[]) => {
-      this.containers = x;
+    this.submissionService.getForm(workflowId,formId).subscribe((x: Form) => {
+      this.form = x;
+      if(x.formSetting)
+      this.containers=JSON.parse(x.formSetting)
     });
   }
 }

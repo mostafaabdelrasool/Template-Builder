@@ -27,7 +27,7 @@ import { SubmissionModule } from './submission/submission.module';
     CodeGeneratorModule,
     BuilderModule,
     ConfigurationModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([],{useHash:true}),
     PageRendererModule,
     CoreModule,
     FormModule,

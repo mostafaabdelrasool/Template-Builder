@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Containers } from '../builder/model/containers';
 import { SharedService } from '../share/shared.service';
 import { RenderService } from './render.service';
@@ -9,7 +9,7 @@ import { RenderService } from './render.service';
   styleUrls: ['./page-renderer.component.scss']
 })
 export class PageRendererComponent implements OnInit {
-  containers: Containers[];
+  @Input()containers: Containers[];
   constructor(public sharedService: SharedService, public renderService: RenderService) {
   }
 
@@ -18,7 +18,10 @@ export class PageRendererComponent implements OnInit {
     this.renderService.initData(this.sharedService.instanceName)
   }
   getSetting() {
-    this.containers = JSON.parse(localStorage.getItem("containers"));
+    //in case of preview
+    if (!this.containers) {
+      this.containers = JSON.parse(localStorage.getItem("containers"));
+    }
   }
 
 }
