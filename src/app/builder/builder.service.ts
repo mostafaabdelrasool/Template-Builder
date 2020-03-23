@@ -9,7 +9,6 @@ export class BuilderService  extends DataService{
 
   constructor(http: HttpClient) {
     super(http)
-    this._controller="api/Form";
   }
 
 }

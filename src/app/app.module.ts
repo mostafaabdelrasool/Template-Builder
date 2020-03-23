@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { SharedService } from './share/shared.service';
 import { PageRendererModule } from './page-renderer/page-renderer.module';
 import { CoreModule } from './core/core.module';
-import { FormModule } from './forms/forms.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
 import { SubmissionModule } from './submission/submission.module';
@@ -30,7 +29,6 @@ import { SubmissionModule } from './submission/submission.module';
     RouterModule.forRoot([],{useHash:true}),
     PageRendererModule,
     CoreModule,
-    FormModule,
     AdminModule,
     LoginModule,
     SubmissionModule

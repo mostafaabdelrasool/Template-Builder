@@ -3,7 +3,7 @@ import { SubmissionService } from '../submission.service';
 import { Submission } from '../model/submission';
 import { ActivatedRoute } from '@angular/router';
 import { Containers } from 'src/app/builder/model/containers';
-import { Form } from 'src/app/forms/model/forms';
+import { Form } from 'src/app/admin/model/forms';
 
 @Component({
   selector: "app-submission-edit",

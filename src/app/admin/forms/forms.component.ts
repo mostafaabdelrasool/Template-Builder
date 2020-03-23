@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Form } from './model/forms';
+import { Form } from '../model/forms';
 import { FormService } from './form.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';

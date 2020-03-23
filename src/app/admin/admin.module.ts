@@ -8,6 +8,8 @@ import { SharedModule } from '../share/shared.module';
 import { AdminRoutes } from './admin.routing';
 import { GroupsComponent } from './groups/groups.component';
 import { PositionsComponent } from './positions/positions.component';
+import { FormEditComponent } from './forms/form-edit/form-edit.component';
+import { FormsComponent } from './forms/forms.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,7 @@ import { PositionsComponent } from './positions/positions.component';
     SharedModule,
     AdminRoutes
   ],
-  declarations: [AdminComponent,GroupsComponent,PositionsComponent]
+  declarations: [AdminComponent,GroupsComponent,PositionsComponent,FormsComponent,FormEditComponent],
+  entryComponents:[FormEditComponent]
 })
 export class AdminModule { }
