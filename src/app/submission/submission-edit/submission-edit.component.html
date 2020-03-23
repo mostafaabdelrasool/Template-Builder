@@ -1,3 +1,15 @@
-<div>
-    <app-page-renderer [containers]=containers></app-page-renderer>
+<div class="p-1">
+    <mat-toolbar>
+        <h3>{{step.name}}</h3>
+    </mat-toolbar>
+    <mat-dialog-content>
+        <app-page-renderer [containers]=containers></app-page-renderer>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div *ngFor="let item of step.stepActions;">
+            <button (click)="submit()" mat-raised-button color="primary">
+                {{item.actions.name}}
+            </button>
+        </div>
+    </mat-dialog-actions>
 </div>
