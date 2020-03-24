@@ -11,8 +11,8 @@ export class SubmissionService extends DataService {
     super(http);
     this._controller = "api/Submission"
   }
-  getSubmissions(workflowId) {
-    return this.http.get(this._url + this._controller + "/GetSubmissions", { params: { workflowId: workflowId } })
+  getSubmissions() {
+    return this.http.get(this._url + this._controller + "/GetSubmissions")
   }
   getForm(workflowId,formId) {
     let params = {  }
@@ -26,5 +26,8 @@ export class SubmissionService extends DataService {
   }
   getUserWorkflows() {
     return this.http.get(this._url + "api/Workflow/GetUserWorkflows");
+  }
+  submit(submission){
+    return this.http.post(this._url + this._controller+"/Submit", submission);
   }
 }

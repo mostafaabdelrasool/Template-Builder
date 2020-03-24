@@ -58,9 +58,12 @@ export class FieldRenderComponent implements OnInit {
     return Function('"use strict";return (' + code + ')')();
 }
   calculateComplexValue() {
-    const caclc = (<InputField>this.field).complexValueCalculation;
+    const calc = (<InputField>this.field).complexValueCalculation;
+    if (!calc) {
+      return
+    }
     let equation = [];
-    caclc.equation.forEach(x => {
+    calc.equation.forEach(x => {
       if (x.fieldModel) {
         const val = this.getFieldValue(x.fieldModel);
         equation.push(val || 0)
@@ -69,7 +72,7 @@ export class FieldRenderComponent implements OnInit {
       }
     })
     const result = eval(equation.join(''));
-    setPathData(this.renderService.data, caclc.resultModel, result);
+    setPathData(this.renderService.data, calc.resultModel, result);
   }
   getSelectedData(value,valueMemeberName){
     const selectField = (<SelectField>this.field)

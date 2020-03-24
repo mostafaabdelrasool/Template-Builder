@@ -19,19 +19,18 @@ export class SubmissionComponent implements OnInit {
 
   ngOnInit() {
     this.submissionService.getUserWorkflows().subscribe((x: workflow[]) => {
-      this.workflows = x;
-      if (x.length>0) {
-        this.getWorkflowSubmissions(x[0].id)
+      if (x) {
+        this.workflows = x;
       }
     })
+    this.getWorkflowSubmissions()
   }
-  getWorkflowSubmissions(workflowId) {
-    this.currentWorkflowId=workflowId;
-    this.submissionService.getSubmissions(workflowId).subscribe((x: Submission[]) => {
+  getWorkflowSubmissions() {
+    this.submissionService.getSubmissions().subscribe((x: Submission[]) => {
       this.submissions = x;
     })
   }
   createNew(){
-    this.router.navigate(['/submissione-edit',this.currentWorkflowId])
+    this.router.navigate(['/submission-edit',this.currentWorkflowId])
   }
 }

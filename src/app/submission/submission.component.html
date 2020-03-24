@@ -34,7 +34,7 @@
         <td>{{item.workflowName}}</td>
         <td>{{item.stepName}}</td>
         <td>
-          <a mat-raised-button [routerLink]="['/submissionEdit']" [queryParams]="{id:item.id}">
+          <a mat-raised-button [routerLink]="['/submission-edit',item.id,item.workFlowId]">
             <mat-icon>edit</mat-icon>
           </a>
         </td>

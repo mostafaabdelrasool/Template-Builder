@@ -6,7 +6,7 @@ export class SubmissionStep{
     formSetting?:string;
     stepName :string;
     workflowsId :number;
-    stepId :number;
+    currentStepId :number;
     nextStepId :number;
     stepActions?:StepActions[]
 }
