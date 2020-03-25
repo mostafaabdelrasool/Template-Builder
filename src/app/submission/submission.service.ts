@@ -14,13 +14,13 @@ export class SubmissionService extends DataService {
   getSubmissions() {
     return this.http.get(this._url + this._controller + "/GetSubmissions")
   }
-  getForm(workflowId,formId) {
+  getForm(workflowId,stepId) {
     let params = {  }
     if (workflowId) {
       params['workflowId']=workflowId
     }
-    if (formId) {
-      params['formId']=formId
+    if (stepId) {
+      params['stepId']=stepId
     }
     return this.http.get(this._url + this._controller + "/GetSubmissionForm", {params:params });
   }

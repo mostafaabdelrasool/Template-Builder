@@ -1,7 +1,7 @@
 mat-sidenav-container{  
     height: 100%;
   position: absolute;
-  top: 65px;
+  top: 128px;
   overflow: visible;
   h3{
       text-align: center;
@@ -9,4 +9,12 @@ mat-sidenav-container{
   mat-sidenav{
    width: 15vw;
   }
+
+}
+mat-toolbar{
+  background-color: #979797;
+    color: white;
+    mat-form-field{
+      font-size: 13px;
+    }
 }

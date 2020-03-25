@@ -8,7 +8,8 @@ import { DataService } from '../core/data.api/data.service';
 export class BuilderService  extends DataService{
 
   constructor(http: HttpClient) {
-    super(http)
+    super(http);
+    this._controller = "api/Form"
   }
 
 }

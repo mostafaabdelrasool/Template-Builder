@@ -1,11 +1,8 @@
 <mat-toolbar>
-  <button matTooltip="Generate Code" (click)="sidebarOpened=!sidebarOpened" mat-icon-button
-    aria-label="Example icon-button with a code icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-</mat-toolbar>
-<div fxLayout="column" fxLayoutGap="10px" class="p-1">
-  <div>
+    <button matTooltip="Generate Code" (click)="sidebarOpened=!sidebarOpened" mat-icon-button
+      aria-label="Example icon-button with a code icon">
+      <mat-icon>menu</mat-icon>
+    </button>
     <mat-form-field>
       <mat-label>Search</mat-label>
       <input matInput [(ngModel)]="search">
@@ -17,31 +14,29 @@
       Create
       <mat-icon>add</mat-icon>
     </button>
-  </div>
-  <mat-divider></mat-divider>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Number</th>
-        <th>Name</th>
-        <th>Step Name</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of submissions">
-        <td>{{item.number}}</td>
-        <td>{{item.workflowName}}</td>
-        <td>{{item.stepName}}</td>
-        <td>
-          <a mat-raised-button [routerLink]="['/submission-edit',item.id,item.workFlowId]">
-            <mat-icon>edit</mat-icon>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</mat-toolbar>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>Step Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of submissions">
+      <td>{{item.number}}</td>
+      <td>{{item.workflowName}}</td>
+      <td>{{item.stepName}}</td>
+      <td>
+        <a mat-raised-button [routerLink]="['/submission-edit',item.id,item.workFlowId]">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
     <h3>Workflows</h3>

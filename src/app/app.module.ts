@@ -14,11 +14,13 @@ import { CoreModule } from './core/core.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
 import { SubmissionModule } from './submission/submission.module';
+import { AngularMaterialModule } from './angularMaterial/angularMaterial.module';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
+    AngularMaterialModule,
     BrowserModule,
     BrowserAnimationsModule,
     ResizableModule,

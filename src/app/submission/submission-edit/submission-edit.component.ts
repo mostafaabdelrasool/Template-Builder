@@ -25,15 +25,18 @@ export class SubmissionEditComponent implements OnInit {
     if (this.route.snapshot.params['id']) {
       this.submissionService.getById(this.route.snapshot.params['id']).subscribe((x: Submission) => {
         this.submission = x;
-        this.getForm(0, x.formId)
+        this.getForm(0, x.currentStepId);
+        if (this.submission.data) {
+          this.renderService.data=JSON.parse(this.submission.data);
+        }
       });
     } else {
       this.getForm(this.route.snapshot.params['workflowId'])
     }
     this.step.stepActions = [];
   }
-  getForm(workflowId = null, formId = null) {
-    this.submissionService.getForm(workflowId, formId).subscribe((x: SubmissionStep) => {
+  getForm(workflowId = null, stepId = null) {
+    this.submissionService.getForm(workflowId, stepId).subscribe((x: SubmissionStep) => {
       this.step = x;
       if (x.formSetting)
         this.containers = JSON.parse(x.formSetting)
@@ -42,16 +45,15 @@ export class SubmissionEditComponent implements OnInit {
   submit(actionId) {
     this.submission.data=JSON.stringify(this.renderService.data);
     if (!this.route.snapshot.params['id']) {
-      this.submission = {...this.submission,
-       actionId: actionId, 
-       workFlowId: +this.route.snapshot.params['workflowId'],
-       currentStepId:this.step.currentStepId,formId:this.step.formId,
-       nextStepId:this.step.nextStepId
-     }
+      this.submission.workFlowId= +this.route.snapshot.params['workflowId'];
+      this.submission.currentStepId=this.step.currentStepId;
+      this.submission.formId=this.step.formId;
+      this.submission.nextStepId=this.step.nextStepId;
     }
+    this.submission.actionId=actionId;
     this.submissionService.submit(this.submission).subscribe((x: SubmissionStep) => {
-      this.router.navigate(['submission']);
       this.renderService.data={};
+      this.router.navigate(['submission']);
     });
   }
 }

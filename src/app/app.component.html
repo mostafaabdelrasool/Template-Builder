@@ -1,3 +1,14 @@
+<mat-toolbar>
+    <mat-menu #appMenu="matMenu">
+        <button  (click)="authenticationService.logout()" mat-menu-item>
+            logout
+        </button>
+        <button mat-menu-item>Help</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>face</mat-icon>
+    </button>
+</mat-toolbar>
 <div [@routeAnimations]="getRouterOutletState(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
 </div>

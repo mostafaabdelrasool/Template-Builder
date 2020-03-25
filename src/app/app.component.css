@@ -68,3 +68,10 @@ table {
     }
     
     }
+    .mat-toolbar{
+      background-color: #131212;
+      color: white;
+    }
+    mat-form-field{
+      margin: 5px;
+  }

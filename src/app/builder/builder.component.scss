@@ -62,8 +62,8 @@
 app-fields{
   display: inline-block;
 }
-.full-width{
-  width: 100%;
+mat-form-field{
+  margin: 5px;
 }
 app-fields,app-child-container{
   position: relative;
