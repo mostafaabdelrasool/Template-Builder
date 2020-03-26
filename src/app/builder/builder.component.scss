@@ -115,3 +115,14 @@ $table-hover-bg:rgba(0,0,0,.075);
     }
   }
 }
+mat-sidenav-container{  
+  height: 100%;
+  position: absolute !important;
+  top: 108px;
+  overflow: visible !important;
+
+mat-sidenav{
+ width: 15vw;
+}
+
+}

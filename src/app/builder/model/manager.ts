@@ -1,3 +1,3 @@
 export enum Manager_Type{
-    CONTROLS,STYLES,NONE=''
+    CONTROLS,STYLES,NONE
 }

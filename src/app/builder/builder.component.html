@@ -1,19 +1,13 @@
 <app-top-nav></app-top-nav>
 <div fxLayout="row">
+  <div [ngClass]="{'showsidebar':  appService.openFieldTypes}" class="sidebar">
+    <app-field-types></app-field-types>
+  </div>
   <div class="boundary">
     <app-containers></app-containers>
     <app-data-source></app-data-source>
   </div>
-
-  <div [ngClass]="{'showsidebar': appService.sidebarOpened}" class="sidebar">
-    <div [ngSwitch]="appService.currentManager">
-      <div *ngSwitchCase="1">
-        <app-properties *ngIf="appService.currentField" [currentField]=appService.currentField></app-properties>
-      </div>
-      <div *ngSwitchCase="0">
-        <app-field-types></app-field-types>
-      </div>
-      <div *ngSwitchDefault>output2</div>
-    </div>
+  <div [ngClass]="{'showsidebar':  appService.openProperties}" class="sidebar">
+    <app-properties *ngIf="appService.currentField" [currentField]=appService.currentField></app-properties>
   </div>
 </div>

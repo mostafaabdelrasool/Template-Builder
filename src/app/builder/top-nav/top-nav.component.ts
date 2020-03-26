@@ -31,13 +31,13 @@ export class TopNavComponent implements OnInit {
   ngOnInit() {
 
   }
-  OpenManager(managerName: Manager_Type) {
-    if (this.appService.currentManager === managerName) {
-      this.appService.sidebarOpened = !this.appService.sidebarOpened;
+  OpenManager(type) {
+    if (type===1) {
+      this.appService.openFieldTypes=!this.appService.openFieldTypes;
     } else {
-      this.appService.sidebarOpened = true;
+      this.appService.openProperties=!this.appService.openProperties;
+      
     }
-    this.appService.currentManager = managerName;
 
   }
   preview(){

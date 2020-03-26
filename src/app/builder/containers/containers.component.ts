@@ -27,10 +27,9 @@ export class ContainersComponent implements OnInit {
       return;
     }
     container.isSelected = true;
-    this.appService.sidebarOpened = true;
     //if drop item don't open the manager
     if (!selectItemOnly) {
-      this.appService.currentManager = Manager_Type.STYLES;
+      this.appService.openProperties = true;
     }
     this.appService.currentField = undefined;
     setTimeout(() => {

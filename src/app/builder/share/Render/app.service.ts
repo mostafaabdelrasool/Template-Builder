@@ -13,8 +13,8 @@ import { Style } from '../../model/style';
 export class AppService {
   containers: Containers[];
   currentField: Fields;
-  sidebarOpened: boolean = false;
-  currentManager = Manager_Type.NONE;
+  openFieldTypes=false;
+  openProperties=false;
   currentContainer: Containers;
   containerStyle: Style;
   dataSources: FieldDataSource[] = [];
@@ -50,8 +50,7 @@ export class AppService {
       return;
     }
     field.isSelected = true;
-    this.sidebarOpened = true;
-    this.currentManager = Manager_Type.STYLES;
+    this.openProperties = true;
     this.currentField = undefined;
     // this.selectFieldContainer(field);
     setTimeout(() => {
