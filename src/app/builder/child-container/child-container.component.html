@@ -5,7 +5,15 @@
             [appStyle]="field.style" id="{{field.id}}" (click)="appService.selectField(field)"
             [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
             (drop)='onDrop($event);'>
-            <app-fields [field]="field"></app-fields>
+            <app-fields  [field]="field" *ngIf="!field.isContainer"></app-fields>
+            <app-child-container mwlResizable [enableGhostResize]="true"
+            [resizeEdges]="{ bottom: true, right: true, top: true, left: true }"
+            (resizeEnd)="onResizeEnd($event,field)" class="field full-width child-container"
+            [ngClass]="{'field-selected':field.id===appService.currentField?.id}"
+            [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="field.isContainer"
+            [container]="field" (click)="appService.selectField(field)" draggable="true"
+            (dragstart)="startReposition($event,field)" (dragover)='onDragOver($event,field);'>
+        </app-child-container>
         </div>
     </ng-container>
     <app-tab-field *ngSwitchCase="26" [field]="container"></app-tab-field>

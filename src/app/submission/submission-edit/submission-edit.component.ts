@@ -22,6 +22,7 @@ export class SubmissionEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.renderService.data={};
     if (this.route.snapshot.params['id']) {
       this.submissionService.getById(this.route.snapshot.params['id']).subscribe((x: Submission) => {
         this.submission = x;
