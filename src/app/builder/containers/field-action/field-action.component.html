@@ -1,9 +1,9 @@
 <div fxLayout class="field-action" >
-    <button   matTooltip="Copy" mat-icon-button (click)=handleFieldAction(1,field)>
+    <button   matTooltip="Copy" mat-icon-button (click)=handleFieldAction(2,field)>
         <mat-icon >file_copy</mat-icon>
     </button>
-    <button  matTooltip="Delete" mat-icon-button (click)=handleFieldAction(2,field)>
-        <mat-icon (click)=handleFieldAction($event,field) >delete</mat-icon>
+    <button  matTooltip="Delete" mat-icon-button (click)=handleFieldAction(1,field)>
+        <mat-icon>delete</mat-icon>
     </button>
     <button  matTooltip="Select Parent" mat-icon-button (click)=handleFieldAction(3,field)>
         <mat-icon >keyboard_arrow_up</mat-icon>

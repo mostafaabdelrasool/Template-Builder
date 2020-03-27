@@ -75,7 +75,16 @@ export class AppService {
     const newField = JSON.parse(JSON.stringify(field));
     newField.id = Date.now().toString();
     this.currentField = { ...newField };
-    this.currentContainer.fields.splice(index, 0, newField);
+    let container = this.allContainers.find(x => x.id === field.containerId)
+    if (container) {
+      container.fields.splice(index, 0, newField);
+    } else {
+      //parent is root container
+      this.containers[0].fields.splice(index, 0, newField);
+    }
+    if (field.isContainer) {
+      this.allContainers.push(newField);
+    }
     this.allFields.push(newField);
   }
   deleteField(field: Fields, index: number) {
@@ -84,9 +93,9 @@ export class AppService {
     let parentContainer = this.allContainers.find(x => x.id === field.containerId);
     if (parentContainer) {
       parentContainer.fields.splice(index, 1);
-    }else{
+    } else {
       //root container
-      this.containers[0].fields.splice(index,1);
+      this.containers[0].fields.splice(index, 1);
     }
   }
 }

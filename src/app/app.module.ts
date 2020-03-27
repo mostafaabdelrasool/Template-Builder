@@ -15,6 +15,7 @@ import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
 import { SubmissionModule } from './submission/submission.module';
 import { AngularMaterialModule } from './angularMaterial/angularMaterial.module';
+import { UndoRedoService } from './share/undo-redo/undo-redo.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,7 @@ import { AngularMaterialModule } from './angularMaterial/angularMaterial.module'
     LoginModule,
     SubmissionModule
   ],
-  providers: [SharedService],
+  providers: [SharedService,UndoRedoService],
   bootstrap: [AppComponent],
  
 })
