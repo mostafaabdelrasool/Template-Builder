@@ -136,9 +136,13 @@ THE SOFTWARE.
 
 @angular/material/list
 
+@angular/material/menu
+
 @angular/material/radio
 
 @angular/material/select
+
+@angular/material/sidenav
 
 @angular/material/slider
 
