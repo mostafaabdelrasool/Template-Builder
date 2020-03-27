@@ -1,9 +1,10 @@
 <ng-container [ngSwitch]="container.type">
     <ng-container *ngSwitchCase="13">
-        <div class="field" style="display: inline-block;" *ngFor="let field of container.fields"
-            [appStyle]="field.style">
-            <app-field-render [field]="field" [appStyle]="field.style"></app-field-render>
-        </div>
+        <ng-container *ngFor="let field of container.fields">
+            <app-field-render *ngIf="!field.isContainer" [field]="field" [appStyle]="field.style" [appStyle]="field.style"></app-field-render>
+            <app-child-container-render *ngIf="field.isContainer"[container]="field" [appStyle]="field.style" [styleField]="field" >
+            </app-child-container-render>
+        </ng-container>
     </ng-container>
     <ng-container *ngSwitchCase="26">
         <mat-tab-group>

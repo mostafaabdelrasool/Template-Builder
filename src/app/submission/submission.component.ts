@@ -26,10 +26,10 @@ export class SubmissionComponent implements OnInit {
         this.currentWorkflowId= x[0].id;
       }
     })
-    this.getWorkflowSubmissions()
+    this.getWorkflowSubmissions(this.currentWorkflowId)
   }
-  getWorkflowSubmissions() {
-    this.submissionService.getSubmissions().subscribe((x: Submission[]) => {
+  getWorkflowSubmissions(workflowId) {
+    this.submissionService.getSubmissions(workflowId).subscribe((x: Submission[]) => {
       this.submissions = x;
     })
   }

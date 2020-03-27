@@ -71,12 +71,10 @@ app-child-container{
 }
 app-fields{
   display: inline-block;
+  margin: 5px;
   mat-form-field{
     width: 98%;
   }
-}
-mat-form-field{
-  margin: 5px;
 }
 app-fields,app-child-container{
   position: relative;

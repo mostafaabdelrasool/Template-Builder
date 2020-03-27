@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Containers } from '../builder/model/containers';
 import { SharedService } from '../share/shared.service';
 import { RenderService } from './render.service';
@@ -6,7 +6,8 @@ import { RenderService } from './render.service';
 @Component({
   selector: 'app-page-renderer',
   templateUrl: './page-renderer.component.html',
-  styleUrls: ['./page-renderer.component.scss']
+  styleUrls: ['./page-renderer.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class PageRendererComponent implements OnInit {
   @Input()containers: Containers[];
