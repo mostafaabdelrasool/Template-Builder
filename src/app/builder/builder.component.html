@@ -8,6 +8,6 @@
     <app-data-source></app-data-source>
   </div>
   <div [ngClass]="{'showsidebar':  appService.openProperties}" class="sidebar">
-    <app-properties *ngIf="appService.currentField" [currentField]=appService.currentField></app-properties>
+    <app-properties *ngIf="appService.currentField"></app-properties>
   </div>
 </div>

@@ -4,11 +4,11 @@
         <ng-container  *ngFor="let field of container.fields">
             <ng-container *ngIf="!field.isContainer">
                 <app-fields  mwlResizable [enableGhostResize]="true"
-                [resizeEdges]="{ bottom: true, right: true, top: true, left: true }"
+                [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" 
                 (resizeEnd)="onResizeEnd($event,field)"  [field]="field" [appStyle]="field.style" id="{{field.id}}" (click)="appService.selectField(field)"
                 [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'></app-fields>
             </ng-container>
-            <app-child-container mwlResizable [enableGhostResize]="true"
+            <app-child-container mwlResizable [enableGhostResize]="true" id="{{field.id}}"
             [resizeEdges]="{ bottom: true, right: true, top: true, left: true }"
             (resizeEnd)="onResizeEnd($event,field)" class="child-container"
             [ngClass]="{'field-selected':field.id===appService.currentField?.id}"

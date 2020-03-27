@@ -35,16 +35,16 @@
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <mat-form-field fxFlex="45%">
-                    <input matInput type="number" placeholder="Min" [(ngModel)]="currentField['min']">
+                    <input matInput  placeholder="Min" [(ngModel)]="currentField['min']">
                 </mat-form-field>
                 <mat-form-field fxFlex="45%">
-                    <input matInput type="number" placeholder="Max" [(ngModel)]="currentField['max']">
+                    <input matInput  placeholder="Max" [(ngModel)]="currentField['max']">
                 </mat-form-field>
                 <mat-form-field fxFlex="45%">
-                    <input matInput type="number" placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
+                    <input matInput  placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
                 </mat-form-field>
                 <mat-form-field fxFlex="45%">
-                    <input matInput type="number" placeholder="Min Length" [(ngModel)]="currentField['minLength']">
+                    <input matInput  placeholder="Min Length" [(ngModel)]="currentField['minLength']">
                 </mat-form-field>
                 <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
                     <mat-form-field fxFlex="45%">

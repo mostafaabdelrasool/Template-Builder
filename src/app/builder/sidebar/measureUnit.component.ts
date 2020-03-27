@@ -12,7 +12,7 @@ export class MeasureUnitComponent implements OnInit {
   constructor() {
 
   }
-  value: string;
+  value: string="";
   unit: string;
   setMeasureUnit(event) {
     const model = this.value + event.target.value;

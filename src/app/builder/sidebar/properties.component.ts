@@ -13,7 +13,7 @@ import { StyleToCssComponent } from './style--to-css/style--to-css.component';
   styleUrls: ['./properties.component.scss'],
 })
 export class PropertiesComponent implements OnInit {
-  @Input() currentField: Fields;
+  currentField: Fields;
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
   modelProps: string[];
@@ -23,6 +23,7 @@ export class PropertiesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.currentField=this.appService.currentField;
     this.currentField.classes = this.currentField.classes || [];
     if (this.sharedService.model) {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
