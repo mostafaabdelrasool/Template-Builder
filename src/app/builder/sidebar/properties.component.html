@@ -15,14 +15,14 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput placeholder="Id" [(ngModel)]="currentField.id">
                 </mat-form-field>
 
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput placeholder="Name" [(ngModel)]="currentField.name">
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
                 </mat-form-field>
             </div>
@@ -34,26 +34,26 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput type="number" placeholder="Min" [(ngModel)]="currentField['min']">
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput type="number" placeholder="Max" [(ngModel)]="currentField['max']">
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput type="number" placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput type="number" placeholder="Min Length" [(ngModel)]="currentField['minLength']">
                 </mat-form-field>
                 <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
-                    <mat-form-field fxFlex="1 1 49%">
+                    <mat-form-field fxFlex="45%">
                         <input readonly="true" [(ngModel)]="currentField['startDate']" matInput [matDatepicker]="z"
                             placeholder="Start Date">
                         <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
                         <mat-datepicker #z startView="month"></mat-datepicker>
                     </mat-form-field>
-                    <mat-form-field fxFlex="1 1 49%">
+                    <mat-form-field fxFlex="45%">
                         <input readonly="true" [(ngModel)]="currentField['endData']" matInput [matDatepicker]="x"
                             placeholder="End Date">
                         <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
@@ -75,7 +75,7 @@
                 </mat-form-field>
                 <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center"
                     fxFlex="1 1 100%">
-                    <mat-form-field fxFlex="1 1 49%">
+                    <mat-form-field fxFlex="45%">
                         <mat-label>Display Member</mat-label>
                         <mat-select [(ngModel)]="currentField['dispalyMember']">
                             <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
@@ -83,7 +83,7 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field fxFlex="1 1 49%">
+                    <mat-form-field fxFlex="45%">
                         <mat-label>Value Member</mat-label>
                         <mat-select [(ngModel)]="currentField['valueMember']">
                             <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
@@ -110,7 +110,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <mat-select placeholder="Display" (selectionChange)="appService.filedValueChanged()"
                         [(value)]="currentField.style.display">
                         <mat-option value="none">
@@ -130,7 +130,7 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <mat-select placeholder="Position" (selectionChange)="appService.filedValueChanged()"
                         [(value)]="currentField.style.position">
                         <mat-option value="absolute">
@@ -183,7 +183,7 @@
                 <app-measureUnit
                     [item]="{name:'Thickness',model:'borderWidth',modelValue:currentField.style.borderWidth}"
                     (valueUpdated)="updateStyle($event,'borderWidth')"></app-measureUnit>
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <mat-select placeholder="Type" (selectionChange)="appService.filedValueChanged()"
                         [(ngModel)]="currentField.style.borderStyle">
                         <mat-option value="solid">solid</mat-option>
@@ -329,11 +329,11 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput placeholder="Title" [(ngModel)]="currentField['cardTitle']">
                 </mat-form-field>
 
-                <mat-form-field fxFlex="1 1 49%">
+                <mat-form-field fxFlex="45%">
                     <input matInput placeholder="Sub-title" [(ngModel)]="currentField['cardSubTitle']">
                 </mat-form-field>
             </div>
@@ -345,7 +345,7 @@
                         <mat-icon>add</mat-icon>
                     </button>
                 </div>
-                <div *ngFor="let action of currentField['cardActions']" fxFlex="1 1 49%">
+                <div *ngFor="let action of currentField['cardActions']" fxFlex="45%">
                     <mat-form-field>
                         <input matInput placeholder="action Name" [(ngModel)]="action.title">
                     </mat-form-field>
@@ -366,7 +366,7 @@
                     FxFlex Setting
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <app-flex-setting [currentField]="currentField"></app-flex-setting>
+            <app-flex-setting  [currentField]="currentField"></app-flex-setting>
         </mat-expansion-panel>
     </mat-accordion>
 </fieldset>

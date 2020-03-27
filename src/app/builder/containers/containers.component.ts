@@ -35,7 +35,7 @@ export class ContainersComponent implements OnInit {
     setTimeout(() => {
       this.appService.currentField = container;
       this.appService.currentContainer = container;
-    }, 300);
+    });
     event.stopPropagation();
   }
   startReposition(event, field: Fields) {
@@ -94,6 +94,8 @@ export class ContainersComponent implements OnInit {
       //because here we add field so fields prop. note exist in type field
       field["fields"] = [];
       field.isContainer = true;
+     [field.style.paddingBottom,field.style.paddingLeft,field.style.paddingRight,field.style.paddingTop,field.style.width] =['5px','5px','5px','5px','99%'];
+      this.appService.allContainers.push(<Containers>field);
     }
     if (field.type === FieldType.TABLE) {
       field.fullWidth = true

@@ -9,6 +9,6 @@
         <mat-icon>face</mat-icon>
     </button>
 </mat-toolbar>
-<div [@routeAnimations]="getRouterOutletState(outlet)">
+<div [@routeAnimations]="getRouterOutletState(outlet)" style="height: 100%;">
     <router-outlet #outlet="outlet"></router-outlet>
 </div>

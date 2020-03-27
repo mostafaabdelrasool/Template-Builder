@@ -1,6 +1,9 @@
 <mat-form-field>
     <input matInput type="number" (change)=propertyChangeHandle($event) name="item.name" placeholder="{{item.name}}"
         [value]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+        <mat-icon>close</mat-icon>
+    </button>
 </mat-form-field>
 <select (change)=setMeasureUnit($event) [value]="unit">
     <option value="px">px</option>
@@ -8,6 +11,3 @@
     <option value="vh">vh</option>
     <option value="%">%</option>
 </select>
-<button mat-icon-button  (click)="clear()" aria-label="Example icon-button with a close icon">
-    <mat-icon>close</mat-icon>
-</button>

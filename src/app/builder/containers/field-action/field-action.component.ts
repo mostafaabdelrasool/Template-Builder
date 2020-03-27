@@ -32,6 +32,9 @@ export class FieldActionComponent implements OnInit {
       case 'functions':
         this.openComplexValueSetting();
         break;
+        case 'keyboard_arrow_up':
+          this.selectParentContainr(field);
+          break;
       default:
         break;
     }
@@ -42,5 +45,15 @@ export class FieldActionComponent implements OnInit {
   openComplexValueSetting() {
     let setting = { width: '40vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(ComplexValueComponent, setting);
+  }
+  selectParentContainr(field:Fields){
+    const parent =this.appService.allContainers.find(x=>x.id===field.containerId);
+    if (parent) {
+      this.appService.selectField(parent);
+    }else{
+      //root container
+      this.appService.selectField(this.appService.containers[0]);
+    }
+   
   }
 }

@@ -1,5 +1,5 @@
 .sidebar{
-    width: 20vw;
+    width: 24vw;
     display: none;
     transition: all .5s linear;
     opacity: 0;
@@ -28,7 +28,7 @@
       opacity: 1;
   }
   .boundary{
-    height: auto; width: 100%;min-height: 90vh;
+    height: auto; width: 100%
   }
   .item-selected{
     border: 2px dashed #00c4ff !important;
@@ -55,12 +55,25 @@
     min-height: 10em;
     width: 98%;
   }
+  .child-container{
+    min-height: 4em !important;
+    height: auto;
+    border: 1px dashed #bdc7cc;
+    transition: all ease .5s;
+}
+app-child-container{
+    display: block;
+}
+
   .field-selected{
     border: 2px double gold !important;
     transition: all ease .5s;
 }
 app-fields{
   display: inline-block;
+  mat-form-field{
+    width: 98%;
+  }
 }
 mat-form-field{
   margin: 5px;

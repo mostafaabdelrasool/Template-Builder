@@ -13,13 +13,13 @@ import { Style } from '../../model/style';
 export class AppService {
   containers: Containers[];
   currentField: Fields;
-  openFieldTypes=false;
-  openProperties=false;
+  openFieldTypes = false;
+  openProperties = false;
   currentContainer: Containers;
   containerStyle: Style;
   dataSources: FieldDataSource[] = [];
   allFields: Fields[] = [];
-  allContainers: Containers[]=[];
+  allContainers: Containers[] = [];
 
   constructor() {
     this.containerStyle = {
@@ -81,6 +81,12 @@ export class AppService {
   deleteField(field: Fields, index: number) {
     const allIndex = this.allFields.findIndex(x => x.id === field.id)
     this.allFields.splice(allIndex, 1);
-    this.currentContainer.fields.splice(index, 1);
+    let parentContainer = this.allContainers.find(x => x.id === field.containerId);
+    if (parentContainer) {
+      parentContainer.fields.splice(index, 1);
+    }else{
+      //root container
+      this.containers[0].fields.splice(index,1);
+    }
   }
 }
