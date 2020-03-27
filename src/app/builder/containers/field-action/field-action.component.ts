@@ -19,20 +19,19 @@ export class FieldActionComponent implements OnInit {
   ngOnInit() {
 
   }
-  handleFieldAction(event, field:Fields) {
-    const action = event.target.innerText;
+  handleFieldAction(type, field:Fields) {
     const index = this.appService.currentContainer.fields.findIndex(x => x.id === field.id);
-    switch (action) {
-      case 'delete':
+    switch (type) {
+      case 1:
         this.appService.deleteField(field,index)
         break;
-      case 'file_copy':
+      case 2:
         this.appService.copyField(field, index);
         break;
-      case 'functions':
+      case 4:
         this.openComplexValueSetting();
         break;
-        case 'keyboard_arrow_up':
+        case 3:
           this.selectParentContainr(field);
           break;
       default:
