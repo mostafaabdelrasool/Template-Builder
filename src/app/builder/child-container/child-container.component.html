@@ -3,8 +3,8 @@
     <ng-container *ngSwitchCase="13">
         <ng-container  *ngFor="let field of container.fields">
             <ng-container *ngIf="!field.isContainer">
-                <app-fields  mwlResizable [enableGhostResize]="true"
-                [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" 
+                <app-fields  mwlResizable [enableGhostResize]="true"  draggable="true" (dragstart)="startReposition($event,field)"
+                [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (dragover)='onDragOver($event,field);'
                 (resizeEnd)="onResizeEnd($event,field)"  [field]="field" [appStyle]="field.style" id="{{field.id}}" (click)="appService.selectField(field)"
                 [ngClass]="{'field-selected':field.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'></app-fields>
             </ng-container>

@@ -44,6 +44,7 @@ export class ContainersComponent implements OnInit {
     event
       .dataTransfer
       .setData('text/plain', JSON.stringify(data));
+      event.stopPropagation();
   }
   ngOnInit() {
 
