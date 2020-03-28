@@ -13,8 +13,15 @@ export class ComplexValueComponent implements OnInit {
   valueCalc: ComplexValueCalculation;
   equationText: string = '';
   fields: Fields[];
+  addedNumber: string;
   constructor(public appService: AppService, public dialogRef: MatDialogRef<ComplexValueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Fields) {
+    // this.addedNumberChanged
+    //   .pipe(distinctUntilChanged(),
+    //     debounceTime(300))
+    //   .subscribe((x) => {
+    //     this.addNumberToEquation(x)
+    //   })
 
   }
 
@@ -43,25 +50,19 @@ export class ComplexValueComponent implements OnInit {
     });
   }
   addFieldToEq(field: Fields) {
-    //to not to add two field without operator
-    if (this.valueCalc.equation.length === 0 || this.valueCalc.equation[this.valueCalc.equation.length - 1].operator) {
-      this.valueCalc.equation.push({ fieldModel: field.model, fieldId: field.id, fieldName: field.name });
-      this.equationText += field.name;
-    }
+    this.valueCalc.equation.push({ fieldModel: field.model, fieldId: field.id, fieldName: field.name });
+    this.equationText += field.model;
   }
   addOperatorToEq(event) {
-    if (this.valueCalc.equation.length > 0 && this.valueCalc.equation[this.valueCalc.equation.length - 1].fieldModel) {
-      this.valueCalc.equation.push({ operator: event.target.innerText });
-      this.equationText += event.target.innerText;
-    }
-    event.stopPropagation();
+    this.valueCalc.equation.push({ operator: event.target.innerText });
+    this.equationText += event.target.innerText;
   }
   remove() {
     this.valueCalc.equation.splice(this.valueCalc.equation.length - 1, 1);
     this.getEqText();
   }
   getEqText() {
-    this.equationText = this.valueCalc.equation.map(x => x.operator || x.fieldName).join('');
+    this.equationText = this.valueCalc.equation.map(x => x.operator || x.fieldModel || x.number).join('');
   }
   save() {
     this.valueCalc.equation.forEach(x => {
@@ -71,5 +72,13 @@ export class ComplexValueComponent implements OnInit {
     })
     this.data.complexValueCalculation = this.valueCalc;
     this.dialogRef.close();
+  }
+  addedNumberChange(event) {
+    if (event.keyCode==13) {
+      const val=event.target.value;
+      this.valueCalc.equation.push({ number: val });
+      this.equationText += val;
+      this.addedNumber="";
+    }
   }
 }

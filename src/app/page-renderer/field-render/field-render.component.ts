@@ -67,8 +67,10 @@ export class FieldRenderComponent implements OnInit {
       if (x.fieldModel) {
         const val = this.getFieldValue(x.fieldModel);
         equation.push(val || 0)
-      } else {
+      } else if(x.operator) {
         equation.push(x.operator)
+      }else{
+        equation.push(x.number)
       }
     })
     const result = eval(equation.join(''));

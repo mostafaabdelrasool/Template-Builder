@@ -13,14 +13,14 @@
         </mat-form-field>
     </div>
     <div class="equation">
-        <textarea [(ngModel)]="equationText"></textarea>
+        <textarea [(ngModel)]="equationText" readonly></textarea>
     </div>
     <div fxLayout="row wrap">
         <div fxLayout="row" fxLayoutGap="5px">
             <h4>Fields</h4>
             <mat-list role="list">
                 <mat-list-item *ngFor="let item of fields;last as last" role="listitem" (click)="addFieldToEq(item)">
-                    {{item.name}}
+                    {{item.model}}
                     <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
                 </mat-list-item>
             </mat-list>
@@ -35,6 +35,11 @@
             <button mat-raised-button color="accent" (click)="remove()">
                 <mat-icon>backspace</mat-icon>
             </button>
+        </div>
+        <div fxLayout="column" fxLayoutGap="5px" class="m-1">
+            <mat-form-field>
+                <input matInput type="number" placeholder="Add Number" [(ngModel)]="addedNumber" (keyup)="addedNumberChange($event)">
+            </mat-form-field>
         </div>
     </div>
 </mat-dialog-content>

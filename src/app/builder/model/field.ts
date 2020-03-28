@@ -54,6 +54,7 @@ export class FieldEquation {
   operator?: string;
   fieldId?: string;
   fieldName?: string;
+  number?:number
 }
 export enum WhenToCalculate {
   OnChange, OnSelect, OnClick, OnInit

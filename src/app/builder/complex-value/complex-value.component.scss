@@ -13,6 +13,8 @@ mat-list{
     margin-right: 10px;
     border: 1px solid;
     min-width: 7em;
+    overflow: auto;
+    height: 23em;
     mat-list-item{
         font-size:12px;
         cursor: pointer;
