@@ -41,11 +41,6 @@ export class PropertiesComponent implements OnInit {
     this.currentField.style[styleName] = event;
     this.appService.filedValueChanged();
   }
-
-  setFlexSetting(flexType, value) {
-    this.currentField.style[flexType] = value;
-    this.appService.filedValueChanged();
-  }
   addNewCardAction() {
     const length = (<CardField>this.currentField).cardActions.length;
     (<CardField>this.currentField).cardActions.push({ title: 'Action title ' + length })

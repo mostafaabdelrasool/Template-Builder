@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-    <mat-form-field fxFlex="1 1 49%">
+    <mat-form-field fxFlex="45">
         <mat-select placeholder="Font Family" [value]="'inherit'" (valueChange)="updateStyle($event,'fontFamily')"
          [(ngModel)]="currentField.style.fontFamily">
             <mat-option value="inherit">inherit</mat-option>
@@ -18,9 +18,9 @@
             <mat-option value="Verdana, Geneva, sans-serif">Verdana</mat-option>
         </mat-select>
     </mat-form-field>
-    <app-measureUnit [item]="{name:'Font Size',model:'fontSize',modelValue:currentField.style.fontSize}"
+    <app-measureUnit  fxFlex="45" [item]="{name:'Font Size',model:'fontSize',modelValue:currentField.style.fontSize}"
         (valueUpdated)="updateStyle($event,'fontSize')"></app-measureUnit>
-    <mat-form-field fxFlex="1 1 49%">
+    <mat-form-field fxFlex="45">
         <mat-select placeholder="Weight" [(ngModel)]="currentField.style.fontWeight">
             <mat-option value="100">Thin</mat-option>
             <mat-option value="200">Extra-Light</mat-option>
@@ -33,7 +33,7 @@
             <mat-option value="900">Ultra-Bold</mat-option>
         </mat-select>
     </mat-form-field>
-    <app-measureUnit [item]="{name:'Line Height',model:'lineHeight',modelValue:currentField.style.lineHeight}"
+    <app-measureUnit  fxFlex="45" [item]="{name:'Line Height',model:'lineHeight',modelValue:currentField.style.lineHeight}"
         (valueUpdated)="updateStyle($event,'lineHeight')"></app-measureUnit>
     <div>
         Font color

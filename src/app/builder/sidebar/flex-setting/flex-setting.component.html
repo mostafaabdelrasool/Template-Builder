@@ -1,18 +1,19 @@
-<div *ngIf="currentField.isContainer">
+<div *ngIf="currentField.isContainer" fxLayout="row wrap" fxLayoutAlign="space-between center">
     <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill
     </mat-checkbox>
     <mat-checkbox [(ngModel)]="currentField.style.fxFlex.wrap" (change)="setFlexSetting('wrap','true')">Wrap
     </mat-checkbox>
 </div>
-<app-measureUnit *ngIf="currentField.isContainer"
-    [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
-    (valueUpdated)="setFlexSetting($event,'fxLayoutGap')"></app-measureUnit>
-<mat-form-field>
-    <input matInput type="number" [(ngModel)]="currentField.style.fxFlex.fxFlex"
-        (change)="setFlexSetting(currentField.style.fxFlex.fxFlex,'fxFlex')" placeholder="fxFlex">
-</mat-form-field>
-
-<div>
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <app-measureUnit *ngIf="currentField.isContainer" fxFlex="45"
+        [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
+        (valueUpdated)="setFlexSetting($event,'fxLayoutGap')"></app-measureUnit>
+    <mat-form-field fxFlex="45">
+        <input matInput type="number" [(ngModel)]="currentField.style.fxFlex.fxFlex"
+            (change)="setFlexSetting(currentField.style.fxFlex.fxFlex,'fxFlex')" placeholder="fxFlex">
+    </mat-form-field>
+</div>
+<div class="alignment-setting">
     <div *ngIf="currentField.isContainer">
         Orientation
         <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
@@ -88,3 +89,4 @@
             </mat-button-toggle>
         </mat-button-toggle-group>
     </div>
+</div>

@@ -15,16 +15,78 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="45%">
+                <mat-form-field fxFlex="100">
                     <input matInput placeholder="Id" [(ngModel)]="currentField.id">
                 </mat-form-field>
 
-                <mat-form-field fxFlex="45%">
+                <!-- <mat-form-field fxFlex="100">
                     <input matInput placeholder="Name" [(ngModel)]="currentField.name">
+                </mat-form-field> -->
+                <mat-form-field fxFlex="100">
+                    <input type="text" placeholder="Model binder" aria-label="Number" matInput
+                        [(ngModel)]="currentField.model" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of modelProps" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
-                <mat-form-field fxFlex="45%">
+                <mat-form-field fxFlex="100">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
                 </mat-form-field>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Dimension
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <app-measureUnit fxFlex="45" [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
+                    (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
+                <app-measureUnit fxFlex="45" [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
+                    (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
+                <app-measureUnit  fxFlex="45" [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
+                    (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
+                <app-measureUnit  fxFlex="45" [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
+                    (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
+                <app-measureUnit  fxFlex="45" [item]="{name:'Min Height',model:'minHeight',modelValue:currentField.style.minHeight}"
+                    (valueUpdated)="updateStyle($event,'minHeight')"></app-measureUnit>
+                <div>
+                    Margin
+                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
+                            (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
+                            (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
+                            (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
+                        <app-measureUnit fxFlex="45"
+                            [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
+                            (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
+                    </div>
+                </div>
+                <div>
+                    Padding
+                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
+                            (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
+                            (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
+                            (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
+                        <app-measureUnit  fxFlex="45"
+                            [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
+                            (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
+                    </div>
+                </div>
             </div>
         </mat-expansion-panel>
         <mat-expansion-panel>
@@ -60,15 +122,7 @@
                         <mat-datepicker #x startView="month"></mat-datepicker>
                     </mat-form-field>
                 </div>
-                <mat-form-field fxFlex="100">
-                    <input type="text" placeholder="Model binder" aria-label="Number" matInput
-                        [(ngModel)]="currentField.model" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of modelProps" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
+    
 
                 <mat-form-field fxFlex="100">
                     <input matInput placeholder="value" [(ngModel)]="currentField.value">
@@ -147,13 +201,13 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <app-measureUnit [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
+                <app-measureUnit  fxFlex="45" [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
                     (valueUpdated)="updateStyle($event,'top')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
+                <app-measureUnit  fxFlex="45" [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
                     (valueUpdated)="updateStyle($event,'right')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
+                <app-measureUnit  fxFlex="45" [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
                     (valueUpdated)="updateStyle($event,'left')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
+                <app-measureUnit  fxFlex="45" [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
                     (valueUpdated)="updateStyle($event,'bottom')"></app-measureUnit>
             </div>
         </mat-expansion-panel>
@@ -165,13 +219,13 @@
             </mat-expansion-panel-header>
             Box shadow
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                <app-measureUnit [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
+                <app-measureUnit  fxFlex="45" [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
                     (valueUpdated)="boxShawChange('y',$event)"></app-measureUnit>
-                <app-measureUnit [item]="{name:'x-offset',model:'boxShadow.x',modelValue:boxShadow.x}"
+                <app-measureUnit fxFlex="45" [item]="{name:'x-offset',model:'boxShadow.x',modelValue:boxShadow.x}"
                     (valueUpdated)="boxShawChange('x',$event)"></app-measureUnit>
-                <app-measureUnit [item]="{name:'blur',model:'boxShadow.blur',modelValue:boxShadow.blur}"
+                <app-measureUnit fxFlex="45" [item]="{name:'blur',model:'boxShadow.blur',modelValue:boxShadow.blur}"
                     (valueUpdated)="boxShawChange('b',$event)"></app-measureUnit>
-                <app-measureUnit [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
+                <app-measureUnit fxFlex="45" [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
                     (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
                 <div>
                     <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow[4]"
@@ -180,7 +234,7 @@
             </div>
             Border
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                <app-measureUnit
+                <app-measureUnit  fxFlex="45"
                     [item]="{name:'Thickness',model:'borderWidth',modelValue:currentField.style.borderWidth}"
                     (valueUpdated)="updateStyle($event,'borderWidth')"></app-measureUnit>
                 <mat-form-field fxFlex="45%">
@@ -201,59 +255,7 @@
                     (valueUpdated)="updateStyle($event,'borderRadius')"></app-measureUnit>
             </div>
         </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Dimension
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <app-measureUnit [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
-                    (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
-                    (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
-                    (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
-                    (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
-                <app-measureUnit [item]="{name:'Min Height',model:'minHeight',modelValue:currentField.style.minHeight}"
-                    (valueUpdated)="updateStyle($event,'minHeight')"></app-measureUnit>
-                <div>
-                    Margin
-                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                        <app-measureUnit
-                            [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
-                            (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
-                            (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
-                            (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
-                            (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
-                    </div>
-                </div>
-                <div>
-                    Padding
-                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                        <app-measureUnit
-                            [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
-                            (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
-                            (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
-                            (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
-                        <app-measureUnit
-                            [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
-                            (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
-                    </div>
-                </div>
-            </div>
-        </mat-expansion-panel>
+      
         <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
@@ -261,66 +263,6 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <app-typography [currentField]="currentField"></app-typography>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Flex Setting
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div>
-                Orientation
-                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-                    <mat-button-toggle (click)="setFlexSetting('flex-direction','row')">
-                        <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('flex-direction','column')">
-                        <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
-                    </mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-            <div>
-                Horizontal Alignment
-                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-                    <mat-button-toggle (click)="setFlexSetting('justify-content','flex-start')">
-                        <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('justify-content','center')">
-                        <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('justify-content','flex-end')">
-                        <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('justify-content','space-between')">
-                        <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('justify-content','space-around')">
-                        <mat-icon aria-hidden="false" aria-label="column format_align_justify icon">format_align_justify
-                        </mat-icon>
-                    </mat-button-toggle>
-                </mat-button-toggle-group>
-                Vertical Alignment
-                <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-                    <mat-button-toggle (click)="setFlexSetting('align-items','flex-start')">
-                        <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('align-items','center')">
-                        <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('align-items','flex-end')">
-                        <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
-                        </mat-icon>
-                    </mat-button-toggle>
-                    <mat-button-toggle (click)="setFlexSetting('align-items','stretch')">
-                        <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
-                    </mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
         </mat-expansion-panel>
         <mat-expansion-panel *ngIf="currentField.type===15">
             <mat-expansion-panel-header>

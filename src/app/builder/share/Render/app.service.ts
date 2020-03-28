@@ -25,8 +25,6 @@ export class AppService {
     this.containerStyle = {
       height: 'auto',
       border: "1px dashed #e9e4e4",
-      boxShadow: "0 0 4px #eee2e2",
-      borderRadius: "5px",
       marginTop: "5px",
       marginRight: "5px",
       marginBottom: "5px",
