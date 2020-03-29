@@ -3,10 +3,12 @@ import { MatDialog } from '@angular/material';
 import { TableHeader, CreateableTable } from '../../model/field';
 import { CreateableTableSettingComponent } from './createable-table-setting/createable-table-setting.component';
 
+
 @Component({
   selector: "app-createable-table",
   templateUrl: "./createable-table.component.html",
-  styleUrls: ["./createable-table.component.scss"]
+  styleUrls: ["./createable-table.component.scss"],
+
 })
 
 export class CreateableTableComponent implements OnInit {

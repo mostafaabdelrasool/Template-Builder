@@ -30,7 +30,8 @@ export class FieldTypesComponent implements OnInit {
       .setData('text/plain', JSON.stringify(data));
   }
   onDragStart(event, type, isContainer = null, isChildContainer = null, category = null) {
-    const data = { type, isContainer, isChildContainer, category };
+    const fullWidth = (type === FieldType.CREATABLE_TABLE || type === FieldType.TABLE)
+    const data = { type, isContainer, isChildContainer, category, fullWidth: fullWidth };
     event.dataTransfer.effectAllowed = 'move';
     this.transferData(event, data);
   }

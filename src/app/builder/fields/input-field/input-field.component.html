@@ -7,6 +7,14 @@
         <mat-icon>close</mat-icon>
     </button>
 </mat-form-field>
+<!-- <div *ngIf="typeName!==''">
+    <label>{{field.label}}</label>
+    <input class="form-control" [type]="typeName" placeholder="{{field.placeholder}}" [value]="value" (change)="onValueChange($event)">
+    <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})"  mat-icon-button
+        aria-label="Clear">
+        <mat-icon>close</mat-icon>
+    </button>
+</div> -->
 <ng-container *ngIf="typeName===''">
     <ng-container [ngSwitch]="field.type">
         <mat-checkbox *ngSwitchCase="6" [value]="value" (change)="onValueChange($event)">Label</mat-checkbox>

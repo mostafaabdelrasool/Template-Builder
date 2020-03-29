@@ -3,8 +3,8 @@
         <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
     </mat-select>
 </mat-form-field>
+<button mat-raised-button (click)="add()" color="accent">Add</button>
 <mat-dialog-content>
-    <button mat-raised-button (click)="add()" color="accent">Add</button>
     <table class="table table-bordered">
         <thead>
             <tr>

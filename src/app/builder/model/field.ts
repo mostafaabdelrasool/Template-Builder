@@ -12,6 +12,7 @@ export class Fields {
   style?: Style;
   containerId?: string;
   placeholder?: string;
+  label?:string;
   isContainer?: boolean;
   radioButtonGroup?: any[];
   fieldEvent?: FieldEvent[];
