@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
-import { Fields, SelectField } from '../model/field';
+import { Fields, SelectField, FieldType, InputField } from '../model/field';
 import { CardField } from '../model/containers';
 import { SharedService } from 'src/app/share/shared.service';
 import { objectKeys } from 'src/app/share/object-func';
@@ -23,7 +23,7 @@ export class PropertiesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentField=this.appService.currentField;
+    this.currentField = this.appService.currentField;
     this.currentField.classes = this.currentField.classes || [];
     if (this.sharedService.model) {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
@@ -45,7 +45,7 @@ export class PropertiesComponent implements OnInit {
     const length = (<CardField>this.currentField).cardActions.length;
     (<CardField>this.currentField).cardActions.push({ title: 'Action title ' + length })
   }
- 
+
   boxShawChange(type, event) {
     if (!this.currentField.style.boxShadow) {
       this.currentField.style.boxShadow = ''
@@ -86,6 +86,14 @@ export class PropertiesComponent implements OnInit {
     return (<SelectField>this.currentField).dataSource ?
       (<SelectField>this.currentField).dataSource.dataStructure : null;
   }
+  typeValueChanged(event) {
+    let input =(<InputField>this.currentField)
+    input.typeName = event.value;
+    if (event.value === 'datetime') {
+      input.type = FieldType.DATEPICKER;
+      input.typeName='';
+    }
+    this.appService.filedValueChanged();
+  }
 
-  
 }

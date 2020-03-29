@@ -8,10 +8,10 @@
         <div class="type-container" fxLayout="row wrap">
             <div draggable='true' (dragstart)='onDragStart($event,0,false,false,0);'
                 aria-label="Example icon-button with a input icon">
-                Input text
+                Input 
                 <mat-icon>input</mat-icon>
             </div>
-            <div draggable='true' (dragstart)='onDragStart($event,1,false,false,0);'
+            <!-- <div draggable='true' (dragstart)='onDragStart($event,1,false,false,0);'
                 aria-label="Example icon-button with a looks_5 icon">
                 Input number
                 <mat-icon>looks_5</mat-icon>
@@ -25,17 +25,17 @@
                 aria-label="Example icon-button with a looks_5 icon">
                 Input Password
                 <mat-icon>vpn_key</mat-icon>
-            </div>
+            </div> -->
             <div draggable='true' (dragstart)='onDragStart($event,6,false,false,0);'
                 aria-label="Example icon-button with a check_box icon">
                 Check box
                 <mat-icon>check_box</mat-icon>
             </div>
-            <div draggable='true' (dragstart)='onDragStart($event,7,false,false,0);'
+            <!-- <div draggable='true' (dragstart)='onDragStart($event,7,false,false,0);'
                 aria-label="Example icon-button with a date_range icon">
                 Datepicker
                 <mat-icon>date_range</mat-icon>
-            </div>
+            </div> -->
             <div draggable='true' (dragstart)='onDragStart($event,9,false,false,0);'
                 aria-label="Example icon-button with a radio_button_checked icon">
                 Radio Group
@@ -51,6 +51,30 @@
                 Slider
                 <mat-icon>fast_forward</mat-icon>
             </div>
+            <mat-divider class="full-width"></mat-divider>
+            <h3>Text</h3>
+            <section class="type-container full-width" fxLayout="row wrap">
+                <div draggable='true' (dragstart)='onTextDragStart($event,18,"title");'
+                    aria-label="Example icon-div with a text_fields icon">
+                    Title
+                    <mat-icon>text_fields</mat-icon>
+                </div>
+                <div draggable='true' (dragstart)='onTextDragStart($event,19,"Subtitle");'
+                    aria-label="Example icon-div with a subtitles icon">
+                    Subtitle
+                    <mat-icon>subtitles</mat-icon>
+                </div>
+                <div draggable='true' (dragstart)='onTextDragStart($event,20,"Write paragraph");'
+                    aria-label="Example icon-div with a title icon">
+                    Text
+                    <mat-icon>title</mat-icon>
+                </div>
+                <div draggable='true' (dragstart)='onTextDragStart($event,27,"");'
+                    aria-label="Example icon-div with a function icon">
+                    Calc Label
+                    <mat-icon>functions</mat-icon>
+                </div>
+            </section>
         </div>
     </mat-expansion-panel>
     <mat-expansion-panel>
@@ -201,35 +225,6 @@
                     <mat-icon>favorite</mat-icon>
                 </button>
 
-            </div>
-        </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Text
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="type-container" fxLayout="row wrap">
-            <div draggable='true' (dragstart)='onTextDragStart($event,18,"title");'
-                aria-label="Example icon-div with a text_fields icon">
-                Title
-                <mat-icon>text_fields</mat-icon>
-            </div>
-            <div draggable='true' (dragstart)='onTextDragStart($event,19,"Subtitle");'
-                aria-label="Example icon-div with a subtitles icon">
-                Subtitle
-                <mat-icon>subtitles</mat-icon>
-            </div>
-            <div draggable='true' (dragstart)='onTextDragStart($event,20,"Write paragraph");'
-                aria-label="Example icon-div with a title icon">
-                Text
-                <mat-icon>title</mat-icon>
-            </div>
-            <div draggable='true' (dragstart)='onTextDragStart($event,27,"");'
-                aria-label="Example icon-div with a function icon">
-                Calc Label
-                <mat-icon>functions</mat-icon>
             </div>
         </div>
     </mat-expansion-panel>

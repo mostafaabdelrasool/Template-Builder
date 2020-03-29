@@ -31,6 +31,26 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
+                <mat-form-field fxFlex="45%">
+                    <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)"
+                        [(value)]="currentField['typeName']">
+                        <mat-option value="text">
+                            text
+                        </mat-option>
+                        <mat-option value="number">
+                            Number
+                        </mat-option>
+                        <mat-option value="datetime">
+                            Datetime
+                        </mat-option>
+                        <mat-option value="password">
+                            Password
+                        </mat-option>
+                        <mat-option value="email">
+                            Email
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
                 <mat-form-field fxFlex="45">
                     <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
                 </mat-form-field>

@@ -43,6 +43,7 @@ export class InputField extends Fields {
   startDate?: Date;
   endData?: Date;
   clearButton?: boolean;
+  typeName?:string
 }
 export class ComplexValueCalculation {
   when: WhenToCalculate;

@@ -1,5 +1,5 @@
-<mat-form-field *ngIf="typeName!==''">
-    <input [type]="typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
+<mat-form-field *ngIf="field.type===0">
+    <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
         (change)="onValueChange($event)">
     <mat-hint>{{field.hint}}</mat-hint>
     <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix mat-icon-button
@@ -15,7 +15,7 @@
         <mat-icon>close</mat-icon>
     </button>
 </div> -->
-<ng-container *ngIf="typeName===''">
+<ng-container *ngIf="field.type!==0">
     <ng-container [ngSwitch]="field.type">
         <mat-checkbox *ngSwitchCase="6" [value]="value" (change)="onValueChange($event)">Label</mat-checkbox>
         <mat-form-field *ngSwitchCase="7">
