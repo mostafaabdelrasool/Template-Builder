@@ -43,6 +43,7 @@ import { FieldEventComponent } from './sidebar/field-event/field-event.component
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { FormFieldComponent } from './child-container/form-field/form-field.component';
 import { BuilderService } from './builder.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,7 +57,8 @@ import { BuilderService } from './builder.service';
     ResizableModule,
     NgxPaginationModule,
     SharedModule,
-    CodeEditorModule.forRoot()
+    CodeEditorModule.forRoot(),
+    OwlDateTimeModule, OwlNativeDateTimeModule
   ],
   declarations: [
     SanitizeHtmlPipe,

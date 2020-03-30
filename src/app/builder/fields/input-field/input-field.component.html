@@ -1,4 +1,4 @@
-<mat-form-field *ngIf="field.type===0">
+<!-- <mat-form-field *ngIf="field.type===0">
     <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
         (change)="onValueChange($event)">
     <mat-hint>{{field.hint}}</mat-hint>
@@ -6,19 +6,20 @@
         aria-label="Clear">
         <mat-icon>close</mat-icon>
     </button>
-</mat-form-field>
-<!-- <div *ngIf="typeName!==''">
+</mat-form-field> -->
+<div *ngIf="field.type===0">
     <label>{{field.label}}</label>
-    <input class="form-control" [type]="typeName" placeholder="{{field.placeholder}}" [value]="value" (change)="onValueChange($event)">
-    <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})"  mat-icon-button
+    <input class="form-control" [type]="field.typeName" placeholder="{{field.placeholder}}" [value]="value"
+        (change)="onValueChange($event)">
+    <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" mat-icon-button
         aria-label="Clear">
         <mat-icon>close</mat-icon>
     </button>
-</div> -->
+</div>
 <ng-container *ngIf="field.type!==0">
     <ng-container [ngSwitch]="field.type">
         <mat-checkbox *ngSwitchCase="6" [value]="value" (change)="onValueChange($event)">Label</mat-checkbox>
-        <mat-form-field *ngSwitchCase="7">
+        <!-- <mat-form-field *ngSwitchCase="7">
             <input readonly="true" [value]="value" (dateChange)="onValueChange($event)" matInput
                 [matDatepicker]="picker" placeholder="{{field.placeholder}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -28,7 +29,16 @@
                 mat-icon-button aria-label="Clear">
                 <mat-icon>close</mat-icon>
             </button>
-        </mat-form-field>
+        </mat-form-field> -->
+        <div *ngSwitchCase="7" >
+            <label>{{field.label}}</label>
+            <div fxLayout="row">
+                <input class="form-control" [owlDateTime]="dt1"  placeholder="Date Time" placeholder="{{field.placeholder}}" [value]="value"
+                (change)="onValueChange($event)">
+                <mat-icon [owlDateTimeTrigger]="dt1">date_range</mat-icon>
+                <owl-date-time #dt1></owl-date-time>
+            </div>
+        </div>
         <mat-radio-group *ngSwitchCase="9" fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
             <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
             </mat-radio-button>

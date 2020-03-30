@@ -2,7 +2,7 @@
   <div *ngFor="let item of containers" [ngSwitch]="item.type"  [appStyle]="item.style" [styleField]="item">
       <ng-container *ngSwitchCase="3">
           <ng-container *ngFor="let field of item.fields">
-              <app-field-render *ngIf="!field.isContainer" [field]="field" [appStyle]="field.style"></app-field-render>
+              <app-field-render *ngIf="!field.isContainer" [field]="field" [appStyle]="field.style" [ngClass]="{'full-width':field.fullWidth}"></app-field-render>
               <app-child-container-render  *ngIf="field.isContainer" [container]="field" [appStyle]="field.style" [styleField]="field">
               </app-child-container-render>
           </ng-container>

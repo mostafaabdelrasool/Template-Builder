@@ -92,6 +92,8 @@ export class PropertiesComponent implements OnInit {
     if (event.value === 'datetime') {
       input.type = FieldType.DATEPICKER;
       input.typeName='';
+    }else{
+      input.type = FieldType.INPUT_TEXT;
     }
     this.appService.filedValueChanged();
   }

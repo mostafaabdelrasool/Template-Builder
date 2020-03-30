@@ -28,6 +28,7 @@
     "angular-resizable-element": "^3.2.6",
     "es7-shim": "^6.0.0",
     "hammerjs": "^2.0.8",
+    "ng-pick-datetime": "^7.0.0",
     "ngx-color-picker": "^8.2.0",
     "ngx-layouts": "0.0.2",
     "ngx-pagination": "^5.0.0",
