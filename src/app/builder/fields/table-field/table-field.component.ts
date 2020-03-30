@@ -27,7 +27,7 @@ export class TableFieldComponent implements OnInit {
 
   ngOnInit() {
     this.field.hasAction = true;
-    this.openDataSource();
+    //this.openDataSource();
   }
   setHeaderVisability(event) {
     this.currentRows = event.value;

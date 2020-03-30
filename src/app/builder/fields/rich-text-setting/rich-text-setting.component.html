@@ -1,0 +1,8 @@
+<mat-dialog-content>
+    <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="data.value"></angular-editor>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button  color="primary" (click)="close()" aria-label="Clear">
+      Save
+    </button>
+</mat-dialog-actions>

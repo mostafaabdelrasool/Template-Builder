@@ -1,6 +1,7 @@
 <ng-container [ngSwitch]="field.type">
     <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id">
         <mat-icon *ngIf="field.hasAction" (click)="handleAction()">edit</mat-icon>
+        <mat-icon *ngIf="field.type===20" (click)="openTextSetting()">settings</mat-icon>
     </app-field-action>
     <ng-container *ngIf="field.category===0">
         <app-input-field [field]="field"></app-input-field>
@@ -40,7 +41,7 @@
     </ng-container>
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
-    <p *ngSwitchCase="20">{{field.value}}</p>
+    <div *ngSwitchCase="20" [innerHTML]="field.value"></div>
     <div *ngSwitchCase="27">
         <span>{{field.placeholder}}</span>
     </div>

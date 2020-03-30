@@ -1,4 +1,7 @@
-<table class="table table-hover table-bordered">
+<div *ngIf="!field.header || field.header.length===0">
+    <h4>Add Headers</h4>
+</div>
+<table class="table table-hover table-bordered" *ngIf="field.header.length!==0">
     <thead>
         <tr>
             <th *ngFor="let item of field.header">

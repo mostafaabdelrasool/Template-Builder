@@ -44,6 +44,8 @@ import { CodeEditorModule } from '@ngstack/code-editor';
 import { FormFieldComponent } from './child-container/form-field/form-field.component';
 import { BuilderService } from './builder.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { RichTextSettingComponent } from './fields/rich-text-setting/rich-text-setting.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     NgxPaginationModule,
     SharedModule,
     CodeEditorModule.forRoot(),
-    OwlDateTimeModule, OwlNativeDateTimeModule
+    OwlDateTimeModule, OwlNativeDateTimeModule,
+    AngularEditorModule
   ],
   declarations: [
     SanitizeHtmlPipe,
@@ -86,11 +89,12 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     CreateableTableComponent,
     DataMapperSettingComponent,
     FieldEventComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    RichTextSettingComponent
   ],
   providers: [AppService, CodeService,BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent,ComplexValueComponent
-    ,CreateableTableSettingComponent,DataMapperSettingComponent],
+    ,CreateableTableSettingComponent,DataMapperSettingComponent,RichTextSettingComponent],
   exports: [FieldsComponent, SelectFieldComponent, TabFieldComponent,
     TableFieldComponent, EditInPlaceComponent, ChildContainerComponent, ContainersComponent, ApplyStyleDirective,
     InputFieldComponent]

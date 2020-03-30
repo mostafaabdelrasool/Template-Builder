@@ -25,15 +25,15 @@ export class CreateableTableComponent implements OnInit {
 
   ngOnInit() {
     this.field.hasAction = true;
-    this.openTableSetting();
-  }
-  openTableSetting() {
     if (!this.field.header) {
       this.field.header=new Array<TableHeader>();
     }
+    //this.openTableSetting();
+  }
+  openTableSetting() {
     let setting = { width: '70vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(CreateableTableSettingComponent, setting);
 
-    dialogRef.afterClosed()
+  //  dialogRef.afterClosed()
   }
 }

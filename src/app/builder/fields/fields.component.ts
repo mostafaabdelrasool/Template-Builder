@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Fields, InputField } from '../model/field';
 import { AppService } from '../share/Render/app.service';
+import { MatDialog } from '@angular/material';
+import { RichTextSettingComponent } from './rich-text-setting/rich-text-setting.component';
 
 @Component({
   selector: "app-fields",
@@ -11,8 +13,7 @@ import { AppService } from '../share/Render/app.service';
 export class FieldsComponent implements OnInit {
   @Input() field: InputField;
   performAction: boolean;
-  xxx = 'ss'
-  constructor(public appService: AppService) {
+  constructor(public appService: AppService,public dialog: MatDialog) {
   }
   handleAction() {
     this.performAction = true;
@@ -21,8 +22,11 @@ export class FieldsComponent implements OnInit {
       this.performAction = false;
     });
   }
-
-
+  openTextSetting(){
+    let setting = { width: '50vw', height: 'auto', data: this.field };
+    this.dialog.open(RichTextSettingComponent, setting);
+  }
+  
 
   ngOnInit() {
   }

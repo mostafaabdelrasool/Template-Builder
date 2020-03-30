@@ -24,7 +24,7 @@ export class SelectFieldComponent implements OnInit {
   }
   ngOnInit() {
     this.field.hasAction = true;
-    this.openDataSource();
+    //this.openDataSource();
   }
   openDataSource() {
     let setting = { width: '40vw', height: 'auto' };
