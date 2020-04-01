@@ -245,6 +245,14 @@
                     Look And Feel
                 </mat-panel-title>
             </mat-expansion-panel-header>
+            <div class="mb-1">
+                <label>Background color</label>
+                <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
+                [style.background]="currentField.style.backgroundColor"
+                [colorPicker]="currentField.style.backgroundColor"
+                (colorPickerChange)="colorPickerChange($event,'backgroundColor')" />
+            </div>
+            <mat-divider></mat-divider>
             Box shadow
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
                 <app-measureUnit fxFlex="45" [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
@@ -261,6 +269,7 @@
                         [colorPicker]="boxShadow[4]" (colorPickerChange)="boxShawChange('c',$event)" />
                 </div>
             </div>
+            <mat-divider></mat-divider>
             Border
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
                 <app-measureUnit fxFlex="45"
@@ -274,10 +283,11 @@
                     </mat-select>
                 </mat-form-field>
                 <div>
-                    <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
+                    <label>color</label>
+                    <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
                         [style.background]="currentField.style.borderColor"
                         [colorPicker]="currentField.style.borderColor"
-                        (colorPickerChange)="appService.filedValueChanged()" />
+                        (colorPickerChange)="colorPickerChange($event,'borderColor')" />
                 </div>
                 <app-measureUnit
                     [item]="{name:'Border Raduis',model:'borderRadius',modelValue:currentField.style.borderRadius}"

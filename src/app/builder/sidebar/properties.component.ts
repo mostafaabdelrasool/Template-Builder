@@ -87,15 +87,18 @@ export class PropertiesComponent implements OnInit {
       (<SelectField>this.currentField).dataSource.dataStructure : null;
   }
   typeValueChanged(event) {
-    let input =(<InputField>this.currentField)
+    let input = (<InputField>this.currentField)
     input.typeName = event.value;
     if (event.value === 'datetime') {
       input.type = FieldType.DATEPICKER;
-      input.typeName='';
-    }else{
+      input.typeName = '';
+    } else {
       input.type = FieldType.INPUT_TEXT;
     }
     this.appService.filedValueChanged();
   }
-
+  colorPickerChange(event,model) {
+    this.currentField.style[model]=event;
+    this.appService.filedValueChanged();
+  }
 }
