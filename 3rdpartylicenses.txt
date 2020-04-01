@@ -160,6 +160,9 @@ MIT
 @angular/router
 MIT
 
+@kolkov/angular-editor
+MIT
+
 @ng-select/ng-select
 MIT
 
