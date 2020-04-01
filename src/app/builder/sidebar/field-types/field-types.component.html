@@ -8,8 +8,13 @@
         <div class="type-container" fxLayout="row wrap">
             <div draggable='true' (dragstart)='onDragStart($event,0,false,false,0);'
                 aria-label="Example icon-button with a input icon">
-                Input 
+                Input
                 <mat-icon>input</mat-icon>
+            </div>
+            <div draggable='true' (dragstart)='onDragStart($event,8,false,false,0);'
+                aria-label="Example icon-button with a subject icon">
+                Text Area
+                <mat-icon>subject</mat-icon>
             </div>
             <!-- <div draggable='true' (dragstart)='onDragStart($event,1,false,false,0);'
                 aria-label="Example icon-button with a looks_5 icon">
