@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TopNavComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private codeService: CodeService,
-    public appService:AppService,private builderService: BuilderService,private route: ActivatedRoute) { }
+    public appService: AppService, private builderService: BuilderService, private route: ActivatedRoute) { }
   generateCode(): void {
     const dialogRef = this.dialog.open(CodePreviewComponent, {
       width: '90vw',
@@ -32,22 +32,31 @@ export class TopNavComponent implements OnInit {
 
   }
   OpenManager(type) {
-    if (type===1) {
-      this.appService.openFieldTypes=!this.appService.openFieldTypes;
+    if (type === 1) {
+      this.appService.openFieldTypes = !this.appService.openFieldTypes;
     } else {
-      this.appService.openProperties=!this.appService.openProperties;
-      
+      this.appService.openProperties = !this.appService.openProperties;
+
     }
 
   }
-  preview(){
-   localStorage.setItem('containers',JSON.stringify(this.appService.containers)) 
-   window.open(window.location.href.replace('builder','render'),'_blank') 
+  preview() {
+    localStorage.setItem('containers', JSON.stringify(this.appService.containers))
+    window.open(window.location.href.replace('builder', 'render'), '_blank')
   }
-  save(){
-    this.builderService.partialUpdate({id:+this.route.snapshot.queryParams['id'],
-    formSetting:JSON.stringify(this.appService.containers)},["formSetting"]).subscribe(x=>{
+  save() {
+    this.builderService.partialUpdate({
+      id: +this.route.snapshot.queryParams['id'],
+      formSetting: JSON.stringify(this.appService.containers)
+    }, ["formSetting"]).subscribe(x => {
       debugger
     });
+  }
+  run() {
+    const code = { HTML: this.codeService.getAllCode().htmlCode };
+    this.builderService.run(code)
+      .subscribe(x => {
+        window.open('http://localhost:55', '_blank')
+      });
   }
 }

@@ -5,11 +5,13 @@ import { DataService } from '../core/data.api/data.service';
 @Injectable({
   providedIn: 'root'
 })
-export class BuilderService  extends DataService{
+export class BuilderService extends DataService {
 
   constructor(http: HttpClient) {
     super(http);
     this._controller = "api/Form"
   }
-
+  run(code) {
+    return this.http.post(this._url + 'api/Run/RunApp',code)
+  }
 }
