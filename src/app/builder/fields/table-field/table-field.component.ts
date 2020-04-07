@@ -16,11 +16,6 @@ export class TableFieldComponent implements OnInit {
   currentRows: TableHeader[];
   data: any[];
   pageNo: number;
-  @Input() set perfomAction(val: boolean) {
-    if (val) {
-      this.openDataSource();
-    }
-  };
   constructor(public dialog: MatDialog) {
 
   }
@@ -32,7 +27,7 @@ export class TableFieldComponent implements OnInit {
   setHeaderVisability(event) {
     this.currentRows = event.value;
   }
-  openDataSource() {
+  openSetting() {
     let setting = { width: '40vw', height: 'auto' };
     if (this.field.dataSource) {
       setting["data"] = this.field.dataSource

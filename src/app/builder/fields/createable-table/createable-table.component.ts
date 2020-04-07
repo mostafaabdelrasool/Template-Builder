@@ -14,11 +14,6 @@ import { CreateableTableSettingComponent } from './createable-table-setting/crea
 export class CreateableTableComponent implements OnInit {
 
   @Input() field: CreateableTable;
-  @Input() set perfomAction(val: boolean) {
-    if (val) {
-      this.openTableSetting();
-    }
-  };
   constructor(public dialog: MatDialog) {
 
   }
@@ -30,7 +25,7 @@ export class CreateableTableComponent implements OnInit {
     }
     //this.openTableSetting();
   }
-  openTableSetting() {
+  openSetting() {
     let setting = { width: '70vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(CreateableTableSettingComponent, setting);
 

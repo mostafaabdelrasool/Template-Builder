@@ -3,49 +3,13 @@
         <mat-icon *ngIf="field.hasAction" (click)="handleAction()">edit</mat-icon>
         <mat-icon *ngIf="field.type===20" (click)="openTextSetting()">settings</mat-icon>
     </app-field-action>
-    <ng-container *ngIf="field.category===0">
-        <app-input-field [field]="field"></app-input-field>
-    </ng-container>
-    <ng-container *ngSwitchCase="16">
-        <ng-container [ngSwitch]="field['buttonType']">
-            <ng-container *ngSwitchCase="'mat-button'">
-                <button mat-button color="{{field['buttonColor']}}">{{field.value}}</button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-raised-button'">
-                <button mat-raised-button color="{{field['buttonColor']}}">{{field.value}}</button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-stroked-button'">
-                <button mat-stroked-button color="{{field['buttonColor']}}">{{field.value}}</button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-flat-button'">
-                <button mat-flat-button color="{{field['buttonColor']}}">{{field.value}}</button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-icon-button'">
-                <button mat-icon-button color="{{field['buttonColor']}}">
-                    <mat-icon>favorite</mat-icon>
-                </button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-fab'">
-                <button mat-fab color="{{field['buttonColor']}}">
-                    <mat-icon>favorite</mat-icon>
-                </button>
-            </ng-container>
-            <ng-container *ngSwitchCase="'mat-mini-fab'">
-                <button mat-mini-fab color="{{field['buttonColor']}}"
-                    aria-label="Example icon-button with a heart icon">
-                    <mat-icon>favorite</mat-icon>
-                </button>
-            </ng-container>
-        </ng-container>
-        <div *ngSwitchDefault></div>
-    </ng-container>
+   
+    <ng-template #fieldtemplate></ng-template>
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <div *ngSwitchCase="20" [innerHTML]="field.value"></div>
     <div *ngSwitchCase="27">
         <span>{{field.placeholder}}</span>
     </div>
-    <app-table-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="23"></app-table-field>
-    <app-select-field [field]="field" [perfomAction]="performAction" *ngSwitchCase="25"></app-select-field>
-    <app-createable-table [field]="field" [perfomAction]="performAction" *ngSwitchCase="28"></app-createable-table>
+   
 </ng-container>

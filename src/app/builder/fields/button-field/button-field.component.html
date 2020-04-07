@@ -1,0 +1,29 @@
+<ng-container [ngSwitch]="field.buttonType">
+    <ng-container *ngSwitchCase="'mat-button'">
+        <button mat-button color="{{field.buttonColor}}">{{field.value}}</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-raised-button'">
+        <button mat-raised-button color="{{field.buttonColor}}">{{field.value}}</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-stroked-button'">
+        <button mat-stroked-button color="{{field.buttonColor}}">{{field.value}}</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-flat-button'">
+        <button mat-flat-button color="{{field.buttonColor}}">{{field.value}}</button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-icon-button'">
+        <button mat-icon-button color="{{field.buttonColor}}">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-fab'">
+        <button mat-fab color="{{field.buttonColor}}">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'mat-mini-fab'">
+        <button mat-mini-fab color="{{field.buttonColor}}" aria-label="Example icon-button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </ng-container>
+</ng-container>

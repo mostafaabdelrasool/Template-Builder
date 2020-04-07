@@ -14,11 +14,6 @@ export class SelectFieldComponent implements OnInit {
   
   @Input() field: SelectField;
   data: any;
-  @Input() set perfomAction(val: boolean) {
-    if (val) {
-      this.openDataSource();
-    }
-  };
   constructor(public dialog: MatDialog) {
 
   }
@@ -26,7 +21,7 @@ export class SelectFieldComponent implements OnInit {
     this.field.hasAction = true;
     //this.openDataSource();
   }
-  openDataSource() {
+  openSetting() {
     let setting = { width: '40vw', height: 'auto' };
     if (this.field.dataSource) {
       setting["data"] = this.field.dataSource
