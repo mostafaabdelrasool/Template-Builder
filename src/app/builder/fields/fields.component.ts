@@ -27,15 +27,15 @@ export class FieldsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   createComponent() {
     let renderSetting = FieldRenderSetting[FieldType[this.field.type]];
-    let componentName = '';
+    let componentName ;
     if (!renderSetting && this.field.category === FieldCategory.Input) {
       componentName = FieldRenderSetting.INPUT_TEXT.componentName;
     } else {
       componentName = renderSetting.componentName;
     }
-    const factories = Array.from(this.resolver['_factories'].keys());
-    const factoryClass = <Type<any>>factories.find((x: any) => x.name === componentName);
-    const factory = this.resolver.resolveComponentFactory(factoryClass);
+    // const factories = Array.from(this.resolver['_factories'].keys());
+    // const factoryClass = <Type<any>>factories.find((x: any) => x.name === componentName);
+    const factory = this.resolver.resolveComponentFactory(componentName);
     this.entry.clear();
     this.componentRef = this.entry.createComponent(factory);
     this.componentRef.instance.field = this.field;
