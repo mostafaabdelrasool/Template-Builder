@@ -15,10 +15,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { OwlNativeDateTimeModule, OwlDateTimeModule } from 'ng-pick-datetime';
 import { ButtonFieldComponent } from './button-field/button-field.component';
+import { RadioButtonFieldComponent } from './radio-button-field/radio-button-field.component';
 
 const components = [FieldsComponent, TableFieldComponent, SelectFieldComponent, RichTextSettingComponent, InputFieldComponent,
     CreateableTableSettingComponent,
-    CreateableTableComponent,FieldActionComponent,ButtonFieldComponent]
+    CreateableTableComponent,FieldActionComponent,ButtonFieldComponent,RadioButtonFieldComponent]
 @NgModule({
     imports: [CommonModule,
         FormsModule,

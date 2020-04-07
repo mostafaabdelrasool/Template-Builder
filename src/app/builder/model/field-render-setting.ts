@@ -13,6 +13,9 @@ export const FieldRenderSetting= {
     },
     BUTTON:{
         componentName:"ButtonFieldComponent"
+    },
+    RADIO_BUTTON_GROUP:{
+        componentName:"RadioButtonFieldComponent"
     }
     
 }

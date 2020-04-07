@@ -28,7 +28,7 @@ export class FieldsComponent implements OnInit, AfterViewInit, OnDestroy {
   createComponent() {
     let renderSetting = FieldRenderSetting[FieldType[this.field.type]];
     let componentName = '';
-    if (this.field.category === FieldCategory.Input) {
+    if (!renderSetting && this.field.category === FieldCategory.Input) {
       componentName = FieldRenderSetting.INPUT_TEXT.componentName;
     } else {
       componentName = renderSetting.componentName;

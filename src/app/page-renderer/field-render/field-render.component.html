@@ -35,6 +35,7 @@
         </ng-container>
         <div *ngSwitchDefault></div>
     </ng-container>
+    <app-radio-button-field [field]="field" *ngSwitchCase="9" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-radio-button-field>
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <div *ngSwitchCase="20" [innerHTML]="field.value"></div>

@@ -43,10 +43,6 @@
             <owl-date-time #dt1></owl-date-time>
         </div>
     </div>
-    <mat-radio-group *ngSwitchCase="9" fxLayout="row" fxLayoutGap="5px" aria-label="Select an option">
-        <mat-radio-button *ngFor="let item of field.radioButtonGroup" value="item.value">{{item.placeholder}}
-        </mat-radio-button>
-    </mat-radio-group>
     <div *ngSwitchCase="11">
         <label>{{field.placeholder}}</label>
         <mat-slider [max]="field.max" [min]="field.min" [step]="field.step"></mat-slider>
