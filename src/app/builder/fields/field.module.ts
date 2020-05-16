@@ -13,7 +13,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FieldActionComponent } from './field-action/field-action.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { OwlNativeDateTimeModule, OwlDateTimeModule } from 'ng-pick-datetime';
 import { ButtonFieldComponent } from './button-field/button-field.component';
 import { RadioButtonFieldComponent } from './radio-button-field/radio-button-field.component';
 
@@ -27,7 +26,7 @@ const components = [FieldsComponent, TableFieldComponent, SelectFieldComponent, 
         FlexLayoutModule,
         NgxPaginationModule,
         AngularEditorModule,
-        OwlDateTimeModule, OwlNativeDateTimeModule],
+       ],
     exports: components,
     declarations: [components],
     providers: [],
