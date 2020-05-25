@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Fields, InputField, FieldType, SelectField } from 'src/app/builder/model/field';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit } from "@angular/core";
+import { Fields, InputField, FieldType, SelectField, FieldCategory } from 'src/app/builder/model/field';
 import { setPathData, getPathData } from 'src/app/share/object-func';
 import { FieldDataSource } from 'src/app/builder/model/data-source';
 import { HttpClient } from '@angular/common/http';
 import { RenderService } from '../render.service';
+import { FieldService } from 'src/app/builder/fields/fields.service';
 
 @Component({
   selector: "app-field-render",
@@ -11,9 +12,11 @@ import { RenderService } from '../render.service';
   styleUrls: ["./field-render.component.scss"]
 })
 
-export class FieldRenderComponent implements OnInit {
+export class FieldRenderComponent implements OnInit, AfterViewInit {
   @Input() field: Fields;
-  constructor(private http: HttpClient, public renderService: RenderService) {
+  @ViewChild('fieldtemplate', { static: true, read: ViewContainerRef }) entry: ViewContainerRef;
+  componentRef: any;
+  constructor(private http: HttpClient, public renderService: RenderService, private fieldService: FieldService) {
 
   }
 
@@ -38,10 +41,10 @@ export class FieldRenderComponent implements OnInit {
 
   }
   onSelectionChange(event) {
-    this.valueChange(this.field.model,event.value)
+    this.valueChange(this.field.model, event.value)
     if ((<SelectField>this.field).onSelect) {
       const selectField = (<SelectField>this.field)
-      const selectedData=this.getSelectedData(event.value,selectField.valueMember);
+      const selectedData = this.getSelectedData(event.value, selectField.valueMember);
       if (selectField.onSelect.mapper) {
         selectField.onSelect.mapper.forEach(x => {
           const data = getPathData(selectedData, x.source);
@@ -49,14 +52,14 @@ export class FieldRenderComponent implements OnInit {
         })
       }
       if (selectField.onSelect.code) {
-       const functionCode= this.functionParse(selectField.onSelect.code);
-       functionCode.apply(this,[selectedData,selectField])
+        const functionCode = this.functionParse(selectField.onSelect.code);
+        functionCode.apply(this, [selectedData, selectField])
       }
     }
   }
-  functionParse(code){
+  functionParse(code) {
     return Function('"use strict";return (' + code + ')')();
-}
+  }
   calculateComplexValue() {
     const calc = (<InputField>this.field).complexValueCalculation;
     if (!calc) {
@@ -67,21 +70,26 @@ export class FieldRenderComponent implements OnInit {
       if (x.fieldModel) {
         const val = this.getFieldValue(x.fieldModel);
         equation.push(val || 0)
-      } else if(x.operator) {
+      } else if (x.operator) {
         equation.push(x.operator)
-      }else{
+      } else {
         equation.push(x.number)
       }
     })
     const result = eval(equation.join(''));
     setPathData(this.renderService.data, calc.resultModel, result);
   }
-  getSelectedData(value,valueMemeberName){
+  getSelectedData(value, valueMemeberName) {
     const selectField = (<SelectField>this.field)
-    return selectField.dataSource.data.find(x=>x[valueMemeberName]===value)
+    return selectField.dataSource.data.find(x => x[valueMemeberName] === value)
   }
   getFieldValue(modelName) {
     const value = getPathData(this.renderService.data, modelName);
     return value || null;
+  }
+  ngAfterViewInit(): void {
+    if (this.field.category !== FieldCategory.Typograpghy) {
+      this.componentRef = this.fieldService.createComponent(this.field, this.entry);
+    }
   }
 }
