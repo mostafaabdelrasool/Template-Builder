@@ -1,4 +1,4 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+<div fxLayout="row wrap" class="m-container" fxLayoutAlign="space-between center">
     <mat-form-field>
         <input matInput type="number" (change)=propertyChangeHandle($event) name="item.name" placeholder="{{item.name}}"
             [value]="value">
@@ -6,7 +6,7 @@
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
-    <select (change)=setMeasureUnit($event) [value]="unit">
+    <select matSuffix (change)=setMeasureUnit($event) [value]="unit">
         <option value="px">px</option>
         <option value="em">em</option>
         <option value="vh">vh</option>

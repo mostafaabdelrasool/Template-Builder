@@ -4,6 +4,9 @@ import { TableFieldComponent } from '../fields/table-field/table-field.component
 import { SelectFieldComponent } from '../fields/select-field/select-field.component';
 import { CreateableTableComponent } from '../fields/createable-table/createable-table.component';
 import { ButtonFieldComponent } from '../fields/button-field/button-field.component';
+import { FormFieldComponent } from '../child-container/form-field/form-field.component';
+import { ListFieldComponent } from '../child-container/list-field/list-field.component';
+import { TabFieldComponent } from '../child-container/tab-field/tab-field.component';
 
 export const FieldRenderSetting= {
     INPUT_TEXT: {
@@ -23,6 +26,15 @@ export const FieldRenderSetting= {
     },
     RADIO_BUTTON_GROUP:{
         componentName:RadioButtonFieldComponent
+    },
+    TABS:{
+        componentName:TabFieldComponent
+    },
+    FORM:{
+        componentName:FormFieldComponent
+    },
+    LIST:{
+        componentName:ListFieldComponent
     }
     
 }

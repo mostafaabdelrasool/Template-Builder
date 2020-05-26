@@ -1,5 +1,8 @@
 <ng-container [ngSwitch]="container.type">
-    <app-field-action [field]="container" *ngIf="container.id===appService.currentField?.id"></app-field-action>
+    <app-field-action [field]="container" *ngIf="container.id===appService.currentField?.id">
+        <mat-icon *ngIf="container.hasAction" (click)="handleAction()">edit</mat-icon>
+    </app-field-action>
+    <ng-template #fieldtemplate></ng-template>
     <ng-container *ngSwitchCase="13">
         <ng-container  *ngFor="let field of container.fields">
             <ng-container *ngIf="!field.isContainer">
@@ -18,6 +21,7 @@
         </app-child-container>
         </ng-container>
     </ng-container>
-    <app-tab-field *ngSwitchCase="26" [field]="container"></app-tab-field>
+    <!-- <app-tab-field *ngSwitchCase="26" [field]="container"></app-tab-field>
     <app-form-field [field]="container" *ngSwitchCase="4"></app-form-field>
+    <app-list-field *ngSwitchCase="24" [field]="container"></app-list-field> -->
 </ng-container>

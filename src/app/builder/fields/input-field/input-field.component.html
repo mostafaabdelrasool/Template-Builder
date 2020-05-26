@@ -1,6 +1,7 @@
 <ng-container [ngSwitch]="field.type">
     <div *ngSwitchCase="0">
         <mat-form-field *ngIf="field.type===0">
+            <mat-label>{{field.label}}</mat-label>
             <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
                 (change)="onValueChange($event)">
             <mat-hint>{{field.hint}}</mat-hint>

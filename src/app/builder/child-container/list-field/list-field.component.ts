@@ -1,23 +1,28 @@
 import { Component, OnInit, Input } from "@angular/core";
-import {  SelectField } from '../../model/field';
-import { MatDialog } from '@angular/material';
+import { ListField, Fields } from '../../model/field';
+import { ContainersComponent } from '../../containers/containers.component';
+import { AppService } from '../../share/Render/app.service';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
 import { FieldDataSource } from '../../model/data-source';
 
 @Component({
-  selector: "app-select-field",
-  templateUrl: "./select-field.component.html",
-  styleUrls: ["./select-field.component.scss"]
+  selector: "app-list-field",
+  templateUrl: "./list-field.component.html",
+  styleUrls: ["./list-field.component.scss"]
 })
 
-export class SelectFieldComponent implements OnInit {
-  
-  @Input() field: SelectField;
+export class ListFieldComponent extends ContainersComponent implements OnInit {
+  @Input() field: ListField;
   data: any;
-  constructor(public dialog: MatDialog) {
-
+  constructor(public appService: AppService, public snackBar: MatSnackBar,public dialog: MatDialog) {
+    super(appService, snackBar)
   }
+
   ngOnInit() {
+    if (!this.field.fields) {
+      this.field.fields = new Array<Fields>();
+    }
     this.field.hasAction = true;
   }
   openSetting() {

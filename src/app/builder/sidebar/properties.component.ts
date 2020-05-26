@@ -6,6 +6,7 @@ import { SharedService } from 'src/app/share/shared.service';
 import { objectKeys } from 'src/app/share/object-func';
 import { MatDialog } from '@angular/material';
 import { StyleToCssComponent } from './style--to-css/style--to-css.component';
+import { FieldDataSource } from '../model/data-source';
 
 @Component({
   selector: 'app-properties',
@@ -17,6 +18,7 @@ export class PropertiesComponent implements OnInit {
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
   modelProps: string[];
+  bindContainerDS: boolean;
   constructor(public appService: AppService, public sharedService: SharedService,
     public dialog: MatDialog) {
     this.boxShadow = {};
@@ -25,6 +27,9 @@ export class PropertiesComponent implements OnInit {
   ngOnInit() {
     this.currentField = this.appService.currentField;
     this.currentField.classes = this.currentField.classes || [];
+    this.getModelProps();
+  }
+  getModelProps() {
     if (this.sharedService.model) {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
       if (this.sharedService.instanceName) {
@@ -97,8 +102,21 @@ export class PropertiesComponent implements OnInit {
     }
     this.appService.filedValueChanged();
   }
-  colorPickerChange(event,model) {
-    this.currentField.style[model]=event;
+  colorPickerChange(event, model) {
+    this.currentField.style[model] = event;
     this.appService.filedValueChanged();
+  }
+  bindToContainerDataSource() {
+    if (this.bindContainerDS) {
+      const parentContainer = this.appService.allContainers.find(x => x.id === this.currentField.containerId);
+      if (parentContainer) {
+        const ds = <FieldDataSource>parentContainer['dataSource'];
+        if (ds) {
+          this.modelProps = ds.dataStructure.map(d => d['name'])
+        }
+      }
+    } else {
+      this.getModelProps();
+    }
   }
 }

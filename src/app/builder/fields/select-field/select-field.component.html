@@ -1,5 +1,6 @@
 <mat-form-field >
     <mat-select  placeholder="{{field.placeholder}}">
+        <mat-label>{{field.label}}</mat-label>
         <ng-container *ngIf="field.dataSource?.staticData?.length>0">
             <mat-option *ngFor="let item of field.dataSource.staticData">
                 {{item.discription}}

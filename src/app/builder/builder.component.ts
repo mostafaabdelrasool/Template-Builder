@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { AppService } from './share/Render/app.service';
 import { ActivatedRoute } from '@angular/router';
-import { Form } from '../admin/model/forms';
 import { BuilderService } from './builder.service';
 
 @Component({
@@ -19,15 +18,5 @@ export class BuilderComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.queryParams['id'];
-    if (id) {
-      this.builderService.getById(+id).subscribe((x: Form) => {
-        if (x.formSetting) {
-          this.appService.containers = JSON.parse(x.formSetting);
-        } else {
-          this.appService.containers =[this.appService.getDefaultContainer()];
-        }
-      });
-    }
   }
 }

@@ -91,6 +91,10 @@ export class SelectField extends Fields {
   dataSource: FieldDataSource;
   onSelect?: OnSelectEvent
 }
+export class ListField extends Fields{
+  fields:Fields[];
+  dataSource: FieldDataSource;
+}
 export class OnSelectEvent {
   destinationPath: string;
   mapper?: [{ source: string, destination: string }];

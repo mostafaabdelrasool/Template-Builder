@@ -2,3 +2,11 @@
     border: 2px double gold !important;
     transition: all ease .5s;
 }
+app-field-action{
+    mat-icon{
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }

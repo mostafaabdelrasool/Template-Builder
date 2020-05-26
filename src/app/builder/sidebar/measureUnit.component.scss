@@ -14,8 +14,14 @@ select{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-size: 10px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
 }
 mat-form-field{
  font-size: 10px;
- width:68%
+ width: 100%;
+}
+.m-container{
+    position: relative;
 }

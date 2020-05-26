@@ -33,7 +33,7 @@ export class AppService {
       paddingRight: "5px",
       paddingBottom: "5px",
       paddingLeft: "5px",
-      minHeight: "10em",
+      minHeight: "100%",
       width: "98%",
     }
     this.currentContainer = {
