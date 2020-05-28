@@ -11,8 +11,9 @@ import { ChildContainerComponent } from './child-container.component';
 import { SharedBuilderModule } from '../share/shared-builder-module';
 import { FieldModule } from '../fields/field.module';
 import { SharedModule } from 'src/app/share/shared.module';
+import { FieldChildContainerComponent } from './field-child-container/field-child-container.component';
 
-const components = [FormFieldComponent, ListFieldComponent, TabFieldComponent, ChildContainerComponent]
+const components = [FormFieldComponent, ListFieldComponent, TabFieldComponent, ChildContainerComponent,FieldChildContainerComponent]
 @NgModule({
     imports: [CommonModule,
         FormsModule,

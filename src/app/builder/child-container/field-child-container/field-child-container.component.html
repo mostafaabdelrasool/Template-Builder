@@ -1,0 +1,17 @@
+<ng-container *ngFor="let item of field.fields">
+    <ng-container *ngIf="!item.isContainer">
+        <app-fields mwlResizable [enableGhostResize]="true" draggable="true" (dragstart)="startReposition($event,item)"
+            [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (dragover)='onDragOver($event,item);'
+            (resizeEnd)="onResizeEnd($event,item)" [field]="item" [appStyle]="item.style" id="{{item.id}}"
+            (click)="appService.selectField(item)"
+            [ngClass]="{'field-selected':item.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'>
+        </app-fields>
+    </ng-container>
+    <app-child-container mwlResizable [enableGhostResize]="true" id="{{item.id}}"
+        [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (resizeEnd)="onResizeEnd($event,item)"
+        class="child-container" [ngClass]="{'field-selected':item.id===appService.currentField?.id}"
+        [appHighlight]='{color:"black"}' [appStyle]="item.style" *ngIf="item.isContainer" [container]="item"
+        (click)="appService.selectField(item)" draggable="true" (dragstart)="startReposition($event,item)"
+        (dragover)='onDragOver($event,item);'>
+    </app-child-container>
+</ng-container>

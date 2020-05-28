@@ -18,18 +18,17 @@
                 <mat-form-field fxFlex="100">
                     <input matInput placeholder="Id" [(ngModel)]="currentField.id">
                 </mat-form-field>
-                <div fxLayout="row wrap" fxFlex="100">
-                    <mat-form-field fxFlex="93">
-                        <input type="text" placeholder="Model binder" aria-label="Number" matInput
-                            [(ngModel)]="currentField.model" [matAutocomplete]="auto">
-                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                            <mat-option *ngFor="let option of modelProps" [value]="option">
-                                {{option}}
-                            </mat-option>
-                        </mat-autocomplete>
-                    </mat-form-field>
-                    <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainerDataSource()" [(ngModel)]="bindContainerDS"></mat-checkbox>
-                </div>
+                <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer"
+                (change)="bindToContainer()" [(ngModel)]="currentField.bindContainer">Bind Container DS</mat-checkbox>
+                <mat-form-field fxFlex="100">
+                    <input type="text" placeholder="Model binder" aria-label="Number" matInput
+                        [(ngModel)]="currentField.model" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of modelProps" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
                 <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
                     <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)"
                         [(value)]="currentField['typeName']">

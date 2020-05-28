@@ -22,7 +22,8 @@ export class Fields {
   hasAction?: boolean;
   value?: string;
   category?: FieldCategory;
-  complexValueCalculation?: ComplexValueCalculation
+  complexValueCalculation?: ComplexValueCalculation;
+  bindContainer?:boolean
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;

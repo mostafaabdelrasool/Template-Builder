@@ -1,9 +1,56 @@
 <ng-container [ngSwitch]="field.type">
-    <ng-template #fieldtemplate></ng-template>
+    <ng-container *ngIf="field.category===0">
+        <app-input-field [field]="field" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-input-field>
+    </ng-container>
+    <ng-container *ngSwitchCase="16">
+        <ng-container [ngSwitch]="field['buttonType']">
+            <ng-container *ngSwitchCase="'mat-button'">
+                <button mat-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-raised-button'">
+                <button mat-raised-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-stroked-button'">
+                <button mat-stroked-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-flat-button'">
+                <button mat-flat-button color="{{field['buttonColor']}}">{{field.value}}</button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-icon-button'">
+                <button mat-icon-button color="{{field['buttonColor']}}">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-fab'">
+                <button mat-fab color="{{field['buttonColor']}}">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mat-mini-fab'">
+                <button mat-mini-fab color="{{field['buttonColor']}}"
+                    aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </ng-container>
+        </ng-container>
+        <div *ngSwitchDefault></div>
+    </ng-container>
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <div *ngSwitchCase="20" [innerHTML]="field.value"></div>
-    <div *ngSwitchCase="27">
+    <mat-form-field *ngSwitchCase="25">
+        <mat-label>{{field.placeholder}}</mat-label>
+        <mat-select (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let item of field['dataSource'].data"
+             [value]="item[field['valueMember']]">
+                {{item[field['dispalyMember']]}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-radio-button-field [field]="field" *ngSwitchCase="9" [value]="getFieldValue(field.model)" (valueChange)="valueChange(field.model,$event)"></app-radio-button-field>
+    <div *ngSwitchCase="27" class="calc-field">
         <span>{{field.placeholder}}</span>
+        <span>{{this.getFieldValue(field.model)}}</span>
     </div>
+    <app-createable-table-render [field]="field" *ngSwitchCase="28"></app-createable-table-render>
 </ng-container>

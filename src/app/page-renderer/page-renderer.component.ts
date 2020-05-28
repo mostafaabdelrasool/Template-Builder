@@ -7,16 +7,16 @@ import { RenderService } from './render.service';
   selector: 'app-page-renderer',
   templateUrl: './page-renderer.component.html',
   styleUrls: ['./page-renderer.component.scss'],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class PageRendererComponent implements OnInit {
-  @Input()containers: Containers[];
+  @Input() containers: Containers[];
   constructor(public sharedService: SharedService, public renderService: RenderService) {
   }
 
   ngOnInit() {
     this.getSetting();
-    this.renderService.initData(this.sharedService.instanceName)
+     this.renderService.initData(this.sharedService.instanceName)
   }
   getSetting() {
     //in case of preview

@@ -3,7 +3,7 @@ import { AppService } from '../share/Render/app.service';
 import { Fields, SelectField, FieldType, InputField } from '../model/field';
 import { CardField } from '../model/containers';
 import { SharedService } from 'src/app/share/shared.service';
-import { objectKeys } from 'src/app/share/object-func';
+import { objectKeys, getPathData } from 'src/app/share/object-func';
 import { MatDialog } from '@angular/material';
 import { StyleToCssComponent } from './style--to-css/style--to-css.component';
 import { FieldDataSource } from '../model/data-source';
@@ -18,7 +18,6 @@ export class PropertiesComponent implements OnInit {
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
   modelProps: string[];
-  bindContainerDS: boolean;
   constructor(public appService: AppService, public sharedService: SharedService,
     public dialog: MatDialog) {
     this.boxShadow = {};
@@ -32,11 +31,6 @@ export class PropertiesComponent implements OnInit {
   getModelProps() {
     if (this.sharedService.model) {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
-      if (this.sharedService.instanceName) {
-        this.modelProps = this.modelProps.map(x =>
-          this.sharedService.instanceName + '.' + x
-        )
-      }
     }
   }
   addClass = className => {
@@ -106,13 +100,19 @@ export class PropertiesComponent implements OnInit {
     this.currentField.style[model] = event;
     this.appService.filedValueChanged();
   }
-  bindToContainerDataSource() {
-    if (this.bindContainerDS) {
+  bindToContainer() {
+    if (this.currentField.bindContainer) {
       const parentContainer = this.appService.allContainers.find(x => x.id === this.currentField.containerId);
       if (parentContainer) {
         const ds = <FieldDataSource>parentContainer['dataSource'];
         if (ds) {
           this.modelProps = ds.dataStructure.map(d => d['name'])
+        } else {
+          //if container bind to main model not to DS
+          var parentContainerData = getPathData(JSON.parse(this.sharedService.model),parentContainer.model);
+          if (parentContainerData && parentContainerData.length > 0) {
+            this.modelProps = objectKeys(parentContainerData[0]);
+          }
         }
       }
     } else {

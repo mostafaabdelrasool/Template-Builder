@@ -7,6 +7,7 @@ import { ButtonFieldComponent } from '../fields/button-field/button-field.compon
 import { FormFieldComponent } from '../child-container/form-field/form-field.component';
 import { ListFieldComponent } from '../child-container/list-field/list-field.component';
 import { TabFieldComponent } from '../child-container/tab-field/tab-field.component';
+import { FieldChildContainerComponent } from '../child-container/field-child-container/field-child-container.component';
 
 export const FieldRenderSetting= {
     INPUT_TEXT: {
@@ -35,6 +36,9 @@ export const FieldRenderSetting= {
     },
     LIST:{
         componentName:ListFieldComponent
+    },
+    CHILD_DIV:{
+        componentName:FieldChildContainerComponent
     }
     
 }
