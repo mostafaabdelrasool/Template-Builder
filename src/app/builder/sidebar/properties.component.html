@@ -1,12 +1,4 @@
-  <div fxLayout="column" fxLayoutGap="10px">
-    <ng-select [items]="currentField.classes" [addTag]="addClass" bindLabel="name" bindValue="id"
-      placeholder="Add Class" appendTo="body" multiple="true" [(ngModel)]="currentField.classes">
-    </ng-select>
-    <mat-checkbox [(ngModel)]="currentField.applyStyleInClass" (change)="openCssCode()">Style in class</mat-checkbox>
-  </div>
-  <mat-divider></mat-divider>
-
-  <fieldset (change)=appService.filedValueChanged()>
+  <fieldset (keyup)=fieldValueChanged($event)>
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -16,15 +8,15 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
           <mat-form-field fxFlex="100">
-            <input matInput placeholder="Id" [(ngModel)]="currentField.id">
+            <input matInput placeholder="Id" name="id" [valueHandler]=currentField.id>
           </mat-form-field>
           <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainer()"
-            [(ngModel)]="currentField.bindContainer">Bind Container DS</mat-checkbox>
+            name="bindContainer">Bind Container DS</mat-checkbox>
           <mat-form-field fxFlex="100">
-            <input type="text" placeholder="Model binder" aria-label="Number" matInput [(ngModel)]="currentField.model"
-              [matAutocomplete]="auto">
+            <input type="text" placeholder="Model binder" aria-label="Number" matInput name="model"
+              [matAutocomplete]="auto" [valueHandler]=currentField.model>
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-              <mat-option *ngFor="let option of modelProps" [value]="option">
+              <mat-option *ngFor="let option of modelProps" [valueHandler]="option">
                 {{option}}
               </mat-option>
             </mat-autocomplete>
@@ -50,10 +42,10 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field fxFlex="45">
-            <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
+            <input matInput placeholder="Placeholder" [valueHandler]=currentField.placeholder name="placeholder">
           </mat-form-field>
           <mat-form-field fxFlex="45">
-            <input matInput placeholder="Label" [(ngModel)]="currentField.label">
+            <input matInput placeholder="Label" name="label" [valueHandler]=currentField.label>
           </mat-form-field>
         </div>
       </mat-expansion-panel>
@@ -121,118 +113,62 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Min" [(ngModel)]="currentField['min']">
+            <input matInput placeholder="Min" [valueHandler]=currentField.min name='min'>
           </mat-form-field>
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Max" [(ngModel)]="currentField['max']">
+            <input matInput placeholder="Max" [valueHandler]=currentField.max name='max'>
           </mat-form-field>
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
+            <input matInput placeholder="Max Length" [valueHandler]=currentField.maxLength name='maxLength'>
           </mat-form-field>
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Min Length" [(ngModel)]="currentField['minLength']">
+            <input matInput placeholder="Min Length" [valueHandler]=currentField.minLength name='minLength'>
           </mat-form-field>
           <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
             <mat-form-field fxFlex="45%">
-              <input readonly="true" [(ngModel)]="currentField['startDate']" matInput [matDatepicker]="z"
+              <input readonly="true" name='startDate' [valueHandler]=currentField.startDate matInput [matDatepicker]="z"
                 placeholder="Start Date">
               <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
               <mat-datepicker #z startView="month"></mat-datepicker>
             </mat-form-field>
             <mat-form-field fxFlex="45%">
-              <input readonly="true" [(ngModel)]="currentField['endData']" matInput [matDatepicker]="x"
-                placeholder="End Date">
+              <input readonly="true" name='endData' matInput [matDatepicker]="x"
+                placeholder="End Date" [valueHandler]=currentField.endData>
               <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
               <mat-datepicker #x startView="month"></mat-datepicker>
             </mat-form-field>
           </div>
-
-
           <mat-form-field fxFlex="100">
-            <input matInput placeholder="value" [(ngModel)]="currentField.value">
+            <input matInput placeholder="value" [valueHandler]=currentField.value name="value">
           </mat-form-field>
           <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center"
             fxFlex="1 1 100%">
             <mat-form-field fxFlex="45%">
               <mat-label>Display Member</mat-label>
-              <mat-select [(ngModel)]="currentField['dispalyMember']">
-                <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+              <mat-select name='dispalyMember' [valueHandler]=currentField.dispalyMember>
+                <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
                   {{item.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field fxFlex="45%">
               <mat-label>Value Member</mat-label>
-              <mat-select [(ngModel)]="currentField['valueMember']">
-                <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+              <mat-select name='valueMember' [valueHandler]=currentField.valueMember>
+                <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
                   {{item.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
           <mat-form-field fxFlex="1 1 100%">
-            <input matInput placeholder="Hint" [(ngModel)]="currentField['hint']">
+            <input matInput placeholder="Hint" [valueHandler]=currentField.hint name='hint'>
             <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear"
               (click)="currentField['hint']=''">
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-          <mat-checkbox [(ngModel)]="currentField['required']">Required</mat-checkbox>
-          <mat-checkbox [(ngModel)]="currentField['clearButton']">Clear Button</mat-checkbox>
-        </div>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Display
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-          <mat-form-field fxFlex="45%">
-            <mat-select placeholder="Display" (selectionChange)="appService.filedValueChanged()"
-              [(value)]="currentField.style.display">
-              <mat-option value="none">
-                none
-              </mat-option>
-              <mat-option value="inline-block">
-                inline-block
-              </mat-option>
-              <mat-option value="block">
-                block
-              </mat-option>
-              <mat-option value="inline">
-                inline
-              </mat-option>
-              <mat-option value="flex">
-                flex
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field fxFlex="45%">
-            <mat-select placeholder="Position" (selectionChange)="appService.filedValueChanged()"
-              [(value)]="currentField.style.position">
-              <mat-option value="absolute">
-                absolute
-              </mat-option>
-              <mat-option value="relative">
-                relative
-              </mat-option>
-              <mat-option value="static">
-                static
-              </mat-option>
-              <mat-option value="fixed">
-                fixed
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <app-measureUnit fxFlex="45" [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
-            (valueUpdated)="updateStyle($event,'top')"></app-measureUnit>
-          <app-measureUnit fxFlex="45" [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
-            (valueUpdated)="updateStyle($event,'right')"></app-measureUnit>
-          <app-measureUnit fxFlex="45" [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
-            (valueUpdated)="updateStyle($event,'left')"></app-measureUnit>
-          <app-measureUnit fxFlex="45" [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
-            (valueUpdated)="updateStyle($event,'bottom')"></app-measureUnit>
+          <mat-checkbox name='required'>Required</mat-checkbox>
+          <mat-checkbox name='clearButton'>Clear Button</mat-checkbox>
         </div>
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -270,8 +206,7 @@
             [item]="{name:'Thickness',model:'borderWidth',modelValue:currentField.style.borderWidth}"
             (valueUpdated)="updateStyle($event,'borderWidth')"></app-measureUnit>
           <mat-form-field fxFlex="45%">
-            <mat-select placeholder="Type" (selectionChange)="appService.filedValueChanged()"
-              [(ngModel)]="currentField.style.borderStyle">
+            <mat-select placeholder="Type" (selectionChange)="updateStyle($event,'borderStyle')" name="borderStyle">
               <mat-option value="solid">solid</mat-option>
               <mat-option value="dashed">dashed</mat-option>
             </mat-select>
@@ -304,11 +239,11 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap" fxLayoutAlign="space-between center">
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Title" [(ngModel)]="currentField['cardTitle']">
+            <input matInput placeholder="Title" name='cardTitle' [valueHandler]="currentField['cardTitle']">
           </mat-form-field>
 
           <mat-form-field fxFlex="45%">
-            <input matInput placeholder="Sub-title" [(ngModel)]="currentField['cardSubTitle']">
+            <input matInput placeholder="Sub-title" name="cardSubTitle" [valueHandler]="currentField['cardSubTitle']">
           </mat-form-field>
         </div>
         Card Actions

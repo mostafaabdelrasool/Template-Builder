@@ -36,13 +36,14 @@ export class AppService {
       paddingLeft: "5px",
       minHeight: "100%",
       width: "98%",
-      fxFlex:{}
+      fxFlex: {}
     }
     this.currentContainer = {
       model: undefined,
       type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
     };
     this.containers = [Object.assign({}, this.currentContainer)];
+    this.allFields.push(this.currentContainer);
     this.currentFieldSubject = new BehaviorSubject<Fields>(this.currentField)
   }
   selectField(field: Fields) {
@@ -51,21 +52,13 @@ export class AppService {
       return;
     }
     field.isSelected = true;
-    // this.currentField = undefined;
-    // this.selectFieldContainer(field);
-    setTimeout(() => {
-      //this is a work around because angular doesn't detect change of child properties so i clear all and set again
-      this.currentField = Object.assign({}, field);
-      if (field.isContainer) {
-        this.currentContainer = Object.assign({}, <Containers>field);
-      }
-      this.openProperties = true;
-      this.currentFieldSubject.next(this.currentField);
-    });
+    this.currentField = Object.assign({}, field);
+    if (field.isContainer) {
+      this.currentContainer = Object.assign({}, <Containers>field);
+    }
+    this.openProperties = true;
+    this.currentFieldSubject.next(this.currentField);
     event.stopPropagation();
-  }
-  filedValueChanged() {
-    this.updateFieldStyle(this.currentField);
   }
   getDefaultContainer(): Containers {
     return Object.assign({}, {
@@ -102,10 +95,13 @@ export class AppService {
   }
   updateFieldStyle(field: Fields) {
     if (field) {
-      const style = { ...field.style }
-      //this work around to detect child property change;
-      field.style = undefined;
-      field.style = style
+      const currentField = this.allFields.find(x => x.id === field.id);
+      if (currentField) {
+        const style = { ...field.style }
+        //this work around to detect child property change;
+        currentField.style = undefined;
+        currentField.style = style
+      }
     }
   }
   togglePropertiesSideBar(): void {
@@ -136,7 +132,7 @@ export class AppService {
         paddingLeft: '0px',
         paddingRight: '0px',
         paddingTop: '0px',
-        fxFlex:{}
+        fxFlex: {}
       }, containerId: this.currentContainer.id,
       placeholder: 'placeholder', isContainer: option.isContainer, fieldEvent: [],
       name: 'Field' + (this.allFields.length + 1), category: option.category, label: "label"
@@ -156,8 +152,17 @@ export class AppService {
   }
   selectCurrentField(field: Fields) {
     if (field) {
-      this.currentFieldSubject.next(this.currentField);
-      this.currentContainer=<Containers>field;
+      this.currentFieldSubject.next(field);
+      this.currentField =  Object.assign({}, field);
+      this.currentContainer = Object.assign({}, <Containers>field);
+    }
+  }
+  updateFieldProperty(fieldId: string, value: any, propName: string) {
+    if (fieldId && value) {
+      let currentField = this.allFields.find(x => x.id === fieldId);
+      if (currentField) {
+        currentField[propName] = value;
+      }
     }
   }
 }

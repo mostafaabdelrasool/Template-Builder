@@ -14,6 +14,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SharedModule } from 'src/app/share/shared.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { ResizableModule } from 'angular-resizable-element';
+import { InputValueHandler } from './Render/value.handler.directive';
 @NgModule({
     imports: [CommonModule,
         FormsModule,
@@ -31,7 +32,8 @@ import { ResizableModule } from 'angular-resizable-element';
         ApplyStyleDirective,
         HighlightDirective,
         CodeEditorModule,
-        ResizableModule
+        ResizableModule,
+        InputValueHandler
         ],
     declarations: [DataSettingComponent,
         DataSourceComponent,
@@ -39,7 +41,9 @@ import { ResizableModule } from 'angular-resizable-element';
         DataMapperSettingComponent,
         FieldEventComponent,
         ApplyStyleDirective,
-        HighlightDirective],
+        HighlightDirective,
+        InputValueHandler
+    ],
     providers: [],
     entryComponents: [DataSettingComponent,
         DataSourceComponent,

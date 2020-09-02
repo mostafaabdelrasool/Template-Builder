@@ -27,11 +27,11 @@ export class ContainersComponent implements OnInit {
       return;
     }
     container.isSelected = true;
+    this.appService.selectCurrentField(container)
     //if drop item don't open the manager
     if (!selectItemOnly) {
       this.appService.openPropertiesSidebar();
     }
-    this.appService.selectCurrentField(container)
     event.stopPropagation();
   }
   startReposition(event, field: Fields) {
@@ -110,7 +110,7 @@ export class ContainersComponent implements OnInit {
     const newWidthRatio = (event.rectangle.width / parent.offsetWidth) * 100;
     field.style.width = newWidthRatio.toFixed(2) + '%';
     field.style.height = event.rectangle.height + 'px';
-    this.appService.filedValueChanged();
+    this.appService.updateFieldStyle(field);
   }
 }
   // switch (option.type) {

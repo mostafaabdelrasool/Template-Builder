@@ -7,7 +7,7 @@ import { objectKeys, getPathData } from 'src/app/share/object-func';
 import { MatDialog } from '@angular/material';
 import { StyleToCssComponent } from './style--to-css/style--to-css.component';
 import { FieldDataSource } from '../model/data-source';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-properties',
@@ -27,8 +27,6 @@ export class PropertiesComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.currentField = this.appService.currentField;
-    this.currentField.classes = this.currentField.classes || [];
     this.getModelProps();
   }
   getModelProps() {
@@ -36,12 +34,9 @@ export class PropertiesComponent implements OnInit {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
     }
   }
-  addClass = className => {
-    return this.currentField.classes.push(className);
-  }
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
-    this.appService.filedValueChanged();
+    this.appService.updateFieldStyle(this.currentField);
   }
   addNewCardAction() {
     const length = (<CardField>this.currentField).cardActions.length;
@@ -73,16 +68,7 @@ export class PropertiesComponent implements OnInit {
         break;
     }
     this.currentField.style.boxShadow = result.join(' ');
-    this.appService.filedValueChanged();
-  }
-  openCssCode() {
-    if (this.currentField.applyStyleInClass) {
-      const dialogRef = this.dialog.open(StyleToCssComponent);
-
-      dialogRef.afterClosed().subscribe(result => {
-        this.currentField.classes.push(result);
-      });
-    }
+    this.appService.updateFieldStyle(this.currentField);
   }
   getFieldDataStructure() {
     return (<SelectField>this.currentField).dataSource ?
@@ -97,11 +83,11 @@ export class PropertiesComponent implements OnInit {
     } else {
       input.type = FieldType.INPUT_TEXT;
     }
-    this.appService.filedValueChanged();
+    this.appService.updateFieldStyle(this.currentField);
   }
   colorPickerChange(event, model) {
     this.currentField.style[model] = event;
-    this.appService.filedValueChanged();
+    this.appService.updateFieldStyle(this.currentField);
   }
   bindToContainer() {
     if (this.currentField.bindContainer) {
@@ -121,5 +107,10 @@ export class PropertiesComponent implements OnInit {
     } else {
       this.getModelProps();
     }
+  }
+  fieldValueChanged(event) {
+    const { name, value } = event.target;
+    this.appService.updateFieldProperty(this.currentField.id, value, name);
+    this.currentField[name] = value;
   }
 }
