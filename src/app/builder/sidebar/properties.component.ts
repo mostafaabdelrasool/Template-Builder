@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
 import { Fields, SelectField, FieldType, InputField } from '../model/field';
 import { CardField } from '../model/containers';
@@ -7,6 +7,7 @@ import { objectKeys, getPathData } from 'src/app/share/object-func';
 import { MatDialog } from '@angular/material';
 import { StyleToCssComponent } from './style--to-css/style--to-css.component';
 import { FieldDataSource } from '../model/data-source';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-properties',
@@ -21,8 +22,10 @@ export class PropertiesComponent implements OnInit {
   constructor(public appService: AppService, public sharedService: SharedService,
     public dialog: MatDialog) {
     this.boxShadow = {};
+    this.appService.currentFieldSubject.subscribe((x: Fields) => {
+      this.currentField = x;
+    });
   }
-
   ngOnInit() {
     this.currentField = this.appService.currentField;
     this.currentField.classes = this.currentField.classes || [];
@@ -109,7 +112,7 @@ export class PropertiesComponent implements OnInit {
           this.modelProps = ds.dataStructure.map(d => d['name'])
         } else {
           //if container bind to main model not to DS
-          var parentContainerData = getPathData(JSON.parse(this.sharedService.model),parentContainer.model);
+          var parentContainerData = getPathData(JSON.parse(this.sharedService.model), parentContainer.model);
           if (parentContainerData && parentContainerData.length > 0) {
             this.modelProps = objectKeys(parentContainerData[0]);
           }

@@ -1,4 +1,4 @@
-<div style="height:100%" (drop)='onDrop($event);'>
+<div style="height:97%" (drop)='onDrop($event);'>
     <div *ngFor="let item of appService.containers" id="{{item.id}}" (dragover)='onDragOver($event,item);'
         [ngSwitch]="item.type" class="field-container" [appStyle]="item.style"
         [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"

@@ -1,13 +1,14 @@
 <app-top-nav></app-top-nav>
-<div fxLayout="row" style="height: 100%;">
-  <div [ngClass]="{'showsidebar':  appService.openFieldTypes}" class="sidebar">
+<div fxLayout="row" style="height: 92.7%;">
+  <div [ngClass]="{'showsidebar':  appService.openFieldTypes}" class="sidebar" style="min-height: 108%;">
     <app-field-types></app-field-types>
   </div>
   <div class="boundary">
     <app-containers></app-containers>
     <app-data-source></app-data-source>
   </div>
-  <div [ngClass]="{'showsidebar':  appService.openProperties}" class="sidebar">
-    <app-properties *ngIf="appService.currentField"></app-properties>
+  <div [ngClass]="{'showsidebar':  appService.getOpenProperties()}"
+   *ngIf="appService.getOpenProperties()" class="sidebar">
+    <app-properties ></app-properties>
   </div>
 </div>

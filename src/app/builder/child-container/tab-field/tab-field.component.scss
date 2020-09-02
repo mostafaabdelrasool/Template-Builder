@@ -1,0 +1,13 @@
+::ng-deep .mat-tab-group {
+    height: 100%;
+    .mat-tab-body-wrapper {
+      min-height: 70%;
+      max-height: 100%;
+    }
+  }
+  :host{
+    box-sizing: border-box;
+    display: block;
+    height: 100%;
+  }
+

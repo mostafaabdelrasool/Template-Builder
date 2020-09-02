@@ -29,13 +29,9 @@ export class ContainersComponent implements OnInit {
     container.isSelected = true;
     //if drop item don't open the manager
     if (!selectItemOnly) {
-      this.appService.openProperties = true;
+      this.appService.openPropertiesSidebar();
     }
-    this.appService.currentField = undefined;
-    setTimeout(() => {
-      this.appService.currentField = container;
-      this.appService.currentContainer = container;
-    });
+    this.appService.selectCurrentField(container)
     event.stopPropagation();
   }
   startReposition(event, field: Fields) {
@@ -44,7 +40,7 @@ export class ContainersComponent implements OnInit {
     event
       .dataTransfer
       .setData('text/plain', JSON.stringify(data));
-      event.stopPropagation();
+    event.stopPropagation();
   }
   ngOnInit() {
 
@@ -85,24 +81,7 @@ export class ContainersComponent implements OnInit {
     this.appService.allContainers.push(container);
   }
   addField(option) {
-    let field: Fields = {
-      type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
-      id: Date.now().toString(), classes: [], style: {}, containerId: this.appService.currentContainer.id,
-      placeholder: 'placeholder', isContainer: option.isContainer, fieldEvent: [],
-      name: 'Field' + (this.appService.allFields.length + 1), category: option.category,label:"label"
-    };
-    if (option.isChildContainer) {
-      //because here we add field so fields prop. note exist in type field
-      field["fields"] = [];
-      field.isContainer = true;
-     [field.style.paddingBottom,field.style.paddingLeft,field.style.paddingRight,field.style.paddingTop,field.style.width] =['5px','5px','5px','5px','99%'];
-      this.appService.allContainers.push(<Containers>field);
-    }
-    if (field.type === FieldType.TABLE) {
-      field.fullWidth = true
-    }
-    this.appService.currentContainer.fields.push(field);
-    this.appService.allFields.push(field);
+    this.appService.createNewField(option);
   }
   addButton(buttonType: ButtonFieldTypes, color) {
     let button: ButtonField = {

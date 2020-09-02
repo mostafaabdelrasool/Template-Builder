@@ -1,24 +1,22 @@
 <ng-container [ngSwitch]="field.type">
-    <div *ngSwitchCase="0">
-        <mat-form-field *ngIf="field.type===0">
-            <mat-label>{{field.label}}</mat-label>
-            <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
-                (change)="onValueChange($event)">
-            <mat-hint>{{field.hint}}</mat-hint>
-            <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix
-                mat-icon-button aria-label="Clear">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-form-field>
-    </div>
-    <mat-form-field *ngSwitchCase="8">
+    <mat-form-field *ngSwitchCase="0" appearance="outline">
+        <mat-label>{{field.label}}</mat-label>
+        <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
+            (change)="onValueChange($event)">
+        <mat-hint>{{field.hint}}</mat-hint>
+        <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix
+            mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline" *ngSwitchCase="8">
         <mat-label>{{field.label}}</mat-label>
         <textarea matInput placeholder="{{field.placeholder}}" [value]="value"
             (change)="onValueChange($event)"></textarea>
     </mat-form-field>
 
     <mat-checkbox *ngSwitchCase="6" [value]="value" (change)="onValueChange($event)">Label</mat-checkbox>
-    <mat-form-field *ngSwitchCase="7">
+    <mat-form-field appearance="outline" *ngSwitchCase="7">
         <input readonly="true" [value]="value" (dateChange)="onValueChange($event)" matInput [matDatepicker]="picker"
             placeholder="{{field.placeholder}}">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

@@ -3,6 +3,10 @@ import { FieldDataSource } from './data-source';
 import { Style } from './style';
 
 export class Fields {
+  constructor() {
+    this.style=new Style();
+    this.complexValueCalculation=new ComplexValueCalculation();
+  }
   type: FieldType;
   model: string;
   isSelected?: Boolean;

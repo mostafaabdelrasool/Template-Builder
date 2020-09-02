@@ -35,10 +35,8 @@ export class TopNavComponent implements OnInit {
     if (type === 1) {
       this.appService.openFieldTypes = !this.appService.openFieldTypes;
     } else {
-      this.appService.openProperties = !this.appService.openProperties;
-
+      this.appService.togglePropertiesSideBar();
     }
-
   }
   preview() {
     localStorage.setItem('containers', JSON.stringify(this.appService.containers))

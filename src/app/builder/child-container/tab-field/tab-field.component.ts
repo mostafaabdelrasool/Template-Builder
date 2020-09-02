@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, AfterViewInit } from "@angular/core";
 import { AppService } from '../../share/Render/app.service';
 import { MatSnackBar } from '@angular/material';
 import { TabField } from '../../model/field';
@@ -19,8 +19,13 @@ export class TabFieldComponent extends ContainersComponent implements OnInit {
   ngOnInit() {
     if (!this.field.tabs || this.field.tabs.length === 0) {
       this.field.tabs = [];
-      this.field.tabs.push({ tabName: 'first', container: this.appService.getDefaultContainer() });
+      let defaultContainer = this.appService.getDefaultContainer();
+      defaultContainer.style.minHeight = '84%';
+      this.field.tabs.push({ tabName: 'first', container: defaultContainer });
+      this.appService.addToContainers(defaultContainer);
     }
+    this.field.style.minHeight = '20em';
+    this.appService.updateFieldStyle(this.field);
   }
   addTab() {
     this.field.tabs.push({ tabName: 'Tab Name' + this.field.tabs.length, container: this.appService.getDefaultContainer() });

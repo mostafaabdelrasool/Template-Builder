@@ -1,92 +1,94 @@
-<div *ngIf="currentField.isContainer" fxLayout="row wrap" fxLayoutAlign="space-between center">
-    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill
-    </mat-checkbox>
-    <mat-checkbox [(ngModel)]="currentField.style.fxFlex.wrap" (change)="setFlexSetting('wrap','true')">Wrap
-    </mat-checkbox>
-</div>
-<div fxLayout="row wrap" fxLayoutAlign="space-between center">
-    <app-measureUnit *ngIf="currentField.isContainer" fxFlex="45"
-        [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
-        (valueUpdated)="setFlexSetting($event,'fxLayoutGap')"></app-measureUnit>
-    <mat-form-field fxFlex="45">
-        <input matInput type="number" [(ngModel)]="currentField.style.fxFlex.fxFlex"
-            (change)="setFlexSetting(currentField.style.fxFlex.fxFlex,'fxFlex')" placeholder="fxFlex">
-    </mat-form-field>
-</div>
-<div class="alignment-setting">
-    <div *ngIf="currentField.isContainer">
-        Orientation
-        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-            <mat-button-toggle matTooltip="Display Items in One Row" (click)="setFlexSetting('fxLayout','row')">
-                <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items in One Column" (click)="setFlexSetting('fxLayout','column')">
-                <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+<ng-container *ngIf="currentField.style.fxFlex">
+    <div *ngIf="currentField.isContainer" fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <mat-checkbox [(ngModel)]="currentField.style.fxFlex.fxFill" (change)="setFlexSetting('fxFill','true')">Fill
+        </mat-checkbox>
+        <mat-checkbox [(ngModel)]="currentField.style.fxFlex.wrap" (change)="setFlexSetting('wrap','true')">Wrap
+        </mat-checkbox>
     </div>
-    <div *ngIf="currentField.isContainer">
-        Horizontal Alignment
-        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-            <mat-button-toggle matTooltip="Display Items in From Start H"  (click)="setFlexSetting('fxLayoutAlignH','start')">
-                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items in Center H" (click)="setFlexSetting('fxLayoutAlignH','center')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items at End H" (click)="setFlexSetting('fxLayoutAlignH','end')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items with even spaces between Items" (click)="setFlexSetting('fxLayoutAlignH','space-between')">
-                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle  matTooltip="Display Items with even spaces around Items" (click)="setFlexSetting('fxLayoutAlignH','space-around')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_justify icon">format_align_justify
-                </mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+        <app-measureUnit *ngIf="currentField.isContainer" fxFlex="45"
+            [item]="{name:'Gap',model:'currentField.style.fxFlex.fxLayoutGap',modelValue:currentField.style.fxFlex.fxLayoutGap}"
+            (valueUpdated)="setFlexSetting($event,'fxLayoutGap')"></app-measureUnit>
+        <mat-form-field fxFlex="45">
+            <input matInput type="number" [(ngModel)]="currentField.style.fxFlex.fxFlex"
+                (change)="setFlexSetting(currentField.style.fxFlex.fxFlex,'fxFlex')" placeholder="Flex Width">
+        </mat-form-field>
     </div>
-    <div *ngIf="currentField.isContainer">
-        Vertical Alignment
-        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-            <mat-button-toggle matTooltip="Display Items in start V" (click)="setFlexSetting('fxLayoutAlignV','start')">
-                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items in center V" (click)="setFlexSetting('fxLayoutAlignV','center')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Items at End V" (click)="setFlexSetting('fxLayoutAlignV','end')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Stretch Items" (click)="setFlexSetting('fxLayoutAlignV','stretch')">
-                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
+    <div class="alignment-setting">
+        <div *ngIf="currentField.isContainer">
+            Orientation
+            <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                <mat-button-toggle matTooltip="Display Items in One Row" (click)="setFlexSetting('fxLayout','row')">
+                    <mat-icon aria-hidden="false" aria-label="row view_agenda icon">view_agenda</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items in One Column" (click)="setFlexSetting('fxLayout','column')">
+                    <mat-icon aria-hidden="false" aria-label="column view_stream icon">view_stream</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div *ngIf="currentField.isContainer">
+            Horizontal Alignment
+            <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                <mat-button-toggle matTooltip="Display Items in From Start H"  (click)="setFlexSetting('fxLayoutAlignH','start')">
+                    <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items in Center H" (click)="setFlexSetting('fxLayoutAlignH','center')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items at End H" (click)="setFlexSetting('fxLayoutAlignH','end')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items with even spaces between Items" (click)="setFlexSetting('fxLayoutAlignH','space-between')">
+                    <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle  matTooltip="Display Items with even spaces around Items" (click)="setFlexSetting('fxLayoutAlignH','space-around')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_justify icon">format_align_justify
+                    </mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div *ngIf="currentField.isContainer">
+            Vertical Alignment
+            <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                <mat-button-toggle matTooltip="Display Items in start V" (click)="setFlexSetting('fxLayoutAlignV','start')">
+                    <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items in center V" (click)="setFlexSetting('fxLayoutAlignV','center')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Items at End V" (click)="setFlexSetting('fxLayoutAlignV','end')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Stretch Items" (click)="setFlexSetting('fxLayoutAlignV','stretch')">
+                    <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+        <div>
+            Self Alignment
+            <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
+                <mat-button-toggle matTooltip="Display Item at Start container" (click)="setFlexSetting('fxFlexAlign','start')">
+                    <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Item at Center container" (click)="setFlexSetting('fxFlexAlign','center')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Display Item at End container" (click)="setFlexSetting('fxFlexAlign','flex-end')">
+                    <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
+                    </mat-icon>
+                </mat-button-toggle>
+                <mat-button-toggle matTooltip="Stretch Item" (click)="setFlexSetting('fxFlexAlign','stretch')">
+                    <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
     </div>
-    <div>
-        Self Alignment
-        <mat-button-toggle-group class="st-border" name="Orientation" aria-label="Orientation">
-            <mat-button-toggle matTooltip="Display Item at Start container" (click)="setFlexSetting('fxFlexAlign','start')">
-                <mat-icon aria-hidden="false" aria-label="row format_align_left icon">format_align_left
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Item at Center container" (click)="setFlexSetting('fxFlexAlign','center')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_center icon">format_align_center
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Display Item at End container" (click)="setFlexSetting('fxFlexAlign','flex-end')">
-                <mat-icon aria-hidden="false" aria-label="column format_align_right icon">format_align_right
-                </mat-icon>
-            </mat-button-toggle>
-            <mat-button-toggle matTooltip="Stretch Item" (click)="setFlexSetting('fxFlexAlign','stretch')">
-                <mat-icon aria-hidden="false" aria-label="column sync_alt icon">sync_alt</mat-icon>
-            </mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
-</div>
+</ng-container>

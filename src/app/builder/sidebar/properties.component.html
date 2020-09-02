@@ -1,351 +1,346 @@
-<div fxLayout="column" fxLayoutGap="10px">
+  <div fxLayout="column" fxLayoutGap="10px">
     <ng-select [items]="currentField.classes" [addTag]="addClass" bindLabel="name" bindValue="id"
-        placeholder="Add Class" appendTo="body" multiple="true" [(ngModel)]="currentField.classes">
+      placeholder="Add Class" appendTo="body" multiple="true" [(ngModel)]="currentField.classes">
     </ng-select>
     <mat-checkbox [(ngModel)]="currentField.applyStyleInClass" (change)="openCssCode()">Style in class</mat-checkbox>
-</div>
-<mat-divider></mat-divider>
+  </div>
+  <mat-divider></mat-divider>
 
-<fieldset (change)=appService.filedValueChanged()>
+  <fieldset (change)=appService.filedValueChanged()>
     <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Setting
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="100">
-                    <input matInput placeholder="Id" [(ngModel)]="currentField.id">
-                </mat-form-field>
-                <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer"
-                (change)="bindToContainer()" [(ngModel)]="currentField.bindContainer">Bind Container DS</mat-checkbox>
-                <mat-form-field fxFlex="100">
-                    <input type="text" placeholder="Model binder" aria-label="Number" matInput
-                        [(ngModel)]="currentField.model" [matAutocomplete]="auto">
-                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of modelProps" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-                <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
-                    <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)"
-                        [(value)]="currentField['typeName']">
-                        <mat-option value="text">
-                            text
-                        </mat-option>
-                        <mat-option value="number">
-                            Number
-                        </mat-option>
-                        <mat-option value="datetime">
-                            Datetime
-                        </mat-option>
-                        <mat-option value="password">
-                            Password
-                        </mat-option>
-                        <mat-option value="email">
-                            Email
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex="45">
-                    <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
-                </mat-form-field>
-                <mat-form-field fxFlex="45">
-                    <input matInput placeholder="Label" [(ngModel)]="currentField.label">
-                </mat-form-field>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Dimension
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <app-measureUnit fxFlex="45" [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
-                    (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
-                    (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
-                    (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
-                    (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'Min Height',model:'minHeight',modelValue:currentField.style.minHeight}"
-                    (valueUpdated)="updateStyle($event,'minHeight')"></app-measureUnit>
-                <div>
-                    Margin
-                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
-                            (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
-                            (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
-                            (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
-                            (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
-                    </div>
-                </div>
-                <div>
-                    Padding
-                    <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
-                            (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
-                            (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
-                            (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
-                        <app-measureUnit fxFlex="45"
-                            [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
-                            (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
-                    </div>
-                </div>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Value Setting
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Min" [(ngModel)]="currentField['min']">
-                </mat-form-field>
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Max" [(ngModel)]="currentField['max']">
-                </mat-form-field>
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
-                </mat-form-field>
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Min Length" [(ngModel)]="currentField['minLength']">
-                </mat-form-field>
-                <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
-                    <mat-form-field fxFlex="45%">
-                        <input readonly="true" [(ngModel)]="currentField['startDate']" matInput [matDatepicker]="z"
-                            placeholder="Start Date">
-                        <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
-                        <mat-datepicker #z startView="month"></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field fxFlex="45%">
-                        <input readonly="true" [(ngModel)]="currentField['endData']" matInput [matDatepicker]="x"
-                            placeholder="End Date">
-                        <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
-                        <mat-datepicker #x startView="month"></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-
-                <mat-form-field fxFlex="100">
-                    <input matInput placeholder="value" [(ngModel)]="currentField.value">
-                </mat-form-field>
-                <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center"
-                    fxFlex="1 1 100%">
-                    <mat-form-field fxFlex="45%">
-                        <mat-label>Display Member</mat-label>
-                        <mat-select [(ngModel)]="currentField['dispalyMember']">
-                            <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field fxFlex="45%">
-                        <mat-label>Value Member</mat-label>
-                        <mat-select [(ngModel)]="currentField['valueMember']">
-                            <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
-                                {{item.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <mat-form-field fxFlex="1 1 100%">
-                    <input matInput placeholder="Hint" [(ngModel)]="currentField['hint']">
-                    <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear"
-                        (click)="currentField['hint']=''">
-                        <mat-icon>close</mat-icon>
-                    </button>
-                </mat-form-field>
-                <mat-checkbox [(ngModel)]="currentField['required']">Required</mat-checkbox>
-                <mat-checkbox [(ngModel)]="currentField['clearButton']">Clear Button</mat-checkbox>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Display
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="45%">
-                    <mat-select placeholder="Display" (selectionChange)="appService.filedValueChanged()"
-                        [(value)]="currentField.style.display">
-                        <mat-option value="none">
-                            none
-                        </mat-option>
-                        <mat-option value="inline-block">
-                            inline-block
-                        </mat-option>
-                        <mat-option value="block">
-                            block
-                        </mat-option>
-                        <mat-option value="inline">
-                            inline
-                        </mat-option>
-                        <mat-option value="flex">
-                            flex
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field fxFlex="45%">
-                    <mat-select placeholder="Position" (selectionChange)="appService.filedValueChanged()"
-                        [(value)]="currentField.style.position">
-                        <mat-option value="absolute">
-                            absolute
-                        </mat-option>
-                        <mat-option value="relative">
-                            relative
-                        </mat-option>
-                        <mat-option value="static">
-                            static
-                        </mat-option>
-                        <mat-option value="fixed">
-                            fixed
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <app-measureUnit fxFlex="45" [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
-                    (valueUpdated)="updateStyle($event,'top')"></app-measureUnit>
-                <app-measureUnit fxFlex="45" [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
-                    (valueUpdated)="updateStyle($event,'right')"></app-measureUnit>
-                <app-measureUnit fxFlex="45" [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
-                    (valueUpdated)="updateStyle($event,'left')"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
-                    (valueUpdated)="updateStyle($event,'bottom')"></app-measureUnit>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Look And Feel
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="mb-1">
-                <label>Background color</label>
-                <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
-                    [style.background]="currentField.style.backgroundColor"
-                    [colorPicker]="currentField.style.backgroundColor"
-                    (colorPickerChange)="colorPickerChange($event,'backgroundColor')" />
-            </div>
-            <mat-divider></mat-divider>
-            Box shadow
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Setting
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="100">
+            <input matInput placeholder="Id" [(ngModel)]="currentField.id">
+          </mat-form-field>
+          <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainer()"
+            [(ngModel)]="currentField.bindContainer">Bind Container DS</mat-checkbox>
+          <mat-form-field fxFlex="100">
+            <input type="text" placeholder="Model binder" aria-label="Number" matInput [(ngModel)]="currentField.model"
+              [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+              <mat-option *ngFor="let option of modelProps" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
+            <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)"
+              [(value)]="currentField['typeName']">
+              <mat-option value="text">
+                text
+              </mat-option>
+              <mat-option value="number">
+                Number
+              </mat-option>
+              <mat-option value="datetime">
+                Datetime
+              </mat-option>
+              <mat-option value="password">
+                Password
+              </mat-option>
+              <mat-option value="email">
+                Email
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field fxFlex="45">
+            <input matInput placeholder="Placeholder" [(ngModel)]="currentField.placeholder">
+          </mat-form-field>
+          <mat-form-field fxFlex="45">
+            <input matInput placeholder="Label" [(ngModel)]="currentField.label">
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Dimension
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <app-measureUnit fxFlex="45" [item]="{name:'width',model:'width',modelValue:currentField.style.width}"
+            (valueUpdated)="updateStyle($event,'width')"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'height',model:'height',modelValue:currentField.style.height}"
+            (valueUpdated)="updateStyle($event,'height')"></app-measureUnit>
+          <app-measureUnit fxFlex="45"
+            [item]="{name:'Max width',model:'maxWidth',modelValue:currentField.style.maxWidth}"
+            (valueUpdated)="updateStyle($event,'maxWidth')"></app-measureUnit>
+          <app-measureUnit fxFlex="45"
+            [item]="{name:'Max Height',model:'maxHeight',modelValue:currentField.style.maxHeight}"
+            (valueUpdated)="updateStyle($event,'maxHeight')"></app-measureUnit>
+          <app-measureUnit fxFlex="45"
+            [item]="{name:'Min Height',model:'minHeight',modelValue:currentField.style.minHeight}"
+            (valueUpdated)="updateStyle($event,'minHeight')"></app-measureUnit>
+          <div>
+            Margin
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                <app-measureUnit fxFlex="45" [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
-                    (valueUpdated)="boxShawChange('y',$event)"></app-measureUnit>
-                <app-measureUnit fxFlex="45" [item]="{name:'x-offset',model:'boxShadow.x',modelValue:boxShadow.x}"
-                    (valueUpdated)="boxShawChange('x',$event)"></app-measureUnit>
-                <app-measureUnit fxFlex="45" [item]="{name:'blur',model:'boxShadow.blur',modelValue:boxShadow.blur}"
-                    (valueUpdated)="boxShawChange('b',$event)"></app-measureUnit>
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
-                    (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
-                <div>
-                    <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow[4]"
-                        [colorPicker]="boxShadow[4]" (colorPickerChange)="boxShawChange('c',$event)" />
-                </div>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Margin Top',model:'marginTop',modelValue:currentField.style.marginTop}"
+                (valueUpdated)="updateStyle($event,'marginTop')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Margin Right',model:'marginRight',modelValue:currentField.style.marginRight}"
+                (valueUpdated)="updateStyle($event,'marginRight')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Margin Bottom',model:'marginBottom',modelValue:currentField.style.marginBottom}"
+                (valueUpdated)="updateStyle($event,'marginBottom')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Margin Left',model:'marginLeft',modelValue:currentField.style.marginLeft}"
+                (valueUpdated)="updateStyle($event,'marginLeft')"></app-measureUnit>
             </div>
-            <mat-divider></mat-divider>
-            Border
+          </div>
+          <div>
+            Padding
             <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
-                <app-measureUnit fxFlex="45"
-                    [item]="{name:'Thickness',model:'borderWidth',modelValue:currentField.style.borderWidth}"
-                    (valueUpdated)="updateStyle($event,'borderWidth')"></app-measureUnit>
-                <mat-form-field fxFlex="45%">
-                    <mat-select placeholder="Type" (selectionChange)="appService.filedValueChanged()"
-                        [(ngModel)]="currentField.style.borderStyle">
-                        <mat-option value="solid">solid</mat-option>
-                        <mat-option value="dashed">dashed</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div>
-                    <label>color</label>
-                    <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
-                        [style.background]="currentField.style.borderColor"
-                        [colorPicker]="currentField.style.borderColor"
-                        (colorPickerChange)="colorPickerChange($event,'borderColor')" />
-                </div>
-                <app-measureUnit
-                    [item]="{name:'Border Raduis',model:'borderRadius',modelValue:currentField.style.borderRadius}"
-                    (valueUpdated)="updateStyle($event,'borderRadius')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Padding Top',model:'paddingTop',modelValue:currentField.style.paddingTop}"
+                (valueUpdated)="updateStyle($event,'paddingTop')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Padding Right',model:'paddingRight',modelValue:currentField.style.paddingRight}"
+                (valueUpdated)="updateStyle($event,'paddingRight')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Padding Bottom',model:'paddingBottom',modelValue:currentField.style.paddingBottom}"
+                (valueUpdated)="updateStyle($event,'paddingBottom')"></app-measureUnit>
+              <app-measureUnit fxFlex="45"
+                [item]="{name:'Padding Left',model:'paddingLeft',modelValue:currentField.style.paddingLeft}"
+                (valueUpdated)="updateStyle($event,'paddingLeft')"></app-measureUnit>
             </div>
-        </mat-expansion-panel>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Value Setting
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Min" [(ngModel)]="currentField['min']">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Max" [(ngModel)]="currentField['max']">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Max Length" [(ngModel)]="currentField['maxLength']">
+          </mat-form-field>
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Min Length" [(ngModel)]="currentField['minLength']">
+          </mat-form-field>
+          <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
+            <mat-form-field fxFlex="45%">
+              <input readonly="true" [(ngModel)]="currentField['startDate']" matInput [matDatepicker]="z"
+                placeholder="Start Date">
+              <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
+              <mat-datepicker #z startView="month"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%">
+              <input readonly="true" [(ngModel)]="currentField['endData']" matInput [matDatepicker]="x"
+                placeholder="End Date">
+              <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
+              <mat-datepicker #x startView="month"></mat-datepicker>
+            </mat-form-field>
+          </div>
 
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Typography
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-typography [currentField]="currentField"></app-typography>
-        </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="currentField.type===15">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Card Setting
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Title" [(ngModel)]="currentField['cardTitle']">
-                </mat-form-field>
 
-                <mat-form-field fxFlex="45%">
-                    <input matInput placeholder="Sub-title" [(ngModel)]="currentField['cardSubTitle']">
-                </mat-form-field>
-            </div>
-            Card Actions
-            <div class="st-border" fxLayout="column">
-                <div>
-                    <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon"
-                        (click)="addNewCardAction()" matTooltip='Add Action'>
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <div *ngFor="let action of currentField['cardActions']" fxFlex="45%">
-                    <mat-form-field>
-                        <input matInput placeholder="action Name" [(ngModel)]="action.title">
-                    </mat-form-field>
-                </div>
-            </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel *ngIf="!currentField.isContainer">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Events
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-field-event [currentField]="currentField"></app-field-event>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    FxFlex Setting
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <app-flex-setting [currentField]="currentField"></app-flex-setting>
-        </mat-expansion-panel>
+          <mat-form-field fxFlex="100">
+            <input matInput placeholder="value" [(ngModel)]="currentField.value">
+          </mat-form-field>
+          <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center"
+            fxFlex="1 1 100%">
+            <mat-form-field fxFlex="45%">
+              <mat-label>Display Member</mat-label>
+              <mat-select [(ngModel)]="currentField['dispalyMember']">
+                <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%">
+              <mat-label>Value Member</mat-label>
+              <mat-select [(ngModel)]="currentField['valueMember']">
+                <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
+                  {{item.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-form-field fxFlex="1 1 100%">
+            <input matInput placeholder="Hint" [(ngModel)]="currentField['hint']">
+            <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear"
+              (click)="currentField['hint']=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-checkbox [(ngModel)]="currentField['required']">Required</mat-checkbox>
+          <mat-checkbox [(ngModel)]="currentField['clearButton']">Clear Button</mat-checkbox>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Display
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="45%">
+            <mat-select placeholder="Display" (selectionChange)="appService.filedValueChanged()"
+              [(value)]="currentField.style.display">
+              <mat-option value="none">
+                none
+              </mat-option>
+              <mat-option value="inline-block">
+                inline-block
+              </mat-option>
+              <mat-option value="block">
+                block
+              </mat-option>
+              <mat-option value="inline">
+                inline
+              </mat-option>
+              <mat-option value="flex">
+                flex
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field fxFlex="45%">
+            <mat-select placeholder="Position" (selectionChange)="appService.filedValueChanged()"
+              [(value)]="currentField.style.position">
+              <mat-option value="absolute">
+                absolute
+              </mat-option>
+              <mat-option value="relative">
+                relative
+              </mat-option>
+              <mat-option value="static">
+                static
+              </mat-option>
+              <mat-option value="fixed">
+                fixed
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-measureUnit fxFlex="45" [item]="{name:'Top',model:'top',modelValue:currentField.style.top}"
+            (valueUpdated)="updateStyle($event,'top')"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'Right',model:'top',modelValue:currentField.style.right}"
+            (valueUpdated)="updateStyle($event,'right')"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'Left',model:'left',modelValue:currentField.style.left}"
+            (valueUpdated)="updateStyle($event,'left')"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'Bottom',model:'bottom',modelValue:currentField.style.bottom}"
+            (valueUpdated)="updateStyle($event,'bottom')"></app-measureUnit>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Look And Feel
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="mb-1">
+          <label>Background color</label>
+          <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
+            [style.background]="currentField.style.backgroundColor" [colorPicker]="currentField.style.backgroundColor"
+            (colorPickerChange)="colorPickerChange($event,'backgroundColor')" />
+        </div>
+        <mat-divider></mat-divider>
+        Box shadow
+        <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+          <app-measureUnit fxFlex="45" [item]="{name:'y-offset',model:'boxShadow.y',modelValue:boxShadow.y}"
+            (valueUpdated)="boxShawChange('y',$event)"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'x-offset',model:'boxShadow.x',modelValue:boxShadow.x}"
+            (valueUpdated)="boxShawChange('x',$event)"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'blur',model:'boxShadow.blur',modelValue:boxShadow.blur}"
+            (valueUpdated)="boxShawChange('b',$event)"></app-measureUnit>
+          <app-measureUnit fxFlex="45" [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
+            (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
+          <div>
+            <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow[4]"
+              [colorPicker]="boxShadow[4]" (colorPickerChange)="boxShawChange('c',$event)" />
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        Border
+        <div fxLayout="row wrap" class="st-border" fxLayoutAlign="space-between center">
+          <app-measureUnit fxFlex="45"
+            [item]="{name:'Thickness',model:'borderWidth',modelValue:currentField.style.borderWidth}"
+            (valueUpdated)="updateStyle($event,'borderWidth')"></app-measureUnit>
+          <mat-form-field fxFlex="45%">
+            <mat-select placeholder="Type" (selectionChange)="appService.filedValueChanged()"
+              [(ngModel)]="currentField.style.borderStyle">
+              <mat-option value="solid">solid</mat-option>
+              <mat-option value="dashed">dashed</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <label>color</label>
+            <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
+              [style.background]="currentField.style.borderColor" [colorPicker]="currentField.style.borderColor"
+              (colorPickerChange)="colorPickerChange($event,'borderColor')" />
+          </div>
+          <app-measureUnit
+            [item]="{name:'Border Raduis',model:'borderRadius',modelValue:currentField.style.borderRadius}"
+            (valueUpdated)="updateStyle($event,'borderRadius')"></app-measureUnit>
+        </div>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Typography
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-typography [currentField]="currentField"></app-typography>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="currentField.type===15">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Card Setting
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Title" [(ngModel)]="currentField['cardTitle']">
+          </mat-form-field>
+
+          <mat-form-field fxFlex="45%">
+            <input matInput placeholder="Sub-title" [(ngModel)]="currentField['cardSubTitle']">
+          </mat-form-field>
+        </div>
+        Card Actions
+        <div class="st-border" fxLayout="column">
+          <div>
+            <button mat-icon-button color="primary" aria-label="Example icon-button with a add icon"
+              (click)="addNewCardAction()" matTooltip='Add Action'>
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div *ngFor="let action of currentField['cardActions']" fxFlex="45%">
+            <mat-form-field>
+              <input matInput placeholder="action Name" [(ngModel)]="action.title">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngIf="!currentField.isContainer">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Events
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-field-event [currentField]="currentField"></app-field-event>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Advanced Layout
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <app-flex-setting [currentField]="currentField"></app-flex-setting>
+      </mat-expansion-panel>
     </mat-accordion>
-</fieldset>
+  </fieldset>
