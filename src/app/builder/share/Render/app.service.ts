@@ -26,10 +26,6 @@ export class AppService {
     this.containerStyle = {
       height: 'auto',
       border: "1px dashed #e9e4e4",
-      marginTop: "5px",
-      marginRight: "5px",
-      marginBottom: "5px",
-      marginLeft: "5px",
       paddingTop: "5px",
       paddingRight: "5px",
       paddingBottom: "5px",
@@ -117,6 +113,7 @@ export class AppService {
   }
   addToContainers(container: Containers) {
     if (container) {
+      this.allFields.push(container);
       this.allContainers.push(container);
     }
   }
@@ -141,7 +138,7 @@ export class AppService {
       //because here we add field so fields prop. note exist in type field
       field["fields"] = [];
       field.isContainer = true;
-      [field.style.paddingBottom, field.style.paddingLeft, field.style.paddingRight, field.style.paddingTop, field.style.width] = ['5px', '5px', '5px', '5px', '99%'];
+      field.style.width = '99%';
       this.allContainers.push(<Containers>field);
     }
     if (field.type === FieldType.TABLE) {
@@ -153,7 +150,7 @@ export class AppService {
   selectCurrentField(field: Fields) {
     if (field) {
       this.currentFieldSubject.next(field);
-      this.currentField =  Object.assign({}, field);
+      this.currentField = Object.assign({}, field);
       this.currentContainer = Object.assign({}, <Containers>field);
     }
   }

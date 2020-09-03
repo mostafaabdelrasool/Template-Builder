@@ -16,7 +16,7 @@ export class FlexSettingComponent implements OnInit {
 
 
   ngOnInit() {
-   if (!this.currentField.style.fxFlex) {
+   if (this.currentField.style && !this.currentField.style.fxFlex) {
     this.currentField.style.fxFlex={};
    }
   }

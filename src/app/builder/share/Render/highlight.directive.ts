@@ -7,7 +7,9 @@ export class HighlightDirective {
 
   constructor(private el: ElementRef) { }
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight(this.highlightColor.color);
+    if (this.highlightColor) {
+      this.highlight(this.highlightColor.color);
+    }
   }
 
   @HostListener('mouseleave') onMouseLeave() {
@@ -26,5 +28,5 @@ export interface HighlightSetting {
   disabled: boolean;
 }
 export enum HighlightColors {
-  YELLOW = 'yellow', BLUE = '#00c4ff', RED = 'red',BLACK='black'
+  YELLOW = 'yellow', BLUE = '#00c4ff', RED = 'red', BLACK = 'black'
 }

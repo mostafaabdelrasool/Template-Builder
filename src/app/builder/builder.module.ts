@@ -30,6 +30,7 @@ import { BuilderService } from './builder.service';
 import { FieldModule } from './fields/field.module';
 import { ChildContainerModule } from './child-container/child-container-module';
 import { SharedBuilderModule } from './share/shared-builder-module';
+import { FieldPropertySettingComponent } from './sidebar/field-property-setting/field-property-setting.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,6 +57,7 @@ import { SharedBuilderModule } from './share/shared-builder-module';
     TypographyComponent,
     FlexSettingComponent,
     StyleToCssComponent,
+    FieldPropertySettingComponent
   ],
   providers: [AppService, CodeService, BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent],

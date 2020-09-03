@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
-import { Fields, SelectField, FieldType, InputField } from '../model/field';
+import { Fields, SelectField } from '../model/field';
 import { CardField } from '../model/containers';
-import { SharedService } from 'src/app/share/shared.service';
-import { objectKeys, getPathData } from 'src/app/share/object-func';
 import { MatDialog } from '@angular/material';
-import { StyleToCssComponent } from './style--to-css/style--to-css.component';
-import { FieldDataSource } from '../model/data-source';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-properties',
@@ -18,22 +13,20 @@ export class PropertiesComponent implements OnInit {
   currentField: Fields;
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
-  modelProps: string[];
-  constructor(public appService: AppService, public sharedService: SharedService,
+  
+  constructor(public appService: AppService,
     public dialog: MatDialog) {
     this.boxShadow = {};
-    this.appService.currentFieldSubject.subscribe((x: Fields) => {
-      this.currentField = x;
-    });
   }
   ngOnInit() {
-    this.getModelProps();
+    this.appService.currentFieldSubject.subscribe((x: Fields) => {
+      this.currentField = undefined;
+      setTimeout(() => {
+        this.currentField = x;
+      });
+    });
   }
-  getModelProps() {
-    if (this.sharedService.model) {
-      this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
-    }
-  }
+
   updateStyle(event, styleName) {
     this.currentField.style[styleName] = event;
     this.appService.updateFieldStyle(this.currentField);
@@ -74,42 +67,17 @@ export class PropertiesComponent implements OnInit {
     return (<SelectField>this.currentField).dataSource ?
       (<SelectField>this.currentField).dataSource.dataStructure : null;
   }
-  typeValueChanged(event) {
-    let input = (<InputField>this.currentField)
-    input.typeName = event.value;
-    if (event.value === 'datetime') {
-      input.type = FieldType.DATEPICKER;
-      input.typeName = '';
-    } else {
-      input.type = FieldType.INPUT_TEXT;
-    }
-    this.appService.updateFieldStyle(this.currentField);
-  }
+ 
   colorPickerChange(event, model) {
     this.currentField.style[model] = event;
     this.appService.updateFieldStyle(this.currentField);
   }
-  bindToContainer() {
-    if (this.currentField.bindContainer) {
-      const parentContainer = this.appService.allContainers.find(x => x.id === this.currentField.containerId);
-      if (parentContainer) {
-        const ds = <FieldDataSource>parentContainer['dataSource'];
-        if (ds) {
-          this.modelProps = ds.dataStructure.map(d => d['name'])
-        } else {
-          //if container bind to main model not to DS
-          var parentContainerData = getPathData(JSON.parse(this.sharedService.model), parentContainer.model);
-          if (parentContainerData && parentContainerData.length > 0) {
-            this.modelProps = objectKeys(parentContainerData[0]);
-          }
-        }
-      }
-    } else {
-      this.getModelProps();
-    }
-  }
+
   fieldValueChanged(event) {
     const { name, value } = event.target;
+    if (name.search('.') !== -1) {
+      return;
+    }
     this.appService.updateFieldProperty(this.currentField.id, value, name);
     this.currentField[name] = value;
   }
