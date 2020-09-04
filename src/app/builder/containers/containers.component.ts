@@ -47,6 +47,7 @@ export class ContainersComponent implements OnInit {
   }
   onDragOver(event, field: Containers = null) {
     this.currentHoverField = field;
+    console.log(field.id);
     if (field && field.isContainer)
       this.selectItem(event, field, true)
     event.preventDefault();
@@ -56,16 +57,25 @@ export class ContainersComponent implements OnInit {
     const trans = event.dataTransfer.getData('text');
     if (trans) {
       const data = JSON.parse(trans);
+      if (!data) {
+        return;
+      }
       if (data.changePosition) {
-        const prev = this.appService.currentContainer.fields.findIndex(x => x.id === data.id);
-        const current = this.appService.currentContainer.fields.findIndex(x => x.id === this.currentHoverField.id);
-        moveItemInArray(this.appService.currentContainer.fields, prev, current);
+        if (this.currentHoverField.containerId === data.containerId) {
+          this.appService.changePositionInSameContainer(data, this.currentHoverField.id);
+        } else {
+          const containerId = this.currentHoverField.isContainer ? this.currentHoverField.id :
+           this.currentHoverField.containerId;
+          this.appService.changePositionInDifferentContainer(data, containerId);
+        }
       } else {
         this.addElement(data)
       }
     }
     event.stopPropagation();
   }
+
+
   addContainer(type: FieldType) {
     let container: Containers = {
       type: type, model: 'text', id: Date.now().toString(), style: this.appService.containerStyle,

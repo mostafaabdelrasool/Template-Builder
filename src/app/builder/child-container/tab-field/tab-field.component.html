@@ -9,22 +9,7 @@
       (click)="appService.selectField(tab.container)"
       [ngClass]="{'field-selected':tab.container.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
       (drop)='onDrop($event);' (dragover)='onDragOver($event,tab.container);'>
-      <ng-container *ngFor="let item of tab.container.fields">
-        <app-fields mwlResizable [enableGhostResize]="true"
-          [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (resizeEnd)="onResizeEnd($event,item)"
-          [ngClass]="{'field-selected':item.id===appService.currentField?.id,'full-width':item.fullWidth}"
-          [appHighlight]='{color:"black"}' [appStyle]="item.style" *ngIf="!item.isContainer" [field]="item"
-          (click)="appService.selectField(item)" draggable="true" (dragstart)="startReposition($event,item)"
-          (dragover)='onDragOver($event,item);'></app-fields>
-        <app-child-container mwlResizable [enableGhostResize]="true" id="{{item.id}}"
-          [resizeEdges]="{ bottom: true, right: true, top: true, left: true }" (resizeEnd)="onResizeEnd($event,item)"
-          class="child-container" [ngClass]="{'field-selected':item.id===appService.currentField?.id}"
-          [appHighlight]='{color:"black"}' [appStyle]="item.style" *ngIf="item.isContainer" [container]="item"
-          (click)="appService.selectField(item)" draggable="true" (dragstart)="startReposition($event,item)"
-          (dragover)='onDragOver($event,item);'>
-        </app-child-container>
-      </ng-container>
+      <app-field-child-container [field]="tab.container"></app-field-child-container>
     </div>
-
   </mat-tab>
 </mat-tab-group>

@@ -20,6 +20,7 @@ export class TabFieldComponent extends ContainersComponent implements OnInit ,Af
       this.field.tabs = [];
       let defaultContainer = this.appService.getDefaultContainer();
       defaultContainer.style.minHeight = '84%';
+      defaultContainer.containerId=this.field.containerId;
       this.field.tabs.push({ tabName: 'first', container: defaultContainer });
       this.appService.addToContainers(defaultContainer);
     }

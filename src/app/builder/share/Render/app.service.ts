@@ -5,6 +5,7 @@ import { Containers } from 'src/app/builder/model/containers';
 import { FieldDataSource } from '../../model/data-source';
 import { Style } from '../../model/style';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 /**
  * @description
  * @class
@@ -40,6 +41,7 @@ export class AppService {
     };
     this.containers = [Object.assign({}, this.currentContainer)];
     this.allFields.push(this.currentContainer);
+    this.allContainers.push(this.currentContainer);
     this.currentFieldSubject = new BehaviorSubject<Fields>(this.currentField)
   }
   selectField(field: Fields) {
@@ -65,7 +67,13 @@ export class AppService {
   copyField(field: Fields, index: number) {
     const newField = JSON.parse(JSON.stringify(field));
     newField.id = Date.now().toString();
-    this.currentField = { ...newField };
+    if (newField.isContainer && newField.fields) {
+      newField.fields.forEach(f => {
+        f.id = Date.now().toString();
+        f.containerId = newField.id;
+      });
+    }
+    this.currentField = Object.assign({}, newField);
     let container = this.allContainers.find(x => x.id === field.containerId)
     if (container) {
       container.fields.splice(index, 0, newField);
@@ -161,5 +169,26 @@ export class AppService {
         currentField[propName] = value;
       }
     }
+  }
+  changePositionInDifferentContainer(data: any, newContainerId: string) {
+    let field = this.allFields.find(x => x.id === data.id);
+    if (field) {
+      const fieldContainer = this.allContainers.find(x => x.id === data.containerId);
+      if (fieldContainer) {
+        const index = fieldContainer.fields.findIndex(x => x.id === data.id);
+        fieldContainer.fields.splice(index, 1)
+        field.containerId = newContainerId;
+        this.currentContainer.fields.push(field);
+      }
+    }
+  }
+  changePositionInSameContainer(data: any, currentHoverFieldId: string) {
+    const currentContainer = this.allContainers.find(x => x.id === data.containerId);
+    if (currentContainer) {
+      const prev = currentContainer.fields.findIndex(x => x.id === data.id)
+      const current = currentContainer.fields.findIndex(x => x.id === currentHoverFieldId);
+      moveItemInArray(currentContainer.fields, prev, current);
+    }
+
   }
 }

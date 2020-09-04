@@ -19,23 +19,26 @@ export class FieldActionComponent implements OnInit {
   ngOnInit() {
 
   }
-  handleFieldAction(type, field:Fields) {
-    const index = this.appService.currentContainer.fields.findIndex(x => x.id === field.id);
-    switch (type) {
-      case 1:
-        this.appService.deleteField(field,index)
-        break;
-      case 2:
-        this.appService.copyField(field, index);
-        break;
-      case 4:
-        this.openComplexValueSetting();
-        break;
+  handleFieldAction(type, field: Fields) {
+    const containerIndex = this.appService.allContainers.findIndex(x => x.id === field.containerId);
+    if (containerIndex !== -1) {
+      const index = this.appService.allContainers[containerIndex].fields.findIndex(x => x.id === field.id);
+      switch (type) {
+        case 1:
+          this.appService.deleteField(field, index)
+          break;
+        case 2:
+          this.appService.copyField(field, index);
+          break;
+        case 4:
+          this.openComplexValueSetting();
+          break;
         case 3:
           this.selectParentContainr(field);
           break;
-      default:
-        break;
+        default:
+          break;
+      }
     }
   }
   getType(type) {
@@ -45,14 +48,14 @@ export class FieldActionComponent implements OnInit {
     let setting = { width: '40vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(ComplexValueComponent, setting);
   }
-  selectParentContainr(field:Fields){
-    const parent =this.appService.allContainers.find(x=>x.id===field.containerId);
+  selectParentContainr(field: Fields) {
+    const parent = this.appService.allContainers.find(x => x.id === field.containerId);
     if (parent) {
       this.appService.selectField(parent);
-    }else{
+    } else {
       //root container
       this.appService.selectField(this.appService.containers[0]);
     }
-   
+
   }
 }
