@@ -96,9 +96,10 @@ export class ContainersComponent implements OnInit {
   addButton(buttonType: ButtonFieldTypes, color) {
     let button: ButtonField = {
       type: FieldType.BUTTON, model: 'text', id: Date.now().toString(), value: color,
-      style: {}, classes: [], buttonType: buttonType, buttonColor: color, fieldEvent: []
+      style: {}, classes: [], buttonType: buttonType, buttonColor: color, fieldEvent: [],
+      containerId: this.appService.currentContainer.id,
     };
-    this.appService.currentContainer.fields.push(button)
+    this.appService.addField(button);
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {

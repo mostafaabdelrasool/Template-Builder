@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Fields, FieldType } from 'src/app/builder/model/field';
+import { Fields, FieldType, ButtonField } from 'src/app/builder/model/field';
 import { Manager_Type } from 'src/app/builder/model/manager';
 import { Containers } from 'src/app/builder/model/containers';
 import { FieldDataSource } from '../../model/data-source';
@@ -152,8 +152,7 @@ export class AppService {
     if (field.type === FieldType.TABLE) {
       field.fullWidth = true
     }
-    this.currentContainer.fields.push(field);
-    this.allFields.push(field);
+    this.addField(field)
   }
   selectCurrentField(field: Fields) {
     if (field) {
@@ -189,6 +188,9 @@ export class AppService {
       const current = currentContainer.fields.findIndex(x => x.id === currentHoverFieldId);
       moveItemInArray(currentContainer.fields, prev, current);
     }
-
+  }
+  addField(field: Fields) {
+    this.currentContainer.fields.push(field);
+    this.allFields.push(field);
   }
 }
