@@ -20,17 +20,16 @@ import { CodeService } from './share/Render/code-service.service';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 import { DataSettingComponent } from './data-source/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ResizableModule } from 'angular-resizable-element';
 import { SharedModule } from '../share/shared.module';
 import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
 import { ComplexValueComponent } from './complex-value/complex-value.component';
 import { DataMapperSettingComponent } from './data-mapper-setting/data-mapper-setting.component';
-import { CodeEditorModule } from '@ngstack/code-editor';
 import { BuilderService } from './builder.service';
 import { FieldModule } from './fields/field.module';
 import { ChildContainerModule } from './child-container/child-container-module';
 import { SharedBuilderModule } from './share/shared-builder-module';
 import { FieldPropertySettingComponent } from './sidebar/field-property-setting/field-property-setting.component';
+import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-value-setting.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -57,7 +56,8 @@ import { FieldPropertySettingComponent } from './sidebar/field-property-setting/
     TypographyComponent,
     FlexSettingComponent,
     StyleToCssComponent,
-    FieldPropertySettingComponent
+    FieldPropertySettingComponent,
+    FieldValueSettingComponent
   ],
   providers: [AppService, CodeService, BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent],

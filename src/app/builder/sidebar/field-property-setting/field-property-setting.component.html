@@ -1,12 +1,13 @@
-<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center">
     <mat-form-field fxFlex="100">
       <input matInput placeholder="Id" name="id" [valueHandler]=currentField.id>
     </mat-form-field>
     <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainer()"
       name="bindContainer">Bind Container DS</mat-checkbox>
     <mat-form-field fxFlex="100">
-      <input type="text" placeholder="Model binder" aria-label="Number" matInput name="model"
-        [matAutocomplete]="auto" [valueHandler]=currentField.model>
+      <input type="text" placeholder="Model binder" aria-label="Number" matInput name="model" [matAutocomplete]="auto"
+        [valueHandler]=currentField.model>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option *ngFor="let option of modelProps" [value]="option">
           {{option}}
@@ -14,8 +15,7 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
-      <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)"
-        [(value)]="currentField['typeName']">
+      <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)" [(value)]="currentField['typeName']">
         <mat-option value="text">
           text
         </mat-option>

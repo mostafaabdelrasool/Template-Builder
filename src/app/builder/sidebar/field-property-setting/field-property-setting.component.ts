@@ -55,4 +55,5 @@ export class FieldPropertySettingComponent implements OnInit {
       this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
     }
   }
+
 }

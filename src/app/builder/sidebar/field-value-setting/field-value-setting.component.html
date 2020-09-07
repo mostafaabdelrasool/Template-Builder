@@ -1,0 +1,58 @@
+  <div fxLayout="row wrap" fxLayoutAlign="space-between center">
+    <mat-form-field fxFlex="45%">
+      <input matInput placeholder="Min" [valueHandler]="currentField['min']" name='min'>
+    </mat-form-field>
+    <mat-form-field fxFlex="45%">
+      <input matInput placeholder="Max" [valueHandler]="currentField['max']" name='max'>
+    </mat-form-field>
+    <mat-form-field fxFlex="45%">
+      <input matInput placeholder="Max Length" [valueHandler]="currentField['maxLength']" name='maxLength'>
+    </mat-form-field>
+    <mat-form-field fxFlex="45%">
+      <input matInput placeholder="Min Length" [valueHandler]="currentField['minLength']" name='minLength'>
+    </mat-form-field>
+    <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
+      <mat-form-field fxFlex="45%">
+        <input readonly="true" name='startDate' [valueHandler]="currentField['startDate']" matInput [matDatepicker]="z"
+          placeholder="Start Date">
+        <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
+        <mat-datepicker #z startView="month"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%">
+        <input readonly="true" name='endData' matInput [matDatepicker]="x" placeholder="End Date"
+          [valueHandler]="currentField['endData']">
+        <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
+        <mat-datepicker #x startView="month"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field fxFlex="100">
+      <input matInput placeholder="value" [valueHandler]=currentField.value name="value">
+    </mat-form-field>
+    <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="1 1 100%">
+      <mat-form-field fxFlex="45%">
+        <mat-label>Display Member</mat-label>
+        <mat-select name='dispalyMember' [valueHandler]="currentField['dispalyMember']">
+          <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%">
+        <mat-label>Value Member</mat-label>
+        <mat-select name='valueMember' [valueHandler]="currentField['valueMember']">
+          <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-form-field fxFlex="1 1 100%">
+      <input matInput placeholder="Hint" [valueHandler]="currentField['hint']" name='hint'>
+      <button mat-button *ngIf="currentField['hint']" matSuffix mat-icon-button aria-label="Clear"
+        (click)="currentField['hint']=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-checkbox name='required'>Required</mat-checkbox>
+    <mat-checkbox name='clearButton'>Clear Button</mat-checkbox>
+  </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
 import { Fields, SelectField } from '../model/field';
 import { CardField } from '../model/containers';
@@ -8,12 +8,13 @@ import { MatDialog } from '@angular/material';
   selector: 'app-properties',
   templateUrl: './properties.component.html',
   styleUrls: ['./properties.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class PropertiesComponent implements OnInit {
   currentField: Fields;
   applyStyleInClass: boolean;
   boxShadow: { y?: string, x?: string, blur?: string, color?: string, spread?: string };
-  
+
   constructor(public appService: AppService,
     public dialog: MatDialog) {
     this.boxShadow = {};
@@ -63,19 +64,13 @@ export class PropertiesComponent implements OnInit {
     this.currentField.style.boxShadow = result.join(' ');
     this.appService.updateFieldStyle(this.currentField);
   }
-  getFieldDataStructure() {
-    return (<SelectField>this.currentField).dataSource ?
-      (<SelectField>this.currentField).dataSource.dataStructure : null;
-  }
- 
   colorPickerChange(event, model) {
     this.currentField.style[model] = event;
     this.appService.updateFieldStyle(this.currentField);
   }
-
   fieldValueChanged(event) {
     const { name, value } = event.target;
-    if (name.search('.') !== -1) {
+    if (name.includes('.')) {
       return;
     }
     this.appService.updateFieldProperty(this.currentField.id, value, name);

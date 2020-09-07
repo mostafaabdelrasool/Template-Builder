@@ -47,7 +47,6 @@ export class ContainersComponent implements OnInit {
   }
   onDragOver(event, field: Containers = null) {
     this.currentHoverField = field;
-    console.log(field.id);
     if (field && field.isContainer)
       this.selectItem(event, field, true)
     event.preventDefault();
