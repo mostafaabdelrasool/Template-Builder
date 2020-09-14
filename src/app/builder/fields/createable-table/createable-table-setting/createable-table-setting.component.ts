@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { SharedService } from 'src/app/share/shared.service';
 import { objectKeysDetail, getPathData, objectKeys } from 'src/app/share/object-func';
-import { TableHeader, CreateableTable, FieldType } from 'src/app/builder/model/field';
+import { TableHeader, CreateableTable, FieldType, TabelSummary } from 'src/app/builder/model/field';
 import { DataMapperSettingComponent } from 'src/app/builder/data-mapper-setting/data-mapper-setting.component';
 
 @Component({
@@ -13,27 +13,28 @@ import { DataMapperSettingComponent } from 'src/app/builder/data-mapper-setting/
 
 export class CreateableTableSettingComponent implements OnInit {
   mainModel: string[];
-  modelProps: string[];
+  modelProps: string[] = [];
+  isAddSummary = false;
   constructor(public dialogRef: MatDialogRef<CreateableTableSettingComponent>,
-    public sharedService: SharedService, @Inject(MAT_DIALOG_DATA) public data: CreateableTable,public dialog: MatDialog) {
+    public sharedService: SharedService, @Inject(MAT_DIALOG_DATA) public data: CreateableTable, public dialog: MatDialog) {
 
   }
 
   ngOnInit() {
     if (this.sharedService.model) {
       this.mainModel = objectKeysDetail(JSON.parse(this.sharedService.model)).filter(x => x.type === "array").map(x => x.name);
-      if (this.modelProps.length === 0) {
-        this.getModelProps();
-      }
+      // if (this.modelProps.length === 0) {
+      //   this.getModelProps();
+      // }
     }
-
+    this.data.summaries = this.data.summaries || [];
   }
   getModelProps() {
     const data = getPathData(JSON.parse(this.sharedService.model), this.data.model)[0];
     this.modelProps = objectKeys(data)
   }
   add() {
-    this.data.header.push({ name: '', columnType: 'Text', binding: 'model',actions:[{}] })
+    this.data.header.push({ name: '', columnType: 'Text', binding: 'model', actions: [{}] })
   }
   save() {
     this.dialogRef.close(this.data);
@@ -59,5 +60,12 @@ export class CreateableTableSettingComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
     });
+  }
+  deleteSummary(summary) {
+    const index = this.data.summaries.indexOf(summary);
+    this.data.summaries.splice(index, 1);
+  }
+  addSummary() {
+    this.data.summaries.push(new TabelSummary());
   }
 }

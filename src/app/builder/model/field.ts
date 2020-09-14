@@ -12,7 +12,7 @@ export class Fields {
   style?: Style;
   containerId?: string;
   placeholder?: string;
-  label?:string;
+  label?: string;
   isContainer?: boolean;
   radioButtonGroup?: any[];
   fieldEvent?: FieldEvent[];
@@ -23,7 +23,7 @@ export class Fields {
   value?: string;
   category?: FieldCategory;
   complexValueCalculation?: ComplexValueCalculation;
-  bindContainer?:boolean
+  bindContainer?: boolean
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -44,7 +44,7 @@ export class InputField extends Fields {
   startDate?: Date;
   endData?: Date;
   clearButton?: boolean;
-  typeName?:string
+  typeName?: string
 }
 export class ComplexValueCalculation {
   when: WhenToCalculate;
@@ -57,7 +57,7 @@ export class FieldEquation {
   operator?: string;
   fieldId?: string;
   fieldName?: string;
-  number?:number
+  number?: number
 }
 export enum WhenToCalculate {
   OnChange, OnSelect, OnClick, OnInit
@@ -68,6 +68,14 @@ export class TableField extends Fields {
 }
 export class CreateableTable extends Fields {
   header: TableHeader[];
+  summaries?: TabelSummary[]
+}
+export class TabelSummary {
+  model: string;
+  type: SummaryType
+}
+export enum SummaryType {
+  Sum, Average, Min, Max
 }
 export class TabField extends Fields {
   tabs: TabsConatiner[]
@@ -84,7 +92,10 @@ export class TableHeader {
   binding: string;
   isSelected?: Boolean;
   columnType?: string;
-  actions?: [{ tooltip?: string, onClickCode?: string,actionType?:number, icon?: string }]
+  rowSpan?: number;
+  columnSpan?: number;
+  actions?: [{ tooltip?: string, onClickCode?: string, actionType?: number, icon?: string }];
+
 }
 export class SelectField extends Fields {
   dispalyMember: string;
@@ -92,8 +103,8 @@ export class SelectField extends Fields {
   dataSource: FieldDataSource;
   onSelect?: OnSelectEvent
 }
-export class ListField extends Fields{
-  fields:Fields[];
+export class ListField extends Fields {
+  fields: Fields[];
   dataSource: FieldDataSource;
 }
 export class OnSelectEvent {

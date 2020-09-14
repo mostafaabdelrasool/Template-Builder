@@ -1,17 +1,59 @@
-<button mat-raised-button (click)="add()" color="accent">Add</button>
+<div class="m-1">
+  <button mat-raised-button (click)="add()" color="accent">Add</button>
+</div>
 <table class="table table-hover table-bordered">
-    <thead>
-        <tr>
-            <th *ngFor="let item of field.header">
-                {{item.name}}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of  getFieldValue()">
-            <th *ngFor="let header of field.header">
-                {{item[header.name]}}
-            </th>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th [attr.rowspan]="item.rowSpan" [attr.colspan]="item.rowSpan" *ngFor="let item of field.header">
+        {{item.name}}
+      </th>
+      <th>
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td *ngFor="let header of field.header">
+        <!-- {{item[header.name]}} -->
+        <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status"></app-edit-in-place>
+      </td>
+      <td>
+        <ng-container *ngIf="!item.isEdit">
+          <button mat-icon-button (click)="edit(item)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="item.isEdit">
+          <button mat-icon-button (click)="save(item)">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button (click)="cancel(item)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
 </table>
+<div class="summary" *ngIf="field.summaries">
+  <div *ngFor="let item of field.summaries">
+      <span [ngSwitch]="item.type">
+      <p *ngSwitchCase="0">
+        Sum : {{getResultSummaryCol(item)}}
+      </p>
+      <p *ngSwitchCase="1">
+        Average : {{getResultSummaryCol(item)}}
+      </p>
+      <p *ngSwitchCase="2">
+        Min : {{getResultSummaryCol(item)}}
+      </p>
+      <p *ngSwitchCase="3">
+        Max : {{getResultSummaryCol(item)}}
+      </p>
+      </span>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
-import { Fields, SelectField } from '../model/field';
+import { Fields } from '../model/field';
 import { CardField } from '../model/containers';
 import { MatDialog } from '@angular/material';
 
@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material';
   selector: 'app-properties',
   templateUrl: './properties.component.html',
   styleUrls: ['./properties.component.scss'],
-  encapsulation:ViewEncapsulation.None
 })
 export class PropertiesComponent implements OnInit {
   currentField: Fields;

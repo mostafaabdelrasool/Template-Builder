@@ -26,7 +26,7 @@ export class CreateableTableComponent implements OnInit {
     //this.openTableSetting();
   }
   openSetting() {
-    let setting = { width: '70vw', height: 'auto', data: this.field };
+    let setting = { width: '90vw', height: 'auto', data: this.field };
     const dialogRef = this.dialog.open(CreateableTableSettingComponent, setting);
 
   //  dialogRef.afterClosed()

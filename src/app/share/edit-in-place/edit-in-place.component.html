@@ -1,11 +1,13 @@
 <div *ngIf="status===1">
-    <mat-form-field>
-        <input matInput placeholder="Type here" [(ngModel)]="_tempData" name="name">
-    </mat-form-field>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Type here" [(ngModel)]="_tempData" name="name">
+  </mat-form-field>
+  <ng-container *ngIf="!hideActions">
     <mat-icon (click)="changeEditStatus(2)">done</mat-icon>
     <mat-icon (click)="changeEditStatus(4)">close</mat-icon>
+  </ng-container>
 </div>
-<div *ngIf="status===4">
-   {{data}}
-   <mat-icon (click)="changeEditStatus(1)">edit</mat-icon>
+<div *ngIf="status===4 || status===3">
+  {{data}}
+  <mat-icon *ngIf="!hideActions" (click)="changeEditStatus(1)">edit</mat-icon>
 </div>

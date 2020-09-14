@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { objectKeys } from 'src/app/share/object-func';
 import { AppService } from '../../share/Render/app.service';
@@ -13,14 +13,15 @@ import { FieldDataSource } from '../../model/data-source';
 
 export class DataSettingComponent implements OnInit {
   dataSource: FieldDataSource
-  constructor(private http: HttpClient,
+  http: HttpClient;
+  constructor(private hanlder: HttpBackend,
     public dialogRef: MatDialogRef<DataSettingComponent>, public appService: AppService,
     @Inject(MAT_DIALOG_DATA) public data: FieldDataSource) {
-
+    this.http = new HttpClient(hanlder);
   }
 
   ngOnInit() {
-    this.dataSource = {...this.data} || new FieldDataSource();
+    this.dataSource = { ...this.data } || new FieldDataSource();
     this.dataSource.name = this.data ? this.data.name : 'dataSource ' + (this.appService.dataSources.length + 1);
   }
   fetchData() {
@@ -34,7 +35,7 @@ export class DataSettingComponent implements OnInit {
       if (!this.data) {
         this.appService.dataSources.push(this.dataSource);
       }
-     // this.dataSource.data = x;
+      // this.dataSource.data = x;
       this.dialogRef.close(this.dataSource);
     })
   }
@@ -44,7 +45,7 @@ export class DataSettingComponent implements OnInit {
       this.appService.dataSources.push(this.dataSource);
     }
     if (!this.dataSource.dataStructure && this.dataSource.staticData) {
-      this.dataSource.dataStructure=[{name:'id'},{name:'discription'}]
+      this.dataSource.dataStructure = [{ name: 'id' }, { name: 'discription' }]
     }
     this.dialogRef.close(this.dataSource);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter, AfterContentInit } from "@angular/core";
 
 @Component({
   selector: "app-edit-in-place",
@@ -6,16 +6,19 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./edit-in-place.component.scss"]
 })
 
-export class EditInPlaceComponent implements OnInit {
+export class EditInPlaceComponent implements OnInit,AfterContentInit {
   private _status: CellStatus;
   @Input() data: any;
   @Output() dataChange = new EventEmitter<any>();
   @Input() type: string;
+  @Input() hideActions:boolean;
   _tempData: any;
   constructor() { }
+  ngAfterContentInit(): void {
+    this.status = CellStatus.read;
+  }
 
   ngOnInit() {
-    this.status = CellStatus.read;
   }
 
   public get status(): CellStatus {
@@ -25,7 +28,7 @@ export class EditInPlaceComponent implements OnInit {
   public set status(v: CellStatus) {
     this._status = v;
     if (v === CellStatus.Save) {
-      this.data = this._tempData;
+      this.saveChanges();
     } else {
       this._tempData = this.data;
     }
@@ -33,12 +36,16 @@ export class EditInPlaceComponent implements OnInit {
   changeEditStatus(status) {
     this.status = status;
     if (status === CellStatus.Save) {
-      this.data = this._tempData;
-      this.dataChange.emit(this._tempData);
-      this.status=CellStatus.read
+      this.saveChanges();
     } else if (status === CellStatus.Edit) {
       this._tempData = this.data;
     }
+  }
+
+  private saveChanges() {
+    this.data = this._tempData;
+    this.dataChange.emit(this._tempData);
+    this.status = CellStatus.read;
   }
 }
 export enum CellStatus {

@@ -14,16 +14,20 @@ import { ChildContainerRenderComponent } from './child-container-render/child-co
 import { CreateableTableRenderComponent } from './field-render/createable-table-render/createable-table-render.component';
 import { FieldModule } from '../builder/fields/field.module';
 import { ListFieldRenderComponent } from './child-container-render/list-field-render/list-field-render.component';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   imports: [
-    CommonModule, FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    FormsModule,
     AngularMaterialModule,
     FlexLayoutModule,
     PageRendererRoutes,
     HttpClientModule,
     NgxPaginationModule,
-    BuilderModule,FieldModule
+    BuilderModule,FieldModule,
   ],
   declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent,CreateableTableRenderComponent,ListFieldRenderComponent],
   providers:[RenderService],
