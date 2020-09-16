@@ -74,7 +74,8 @@ app-field-render{
   .table {
     width          : 100%;
     border-collapse: collapse;
-  
+    max-width: 100%;
+    overflow: auto;
     th {
       color      : black;
       font-weight: bold;
@@ -82,7 +83,7 @@ app-field-render{
   
     td,
     th {
-      padding   : 10px;
+      padding   : 2px;
       border    : 1px solid #ccc;
       text-align: left;
       font-size : 18px;

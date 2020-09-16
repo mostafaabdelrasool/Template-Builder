@@ -127,7 +127,7 @@ export class AppService {
   }
   createNewField(option) {
     let field: Fields = {
-      type: option.type, model: 'text', value: option.text || '', fullWidth: option.fullWidth,
+      type: option.type, model: '', value: option.text || '', fullWidth: option.fullWidth,
       id: Date.now().toString(), classes: [], style: {
         marginBottom: '5px',
         marginLeft: '5px',

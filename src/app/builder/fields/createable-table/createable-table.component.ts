@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material';
 import { TableHeader, CreateableTable } from '../../model/field';
 import { CreateableTableSettingComponent } from './createable-table-setting/createable-table-setting.component';
 
-
 @Component({
   selector: "app-createable-table",
   templateUrl: "./createable-table.component.html",
@@ -21,14 +20,18 @@ export class CreateableTableComponent implements OnInit {
   ngOnInit() {
     this.field.hasAction = true;
     if (!this.field.header) {
-      this.field.header=new Array<TableHeader>();
+      this.field.header = new Array<TableHeader>();
     }
-    //this.openTableSetting();
   }
   openSetting() {
-    let setting = { width: '90vw', height: 'auto', data: this.field };
+    const field = JSON.parse(JSON.stringify(this.field));
+    let setting = { width: '90vw', height: 'auto', data: field };
     const dialogRef = this.dialog.open(CreateableTableSettingComponent, setting);
-
-  //  dialogRef.afterClosed()
+    dialogRef.afterClosed().subscribe((result:CreateableTable) => {
+      if (result) {
+        this.field.header = result.header;
+        this.field.model = result.model;
+      }
+    });
   }
 }

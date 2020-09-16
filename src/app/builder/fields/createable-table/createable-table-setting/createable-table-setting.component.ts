@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { SharedService } from 'src/app/share/shared.service';
 import { objectKeysDetail, getPathData, objectKeys } from 'src/app/share/object-func';
 import { TableHeader, CreateableTable, FieldType, TabelSummary } from 'src/app/builder/model/field';
@@ -16,28 +16,35 @@ export class CreateableTableSettingComponent implements OnInit {
   modelProps: string[] = [];
   isAddSummary = false;
   constructor(public dialogRef: MatDialogRef<CreateableTableSettingComponent>,
-    public sharedService: SharedService, @Inject(MAT_DIALOG_DATA) public data: CreateableTable, public dialog: MatDialog) {
+    public sharedService: SharedService, @Inject(MAT_DIALOG_DATA) public data: CreateableTable, public dialog: MatDialog
+    , private _snackBar: MatSnackBar) {
 
   }
 
   ngOnInit() {
     if (this.sharedService.model) {
       this.mainModel = objectKeysDetail(JSON.parse(this.sharedService.model)).filter(x => x.type === "array").map(x => x.name);
-      // if (this.modelProps.length === 0) {
-      //   this.getModelProps();
-      // }
+      this.getModelProps();
     }
     this.data.summaries = this.data.summaries || [];
   }
   getModelProps() {
-    const data = getPathData(JSON.parse(this.sharedService.model), this.data.model)[0];
-    this.modelProps = objectKeys(data)
+    if (this.data.model) {
+      const data = getPathData(JSON.parse(this.sharedService.model), this.data.model)[0];
+      this.modelProps = objectKeys(data)
+    }
   }
   add() {
     this.data.header.push({ name: '', columnType: 'Text', binding: 'model', actions: [{}] })
   }
   save() {
-    this.dialogRef.close(this.data);
+    if (!this.data.model || this.data.header.filter(x => !x.binding).length > 0) {
+      this._snackBar.open("Please select Model Binding", "close", {
+        duration: 3000,
+      });
+    } else {
+      this.dialogRef.close(this.data);
+    }
   }
   remove(item) {
     const index = this.data.header.indexOf(item);
@@ -57,9 +64,9 @@ export class CreateableTableSettingComponent implements OnInit {
     }
     const dialogRef = this.dialog.open(DataMapperSettingComponent, setting);
 
-    dialogRef.afterClosed().subscribe(result => {
+    // dialogRef.afterClosed().subscribe(result => {
 
-    });
+    // });
   }
   deleteSummary(summary) {
     const index = this.data.summaries.indexOf(summary);

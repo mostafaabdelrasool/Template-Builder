@@ -15,6 +15,7 @@ export class CreateableTableRenderComponent implements OnInit, AfterContentInit 
   @Input() field: CreateableTable;
   modelName: string;
   data: any[] = [];
+  currentItem: any;
   constructor(public renderService: RenderService, public sharedService: SharedService, private _changeDetectionRef: ChangeDetectorRef) {
 
   }
@@ -29,8 +30,8 @@ export class CreateableTableRenderComponent implements OnInit, AfterContentInit 
     this.data = getPathData(this.renderService.data, this.modelName);
   }
   add() {
-    let row = {};
-    this.field.header.forEach(x => row[x.binding] = '')
+    let row = { isEdit: true, status: CellStatus.Edit };
+    this.field.header.forEach(x => row[x.binding] = '');
     this.data.push(row)
   }
   edit(item) {
@@ -73,5 +74,8 @@ export class CreateableTableRenderComponent implements OnInit, AfterContentInit 
         break;
     }
     return result;
+  }
+  setCurrentItem(item) {
+    this.currentItem = item;
   }
 }

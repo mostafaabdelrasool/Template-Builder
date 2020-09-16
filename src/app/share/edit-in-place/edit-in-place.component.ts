@@ -6,16 +6,18 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterContentInit } from
   styleUrls: ["./edit-in-place.component.scss"]
 })
 
-export class EditInPlaceComponent implements OnInit,AfterContentInit {
+export class EditInPlaceComponent implements OnInit, AfterContentInit {
   private _status: CellStatus;
   @Input() data: any;
   @Output() dataChange = new EventEmitter<any>();
   @Input() type: string;
-  @Input() hideActions:boolean;
+  @Input() hideActions: boolean;
   _tempData: any;
   constructor() { }
   ngAfterContentInit(): void {
-    this.status = CellStatus.read;
+    if (!this.status) {
+      this.status = CellStatus.read;
+    }
   }
 
   ngOnInit() {

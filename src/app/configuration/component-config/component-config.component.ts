@@ -30,7 +30,8 @@ export class ComponentConfigComponent implements OnInit {
         `{
       "prop1": "Shane",
       "prop2": 0,
-      "prop3": true
+      "prop3": true,
+      "data":[{"d1":"","d2":"","d3":"","d4":"","d5":""}]
 }`
     }
   }
