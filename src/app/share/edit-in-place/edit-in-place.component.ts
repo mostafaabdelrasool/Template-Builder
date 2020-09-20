@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterContentInit } from "@angular/core";
+import { EditType } from './edit.type';
 
 @Component({
   selector: "app-edit-in-place",
@@ -10,7 +11,7 @@ export class EditInPlaceComponent implements OnInit, AfterContentInit {
   private _status: CellStatus;
   @Input() data: any;
   @Output() dataChange = new EventEmitter<any>();
-  @Input() type: string;
+  @Input() type: EditType;
   @Input() hideActions: boolean;
   _tempData: any;
   constructor() { }
@@ -21,6 +22,9 @@ export class EditInPlaceComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
+    if (!this.type) {
+      this.type = EditType.Text;
+    }
   }
 
   public get status(): CellStatus {
@@ -32,7 +36,11 @@ export class EditInPlaceComponent implements OnInit, AfterContentInit {
     if (v === CellStatus.Save) {
       this.saveChanges();
     } else {
-      this._tempData = this.data;
+      if (this.data && this.type == EditType.Datepicker) {
+       this._tempData=new Date(this.data);
+      } else {
+        this._tempData = this.data;
+      }
     }
   }
   changeEditStatus(status) {
@@ -45,8 +53,12 @@ export class EditInPlaceComponent implements OnInit, AfterContentInit {
   }
 
   private saveChanges() {
-    this.data = this._tempData;
-    this.dataChange.emit(this._tempData);
+    let data = this._tempData;
+    if (data && this.type == EditType.Datepicker) {
+      data = new Date(data).toDateString();
+    }
+    this.data = data;
+    this.dataChange.emit(data);
     this.status = CellStatus.read;
   }
 }

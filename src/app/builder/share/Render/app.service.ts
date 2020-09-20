@@ -152,6 +152,10 @@ export class AppService {
     if (field.type === FieldType.TABLE) {
       field.fullWidth = true
     }
+    if (field.fullWidth) {
+      field.style.width='99%';
+      field.style.overflow="auto"
+    }
     this.addField(field)
   }
   selectCurrentField(field: Fields) {

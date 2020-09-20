@@ -31,6 +31,7 @@ export class CreateableTableComponent implements OnInit {
       if (result) {
         this.field.header = result.header;
         this.field.model = result.model;
+        this.field.summaries = result.summaries;
       }
     });
   }

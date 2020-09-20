@@ -46,13 +46,13 @@
         <td>
           <mat-form-field>
             <mat-select placeholder="Type" [(ngModel)]="item.columnType">
-              <mat-option value="0">Input</mat-option>
               <mat-option value="1">Text</mat-option>
               <mat-option value="2">Search</mat-option>
               <mat-option value="4">Image</mat-option>
               <mat-option value="5">Number</mat-option>
               <mat-option value="6">Action</mat-option>
               <mat-option value="7">Checkbox</mat-option>
+              <mat-option value="8">Datepicker</mat-option>
             </mat-select>
           </mat-form-field>
         </td>
@@ -115,7 +115,7 @@
   </table>
   <mat-divider class="m-1"></mat-divider>
   <div *ngIf="isAddSummary">
-    <button mat-raised-button (click)="addSummary()" class="mb-1" color="accent">Add Action</button>
+    <button mat-raised-button (click)="addSummary()" class="mb-1" color="accent">Add Summary</button>
     <table class="table table-bordered">
       <thead>
         <tr>

@@ -36,6 +36,7 @@ export class Style {
   fontWeight?: string;
   fxFlex?: FxFlex = {};
   backgroundColor?: string;
+  overflow?:string
 }
 export interface FxFlex {
   fxFill?: boolean;

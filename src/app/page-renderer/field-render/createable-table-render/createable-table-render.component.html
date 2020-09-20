@@ -35,7 +35,7 @@
       <tr *ngFor="let item of data" (click)="setCurrentItem(item)">
         <td *ngFor="let header of field.header">
           <!-- {{item[header.name]}} -->
-          <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status">
+          <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status" [type]="header.columnType">
           </app-edit-in-place>
         </td>
       </tr>

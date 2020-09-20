@@ -23,8 +23,17 @@ export class PropertiesComponent implements OnInit {
       this.currentField = undefined;
       setTimeout(() => {
         this.currentField = x;
+        this.getBorderStyle();
       });
     });
+  }
+  getBorderStyle() {
+   if (this.currentField.style.border) {
+     const splitBorder=this.currentField.style.border.split(' ');
+     this.currentField.style.borderWidth=splitBorder[0];
+     this.currentField.style.borderStyle=splitBorder[1];
+     this.currentField.style.borderColor=splitBorder[2];
+   }
   }
 
   updateStyle(event, styleName) {
