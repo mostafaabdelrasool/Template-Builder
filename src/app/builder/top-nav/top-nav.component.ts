@@ -1,8 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material';
-import { CodePreviewComponent } from '../../code-generator/code-preview/code-preview.component';
-import { Manager_Type } from '../model/manager';
-import { CodeService } from '../share/Render/code-service.service';
 import { AppService } from '../share/Render/app.service';
 import { BuilderService } from '../builder.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,19 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class TopNavComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private codeService: CodeService,
+  constructor(public dialog: MatDialog,
     public appService: AppService, private builderService: BuilderService, private route: ActivatedRoute) { }
-  generateCode(): void {
-    const dialogRef = this.dialog.open(CodePreviewComponent, {
-      width: '90vw',
-      height: '90vh',
-      data: this.codeService.getAllCode()
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
   ngOnInit() {
 
   }
@@ -49,12 +35,5 @@ export class TopNavComponent implements OnInit {
     }, ["formSetting"]).subscribe(x => {
       debugger
     });
-  }
-  run() {
-    const code = { HTML: this.codeService.getAllCode().htmlCode };
-    this.builderService.run(code)
-      .subscribe(x => {
-        window.open('http://localhost:55', '_blank')
-      });
   }
 }

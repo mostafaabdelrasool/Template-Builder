@@ -1,3 +1,7 @@
 .calc-field > * {
     margin-right: 5px;
 }
+::ng-deep .mat-form-field-wrapper{
+    margin: 0;
+    padding: 0;
+  }

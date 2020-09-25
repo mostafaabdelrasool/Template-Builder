@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResizableModule } from 'angular-resizable-element';
 import { FormsModule } from '@angular/forms';
-import { CodeGeneratorModule } from './code-generator/code.generator.module';
 import { BuilderModule } from './builder/builder.module';
 import { ConfigurationModule } from './configuration/configuration.module';
 import { RouterModule } from '@angular/router';
@@ -26,7 +25,6 @@ import { UndoRedoService } from './share/undo-redo/undo-redo.service';
     BrowserAnimationsModule,
     ResizableModule,
     FormsModule,
-    CodeGeneratorModule,
     BuilderModule,
     ConfigurationModule,
     RouterModule.forRoot([],{useHash:true}),

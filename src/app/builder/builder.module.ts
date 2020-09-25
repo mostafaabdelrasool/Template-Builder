@@ -16,7 +16,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuilderRoutes } from './builder.routing';
 import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.component';
 import { TypographyComponent } from './sidebar/typography/typography.component';
-import { CodeService } from './share/Render/code-service.service';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 import { DataSettingComponent } from './data-source/data-setting/data-setting.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,7 +58,7 @@ import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-
     FieldPropertySettingComponent,
     FieldValueSettingComponent
   ],
-  providers: [AppService, CodeService, BuilderService],
+  providers: [AppService, BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent],
   exports: [ EditInPlaceComponent, ContainersComponent,SharedBuilderModule]
 })

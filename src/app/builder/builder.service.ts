@@ -11,7 +11,4 @@ export class BuilderService extends DataService {
     super(http);
     this._controller = "api/Form"
   }
-  run(code) {
-    return this.http.post(this._url + 'api/Run/RunApp',code)
-  }
 }

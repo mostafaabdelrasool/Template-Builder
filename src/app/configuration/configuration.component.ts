@@ -8,7 +8,7 @@ import { SharedService } from '../share/shared.service';
 })
 export class ConfigurationComponent implements OnInit {
 
-  constructor(public sharedService:SharedService) {
+  constructor() {
    }
 
   ngOnInit() {

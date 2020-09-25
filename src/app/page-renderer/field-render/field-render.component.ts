@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit } from "@angular/core";
+import { FieldDataSource } from 'src/app/builder/model/data-source';
 import { Fields, InputField, SelectField } from 'src/app/builder/model/field';
 import { setPathData, getPathData } from 'src/app/share/object-func';
 import { RenderService } from '../render.service';
@@ -13,13 +14,18 @@ export class FieldRenderComponent implements OnInit {
   @Input() field: Fields;
   // @ViewChild('fieldtemplate', { static: true, read: ViewContainerRef }) entry: ViewContainerRef;
   // componentRef: any;
-  @Input() parentValue:any;
+  @Input() parentValue: any;
+  dataSub: any;
   constructor(public renderService: RenderService) {
 
   }
 
   ngOnInit() {
-    this.renderService.getDataSourceData(this.field['dataSource']);
+    this.dataSub = this.renderService.getDataSourceData(this.field['dataSource']).subscribe(x => {
+      if (x) {
+        (<FieldDataSource>this.field['dataSource']).data = x;
+      }
+    });
   }
   valueChange(modelName, event) {
     setPathData(this.renderService.data, modelName, event);
@@ -72,11 +78,11 @@ export class FieldRenderComponent implements OnInit {
     return selectField.dataSource.data.find(x => x[valueMemeberName] === value)
   }
   getFieldValue(modelName) {
-    let value=null;
+    let value = null;
     if (this.field.bindContainer) {
       value = getPathData(this.parentValue, modelName);
-    }else{
-       value = getPathData(this.renderService.data, modelName);
+    } else {
+      value = getPathData(this.renderService.data, modelName);
     }
     return value;
   }

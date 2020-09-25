@@ -20,7 +20,7 @@ export class CreateableTableRenderComponent implements OnInit, AfterContentInit 
 
   }
   ngAfterContentInit(): void {
-    this.modelName = this.sharedService.instanceName + '.' + this.field.model;
+    this.modelName =  this.field.model;
     setPathData(this.renderService.data, this.modelName, []);
   }
   ngOnInit() {

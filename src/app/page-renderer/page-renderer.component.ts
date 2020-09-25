@@ -16,7 +16,7 @@ export class PageRendererComponent implements OnInit {
 
   ngOnInit() {
     this.getSetting();
-     this.renderService.initData(this.sharedService.instanceName)
+    this.renderService.initData()
   }
   getSetting() {
     //in case of preview

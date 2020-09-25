@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   model: any;
-  selectedFrameWork: string="Angular";
-  rootModelName:string="InterfaceName";
-  instanceName:string="instanceName";
   cssCode:string='';
   constructor() { }
 

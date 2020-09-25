@@ -38,7 +38,7 @@
     <h1 *ngSwitchCase="18">{{field.value}}</h1>
     <h3 *ngSwitchCase="19">{{field.value}}</h3>
     <div *ngSwitchCase="20" [innerHTML]="field.value"></div>
-    <mat-form-field *ngSwitchCase="25">
+    <mat-form-field *ngSwitchCase="25" appearance="outline">
         <mat-label>{{field.placeholder}}</mat-label>
         <mat-select (selectionChange)="onSelectionChange($event)">
             <mat-option *ngFor="let item of field['dataSource'].data"

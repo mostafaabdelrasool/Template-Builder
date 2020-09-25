@@ -35,9 +35,10 @@ export class CreateableTableSettingComponent implements OnInit {
     }
   }
   add() {
-    this.data.header.push({ name: '', columnType: 'Text', binding: 'model', actions: [{}] })
+    this.data.header.push({ name: '', columnType: '1', binding: '', actions: [{}] })
   }
   save() {
+    debugger
     if (!this.data.model || this.data.header.filter(x => !x.binding).length > 0) {
       this._snackBar.open("Please select Model Binding", "close", {
         duration: 3000,

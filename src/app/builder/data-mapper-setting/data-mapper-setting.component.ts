@@ -42,11 +42,6 @@ export class DataMapperSettingComponent implements OnInit {
   ngOnInit() {
     if (this.data.destination === 'mainModel' && this.sharedService.model) {
       this.destinationProps = objectKeys(JSON.parse(this.sharedService.model));
-      if (this.sharedService.instanceName) {
-        this.destinationProps = this.destinationProps.map(x =>
-          this.sharedService.instanceName + '.' + x
-        )
-      }
     }
     if (this.data.source === 'currentItem' && this.data.field.dataSource) {
       this.sourceProps = (<FieldDataSource>this.data.field.dataSource).dataStructure.map(x => x.name)

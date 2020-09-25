@@ -1,21 +1,13 @@
-<div class="conf-container">
-    <div class="header">
-        <div fxLayoutAlign="space-between center">
-            <h3>Enter the model binder definision Object</h3>
-            <button mat-raised-button routerLink="/builder" color="accent">
-                Next
-            </button>
-        </div>
-        <div fxLayout="row" fxLayoutGap="5px">
-            <mat-form-field>
-                <input matInput placeholder="Model Name" [(ngModel)]="sharedService.rootModelName">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput placeholder="Instance Name" [(ngModel)]="sharedService.instanceName">
-            </mat-form-field>
-        </div>
+<div class="conf-container" fxFlexFill>
+  <div class="header">
+    <div fxLayoutAlign="space-between center">
+      <h3>Enter the model binder definision Object</h3>
+      <button mat-raised-button routerLink="/builder" color="accent">
+        Next
+      </button>
     </div>
-    <mat-divider></mat-divider>
-    <ngs-code-editor (valueChanged)="onCodeChanged($event)" theme="vs-dark" [codeModel]="codeModel" [options]="options">
-    </ngs-code-editor>
+  </div>
+  <mat-divider></mat-divider>
+  <ngs-code-editor (valueChanged)="onCodeChanged($event)" theme="vs-dark" [codeModel]="codeModel" [options]="options">
+  </ngs-code-editor>
 </div>

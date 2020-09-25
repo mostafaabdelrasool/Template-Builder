@@ -21,7 +21,7 @@ export class SelectFieldComponent implements OnInit {
     this.field.hasAction = true;
   }
   openSetting() {
-    let setting = { width: '40vw', height: 'auto' };
+    let setting = { width: '60vw', height: 'auto' };
     if (this.field.dataSource) {
       setting["data"] = this.field.dataSource
     }
@@ -32,7 +32,11 @@ export class SelectFieldComponent implements OnInit {
         return;
       }
       this.data = result.data;
-      this.field.dataSource = result
+      this.field.dataSource = result;
+      if (result.staticData && result.staticData.length>0) {
+        this.field.dispalyMember="discription";
+        this.field.valueMember="id";
+      }
     });
   }
 }

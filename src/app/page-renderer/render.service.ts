@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 export class RenderService {
   data: any = {}
   constructor(private http: HttpClient) { }
-  initData(instanceName: string) {
-    this.data[instanceName] = {};
+  initData() {
+    this.data = {};
   }
   getDataSourceData(dataSource: FieldDataSource): Observable<any> {
     if (!dataSource) {

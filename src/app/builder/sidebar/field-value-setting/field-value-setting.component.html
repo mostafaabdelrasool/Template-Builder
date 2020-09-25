@@ -28,19 +28,19 @@
     <mat-form-field fxFlex="100">
       <input matInput placeholder="value" [valueHandler]=currentField.value name="value">
     </mat-form-field>
-    <div *ngIf="currentField.type===25" fxLayout="row wrap" fxLayoutAlign="space-between center" fxFlex="1 1 100%">
-      <mat-form-field fxFlex="45%">
+    <div *ngIf="currentField.type===25" fxFlex="1 1 100%">
+      <mat-form-field >
         <mat-label>Display Member</mat-label>
         <mat-select name='dispalyMember' [valueHandler]="currentField['dispalyMember']">
-          <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
+          <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
             {{item.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFlex="45%">
+      <mat-form-field >
         <mat-label>Value Member</mat-label>
         <mat-select name='valueMember' [valueHandler]="currentField['valueMember']">
-          <mat-option *ngFor="let item of getFieldDataStructure()" [valueHandler]="item.name">
+          <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
             {{item.name}}
           </mat-option>
         </mat-select>
