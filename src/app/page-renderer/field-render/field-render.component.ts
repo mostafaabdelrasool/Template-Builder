@@ -21,11 +21,13 @@ export class FieldRenderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataSub = this.renderService.getDataSourceData(this.field['dataSource']).subscribe(x => {
-      if (x) {
-        (<FieldDataSource>this.field['dataSource']).data = x;
-      }
-    });
+    if (this.field['dataSource']) {
+      this.dataSub = this.renderService.getDataSourceData(this.field['dataSource']).subscribe(x => {
+        if (x) {
+          (<FieldDataSource>this.field['dataSource']).data = x;
+        }
+      });
+    }
   }
   valueChange(modelName, event) {
     setPathData(this.renderService.data, modelName, event);

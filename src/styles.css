@@ -78,3 +78,6 @@ app-root {
   max-width: 100%;
   overflow: auto;
 }
+.mat-list-base .mat-list-item {
+  font-size: 11px;
+}

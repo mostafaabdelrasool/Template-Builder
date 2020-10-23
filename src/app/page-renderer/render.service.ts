@@ -13,10 +13,7 @@ export class RenderService {
     this.data = {};
   }
   getDataSourceData(dataSource: FieldDataSource): Observable<any> {
-    if (!dataSource) {
-      return;
-    }
-    var observerable = Observable.create(observer => {
+    let observerable = Observable.create(observer => {
       if (dataSource.url) {
         this.http.get(dataSource.url).subscribe(x => {
           dataSource.data = x;
