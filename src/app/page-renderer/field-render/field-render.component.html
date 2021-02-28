@@ -10,7 +10,7 @@
   <mat-form-field *ngSwitchCase="25" appearance="outline">
     <mat-label>{{field.placeholder}}</mat-label>
     <mat-select (selectionChange)="onSelectionChange($event)">
-      <mat-option *ngFor="let item of field['dataSource'].data" [value]="item[field['valueMember']]">
+      <mat-option *ngFor="let item of field['dataSource']?.data" [value]="item[field['valueMember']]">
         {{item[field['dispalyMember']]}}
       </mat-option>
     </mat-select>

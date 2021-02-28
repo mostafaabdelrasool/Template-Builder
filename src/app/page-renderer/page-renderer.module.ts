@@ -16,6 +16,8 @@ import { FieldModule } from '../builder/fields/field.module';
 import { ListFieldRenderComponent } from './child-container-render/list-field-render/list-field-render.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabFieldRenderComponent } from './child-container-render/tab-field-render/tab-field-render.component';
+import { ContainerRenderComponent } from './container.render/container.render.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,10 +29,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PageRendererRoutes,
     HttpClientModule,
     NgxPaginationModule,
-    BuilderModule,FieldModule,
+    BuilderModule, FieldModule,
   ],
-  declarations: [PageRendererComponent,FieldRenderComponent,ChildContainerRenderComponent,CreateableTableRenderComponent,ListFieldRenderComponent],
-  providers:[RenderService],
-  exports:[PageRendererComponent]
+  declarations: [PageRendererComponent, FieldRenderComponent, ChildContainerRenderComponent,
+    CreateableTableRenderComponent,
+    ListFieldRenderComponent,
+    TabFieldRenderComponent,
+    ContainerRenderComponent],
+  providers: [RenderService],
+  exports: [PageRendererComponent],
+  entryComponents: [FieldRenderComponent, ChildContainerRenderComponent,
+    CreateableTableRenderComponent,
+    ListFieldRenderComponent,
+    TabFieldRenderComponent,
+    ContainerRenderComponent]
 })
 export class PageRendererModule { }

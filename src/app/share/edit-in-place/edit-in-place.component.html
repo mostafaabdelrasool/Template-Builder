@@ -1,13 +1,13 @@
 <div *ngIf="status===1" fxLayout="row" class="edit-input">
   <ng-container [ngSwitch]="type">
-    <mat-form-field *ngSwitchCase="1" appearance="outline">
+    <mat-form-field *ngSwitchCase="1">
       <input matInput placeholder="Type here" [(ngModel)]="_tempData" name="name">
     </mat-form-field>
-    <mat-form-field *ngSwitchCase="5" appearance="outline">
+    <mat-form-field *ngSwitchCase="5">
       <input matInput placeholder="Type here" type="number" [(ngModel)]="_tempData" name="name">
     </mat-form-field>
     <mat-checkbox *ngSwitchCase="7" [(ngModel)]="_tempData"></mat-checkbox>
-    <mat-form-field appearance="outline" *ngSwitchCase="8">
+    <mat-form-field *ngSwitchCase="8">
       <input readonly="true" [(ngModel)]="_tempData" matInput [matDatepicker]="picker">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker startView="year"></mat-datepicker>

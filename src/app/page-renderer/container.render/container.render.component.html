@@ -1,0 +1,7 @@
+<ng-container *ngFor="let field of container.fields">
+  <app-field-render *ngIf="!field.isContainer" [field]="field" [appStyle]="field.style" [appStyle]="field.style"  [ngClass]="{'full-width':field.fullWidth}">
+  </app-field-render>
+  <app-child-container-render *ngIf="field.isContainer" [container]="field" [appStyle]="field.style"
+    [styleField]="field">
+  </app-child-container-render>
+</ng-container>

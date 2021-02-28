@@ -1,17 +1,1 @@
-<ng-container [ngSwitch]="container.type">
-  <ng-container *ngSwitchCase="13">
-    <ng-container *ngFor="let field of container.fields">
-      <app-field-render *ngIf="!field.isContainer" [field]="field" [appStyle]="field.style" [appStyle]="field.style">
-      </app-field-render>
-      <app-child-container-render *ngIf="field.isContainer" [container]="field" [appStyle]="field.style"
-        [styleField]="field">
-      </app-child-container-render>
-    </ng-container>
-  </ng-container>
-  <ng-container *ngSwitchCase="26">
-    <app-tab-field-render [container]="container"></app-tab-field-render>
-  </ng-container>
-  <ng-container *ngSwitchCase="24">
-    <app-list-field-render [container]="container"></app-list-field-render>
-  </ng-container>
-</ng-container>
+<ng-template #fieldtemplate></ng-template>

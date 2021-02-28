@@ -3,18 +3,18 @@ mat-icon {
   cursor: pointer;
 }
 
-.edit-input {
-  ::ng-deep mat-form-field {
-    font-size: 12px !important;
-    width: 100%;
-  }
+// .edit-input {
+//   ::ng-deep mat-form-field {
+//     font-size: 12px !important;
+//     width: 100%;
+//   }
 
-  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
-    margin: 0 !important;
-  }
+//   ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+//     margin: 0 !important;
+//   }
 
-  ::ng-deep .mat-form-field-wrapper {
-    padding: 0 !important;
-  }
+//   ::ng-deep .mat-form-field-wrapper {
+//     padding: 0 !important;
+//   }
 
-}
+// }
