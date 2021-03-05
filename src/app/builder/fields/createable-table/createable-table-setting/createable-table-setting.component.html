@@ -8,111 +8,134 @@
     <mat-checkbox (change)="isAddSummary=!isAddSummary">Add Summary</mat-checkbox>
   </div>
   <div>
-    <button mat-raised-button (click)="add()" color="accent">Add</button>
+    <button mat-raised-button (click)="addHeader()" color="accent">Add Header</button>
   </div>
 </div>
 <mat-dialog-content>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>
-          Header Name
-        </th>
-        <th>
-          Model
-        </th>
-        <th>
-          Type
-        </th>
-        <th>
-          Actions
-        </th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let item of data.header">
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="item.name">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <mat-select placeholder="Model" [(ngModel)]="item.binding">
-              <mat-option *ngFor="let model of modelProps" [value]="model">{{model}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <mat-select placeholder="Type" [(ngModel)]="item.columnType">
-              <mat-option value="1">Text</mat-option>
-              <mat-option value="2">Search</mat-option>
-              <mat-option value="4">Image</mat-option>
-              <mat-option value="5">Number</mat-option>
-              <mat-option value="6">Action</mat-option>
-              <mat-option value="7">Checkbox</mat-option>
-              <mat-option value="8">Datepicker</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-icon (click)="remove(item)">delete</mat-icon>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="6" *ngIf="item.columnType==='6'">
-          <button mat-raised-button (click)="addAction(item)" color="accent">Add Action</button>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>
-                  ToolTip
-                </th>
-                <th>
-                  Icon
-                </th>
-                <th>
-                  Actions
-                </th>
-                <th>
-                  Delete
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let action of item.actions;">
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Tooltip" [(ngModel)]="action.tooltip">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <mat-form-field>
-                    <input matInput placeholder="Icon" [(ngModel)]="action.icon">
-                  </mat-form-field>
-                </td>
-                <td>
-                  <div fxLayout="row" fxLayoutAlign="space-around">
-                    <mat-radio-group aria-label="Select an option" [(ngModel)]="action.actionType">
-                      <mat-radio-button class="m-1" value="1">Delete Row</mat-radio-button>
-                      <mat-radio-button class="m-1" value="2">Edit Row</mat-radio-button>
-                    </mat-radio-group>
-                    <button mat-raised-button (click)="openEventDialop(action,item)" color="accent">Advanced
-                      Action</button>
-                  </div>
-                </td>
-                <td>
-                  <mat-icon matTooltip="Delete Action" (click)="deleteAction(action,item)">delete
-                  </mat-icon>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngFor="let header of data.rowsHeader;let i =index">
+    <div fxLayout="row" fxLayoutAlign="space-between" class="m-1">
+      <h3>Header {{i + 1}}</h3>
+      <button mat-raised-button (click)="addColumn(i)" color="accent">Add Column</button>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>
+            Header Name
+          </th>
+          <th>
+            Model
+          </th>
+          <th>
+            Type
+          </th>
+          <th>
+            Multi-Header
+          </th>
+          <th>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of getHeadersColumn(i)">
+        <tr>
+          <td>
+            <mat-form-field appearance="outline">
+              <input matInput placeholder="Name" [(ngModel)]="item.name">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Model" [(ngModel)]="item.binding">
+                <mat-option *ngFor="let model of modelProps" [value]="model">{{model}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="Type" [(ngModel)]="item.columnType">
+                <mat-option value="1">Text</mat-option>
+                <mat-option value="2">Search</mat-option>
+                <mat-option value="4">Image</mat-option>
+                <mat-option value="5">Number</mat-option>
+                <mat-option value="6">Action</mat-option>
+                <mat-option value="7">Checkbox</mat-option>
+                <mat-option value="8">Datepicker</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <div fxLayoutGap="5px">
+              <mat-form-field appearance="outline">
+                <mat-label>Column Span</mat-label>
+                <input matInput type="number" placeholder="Column Span" [(ngModel)]="item.columnSpan">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Row Span</mat-label>
+                <input matInput type="number" placeholder="Row Span" [(ngModel)]="item.rowSpan">
+              </mat-form-field>
+            </div>
+          </td>
+          <td>
+            <mat-icon (click)="remove(item)">delete</mat-icon>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" *ngIf="item.columnType==='6'">
+            <button mat-raised-button (click)="addAction(item)" color="accent">Add Action</button>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>
+                    ToolTip
+                  </th>
+                  <th>
+                    Icon
+                  </th>
+                  <th>
+                    Actions
+                  </th>
+                  <th>
+                    Delete
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let action of item.actions;">
+                  <td>
+                    <mat-form-field appearance="outline">
+                      <input matInput placeholder="Tooltip" [(ngModel)]="action.tooltip">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline">
+                      <input matInput placeholder="Icon" [(ngModel)]="action.icon">
+                    </mat-form-field>
+                  </td>
+                  <td>
+                    <div fxLayout="row" fxLayoutAlign="space-around">
+                      <mat-radio-group aria-label="Select an option" [(ngModel)]="action.actionType">
+                        <mat-radio-button class="m-1" value="1">Delete Row</mat-radio-button>
+                        <mat-radio-button class="m-1" value="2">Edit Row</mat-radio-button>
+                      </mat-radio-group>
+                      <button mat-raised-button (click)="openEventDialop(action,item)" color="accent">Advanced
+                        Action</button>
+                    </div>
+                  </td>
+                  <td>
+                    <mat-icon matTooltip="Delete Action" (click)="deleteAction(action,item)">delete
+                    </mat-icon>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <mat-divider class="m-1" *ngIf="i>1"></mat-divider>
+  </div>
+
   <mat-divider class="m-1"></mat-divider>
   <div *ngIf="isAddSummary">
     <button mat-raised-button (click)="addSummary()" class="mb-1" color="accent">Add Summary</button>

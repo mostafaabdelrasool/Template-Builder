@@ -69,6 +69,10 @@ body {
   height: 30px !important;
 }
 
+mat-form-field {
+  font-size: 11px !important;
+}
+
 app-root {
   display: block;
   height: 99%;
@@ -78,6 +82,7 @@ app-root {
   max-width: 100%;
   overflow: auto;
 }
+
 .mat-list-base .mat-list-item {
   font-size: 11px;
 }

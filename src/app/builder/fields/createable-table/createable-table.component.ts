@@ -32,7 +32,11 @@ export class CreateableTableComponent implements OnInit {
         this.field.header = result.header;
         this.field.model = result.model;
         this.field.summaries = result.summaries;
+        this.field.rowsHeader= result.rowsHeader;
       }
     });
+  }
+  getHeaderColumns(index){
+    return this.field.header.filter(x => x.rowHeaderIndex === index);
   }
 }

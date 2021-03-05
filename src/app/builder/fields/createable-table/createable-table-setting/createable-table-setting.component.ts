@@ -18,7 +18,7 @@ export class CreateableTableSettingComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<CreateableTableSettingComponent>,
     public sharedService: SharedService, @Inject(MAT_DIALOG_DATA) public data: CreateableTable, public dialog: MatDialog
     , private _snackBar: MatSnackBar) {
-
+    data.rowsHeader = data.rowsHeader || [[]];
   }
 
   ngOnInit() {
@@ -34,11 +34,10 @@ export class CreateableTableSettingComponent implements OnInit {
       this.modelProps = objectKeys(data)
     }
   }
-  add() {
-    this.data.header.push({ name: '', columnType: '1', binding: '', actions: [{}] })
+  addColumn(rowHeaderIndex) {
+    this.data.header.push({ name: '', columnType: '1', binding: '', actions: [{}], rowHeaderIndex: rowHeaderIndex, rowSpan: -1, columnSpan: -1 })
   }
   save() {
-    debugger
     if (!this.data.model || this.data.header.filter(x => !x.binding).length > 0) {
       this._snackBar.open("Please select Model Binding", "close", {
         duration: 3000,
@@ -46,6 +45,7 @@ export class CreateableTableSettingComponent implements OnInit {
     } else {
       this.dialogRef.close(this.data);
     }
+
   }
   remove(item) {
     const index = this.data.header.indexOf(item);
@@ -75,5 +75,11 @@ export class CreateableTableSettingComponent implements OnInit {
   }
   addSummary() {
     this.data.summaries.push(new TabelSummary());
+  }
+  addHeader() {
+    this.data.rowsHeader.push([]);
+  }
+  getHeadersColumn(index) {
+    return this.data.header.filter(x => x.rowHeaderIndex === index);
   }
 }

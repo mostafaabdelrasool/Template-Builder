@@ -68,7 +68,8 @@ export class TableField extends Fields {
 }
 export class CreateableTable extends Fields {
   header: TableHeader[];
-  summaries?: TabelSummary[]
+  summaries?: TabelSummary[];
+  rowsHeader: [TableHeader[]];
 }
 export class TabelSummary {
   model: string;
@@ -95,7 +96,7 @@ export class TableHeader {
   rowSpan?: number;
   columnSpan?: number;
   actions?: [{ tooltip?: string, onClickCode?: string, actionType?: number, icon?: string }];
-
+  rowHeaderIndex = 0;
 }
 export class SelectField extends Fields {
   dispalyMember: string;
