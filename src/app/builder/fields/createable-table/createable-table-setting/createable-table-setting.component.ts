@@ -38,7 +38,7 @@ export class CreateableTableSettingComponent implements OnInit {
     this.data.header.push({ name: '', columnType: '1', binding: '', actions: [{}], rowHeaderIndex: rowHeaderIndex, rowSpan: -1, columnSpan: -1 })
   }
   save() {
-    if (!this.data.model || this.data.header.filter(x => !x.binding).length > 0) {
+    if (!this.data.model) {
       this._snackBar.open("Please select Model Binding", "close", {
         duration: 3000,
       });

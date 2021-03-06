@@ -25,15 +25,16 @@
 <div class="over-flow-w">
   <table class="table table-hover table-bordered">
     <thead>
-      <tr>
-        <th [attr.rowspan]="item.rowSpan" [attr.colspan]="item.rowSpan" *ngFor="let item of field.header">
+      <tr *ngFor="let header of field.rowsHeader;let i =index">
+        <th [colSpan]="item.columnSpan" [rowSpan]="item.rowSpan" *ngFor="let item of getHeaderColumns(i)">
           {{item.name}}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data" (click)="setCurrentItem(item)">
-        <td *ngFor="let header of field.header">
+      <tr *ngFor="let item of data;let i =index" (click)="setCurrentItem(item,i)"
+        [ngClass]="{'row-selected': currentItem?.index===i}">
+        <td *ngFor="let header of rowDefinition">
           <!-- {{item[header.name]}} -->
           <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status"
             [type]="header.columnType">
