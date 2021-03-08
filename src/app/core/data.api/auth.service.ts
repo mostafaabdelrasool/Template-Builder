@@ -39,6 +39,6 @@ export class AuthenticationService {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.currentUserSubject.next(null);
-    this.router.navigate(['login'])
+    // this.router.navigate(['login'])
   }
 }

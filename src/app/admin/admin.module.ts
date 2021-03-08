@@ -10,6 +10,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FormEditComponent } from './forms/form-edit/form-edit.component';
 import { FormsComponent } from './forms/forms.component';
+import { ApplicationComponent } from './application/application.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FormsComponent } from './forms/forms.component';
     SharedModule,
     AdminRoutes
   ],
-  declarations: [AdminComponent,GroupsComponent,PositionsComponent,FormsComponent,FormEditComponent],
-  entryComponents:[FormEditComponent]
+  declarations: [AdminComponent, GroupsComponent, PositionsComponent,
+    FormsComponent, FormEditComponent, ApplicationComponent],
+  entryComponents: [FormEditComponent]
 })
 export class AdminModule { }

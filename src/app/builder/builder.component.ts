@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { AppService } from './share/Render/app.service';
-import { ActivatedRoute } from '@angular/router';
-import { BuilderService } from './builder.service';
 
 @Component({
   selector: "app-builder",
@@ -13,7 +11,7 @@ import { BuilderService } from './builder.service';
 
 export class BuilderComponent implements OnInit {
 
-  constructor(public appService: AppService, private route: ActivatedRoute, private builderService: BuilderService) {
+  constructor(public appService: AppService) {
 
   }
 

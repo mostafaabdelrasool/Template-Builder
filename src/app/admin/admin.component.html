@@ -1,12 +1,8 @@
 <mat-toolbar>
-  <button matTooltip="Generate Code" (click)="sidenav.open()" mat-icon-button
+  <button matTooltip="Generate Code" (click)="sidenav.toggle()" mat-icon-button
     aria-label="Example icon-button with a code icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <button matTooltip="Open Style Manager" mat-icon-button aria-label="Example icon-button with a style icon">
-    <mat-icon>style</mat-icon>
-  </button>
-
 </mat-toolbar>
 <div>
   <router-outlet #outlet="outlet"></router-outlet>

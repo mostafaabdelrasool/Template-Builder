@@ -27,15 +27,15 @@ import { UndoRedoService } from './share/undo-redo/undo-redo.service';
     FormsModule,
     BuilderModule,
     ConfigurationModule,
-    RouterModule.forRoot([],{useHash:true}),
+    RouterModule.forRoot([], { useHash: true, enableTracing: true }),
     PageRendererModule,
     CoreModule,
     AdminModule,
     LoginModule,
     SubmissionModule
   ],
-  providers: [SharedService,UndoRedoService],
+  providers: [SharedService, UndoRedoService],
   bootstrap: [AppComponent],
- 
+
 })
 export class AppModule { }
