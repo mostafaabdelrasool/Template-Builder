@@ -11,6 +11,7 @@ import { PositionsComponent } from './positions/positions.component';
 import { FormEditComponent } from './forms/form-edit/form-edit.component';
 import { FormsComponent } from './forms/forms.component';
 import { ApplicationComponent } from './application/application.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ApplicationComponent } from './application/application.component';
     AdminRoutes
   ],
   declarations: [AdminComponent, GroupsComponent, PositionsComponent,
-    FormsComponent, FormEditComponent, ApplicationComponent],
+    FormsComponent, FormEditComponent, ApplicationComponent, FeaturesComponent],
   entryComponents: [FormEditComponent]
 })
 export class AdminModule { }

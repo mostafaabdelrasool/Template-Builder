@@ -24,6 +24,10 @@ export class ApplicationComponent extends BaseComponent<Applications> implements
 
   ngOnInit() {
     this.tableSetting = ApplicationsSetting.TableSetting;
+    this.tableSetting.rowsActions = [{ text: "Work Flow", onClick: this.onApplicationRowClick }]
     this.load();
+  }
+  onApplicationRowClick = () => {
+
   }
 }

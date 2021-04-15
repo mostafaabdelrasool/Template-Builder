@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-   _url: string;
+  _url: string;
   _controller: string;
   constructor(public http: HttpClient) {
     this._url = environment.apiUrl;
@@ -31,7 +31,10 @@ export class DataService {
     return this.http.get(url);
   }
   partialUpdate(data, props) {
-    return this.http.post(this._url + this._controller+'/PartialUpdate', data, { params: { props: props } });
+    return this.http.post(this._url + this._controller + '/PartialUpdate', data, { params: { props: props } });
+  }
+  getWithFilter(filter) {
+    return this.http.get(this._url + this._controller, { params: filter });
   }
 }
 

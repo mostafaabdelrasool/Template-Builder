@@ -4,6 +4,7 @@ import { GroupsComponent } from './groups/groups.component';
 import { PositionsComponent } from './positions/positions.component';
 import { FormsComponent } from './forms/forms.component';
 import { ApplicationComponent } from './application/application.component';
+import { FeaturesComponent } from './features/features.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: 'application', component: ApplicationComponent },
       { path: 'position', component: PositionsComponent },
       { path: 'form', component: FormsComponent },
+      { path: 'features/:appId', component: FeaturesComponent , },
     ]
   },
 ];
