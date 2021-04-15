@@ -4,12 +4,19 @@
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
+<mat-toolbar class="breadcrump-toolbar">
+  <span>{{currentRoute}}</span>
+</mat-toolbar>
 <div>
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
     <mat-list role="list">
+      <mat-list-item role="listitem">
+        <a mat-flat-button [routerLink]="['application']">Applications</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
       <mat-list-item role="listitem">
         <a mat-flat-button [routerLink]="['group']">Groups</a>
       </mat-list-item>
