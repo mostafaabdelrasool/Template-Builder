@@ -27,7 +27,7 @@ import { UndoRedoService } from './share/undo-redo/undo-redo.service';
     FormsModule,
     BuilderModule,
     ConfigurationModule,
-    RouterModule.forRoot([], { useHash: true, enableTracing: true }),
+    RouterModule.forRoot([], { useHash: true }),
     PageRendererModule,
     CoreModule,
     AdminModule,

@@ -6,6 +6,7 @@ import { AngularMaterialModule } from '../angularMaterial/angularMaterial.module
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginService } from './login.service';
 import { LoginRoutes } from './login.routing';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { LoginRoutes } from './login.routing';
     FlexLayoutModule,
     LoginRoutes
   ],
-  declarations: [LoginComponent],
-  providers:[LoginService]
+  declarations: [LoginComponent, RegisterComponent],
+  providers: [LoginService]
 })
 export class LoginModule { }

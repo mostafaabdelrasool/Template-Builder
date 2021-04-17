@@ -5,21 +5,18 @@ import { AuthenticationService } from '../data.api/auth.service';
 
 @Injectable()
 export class BasicAuthInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // add authorization header with basic auth credentials if available
-        const token = localStorage.getItem('token');
-        if (token) {
-            request = request.clone({
-                setHeaders: { 
-                    Authorization: `Bearer ${token}`
-                }
-            });
-        }else{
-            this.authenticationService.logout();
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // add authorization header with basic auth credentials if available
+    const token = localStorage.getItem('token');
+    if (token) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
         }
-
-        return next.handle(request);
+      });
     }
+    return next.handle(request);
+  }
 }

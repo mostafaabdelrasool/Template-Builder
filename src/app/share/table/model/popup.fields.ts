@@ -2,7 +2,7 @@
 export interface TableSetting {
   headerSetting: Array<HeaderSetting>;
   popupFields: Array<PopupFields>;
-  rowsActions: RowsAction[]
+  rowsActions?: Array<RowsAction>
 }
 export interface RowsAction {
   text?: string;

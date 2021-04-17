@@ -1,7 +1,7 @@
-<mat-card fxLayout="column" fxLayoutAlign="center center" style="height:100vh;">
+<div fxLayout="column" fxLayoutAlign="center center" style="height:100vh;">
   <form name="loginForm" fxLayout="column" (ngSubmit)="submit()" #loginForm="ngForm" style="width: 50vw;">
     <mat-form-field>
-      <input  required matInput name="userName" #userName="ngModel" placeholder="UserName" [(ngModel)]="login.userName">
+      <input required matInput name="userName" #userName="ngModel" placeholder="User Name" [(ngModel)]="login.userName">
       <mat-error *ngIf="userName.touched && !userName.valid">
         Please enter username
       </mat-error>
@@ -13,12 +13,19 @@
         Please enter password
       </mat-error>
     </mat-form-field>
-    <div fxLayout="row">
+    <mat-form-field>
+      <input required matInput type="password" name="confirmPassword" #confirmPassword="ngModel" placeholder="Confirm Password"
+        [(ngModel)]="login.confirmPassword">
+      <mat-error *ngIf="confirmPassword.touched && !confirmPassword.valid">
+        Please enter confirm password
+      </mat-error>
+    </mat-form-field>
+    <div>
       <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">
         Save
       </button>
-      <button mat-button color="primary" routerLink="/register">Register</button>
     </div>
+
   </form>
 
-</mat-card>
+</div>

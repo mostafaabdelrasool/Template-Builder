@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
   submit() {
     this.authenticationService.login(this.login.userName, this.login.password).subscribe((x: LoginResponse) => {
-      this.router.navigate(['/submission']);
+      this.router.navigate(['/admin']);
     }, x => {
       this.openSnackBar("Wrong User or password", "close")
     })
