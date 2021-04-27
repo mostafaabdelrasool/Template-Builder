@@ -1,10 +1,14 @@
-
-    .mat-toolbar{
-      background-color: #131212;
-      color: white;
-      height: 30px !important;
-    }
-    //
+.mat-toolbar {
+  background-color: #131212;
+  color: white;
+  height: 30px !important;
+}
+app-admin{
+  .mat-toolbar{
+    background-color: #444644;
+  }
+}
+//
 // Basic Bootstrap table
 //
 @mixin hover() {
@@ -74,6 +78,7 @@ mat-sidenav-container {
   border-collapse: collapse;
   max-width: 100%;
   overflow: auto;
+
   th {
     color: black;
     font-weight: bold;

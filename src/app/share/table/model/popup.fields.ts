@@ -8,7 +8,6 @@ export interface RowsAction {
   text?: string;
   icon?: string;
   onClick: Function;
-  arguments?: []
 }
 export interface PopupFields {
   type: FieldType;

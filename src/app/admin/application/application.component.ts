@@ -5,6 +5,7 @@ import { DataService } from "src/app/core/data.api/data.service";
 import { TableSetting } from "src/app/share/table/model";
 import { Applications } from "../model/applications";
 import { ApplicationsSetting } from "../setting/application.setting";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-application",
@@ -16,7 +17,7 @@ export class ApplicationComponent extends BaseComponent<Applications> implements
 
   applications$: Observable<Applications[]>;
   tableSetting: TableSetting
-  constructor(public dataService: DataService) {
+  constructor(public dataService: DataService, private route: Router) {
     super("Application", dataService)
     this.dataService._controller = "api/Application";
     this.applications$ = this.dataSubject.asObservable();
@@ -27,7 +28,8 @@ export class ApplicationComponent extends BaseComponent<Applications> implements
     this.tableSetting.rowsActions = [{ text: "Work Flow", onClick: this.onApplicationRowClick }]
     this.load();
   }
-  onApplicationRowClick = () => {
-
+  onApplicationRowClick = (currentRow: Applications) => {
+    if (currentRow)
+      this.route.navigate(['/admin/features', currentRow.id ]);
   }
 }

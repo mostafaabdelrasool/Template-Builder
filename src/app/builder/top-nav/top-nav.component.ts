@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AppService } from '../share/Render/app.service';
 import { BuilderService } from '../builder.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class TopNavComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
-    public appService: AppService, private builderService: BuilderService, private route: ActivatedRoute) { }
+    public appService: AppService, private builderService: BuilderService,
+    private route: ActivatedRoute , private _snackBar: MatSnackBar) { }
   ngOnInit() {
 
   }
@@ -30,10 +31,15 @@ export class TopNavComponent implements OnInit {
   }
   save() {
     this.builderService.partialUpdate({
-      id: +this.route.snapshot.queryParams['id'],
+      id: this.route.snapshot.queryParams['id'],
       formSetting: JSON.stringify(this.appService.containers)
     }, ["formSetting"]).subscribe(x => {
-      debugger
+      this.openSnackBar("Saved Successfully","Close")
+    });
+  }
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3000,
     });
   }
 }

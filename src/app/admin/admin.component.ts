@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ResolveStart, Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -11,8 +12,8 @@ export class AdminComponent implements OnInit {
   currentRoute: string;
   constructor(private router: Router) {
     router.events.subscribe((val: ResolveStart) => {
-      if(val && val.url)
-      this.currentRoute = val.url.substring(1, val.url.length);
+      if (val && val.url)
+        this.currentRoute = val.url.substring(1, val.url.length);
     });
   }
 

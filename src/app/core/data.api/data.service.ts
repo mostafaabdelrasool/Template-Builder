@@ -28,7 +28,7 @@ export class DataService {
     return this.http.get(this._url + this._controller + '/' + id);
   }
   getUrl(url) {
-    return this.http.get(url);
+    return this.http.get(this._url + url);
   }
   partialUpdate(data, props) {
     return this.http.post(this._url + this._controller + '/PartialUpdate', data, { params: { props: props } });

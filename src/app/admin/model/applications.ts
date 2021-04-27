@@ -1,4 +1,4 @@
-export class Applications{
-  id?:number;
-  name:string;
+export class Applications {
+  id?: string;
+  name: string;
 }

@@ -1,5 +1,6 @@
-export class Form{
-    id?:number;
-    name:string;
-    formSetting?:string;
+export class Form {
+  id?: string;
+  name: string;
+  formSetting?: string;
+  featureId: string
 }

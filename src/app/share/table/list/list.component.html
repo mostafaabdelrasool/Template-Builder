@@ -30,8 +30,8 @@
               <mat-icon aria-label="Example icon-button with a heart icon">delete</mat-icon>
             </button>
             <ng-container *ngIf="tableSetting.rowsActions">
-              <button mat-icon-button color="accent" *ngFor="let item of tableSetting.rowsActions"
-                (click)="item.onClick.apply(this,item.arguments)">
+              <button mat-stroked-button color="primary" *ngFor="let item of tableSetting.rowsActions"
+                (click)="item.onClick.apply(this,[row])">
                 {{item.text}}
                 <mat-icon aria-label="Example icon-button">{{item.icon}}</mat-icon>
               </button>
