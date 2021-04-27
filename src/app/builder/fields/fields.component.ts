@@ -35,7 +35,7 @@ export class FieldsComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   ngOnInit() {
-
+    this.appService.initField(this.field);
   }
   ngOnDestroy() {
     this.componentRef.destroy();

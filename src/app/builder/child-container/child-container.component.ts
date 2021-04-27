@@ -22,7 +22,7 @@ export class ChildContainerComponent extends ContainersComponent implements OnIn
   }
 
   ngOnInit() {
-
+    this.appService.initField(this.container);
   }
   ngAfterViewInit(): void {
     this.componentRef = this.createComponent();

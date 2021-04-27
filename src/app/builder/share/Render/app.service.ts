@@ -1,10 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Fields, FieldType, ButtonField } from 'src/app/builder/model/field';
-import { Manager_Type } from 'src/app/builder/model/manager';
+import { Fields, FieldType } from 'src/app/builder/model/field';
 import { Containers } from 'src/app/builder/model/containers';
 import { FieldDataSource } from '../../model/data-source';
 import { Style } from '../../model/style';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 /**
  * @description
@@ -153,8 +152,8 @@ export class AppService {
       field.fullWidth = true
     }
     if (field.fullWidth) {
-      field.style.width='99%';
-      field.style.overflow="auto"
+      field.style.width = '99%';
+      field.style.overflow = "auto"
     }
     this.addField(field)
   }
@@ -196,5 +195,23 @@ export class AppService {
   addField(field: Fields) {
     this.currentContainer.fields.push(field);
     this.allFields.push(field);
+  }
+  setFormSetting(formSetting: string) {
+    const containers = JSON.parse(formSetting);
+    if (containers && Array.isArray(containers)) {
+      this.containers = containers;
+      this.allFields = this.containers;
+      this.allContainers = this.containers;
+    }
+  }
+  initField(field: Fields) {
+    //add field to all field list because when retreive form
+    //setting from Db this list is empty
+    if (!this.allFields.find(x => x.id === field.id)) {
+      this.allFields.push(field);
+      if (field.isContainer) {
+        this.allContainers.push(<Containers>field);
+      }
+    }
   }
 }
