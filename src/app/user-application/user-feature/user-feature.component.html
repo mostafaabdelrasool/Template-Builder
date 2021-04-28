@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <button matTooltip="Toggle Sidebar" (click)="sidenav.toggle()" mat-icon-button
+    aria-label="Example icon-button with a code icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<div>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of features$ | async as list">
+        <a mat-flat-button>{{item.name}}</a>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>

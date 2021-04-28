@@ -1,3 +1,19 @@
-<p>
-  user-application works!
-</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Application Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of userApplication$ |async as list">
+      <td>{{item.applicationName}}</td>
+      <td>{{item.groupName}}</td>
+      <td>
+        <button mat-icon-button color="primary" [routerLink]="['/app-feature', item.applicationId]">
+          <mat-icon aria-label="Example icon-button with a heart icon">edit</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
