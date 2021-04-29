@@ -5,12 +5,12 @@
   </button>
 </mat-toolbar>
 <div>
-  <router-outlet #outlet="outlet"></router-outlet>
+  <app-page-renderer [containers]=formSetting></app-page-renderer>
 </div>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened">
     <mat-list role="list">
-      <mat-list-item role="listitem" *ngFor="let item of features$ | async as list">
+      <mat-list-item role="listitem" *ngFor="let item of features$ | async as list" (click)="getFeatureForm(item.id)">
         <a mat-flat-button>{{item.name}}</a>
       </mat-list-item>
       <mat-divider></mat-divider>

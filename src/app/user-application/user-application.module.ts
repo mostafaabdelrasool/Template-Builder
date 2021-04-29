@@ -8,6 +8,7 @@ import { SharedModule } from '../share/shared.module';
 import { UserApplicationRoutes } from './user-application.routing';
 import { UserApplicationService } from './user-application.service';
 import { UserFeatureComponent } from './user-feature/user-feature.component';
+import { PageRendererModule } from '../page-renderer/page-renderer.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { UserFeatureComponent } from './user-feature/user-feature.component';
     AngularMaterialModule,
     FlexLayoutModule,
     SharedModule,
-    UserApplicationRoutes
+    UserApplicationRoutes,
+    PageRendererModule
   ],
   declarations: [UserApplicationComponent, UserFeatureComponent],
   providers: [UserApplicationService]
