@@ -4,6 +4,7 @@ import { DataService } from "../core/data.api/data.service";
 import { Observable } from 'rxjs';
 import { UserApplication } from "./model/user-application";
 import { Feature } from './../admin/model/feature';
+import { Form } from "../admin/model/forms";
 
 /**
  * @description
@@ -11,7 +12,6 @@ import { Feature } from './../admin/model/feature';
  */
 @Injectable()
 export class UserApplicationService extends DataService {
-
 
   constructor(http: HttpClient) {
     super(http);
@@ -21,6 +21,9 @@ export class UserApplicationService extends DataService {
     return this.getUrl(this._controller + "GetUserApplication");
   }
   getApplicationFeatures(appId: string): Observable<Feature[]> {
-    return this.http.post<Feature[]>(this._url + "api/Feature/Search", [{ columnName: "applicationId", operator: "=", value: appId }]);
+    return this.http.get<Feature[]>(this._url + "api/Feature/GetFeatureApplication", { params: { applicationId: appId } });
+  }
+  getFeatureForm(featureId: string): Observable<Form>  {
+    return this.http.get<Form>(this._url + "api/Form/GetFeatureForm", { params: { featureId: featureId } });
   }
 }
