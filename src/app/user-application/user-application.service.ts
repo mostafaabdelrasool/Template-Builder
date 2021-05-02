@@ -23,7 +23,7 @@ export class UserApplicationService extends DataService {
   getApplicationFeatures(appId: string): Observable<Feature[]> {
     return this.http.get<Feature[]>(this._url + "api/Feature/GetFeatureApplication", { params: { applicationId: appId } });
   }
-  getFeatureForm(featureId: string): Observable<Form>  {
-    return this.http.get<Form>(this._url + "api/Form/GetFeatureForm", { params: { featureId: featureId } });
+  getFeatureForm(formId: string): Observable<Form> {
+    return this.http.get<Form>(this._url + "api/Form/" + formId);
   }
 }

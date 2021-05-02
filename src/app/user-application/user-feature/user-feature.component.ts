@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 import { Form } from "src/app/admin/model/forms";
 import { UserApplicationService } from "../user-application.service";
 import { Feature } from './../../admin/model/feature';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: "app-user-feature",
@@ -28,9 +27,9 @@ export class UserFeatureComponent implements OnInit {
       this.features$ = this.uappService.getApplicationFeatures(appId)
   }
 
-  getFeatureForm(featureId: string) {
-    if (featureId) {
-      this.uappService.getFeatureForm(featureId).subscribe((x: Form) => {
+  getFeatureForm(formId: string) {
+    if (formId) {
+      this.uappService.getFeatureForm(formId).subscribe((x: Form) => {
         if (x) {
           if (x.formSetting) {
             this.formSetting = JSON.parse(x.formSetting);
