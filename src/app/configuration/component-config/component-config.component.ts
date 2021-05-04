@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { MatDialogRef } from "@angular/material";
 import { CodeModel } from '@ngstack/code-editor';
 import { SharedService } from 'src/app/share/shared.service';
 @Component({
@@ -21,7 +22,7 @@ export class ComponentConfigComponent implements OnInit {
     }
   };
 
-  constructor(public sharedService: SharedService) {
+  constructor(public sharedService: SharedService, public dialogRef: MatDialogRef<ComponentConfigComponent>) {
 
   }
   ngOnInit() {
@@ -37,5 +38,11 @@ export class ComponentConfigComponent implements OnInit {
   }
   onCodeChanged(code) {
     this.sharedService.model = code;
+  }
+  save(){
+    this.dialogRef.close(this.codeModel.value);
+  }
+  close(){
+    this.dialogRef.close()
   }
 }

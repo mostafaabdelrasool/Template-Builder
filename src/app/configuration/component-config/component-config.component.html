@@ -1,10 +1,15 @@
 <div class="conf-container" fxFlexFill>
   <div class="header">
-    <div fxLayoutAlign="space-between center">
+    <div fxFlex fxLayoutAlign="space-between">
       <h3>Enter the model binder definision Object</h3>
-      <button mat-raised-button routerLink="/builder" color="accent">
-        Next
-      </button>
+      <div fxFlex fxLayoutAlign="end" >
+        <button mat-raised-button (click)="close()" class="m-1" color="accent">
+          Cancel
+        </button>
+        <button mat-raised-button (click)="save()" class="m-1" color="accent">
+          Save
+        </button>
+      </div>
     </div>
   </div>
   <mat-divider></mat-divider>
