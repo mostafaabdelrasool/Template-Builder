@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { MatDialogRef } from "@angular/material";
+import { Component, Inject, OnInit } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CodeModel } from '@ngstack/code-editor';
-import { SharedService } from 'src/app/share/shared.service';
+import { Form } from './../../admin/model/forms';
 @Component({
   selector: "app-component-config",
   templateUrl: "./component-config.component.html",
@@ -22,27 +22,30 @@ export class ComponentConfigComponent implements OnInit {
     }
   };
 
-  constructor(public sharedService: SharedService, public dialogRef: MatDialogRef<ComponentConfigComponent>) {
+  constructor(public dialogRef: MatDialogRef<ComponentConfigComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Form) {
 
   }
   ngOnInit() {
-    if (!this.sharedService.model) {
-      this.sharedService.model = this.codeModel.value =
+    if (!this.data.dataStructure) {
+      this.codeModel.value =
         `{
       "prop1": "Shane",
       "prop2": 0,
       "prop3": true,
       "data":[{"d1":"","d2":"","d3":"","d4":"","d5":""}]
 }`
+    } else {
+      this.codeModel.value = this.data.dataStructure;
     }
   }
   onCodeChanged(code) {
-    this.sharedService.model = code;
+    this.codeModel.value = code;
   }
-  save(){
+  save() {
     this.dialogRef.close(this.codeModel.value);
   }
-  close(){
+  close() {
     this.dialogRef.close()
   }
 }

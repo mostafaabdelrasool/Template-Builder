@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResizableModule } from 'angular-resizable-element';
 import { FormsModule } from '@angular/forms';
 import { BuilderModule } from './builder/builder.module';
-import { ConfigurationModule } from './configuration/configuration.module';
 import { RouterModule } from '@angular/router';
 import { SharedService } from './share/shared.service';
 import { PageRendererModule } from './page-renderer/page-renderer.module';
@@ -27,7 +26,6 @@ import { UserApplicationModule } from './user-application/user-application.modul
     ResizableModule,
     FormsModule,
     BuilderModule,
-    ConfigurationModule,
     RouterModule.forRoot([], { useHash: true }),
     PageRendererModule,
     CoreModule,

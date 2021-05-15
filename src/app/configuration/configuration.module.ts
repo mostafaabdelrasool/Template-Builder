@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angularMaterial/angularMaterial.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfigRoutes } from './config.routing';
-import { ComponentConfigComponent } from './component-config/component-config.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
 
 @NgModule({
@@ -17,6 +16,6 @@ import { CodeEditorModule } from '@ngstack/code-editor';
     FlexLayoutModule,
     CodeEditorModule.forRoot()
   ],
-  declarations: [ConfigurationComponent,ComponentConfigComponent],
+  declarations: [ConfigurationComponent],
 })
 export class ConfigurationModule { }

@@ -26,6 +26,7 @@ export class BuilderComponent implements OnInit {
         if (x.formSetting) {
           this.appService.setFormSetting(x.formSetting);
         }
+        this.builderService.currentForm = x;
       })
     }
   }

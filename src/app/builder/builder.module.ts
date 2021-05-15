@@ -29,6 +29,7 @@ import { ChildContainerModule } from './child-container/child-container-module';
 import { SharedBuilderModule } from './share/shared-builder-module';
 import { FieldPropertySettingComponent } from './sidebar/field-property-setting/field-property-setting.component';
 import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-value-setting.component';
+import { ComponentConfigComponent } from './component-config/component-config.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,10 +57,11 @@ import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-
     FlexSettingComponent,
     StyleToCssComponent,
     FieldPropertySettingComponent,
-    FieldValueSettingComponent
+    FieldValueSettingComponent,
+    ComponentConfigComponent
   ],
   providers: [AppService, BuilderService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent],
+  entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent,ComponentConfigComponent],
   exports: [ EditInPlaceComponent, ContainersComponent,SharedBuilderModule]
 })
 export class BuilderModule { }
