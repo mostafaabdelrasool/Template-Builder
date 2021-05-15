@@ -3,7 +3,7 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { AppService } from '../share/Render/app.service';
 import { BuilderService } from '../builder.service';
 import { ActivatedRoute } from '@angular/router';
-import { ComponentConfigComponent } from "src/app/configuration/component-config/component-config.component";
+import { ComponentConfigComponent } from "src/app/builder/component-config/component-config.component";
 
 @Component({
   selector: "app-top-nav",
@@ -12,6 +12,7 @@ import { ComponentConfigComponent } from "src/app/configuration/component-config
 })
 
 export class TopNavComponent implements OnInit {
+  formDataStructure: string;
 
   constructor(public dialog: MatDialog,
     public appService: AppService, private builderService: BuilderService,
@@ -31,10 +32,12 @@ export class TopNavComponent implements OnInit {
     window.open(window.location.href.replace('builder', 'render'), '_blank')
   }
   save() {
-    this.builderService.partialUpdate({
-      id: this.route.snapshot.queryParams['id'],
-      formSetting: JSON.stringify(this.appService.containers)
-    }, ["formSetting"]).subscribe(x => {
+    this.builderService.put({
+      id: this.builderService.currentForm.id,
+      formSetting: JSON.stringify(this.appService.containers),
+      DataStructure: this.formDataStructure,
+      name: this.builderService.currentForm.name
+    }).subscribe(x => {
       this.openSnackBar("Saved Successfully", "Close")
     });
   }
@@ -44,8 +47,7 @@ export class TopNavComponent implements OnInit {
     });
   }
   showDataStructure() {
-    let setting = { width: '70vw', height: 'auto' };
-
-    this.dialog.open(ComponentConfigComponent, setting);
+    let setting = { width: '70vw', height: 'auto', data: this.builderService.currentForm };
+    this.dialog.open(ComponentConfigComponent, setting).afterClosed().subscribe(x => this.formDataStructure = x);
   }
 }
