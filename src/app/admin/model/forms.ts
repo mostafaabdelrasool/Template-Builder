@@ -1,7 +1,8 @@
 export class Form {
-  id?: string;
+  id: string;
   name: string;
   formSetting?: string;
   featureId: string;
   dataStructure: string
+  formFunction: string;
 }

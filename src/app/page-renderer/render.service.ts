@@ -27,6 +27,9 @@ export class RenderService {
 
     return observerable;
   }
+  loadAllFeatureData(featureId: string) {
+    throw new Error('Method not implemented.');
+  }
 }
 
 

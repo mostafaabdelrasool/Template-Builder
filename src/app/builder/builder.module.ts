@@ -30,6 +30,7 @@ import { SharedBuilderModule } from './share/shared-builder-module';
 import { FieldPropertySettingComponent } from './sidebar/field-property-setting/field-property-setting.component';
 import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-value-setting.component';
 import { ComponentConfigComponent } from './component-config/component-config.component';
+import { FormLoadingComponent } from './form-loading/form-loading.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,10 +59,12 @@ import { ComponentConfigComponent } from './component-config/component-config.co
     StyleToCssComponent,
     FieldPropertySettingComponent,
     FieldValueSettingComponent,
-    ComponentConfigComponent
+    ComponentConfigComponent,
+    FormLoadingComponent
   ],
   providers: [AppService, BuilderService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent, DataMapperSettingComponent,ComponentConfigComponent],
-  exports: [ EditInPlaceComponent, ContainersComponent,SharedBuilderModule]
+  entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent,
+    DataMapperSettingComponent, ComponentConfigComponent, FormLoadingComponent],
+  exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule]
 })
 export class BuilderModule { }

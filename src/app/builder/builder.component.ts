@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Form } from "../admin/model/forms";
 import { BuilderService } from "./builder.service";
+import { FormFunction } from "./model/form-load-type";
 import { AppService } from './share/Render/app.service';
 
 @Component({
@@ -25,6 +26,11 @@ export class BuilderComponent implements OnInit {
       this.builderService.getById(formId).subscribe((x: Form) => {
         if (x.formSetting) {
           this.appService.setFormSetting(x.formSetting);
+        }
+        if (x.formFunction) {
+          this.builderService.currentFormFunction = JSON.parse(x.formFunction);
+        } else {
+          this.builderService.currentFormFunction = new FormFunction();
         }
         this.builderService.currentForm = x;
       })

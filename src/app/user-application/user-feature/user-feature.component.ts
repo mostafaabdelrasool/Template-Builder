@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { Form } from "src/app/admin/model/forms";
+import { FormFunction } from "src/app/builder/model/form-load-type";
 import { UserApplicationService } from "../user-application.service";
 import { Feature } from './../../admin/model/feature';
 
@@ -17,6 +18,7 @@ export class UserFeatureComponent implements OnInit {
   features$: Observable<Feature[]>;
   formSetting: string;
   currentForm: Form;
+  currentFormFunction: FormFunction;
   constructor(private uappService: UserApplicationService, private route: ActivatedRoute, private router: Router) {
   }
 
@@ -32,6 +34,11 @@ export class UserFeatureComponent implements OnInit {
         if (x) {
           if (x.formSetting) {
             this.formSetting = JSON.parse(x.formSetting);
+          }
+          if (x.formFunction) {
+            this.currentFormFunction = JSON.parse(x.formFunction);
+          } else {
+            this.currentFormFunction = new FormFunction();
           }
           this.currentForm = x;
           this.navigateToForm(x);

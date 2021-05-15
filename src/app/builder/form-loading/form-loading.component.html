@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Form Loading</h1>
+<div>
+  <h4>Choose what to do when loading current form</h4>
+  <mat-radio-group aria-label="Select an option" fxLayout="column" [(ngModel)]="loadType">
+    <mat-radio-button value="1" class="m-1">Load All Feature data</mat-radio-button>
+    <mat-radio-button value="2" class="m-1">Get Feature By Current Id</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button [mat-dialog-close]="loadType" cdkFocusInitial>Ok</button>
+</div>

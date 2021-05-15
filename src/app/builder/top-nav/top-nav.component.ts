@@ -4,6 +4,8 @@ import { AppService } from '../share/Render/app.service';
 import { BuilderService } from '../builder.service';
 import { ActivatedRoute } from '@angular/router';
 import { ComponentConfigComponent } from "src/app/builder/component-config/component-config.component";
+import { FormLoadingComponent } from "../form-loading/form-loading.component";
+import { FormLoadType } from "../model/form-load-type";
 
 @Component({
   selector: "app-top-nav",
@@ -32,12 +34,10 @@ export class TopNavComponent implements OnInit {
     window.open(window.location.href.replace('builder', 'render'), '_blank')
   }
   save() {
-    this.builderService.put({
-      id: this.builderService.currentForm.id,
-      formSetting: JSON.stringify(this.appService.containers),
-      DataStructure: this.formDataStructure,
-      name: this.builderService.currentForm.name
-    }).subscribe(x => {
+    this.builderService.currentForm.formSetting = JSON.stringify(this.appService.containers);
+    this.builderService.currentForm.formFunction = JSON.stringify(this.builderService.currentFormFunction);
+    this.builderService.currentForm.dataStructure = this.formDataStructure;
+    this.builderService.put(this.builderService.currentForm).subscribe(x => {
       this.openSnackBar("Saved Successfully", "Close")
     });
   }
@@ -48,6 +48,18 @@ export class TopNavComponent implements OnInit {
   }
   showDataStructure() {
     let setting = { width: '70vw', height: 'auto', data: this.builderService.currentForm };
-    this.dialog.open(ComponentConfigComponent, setting).afterClosed().subscribe(x => this.formDataStructure = x);
+    this.dialog.open(ComponentConfigComponent, setting).afterClosed().subscribe(x => {
+      if (x) {
+        this.formDataStructure = x
+      }
+    });
+  }
+  initFormDialog() {
+    let setting = { width: '70vw', height: 'auto', data: this.builderService.currentFormFunction.loadType || 0 };
+    this.dialog.open(FormLoadingComponent, setting).afterClosed().subscribe((x) => {
+      if (x) {
+        this.builderService.currentFormFunction.loadType = x
+      }
+    });
   }
 }

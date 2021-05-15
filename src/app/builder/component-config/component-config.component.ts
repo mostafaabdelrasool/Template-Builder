@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CodeModel } from '@ngstack/code-editor';
 import { Form } from './../../admin/model/forms';
+import { BuilderService } from './../builder.service';
 @Component({
   selector: "app-component-config",
   templateUrl: "./component-config.component.html",
@@ -23,7 +24,7 @@ export class ComponentConfigComponent implements OnInit {
   };
 
   constructor(public dialogRef: MatDialogRef<ComponentConfigComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Form) {
+    @Inject(MAT_DIALOG_DATA) public data: Form, private builderService: BuilderService) {
 
   }
   ngOnInit() {
@@ -43,7 +44,11 @@ export class ComponentConfigComponent implements OnInit {
     this.codeModel.value = code;
   }
   save() {
-    this.dialogRef.close(this.codeModel.value);
+    if (this.codeModel.value) {
+      this.data.dataStructure = this.codeModel.value;
+      const data = (({ id, name, dataStructure }) => ({ id, name, dataStructure }))(this.data)
+      this.builderService.saveDataStructure(<Form>data).subscribe(x => this.dialogRef.close(this.codeModel.value))
+    }
   }
   close() {
     this.dialogRef.close()
