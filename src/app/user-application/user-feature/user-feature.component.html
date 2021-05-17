@@ -5,7 +5,7 @@
   </button>
 </mat-toolbar>
 <div fxFill>
-  <app-page-renderer [containers]=formSetting [formFunction]=currentFormFunction [featureId]="currentForm.featureId"></app-page-renderer>
+  <app-page-renderer *ngIf="currentForm" [containers]=formSetting [formFunction]=currentFormFunction [featureId]="currentForm?.featureId"></app-page-renderer>
 </div>
 
 <mat-sidenav-container class="example-container">

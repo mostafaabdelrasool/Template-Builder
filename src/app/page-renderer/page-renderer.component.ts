@@ -3,6 +3,7 @@ import { Containers } from '../builder/model/containers';
 import { FormFunction, FormLoadType } from '../builder/model/form-load-type';
 import { SharedService } from '../share/shared.service';
 import { RenderService } from './render.service';
+import { FeatureSubmission } from './model/feature-submission';
 
 @Component({
   selector: 'app-page-renderer',
@@ -21,8 +22,10 @@ export class PageRendererComponent implements OnInit {
     this.getSetting();
     this.renderService.initData();
     if (this.formFunction) {
-      if (this.formFunction.loadType === FormLoadType.LOAD_ALL_FEATURE) {
-        this.renderService.loadAllFeatureData(this.featureId);
+      if (+this.formFunction.loadType === FormLoadType.LOAD_ALL_FEATURE) {
+        this.renderService.loadAllFeatureData(this.featureId).subscribe((x: FeatureSubmission[]) => {
+          this.renderService.data = x;
+        });
       } else {
 
       }
