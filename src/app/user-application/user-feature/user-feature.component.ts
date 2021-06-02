@@ -49,7 +49,7 @@ export class UserFeatureComponent implements OnInit {
   navigateToForm(form: Form) {
     // changes the route without moving from the current view or
     // triggering a navigation event,
-    let params = { formId: form.id };
+    let params = { formId: form.id , featureId :form.featureId };
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,

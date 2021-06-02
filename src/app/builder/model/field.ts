@@ -28,6 +28,15 @@ export class Fields {
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
   buttonColor: string;
+  clickAction? :ELementClickAction;
+}
+export class ELementClickAction {
+   type :ElementClickType;
+   featureId? :string;
+   formId? :string;
+}
+export enum ElementClickType{
+  AddFeature, UpdateFeature , DeleteFeature , Navigate
 }
 export enum FieldCategory {
   Input, Container, Button, Typograpghy

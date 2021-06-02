@@ -1,4 +1,8 @@
 export class FeatureSubmission {
+  data: FeatureSubData[];
+  featureName: string;
+}
+export class FeatureSubData {
   Id: string;
-  DataJson: string;
+  dataJson: string;
 }

@@ -18,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabFieldRenderComponent } from './child-container-render/tab-field-render/tab-field-render.component';
 import { ContainerRenderComponent } from './container.render/container.render.component';
+import { ButtonFieldRenderComponent } from './field-render/button-field-render/button-field-render.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import { ContainerRenderComponent } from './container.render/container.render.co
     CreateableTableRenderComponent,
     ListFieldRenderComponent,
     TabFieldRenderComponent,
-    ContainerRenderComponent],
+    ContainerRenderComponent,
+    ButtonFieldRenderComponent],
   providers: [RenderService],
   exports: [PageRendererComponent],
   entryComponents: [FieldRenderComponent, ChildContainerRenderComponent,

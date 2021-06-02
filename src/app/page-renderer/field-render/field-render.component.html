@@ -3,7 +3,7 @@
     <app-input-field [field]="field" [value]="getFieldValue(field.model)"
       (valueChange)="valueChange(field.model,$event)"></app-input-field>
   </ng-container>
-  <app-button-field *ngSwitchCase="16" [field]="field"></app-button-field>
+  <app-button-field-render *ngSwitchCase="16" [field]="field"></app-button-field-render>
   <h1 *ngSwitchCase="18">{{field.value}}</h1>
   <h3 *ngSwitchCase="19">{{field.value}}</h3>
   <div *ngSwitchCase="20" [innerHTML]="field.value"></div>

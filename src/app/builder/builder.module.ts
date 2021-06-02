@@ -31,6 +31,7 @@ import { FieldPropertySettingComponent } from './sidebar/field-property-setting/
 import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-value-setting.component';
 import { ComponentConfigComponent } from './component-config/component-config.component';
 import { FormLoadingComponent } from './form-loading/form-loading.component';
+import { ButtonClickHandlerComponent } from './fields/button-field/Button-Click-Handler/Button-Click-Handler.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -60,11 +61,12 @@ import { FormLoadingComponent } from './form-loading/form-loading.component';
     FieldPropertySettingComponent,
     FieldValueSettingComponent,
     ComponentConfigComponent,
-    FormLoadingComponent
+    FormLoadingComponent,
+    ButtonClickHandlerComponent
   ],
   providers: [AppService, BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent,
-    DataMapperSettingComponent, ComponentConfigComponent, FormLoadingComponent],
+    DataMapperSettingComponent, ComponentConfigComponent, FormLoadingComponent, ButtonClickHandlerComponent],
   exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule]
 })
 export class BuilderModule { }

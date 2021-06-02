@@ -3,7 +3,7 @@ import { Fields, InputField, FieldType } from '../../model/field';
 import { AppService } from '../../share/Render/app.service';
 import { FieldDataSource } from '../../model/data-source';
 import { getPathData, objectKeys } from 'src/app/share/object-func';
-import { SharedService } from 'src/app/share/shared.service';
+import { BuilderService } from "../../builder.service";
 
 @Component({
   selector: "app-field-property-setting",
@@ -14,7 +14,7 @@ import { SharedService } from 'src/app/share/shared.service';
 export class FieldPropertySettingComponent implements OnInit {
   @Input() currentField: Fields;
   modelProps: string[];
-  constructor(public appService: AppService, public sharedService: SharedService) {
+  constructor(public appService: AppService, private builderService: BuilderService) {
   }
 
   ngOnInit() {
@@ -40,9 +40,11 @@ export class FieldPropertySettingComponent implements OnInit {
           this.modelProps = ds.dataStructure.map(d => d['name'])
         } else {
           //if container bind to main model not to DS
-          var parentContainerData = getPathData(JSON.parse(this.sharedService.model), parentContainer.model);
-          if (parentContainerData && parentContainerData.length > 0) {
-            this.modelProps = objectKeys(parentContainerData[0]);
+          if (this.builderService.currentForm) {
+            var parentContainerData = getPathData(JSON.parse(this.builderService.currentForm.dataStructure), parentContainer.model);
+            if (parentContainerData && parentContainerData.length > 0) {
+              this.modelProps = objectKeys(parentContainerData[0]);
+            }
           }
         }
       }
@@ -51,8 +53,8 @@ export class FieldPropertySettingComponent implements OnInit {
     }
   }
   getModelProps() {
-    if (this.sharedService.model) {
-      this.modelProps = objectKeys(JSON.parse(this.sharedService.model));
+    if (this.builderService.currentForm && this.builderService.currentForm.dataStructure) {
+      this.modelProps = objectKeys(JSON.parse(this.builderService.currentForm.dataStructure));
     }
   }
 

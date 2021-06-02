@@ -23,8 +23,10 @@ export class PageRendererComponent implements OnInit {
     this.renderService.initData();
     if (this.formFunction) {
       if (+this.formFunction.loadType === FormLoadType.LOAD_ALL_FEATURE) {
-        this.renderService.loadAllFeatureData(this.featureId).subscribe((x: FeatureSubmission[]) => {
-          this.renderService.data = x;
+        this.renderService.loadAllFeatureData(this.featureId).subscribe((x: FeatureSubmission) => {
+          if (x) {
+            this.renderService.setArrayData(x.data, x.featureName);
+          }
         });
       } else {
 

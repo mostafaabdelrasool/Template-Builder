@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Click Handler</h1>
+<div>
+  <h2>Choose what to do on click</h2>
+  <mat-radio-group aria-label="Select an option" fxLayout="column" [(ngModel)]="clickAction.type">
+    <mat-radio-button value="0" class="m-1">Add Feature</mat-radio-button>
+    <mat-radio-button value="1" class="m-1">Update Feature</mat-radio-button>
+    <mat-radio-button value="2" class="m-1">Delete Feature</mat-radio-button>
+    <mat-radio-button value="3" class="m-1">Navigate to Another Form</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button [mat-dialog-close]="clickAction" cdkFocusInitial>Ok</button>
+</div>
