@@ -12,20 +12,15 @@ import { ELementClickAction } from './../../model/field';
 
 export class ButtonFieldComponent implements OnInit {
   @Input() field: ButtonField;
-  @Input() renderMode:boolean;
   constructor(private dialog: MatDialog) {
 
   }
 
   ngOnInit() {
-
+    this.field.hasAction = true;
   }
-  @HostListener('click')
-  clickInside() {
-    if (this.renderMode) {
-      return;
-    }
-    let setting = { width: '50vw', height: 'auto' };
+  openSetting() {
+    let setting = { width: '50vw', height: 'auto', data: this.field };
     this.dialog.open(ButtonClickHandlerComponent, setting).afterClosed().subscribe((x: ELementClickAction) => {
       if (x) {
         this.field.clickAction = x

@@ -26,7 +26,9 @@ export class FieldsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   handleAction() {
-    this.componentRef.instance.openSetting();
+    if (this.componentRef.instance.openSetting) {
+      this.componentRef.instance.openSetting();
+    }
   }
   openTextSetting() {
     let setting = { width: '50vw', height: 'auto', data: this.field };
