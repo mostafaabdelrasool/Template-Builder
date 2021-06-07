@@ -34,6 +34,7 @@ export class ELementClickAction {
   type: ElementClickType;
   featureId?: string;
   formId?: string;
+  applicationId? :string;
   afterClick: ElementAfterClick;
 }
 export enum ElementClickType {

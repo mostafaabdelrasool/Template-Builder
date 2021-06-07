@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { Form } from "src/app/admin/model/forms";
 import { FormFunction } from "src/app/builder/model/form-load-type";
 import { UserApplicationService } from "../user-application.service";
@@ -19,13 +19,24 @@ export class UserFeatureComponent implements OnInit {
   formSetting: string;
   currentForm: Form;
   currentFormFunction: FormFunction;
-  constructor(private uappService: UserApplicationService, private route: ActivatedRoute, private router: Router) {
+  routeSub: Subscription;
+  constructor(private uappService: UserApplicationService, private route: ActivatedRoute,
+    private router: Router) {
+    this.routeSub=this.route.queryParamMap.subscribe(x => {
+      const formId = x.get("formId");
+      this.getFeatureForm(formId)
+    })
   }
 
   ngOnInit() {
     const appId = this.route.snapshot.params.appId;
-    if (appId)
+    const formId = this.route.snapshot.queryParams.formId;
+    if (appId) {
       this.features$ = this.uappService.getApplicationFeatures(appId)
+    }
+    if (formId) {
+      this.getFeatureForm(formId);
+    }
   }
 
   getFeatureForm(formId: string) {
@@ -53,8 +64,10 @@ export class UserFeatureComponent implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
-      queryParamsHandling: 'merge',
-      replaceUrl: true
+      queryParamsHandling: 'merge'
     });
+  }
+  OnDestroy() {
+    this.routeSub.unsubscribe();
   }
 }

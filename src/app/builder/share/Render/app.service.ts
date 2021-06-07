@@ -197,12 +197,16 @@ export class AppService {
     this.allFields.push(field);
   }
   setFormSetting(formSetting: string) {
-    const containers = JSON.parse(formSetting);
-    if (containers && Array.isArray(containers)) {
-      this.containers = containers;
-      this.allFields = this.containers;
-      this.allContainers = this.containers;
+    if (!formSetting) {
+      this.containers = [this.getDefaultContainer()];
+    } else {
+      const containers = JSON.parse(formSetting);
+      if (containers && Array.isArray(containers)) {
+        this.containers = containers;
+      }
     }
+    this.allFields = this.containers;
+    this.allContainers = this.containers;
   }
   initField(field: Fields) {
     //add field to all field list because when retreive form

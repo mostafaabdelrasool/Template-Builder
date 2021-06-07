@@ -1,6 +1,6 @@
 import { Component, HostListener, Input, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ButtonField, ElementAfterClick, ElementClickType } from "src/app/builder/model/field";
 import { RenderService } from "../../render.service";
 import { Location } from '@angular/common'
@@ -14,7 +14,8 @@ import { Location } from '@angular/common'
 export class ButtonFieldRenderComponent implements OnInit {
   @Input() field: ButtonField;
   constructor(private renderService: RenderService, private route: ActivatedRoute,
-    private _snackBar: MatSnackBar, private location: Location) {
+    private _snackBar: MatSnackBar, private location: Location,
+    private router: Router) {
 
   }
 
@@ -35,7 +36,9 @@ export class ButtonFieldRenderComponent implements OnInit {
             this.handleAferClick();
           });
           break;
-
+        case ElementClickType.Navigate:
+          this.navigateToForm(this.field.clickAction.formId ,this.field.clickAction.featureId)
+          break;
         default:
           break;
       }
@@ -53,5 +56,15 @@ export class ButtonFieldRenderComponent implements OnInit {
       default:
         break;
     }
+  }
+  navigateToForm(formId :string ,featureId :string) {
+    // changes the route without moving from the current view or
+    // triggering a navigation event,
+    let params = { formId: formId, featureId: featureId };
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'merge'
+    });
   }
 }

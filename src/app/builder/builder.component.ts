@@ -24,9 +24,7 @@ export class BuilderComponent implements OnInit {
     const formId = this.route.snapshot.queryParams['id'];
     if (formId) {
       this.builderService.getById(formId).subscribe((x: Form) => {
-        if (x.formSetting) {
-          this.appService.setFormSetting(x.formSetting);
-        }
+        this.appService.setFormSetting(x.formSetting);
         if (x.formFunction) {
           this.builderService.currentFormFunction = JSON.parse(x.formFunction);
         } else {
