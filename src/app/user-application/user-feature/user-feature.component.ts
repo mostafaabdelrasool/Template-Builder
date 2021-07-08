@@ -5,6 +5,7 @@ import { Form } from "src/app/admin/model/forms";
 import { FormFunction } from "src/app/builder/model/form-load-type";
 import { UserApplicationService } from "../user-application.service";
 import { Feature } from './../../admin/model/feature';
+import { Containers } from './../../builder/model/containers';
 
 @Component({
   selector: "app-user-feature",
@@ -16,7 +17,7 @@ export class UserFeatureComponent implements OnInit {
   sidebarOpened: true;
   currentRoute: string;
   features$: Observable<Feature[]>;
-  formSetting: string;
+  formSetting: Containers[];
   currentForm: Form;
   currentFormFunction: FormFunction;
   routeSub: Subscription;
@@ -45,6 +46,8 @@ export class UserFeatureComponent implements OnInit {
         if (x) {
           if (x.formSetting) {
             this.formSetting = JSON.parse(x.formSetting);
+          }else{
+            this.formSetting = [];
           }
           if (x.formFunction) {
             this.currentFormFunction = JSON.parse(x.formFunction);

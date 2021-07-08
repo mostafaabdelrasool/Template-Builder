@@ -28,7 +28,7 @@ export class ComponentConfigComponent implements OnInit {
 
   }
   ngOnInit() {
-    if (!this.data.dataStructure) {
+    if (!this.data || !this.data.dataStructure) {
       this.codeModel.value =
         `{
       "prop1": "Shane",

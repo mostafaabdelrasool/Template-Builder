@@ -5,6 +5,7 @@ import { FieldDataSource } from '../../model/data-source';
 import { Style } from '../../model/style';
 import { BehaviorSubject } from 'rxjs';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { mapProps } from "src/app/share/object-func";
 /**
  * @description
  * @class
@@ -34,13 +35,13 @@ export class AppService {
       width: "98%",
       fxFlex: {}
     }
-    this.currentContainer = {
-      model: undefined,
-      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
-    };
-    this.containers = [Object.assign({}, this.currentContainer)];
-    this.allFields.push(this.currentContainer);
-    this.allContainers.push(this.currentContainer);
+    // this.currentContainer = {
+    //   model: undefined,
+    //   type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
+    // };
+    // this.containers = [Object.assign({}, this.currentContainer)];
+    // this.allFields.push(this.currentContainer);
+    // this.allContainers.push(this.currentContainer);
     this.currentFieldSubject = new BehaviorSubject<Fields>(this.currentField)
   }
   selectField(field: Fields) {
@@ -49,9 +50,15 @@ export class AppService {
       return;
     }
     field.isSelected = true;
-    this.currentField = Object.assign({}, field);
+    if (!this.currentField) {
+      this.currentField = new Fields();
+    }
+    if (!this.currentContainer) {
+      this.currentContainer = new Containers();
+    }
+    mapProps(field,this.currentField);
     if (field.isContainer) {
-      this.currentContainer = Object.assign({}, <Containers>field);
+      mapProps(field,this.currentContainer);
     }
     this.openProperties = true;
     this.currentFieldSubject.next(this.currentField);
@@ -62,6 +69,15 @@ export class AppService {
       model: undefined,
       type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
     });
+  }
+  setDefaultContainer(): void {
+    this.currentContainer ={
+      model: undefined,
+      type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
+    }
+    this.containers = [this.currentContainer];
+    this.allFields.push(this.currentContainer);
+    this.allContainers.push(this.currentContainer);
   }
   copyField(field: Fields, index: number) {
     const newField = JSON.parse(JSON.stringify(field));
@@ -160,8 +176,16 @@ export class AppService {
   selectCurrentField(field: Fields) {
     if (field) {
       this.currentFieldSubject.next(field);
-      this.currentField = Object.assign({}, field);
-      this.currentContainer = Object.assign({}, <Containers>field);
+      if (!this.currentField) {
+        this.currentField = new Fields();
+      }
+       mapProps(field,this.currentField);
+       if (field.isContainer) {
+        if (!this.currentContainer) {
+          this.currentContainer = new Containers();
+        }
+        mapProps(field,this.currentContainer);
+       }
     }
   }
   updateFieldProperty(fieldId: string, value: any, propName: string) {
@@ -198,15 +222,13 @@ export class AppService {
   }
   setFormSetting(formSetting: string) {
     if (!formSetting) {
-      this.containers = [this.getDefaultContainer()];
+      this.setDefaultContainer();
     } else {
       const containers = JSON.parse(formSetting);
       if (containers && Array.isArray(containers)) {
         this.containers = containers;
       }
     }
-    this.allFields = this.containers;
-    this.allContainers = this.containers;
   }
   initField(field: Fields) {
     //add field to all field list because when retreive form

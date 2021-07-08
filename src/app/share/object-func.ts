@@ -18,7 +18,7 @@ export const objectKeysDetail = (obj, prefix = ''): any[] =>
       return [...res, { name: prefix + el, type: 'array' }];
     } else if (typeof obj[el] === 'object' && obj[el] !== null) {
       return [...res, { name: prefix + el, type: 'object' }, ...objectKeys(obj[el], prefix + el + '.')
-      .map(x => { return { name: x, type: 'value' } })];
+        .map(x => { return { name: x, type: 'value' } })];
     } else {
       return [...res, { name: prefix + el, type: 'value' }];
     }
@@ -42,4 +42,16 @@ export const setPathData = (schema, path, value) => {
     schema = schema[elem];
   }
   schema[pList[len - 1]] = value;
+}
+
+export const mapProps = (source, destination) => {
+  if (!source) {
+    source = {};
+  }
+  if (!destination) {
+    destination = {};
+  }
+  for (var key in source) {
+    destination[key] = source[key];
+  }
 }

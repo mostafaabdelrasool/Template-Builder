@@ -58,4 +58,9 @@ export class FieldPropertySettingComponent implements OnInit {
     }
   }
 
+  fieldValueChanged(value , name) {
+    this.appService.updateFieldProperty(this.currentField.id, value, name);
+    this.currentField[name] = value;
+  }
+
 }

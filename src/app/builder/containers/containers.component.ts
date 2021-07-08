@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Containers, CardField } from '../model/containers';
-import { Manager_Type } from '../model/manager';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { FieldType, Fields, ButtonFieldTypes, ButtonField, ButtonFieldCOLOR, FieldCategory } from '../model/field';
+import { FieldType, Fields, ButtonFieldTypes, ButtonField } from '../model/field';
 import { HighlightColors } from '../share/Render/highlight.directive';
 import { AppService } from '../share/Render/app.service';
 import { MatSnackBar } from '@angular/material';

@@ -47,10 +47,11 @@ export class TopNavComponent implements OnInit {
     });
   }
   showDataStructure() {
-    let setting = { width: '70vw', height: 'auto', data: this.builderService.currentForm };
+    let setting = { width: '70vw', height: 'auto', data: this.builderService.currentForm || {} };
     this.dialog.open(ComponentConfigComponent, setting).afterClosed().subscribe(x => {
       if (x) {
-        this.formDataStructure = x
+        this.formDataStructure = x;
+        this.builderService.currentForm.dataStructure = this.formDataStructure;
       }
     });
   }
