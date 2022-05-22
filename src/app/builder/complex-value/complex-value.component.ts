@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Fields, ComplexValueCalculation, InputField, WhenToCalculate, FieldEquation } from '../model/field';
 import { AppService } from '../share/Render/app.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: "app-complex-value",

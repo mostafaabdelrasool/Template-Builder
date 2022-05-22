@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AppService } from '../share/Render/app.service';
 import { FieldDataSource } from '../model/data-source';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DataSettingComponent } from './data-setting/data-setting.component';
 
 @Component({

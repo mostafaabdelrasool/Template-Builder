@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit, ComponentFactoryResolver } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit } from "@angular/core";
 import { Containers } from '../model/containers';
 import { ContainersComponent } from '../containers/containers.component';
 import { AppService } from '../share/Render/app.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { FieldType } from '../model/field';
 import { FieldRenderSetting } from '../model/field-render-setting';
 
@@ -17,7 +17,7 @@ export class ChildContainerComponent extends ContainersComponent implements OnIn
   fieldType: FieldType;
   @ViewChild('fieldtemplate', { static: true, read: ViewContainerRef }) entry: ViewContainerRef;
   componentRef: any;
-  constructor(public appService: AppService, snackBar: MatSnackBar, private resolver: ComponentFactoryResolver) {
+  constructor(public appService: AppService, snackBar: MatSnackBar) {
     super(appService, snackBar)
   }
 
@@ -30,9 +30,9 @@ export class ChildContainerComponent extends ContainersComponent implements OnIn
   createComponent() {
     let renderSetting = FieldRenderSetting[FieldType[this.container.type]];
     let componentName = renderSetting.componentName;
-    const factory = this.resolver.resolveComponentFactory(componentName);
+    //const factory = this.resolver.resolveComponentFactory(componentName);
     this.entry.clear();
-    let componentRef = this.entry.createComponent(factory);
+    let componentRef = this.entry.createComponent(componentName);
     componentRef.instance['field'] = this.container;
     componentRef.changeDetectorRef.detectChanges();
     return componentRef

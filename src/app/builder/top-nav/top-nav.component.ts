@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { MatDialog, MatSnackBar } from '@angular/material';
 import { AppService } from '../share/Render/app.service';
 import { BuilderService } from '../builder.service';
 import { ActivatedRoute } from '@angular/router';
 import { ComponentConfigComponent } from "src/app/builder/component-config/component-config.component";
 import { FormLoadingComponent } from "../form-loading/form-loading.component";
 import { FormLoadType } from "../model/form-load-type";
+import { MatDialog } from "@angular/material/dialog";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-top-nav",

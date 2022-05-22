@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import {  SelectField } from '../../model/field';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
 import { FieldDataSource } from '../../model/data-source';
 
@@ -11,7 +11,7 @@ import { FieldDataSource } from '../../model/data-source';
 })
 
 export class SelectFieldComponent implements OnInit {
-  
+
   @Input() field: SelectField;
   data: any;
   constructor(public dialog: MatDialog) {

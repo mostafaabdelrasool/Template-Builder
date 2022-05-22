@@ -3,7 +3,7 @@ import { UserApplicationComponent } from './user-application.component';
 import { UserFeatureComponent } from './user-feature/user-feature.component';
 
 const routes: Routes = [
-  {  path: 'Application', component: UserApplicationComponent  },
+  {  path: 'application', component: UserApplicationComponent  },
   {  path: 'app-feature/:appId', component: UserFeatureComponent  },
 ];
 

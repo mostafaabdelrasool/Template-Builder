@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "src/app/core/data.api/auth.service";
 import { Login, LoginResponse } from "../login";
@@ -13,7 +13,8 @@ import { Login, LoginResponse } from "../login";
 export class RegisterComponent implements OnInit {
 
   login: Login
-  constructor(private authenticationService: AuthenticationService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.login = new Login();

@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ListField, Fields } from '../../model/field';
 import { ContainersComponent } from '../../containers/containers.component';
 import { AppService } from '../../share/Render/app.service';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
 import { FieldDataSource } from '../../model/data-source';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-list-field",

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { AppService } from '../../share/Render/app.service';
-import { MatSnackBar } from '@angular/material';
 import { ContainersComponent } from '../../containers/containers.component';
 import { FormField, Fields } from '../../model/field';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-form-field",

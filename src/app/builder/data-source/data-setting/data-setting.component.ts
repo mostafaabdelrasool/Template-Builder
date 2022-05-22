@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { HttpClient, HttpBackend } from '@angular/common/http';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { objectKeys } from 'src/app/share/object-func';
 import { AppService } from '../../share/Render/app.service';
 import { FieldDataSource } from '../../model/data-source';

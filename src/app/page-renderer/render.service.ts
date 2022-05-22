@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FieldDataSource } from '../builder/model/data-source';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureSubData, FeatureSubmission } from './model/feature-submission';
 import { ExtractAndMapAllPorps } from '../share/json-parser/extract-props';
@@ -10,11 +10,23 @@ import { ExtractAndMapAllPorps } from '../share/json-parser/extract-props';
   providedIn: 'root'
 })
 export class RenderService {
-
   data: any = {}
+  featureId: string;
+  featureName: string;
+  dataRetrieved: Subject<any> = new Subject<any>();
+  reloadData: Subject<any> = new Subject<any>();
+  loadFormFeature: Subject<string> = new Subject<string>();
+  private previousFormId: string;
   constructor(private http: HttpClient) { }
-  initData() {
+  initData(featureId: string) {
     this.data = {};
+    this.featureId = featureId;
+  }
+  setPreviosFormId(formId) {
+    this.previousFormId = formId;
+  }
+  getPreviosFormId() {
+    return this.previousFormId;
   }
   getDataSourceData(dataSource: FieldDataSource): Observable<any> {
     let observerable = new Observable(observer => {
@@ -34,22 +46,40 @@ export class RenderService {
   loadAllFeatureData(featureId: string): Observable<FeatureSubmission> {
     return this.http.get<FeatureSubmission>(environment.apiUrl + 'api/FeatureSubmission/GetAllFeature', { params: { featureId: featureId } })
   }
+  loadFeatureById(featureId: string, id: string) {
+    return this.http.get<FeatureSubData>(environment.apiUrl + 'api/FeatureSubmission/GetFeatureById',
+      { params: { featureId: featureId, id: id } })
+  }
+  updateFeature(featureId: string, data: any) {
+    const id = data.id;
+    delete data.id;
+    return this.http.post(environment.apiUrl + 'api/FeatureSubmission/UpdateFeature',
+      { id: id, dataJson: JSON.stringify(data) }, { params: { featureId: featureId } });
+  }
+  deleteFeatureById(featureId: string, id: string) {
+    return this.http.post(environment.apiUrl + 'api/FeatureSubmission/DeleteFeatureById',
+    {}, { params: { featureId: featureId , id: id } });
+  }
   setData(value: FeatureSubData) {
     if (value) {
+      this.data = {};
       const parsed = JSON.parse(value.dataJson);
-      this.data["id"] = value.Id;
+      this.data["id"] = value.id;
       ExtractAndMapAllPorps(parsed, this.data)
     }
   }
   setArrayData(value: FeatureSubData[], propName: string) {
     if (value) {
+      this.data = {};
+      this.featureName = propName;
+      this.data[propName] = [];
       value.forEach(x => {
-        this.data[propName] = [];
         const parsed = JSON.parse(x.dataJson);
-        let value = { id: x.Id }
-        ExtractAndMapAllPorps(parsed, value)
-        this.data[propName].push(value)
-      })
+        let val = { id: x['id'] }
+        ExtractAndMapAllPorps(parsed, val)
+        this.data[propName].push(val)
+      });
+      this.dataRetrieved.next(this.data);
     }
   }
   addFeature(featureId) {

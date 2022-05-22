@@ -3,9 +3,7 @@
   <h2>Choose what to do on click</h2>
   <mat-radio-group aria-label="Select an option" fxLayout="column" [(ngModel)]="clickAction.type"
     (change)=getApplications()>
-    <mat-radio-button value="0" class="m-1">Add Feature</mat-radio-button>
-    <mat-radio-button value="1" class="m-1">Update Feature</mat-radio-button>
-    <mat-radio-button value="2" class="m-1">Delete Feature</mat-radio-button>
+    <mat-radio-button value="0" class="m-1">Submit</mat-radio-button>
     <div fxLayout="row">
       <mat-radio-button value="3" class="m-1">Navigate to Another Form</mat-radio-button>
       <div *ngIf="clickAction.type == 3" fxLayout="row">
@@ -29,24 +27,24 @@
 </div>
 <ng-template #navigation>
   <mat-form-field appearance="outline">
-    <mat-select placeholder="Select Application"
-      (selectionChange)=getFeatures($event.value) [(ngModel)]="clickAction.applicationId">
-      <mat-option *ngFor="let item of applications" [value]="item.id">
+    <mat-select placeholder="Select Application" (selectionChange)=getFeatures($event.value)
+      [(ngModel)]="clickAction.applicationId">
+      <mat-option *ngFor="let item of applications$ | async" [value]="item.id">
         {{item.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-select placeholder="Select Feature"
-      (selectionChange)="getForms($event.value)"  [(ngModel)]="clickAction.featureId">
-      <mat-option *ngFor="let item of features" [value]="item.id">
+    <mat-select placeholder="Select Feature" (selectionChange)="getForms($event.value)"
+      [(ngModel)]="clickAction.featureId">
+      <mat-option *ngFor="let item of features$ | async" [value]="item.id">
         {{item.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-select placeholder="Select Form"  [(ngModel)]="clickAction.formId">
-      <mat-option *ngFor="let item of form" [value]="item.id">
+    <mat-select placeholder="Select Form" [(ngModel)]="clickAction.formId">
+      <mat-option *ngFor="let item of form$ |async" [value]="item.id">
         {{item.name}}
       </mat-option>
     </mat-select>

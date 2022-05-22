@@ -1,9 +1,9 @@
 import { Component, HostListener, Input, OnInit } from "@angular/core";
-import { MatSnackBar } from "@angular/material";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ButtonField, ElementAfterClick, ElementClickType } from "src/app/builder/model/field";
 import { RenderService } from "../../render.service";
 import { Location } from '@angular/common'
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-button-field-render",
@@ -20,7 +20,6 @@ export class ButtonFieldRenderComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
   @HostListener('click')
   clickInside() {
@@ -30,14 +29,22 @@ export class ButtonFieldRenderComponent implements OnInit {
         return
       }
       switch (+this.field.clickAction.type) {
-        case ElementClickType.AddFeature:
-          this.renderService.addFeature(featureId).subscribe(x => {
-            this._snackBar.open("Saved Successfully", "Close");
-            this.handleAferClick();
-          });
+        case ElementClickType.Submit:
+          if (this.route.snapshot.queryParams.id) {
+            this.renderService.updateFeature(featureId, this.renderService.data).subscribe(x => {
+              this._snackBar.open("Saved Successfully", "Close");
+              this.handleAferClick();
+            });
+          } else {
+            this.renderService.addFeature(featureId).subscribe(x => {
+              this._snackBar.open("Saved Successfully", "Close");
+              this.handleAferClick();
+            });
+          }
+
           break;
         case ElementClickType.Navigate:
-          this.navigateToForm(this.field.clickAction.formId ,this.field.clickAction.featureId)
+          this.navigateToForm(this.field.clickAction.formId, this.field.clickAction.featureId)
           break;
         default:
           break;
@@ -51,20 +58,25 @@ export class ButtonFieldRenderComponent implements OnInit {
     switch (+this.field.clickAction.afterClick) {
       case ElementAfterClick.BackToPrevious:
         this.location.back();
+        this.renderService.loadFormFeature.next(this.renderService.getPreviosFormId());
+        this.renderService.setPreviosFormId(undefined);
         break;
 
       default:
         break;
     }
   }
-  navigateToForm(formId :string ,featureId :string) {
+  navigateToForm(formId: string, featureId: string) {
+    this.renderService.initData(featureId);
     // changes the route without moving from the current view or
     // triggering a navigation event,
     let params = { formId: formId, featureId: featureId };
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
-      queryParamsHandling: 'merge'
-    });
+    })
+    //set previous formId to use it after submit data to go back to it and load it's setting
+    this.renderService.setPreviosFormId(this.route.snapshot.queryParams.formId);
+    this.renderService.loadFormFeature.next(formId);
   }
 }

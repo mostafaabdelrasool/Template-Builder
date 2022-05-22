@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Fields, FieldType, SelectField } from '../../model/field';
 import { AppService } from '../../share/Render/app.service';
 import { DataMapperSettingComponent } from '../../data-mapper-setting/data-mapper-setting.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: "app-field-event",

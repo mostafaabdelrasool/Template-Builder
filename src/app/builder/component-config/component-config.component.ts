@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { CodeModel } from '@ngstack/code-editor';
 import { Form } from './../../admin/model/forms';
 import { BuilderService } from './../builder.service';
@@ -46,7 +46,7 @@ export class ComponentConfigComponent implements OnInit {
   save() {
     if (this.codeModel.value) {
       this.data.dataStructure = this.codeModel.value;
-      const data = (({ id, name, dataStructure }) => ({ id, name, dataStructure }))(this.data)
+      const data = (({ id, name, dataStructure,featureId }) => ({ id, name, dataStructure ,featureId }))(this.data)
       this.builderService.saveDataStructure(<Form>data).subscribe(x => this.dialogRef.close(this.codeModel.value))
     }
   }

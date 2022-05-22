@@ -1,9 +1,8 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { Form } from '../../model/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormService } from '../form.service';
 import { Feature } from './../../model/feature';
-import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-form-edit",

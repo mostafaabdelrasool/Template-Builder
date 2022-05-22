@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Login, LoginResponse } from './login';
-import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
 import { AuthenticationService } from '../core/data.api/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,8 @@ import { AuthenticationService } from '../core/data.api/auth.service';
 })
 export class LoginComponent implements OnInit {
   login: Login
-  constructor(private authenticationService: AuthenticationService, private router: Router, private _snackBar: MatSnackBar) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router,
+     private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.login = new Login();

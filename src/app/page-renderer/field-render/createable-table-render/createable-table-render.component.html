@@ -2,64 +2,61 @@
   <button mat-icon-button (click)="add()">
     <mat-icon>add</mat-icon>
   </button>
-  <ng-container *ngIf="currentItem">
-    <ng-container *ngIf="!currentItem.isEdit">
-      <button mat-icon-button (click)="edit(currentItem)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="delete(currentItem)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </ng-container>
-    <ng-container *ngIf="currentItem.isEdit">
+  <ng-container *ngIf="currentItem?.isEdit">
+    <button mat-icon-button (click)="edit(currentItem)">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="delete(currentItem)">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <!-- <ng-container *ngIf="currentItem.isEdit">
       <button mat-icon-button (click)="save(currentItem)">
         <mat-icon>save</mat-icon>
       </button>
       <button mat-icon-button (click)="cancel(currentItem)">
         <mat-icon>clear</mat-icon>
       </button>
-    </ng-container>
+    </ng-container> -->
   </ng-container>
 </div>
 <mat-divider></mat-divider>
 <div class="over-flow-w">
   <table class="table table-hover table-bordered">
     <thead>
-      <tr *ngFor="let header of field.rowsHeader;let i =index">
-        <th [colSpan]="item.columnSpan" [rowSpan]="item.rowSpan" *ngFor="let item of getHeaderColumns(i)">
-          {{item.name}}
+      <tr *ngFor="let header of field.rowsHeader; let i = index">
+        <th
+          [colSpan]="item.columnSpan"
+          [rowSpan]="item.rowSpan"
+          *ngFor="let item of getHeaderColumns(i)"
+        >
+          {{ item.name }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of data;let i =index" (click)="setCurrentItem(item,i)"
-        [ngClass]="{'row-selected': currentItem?.index===i}">
+      <tr
+        *ngFor="let item of data; let i = index"
+        (click)="setCurrentItem(item, i)"
+        [ngClass]="{ 'row-selected': currentItem?.index === i }"
+      >
         <td *ngFor="let header of rowDefinition">
-          <!-- {{item[header.name]}} -->
-          <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status"
+          {{ item[header.binding] }}
+          <!-- <app-edit-in-place [(data)]="item[header.binding]" [hideActions]="true" [status]="item.status"
             [type]="header.columnType">
-          </app-edit-in-place>
+          </app-edit-in-place> -->
         </td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div class="summary" *ngIf="field.summaries && field.summaries.length>0">
+<div class="summary" *ngIf="field.summaries && field.summaries.length > 0">
   <div *ngFor="let item of field.summaries">
     <span [ngSwitch]="item.type">
-      <p *ngSwitchCase="0">
-        Sum : {{getResultSummaryCol(item)}}
-      </p>
-      <p *ngSwitchCase="1">
-        Average : {{getResultSummaryCol(item)}}
-      </p>
-      <p *ngSwitchCase="2">
-        Min : {{getResultSummaryCol(item)}}
-      </p>
-      <p *ngSwitchCase="3">
-        Max : {{getResultSummaryCol(item)}}
-      </p>
+      <p *ngSwitchCase="0">Sum : {{ getResultSummaryCol(item) }}</p>
+      <p *ngSwitchCase="1">Average : {{ getResultSummaryCol(item) }}</p>
+      <p *ngSwitchCase="2">Min : {{ getResultSummaryCol(item) }}</p>
+      <p *ngSwitchCase="3">Max : {{ getResultSummaryCol(item) }}</p>
     </span>
   </div>
 </div>

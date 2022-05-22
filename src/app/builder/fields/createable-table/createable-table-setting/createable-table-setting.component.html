@@ -1,11 +1,19 @@
 <div fxLayout="row" fxLayoutAlign="space-between">
-  <div>
+  <div fxLayout="row">
     <mat-form-field class="mr-1">
-      <mat-select placeholder="Model" (selectionChange)="getModelProps()" [(ngModel)]="data.model">
+      <mat-select placeholder="Model" (selectionChange)="getModelProps(data.model)" [(ngModel)]="data.model">
         <mat-option *ngFor="let prop of mainModel" [value]="prop">{{prop}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox (change)="isAddSummary=!isAddSummary">Add Summary</mat-checkbox>
+    <mat-form-field class="mr-1">
+      <mat-select placeholder="Edit Feature" [(ngModel)]="data.editFormId">
+        <mat-option *ngFor="let form of forms" [value]=form.id>{{form.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="mr-1">
+      <mat-checkbox (change)="isAddSummary=!isAddSummary">Add Summary</mat-checkbox>
+      <mat-checkbox [(ngModel)]="data.deleteFeatureAction">Delete Feature Action</mat-checkbox>
+    </div>
   </div>
   <div>
     <button mat-raised-button (click)="addHeader()" color="accent">Add Header</button>

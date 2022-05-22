@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { ContainersComponent } from './containers/containers.component';
@@ -67,6 +67,7 @@ import { ButtonClickHandlerComponent } from './fields/button-field/Button-Click-
   providers: [AppService, BuilderService],
   entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent,
     DataMapperSettingComponent, ComponentConfigComponent, FormLoadingComponent, ButtonClickHandlerComponent],
-  exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule]
+  exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BuilderModule { }

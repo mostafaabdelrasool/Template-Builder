@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Form } from '../model/forms';
 import { FormService } from './form.service';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { FormEditComponent } from './form-edit/form-edit.component';
 
 @Component({

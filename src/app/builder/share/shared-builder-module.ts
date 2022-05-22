@@ -13,42 +13,42 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { SharedModule } from 'src/app/share/shared.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
-import { ResizableModule } from 'angular-resizable-element';
 import { InputValueHandler } from './Render/value.handler.directive';
+import { ResizableModule } from 'angular-resizable-element';
 @NgModule({
-    imports: [CommonModule,
-        FormsModule,
-        AngularMaterialModule,
-        FlexLayoutModule,
-        AngularEditorModule,
-        SharedModule,
-        CodeEditorModule.forRoot(),
-        ResizableModule],
-    exports: [DataSettingComponent,
-        DataSourceComponent,
-        ComplexValueComponent,
-        DataMapperSettingComponent,
-        FieldEventComponent,
-        ApplyStyleDirective,
-        HighlightDirective,
-        CodeEditorModule,
-        ResizableModule,
-        InputValueHandler
-        ],
-    declarations: [DataSettingComponent,
-        DataSourceComponent,
-        ComplexValueComponent,
-        DataMapperSettingComponent,
-        FieldEventComponent,
-        ApplyStyleDirective,
-        HighlightDirective,
-        InputValueHandler
-    ],
-    providers: [],
-    entryComponents: [DataSettingComponent,
-        DataSourceComponent,
-        ComplexValueComponent,
-        DataMapperSettingComponent,
-        FieldEventComponent]
+  imports: [CommonModule,
+    FormsModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
+    AngularEditorModule,
+    SharedModule,
+    CodeEditorModule.forRoot(),
+    ResizableModule],
+  exports: [DataSettingComponent,
+    DataSourceComponent,
+    ComplexValueComponent,
+    DataMapperSettingComponent,
+    FieldEventComponent,
+    ApplyStyleDirective,
+    HighlightDirective,
+    CodeEditorModule,
+    ResizableModule,
+    InputValueHandler
+  ],
+  declarations: [DataSettingComponent,
+    DataSourceComponent,
+    ComplexValueComponent,
+    DataMapperSettingComponent,
+    FieldEventComponent,
+    ApplyStyleDirective,
+    HighlightDirective,
+    InputValueHandler
+  ],
+  providers: [],
+  entryComponents: [DataSettingComponent,
+    DataSourceComponent,
+    ComplexValueComponent,
+    DataMapperSettingComponent,
+    FieldEventComponent]
 })
 export class SharedBuilderModule { }

@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output } from "@angular/core";
-import { Fields, TableHeader, TableField } from '../../model/field';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, Input } from "@angular/core";
+import { TableHeader, TableField } from '../../model/field';
+import { MatDialog } from '@angular/material/dialog';
 import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
 import { FieldDataSource } from '../../model/data-source';
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: "app-table-field",

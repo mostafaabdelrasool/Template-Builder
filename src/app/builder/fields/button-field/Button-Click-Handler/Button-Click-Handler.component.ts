@@ -1,10 +1,11 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { MAT_DIALOG_DATA } from "@angular/material";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Applications } from "src/app/admin/model/applications";
 import { ButtonField, ELementClickAction, ElementClickType } from "src/app/builder/model/field";
 import { Feature } from 'src/app/admin/model/feature';
 import { Form } from 'src/app/admin/model/forms';
 import { BuilderService } from "src/app/builder/builder.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-Button-Click-Handler",
@@ -14,9 +15,9 @@ import { BuilderService } from "src/app/builder/builder.service";
 
 export class ButtonClickHandlerComponent implements OnInit {
   clickAction: ELementClickAction
-  applications: Applications[];
-  features: Feature[];
-  form: Form[];
+  applications$: Observable<Applications[]>;
+  features$: Observable<Feature[]>;
+  form$: Observable<Form[]>;
   currentApplication: string = "";
   currentFeature: string = "";
   currentForm: string = "";
@@ -32,24 +33,22 @@ export class ButtonClickHandlerComponent implements OnInit {
   }
 
   ngOnInit() {
-
-  }
-  getApplications() {
-    if (this.clickAction.type == ElementClickType.Navigate && !this.applications) {
-      this.builderService.getApplications().subscribe((x: Applications[]) => {
-        this.applications = x;
-      })
+    this.getApplications();
+    if (this.clickAction.applicationId) {
+      this.getFeatures(this.clickAction.applicationId);
+    }
+    if (this.clickAction.featureId) {
+      this.getForms(this.clickAction.featureId);
     }
   }
+  getApplications() {
+    this.applications$ = this.builderService.getApplications();
+  }
   getFeatures(appId) {
-    this.builderService.getFeatures(appId).subscribe(x => {
-      this.features = x;
-    })
+    this.features$ = this.builderService.getFeatures(appId);
   }
   getForms(featureId) {
-    this.builderService.getForms(featureId).subscribe(x => {
-      this.form = x;
-    })
+    this.form$ = this.builderService.getForms(featureId)
   }
 
 }

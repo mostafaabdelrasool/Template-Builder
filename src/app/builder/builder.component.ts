@@ -32,6 +32,8 @@ export class BuilderComponent implements OnInit {
         }
         this.builderService.currentForm = x;
       })
+    }else{
+      this.appService.setFormSetting(null);
     }
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Fields, FieldType } from '../../model/field';
 import { AppService } from '../../share/Render/app.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ComplexValueComponent } from '../../complex-value/complex-value.component';
 
 @Component({
@@ -13,6 +13,8 @@ import { ComplexValueComponent } from '../../complex-value/complex-value.compone
 export class FieldActionComponent implements OnInit {
 
   @Input() field: Fields;
+  left: number;
+  top: number;
   constructor(public appService: AppService, public dialog: MatDialog) {
   }
 

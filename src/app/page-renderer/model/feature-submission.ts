@@ -3,6 +3,6 @@ export class FeatureSubmission {
   featureName: string;
 }
 export class FeatureSubData {
-  Id: string;
+  id: string;
   dataJson: string;
 }

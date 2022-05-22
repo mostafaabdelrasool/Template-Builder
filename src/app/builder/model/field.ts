@@ -38,7 +38,7 @@ export class ELementClickAction {
   afterClick: ElementAfterClick;
 }
 export enum ElementClickType {
-  AddFeature, UpdateFeature, DeleteFeature, Navigate
+  Submit, UpdateFeature, DeleteFeature, Navigate
 }
 export enum ElementAfterClick {
   BackToPrevious, ClearCurrentForm, Navigate
@@ -84,6 +84,8 @@ export class CreateableTable extends Fields {
   header: TableHeader[];
   summaries?: TabelSummary[];
   rowsHeader: [TableHeader[]];
+  editFormId : string;
+  deleteFeatureAction : boolean
 }
 export class TabelSummary {
   model: string;

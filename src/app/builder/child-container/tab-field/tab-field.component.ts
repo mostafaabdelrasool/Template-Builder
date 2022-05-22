@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, AfterViewInit, AfterViewChecked, AfterContentInit } from "@angular/core";
 import { AppService } from '../../share/Render/app.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { TabField } from '../../model/field';
 import { ContainersComponent } from '../../containers/containers.component';
 
@@ -28,7 +28,7 @@ export class TabFieldComponent extends ContainersComponent implements OnInit ,Af
     this.appService.updateFieldStyle(this.field);
   }
   ngOnInit() {
-  
+
   }
   addTab() {
     this.field.tabs.push({ tabName: 'Tab Name' + this.field.tabs.length, container: this.appService.getDefaultContainer() });

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { objectKeys } from 'src/app/share/object-func';
 import { SharedService } from 'src/app/share/shared.service';
 import { FieldDataSource } from '../model/data-source';
@@ -29,7 +29,7 @@ export class DataMapperSettingComponent implements OnInit {
      * @param field field configuration
      */
     function functionName(item,field){
-      //TODO     
+      //TODO
     }`,
     dependencies: ['@types/node', '@ngstack/translate', '@ngstack/code-editor']
   };
@@ -50,13 +50,13 @@ export class DataMapperSettingComponent implements OnInit {
   add() {
     this.propMapper.push({})
   }
- 
+
   remove(item) {
     const index = this.propMapper.indexOf(item);
     this.propMapper.splice(index, 1);
   }
   save() {
-   
+
     this.dialogRef.close({mapper:this.propMapper,code:this.currentCodeModel.value});
   }
 }

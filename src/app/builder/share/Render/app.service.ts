@@ -50,16 +50,18 @@ export class AppService {
       return;
     }
     field.isSelected = true;
-    if (!this.currentField) {
-      this.currentField = new Fields();
-    }
-    if (!this.currentContainer) {
-      this.currentContainer = new Containers();
-    }
-    mapProps(field,this.currentField);
-    if (field.isContainer) {
-      mapProps(field,this.currentContainer);
-    }
+    // if (!this.currentField) {
+    //   this.currentField = new Fields();
+    // }
+    // if (!this.currentContainer) {
+    //   this.currentContainer = new Containers();
+    // }
+    // mapProps(field, this.currentField);
+    // if (field.isContainer) {
+    //   mapProps(field, this.currentContainer);
+    // }
+    this.currentContainer = <Containers>field;
+    this.currentField = <Containers>field;
     this.openProperties = true;
     this.currentFieldSubject.next(this.currentField);
     event.stopPropagation();
@@ -71,7 +73,7 @@ export class AppService {
     });
   }
   setDefaultContainer(): void {
-    this.currentContainer ={
+    this.currentContainer = {
       model: undefined,
       type: FieldType.DIV, id: Date.now().toString(), fields: [], style: this.containerStyle, isContainer: true
     }
@@ -176,16 +178,18 @@ export class AppService {
   selectCurrentField(field: Fields) {
     if (field) {
       this.currentFieldSubject.next(field);
-      if (!this.currentField) {
-        this.currentField = new Fields();
+      // if (!this.currentField) {
+      //   this.currentField = new Fields();
+      // }
+      this.currentField = field;
+      //mapProps(field, this.currentField);
+      if (field.isContainer) {
+        // if (!this.currentContainer) {
+        //   this.currentContainer = new Containers();
+        // }
+      this.currentContainer = <Containers>field;
+      // mapProps(field, this.currentContainer);
       }
-       mapProps(field,this.currentField);
-       if (field.isContainer) {
-        if (!this.currentContainer) {
-          this.currentContainer = new Containers();
-        }
-        mapProps(field,this.currentContainer);
-       }
     }
   }
   updateFieldProperty(fieldId: string, value: any, propName: string) {
@@ -227,6 +231,7 @@ export class AppService {
       const containers = JSON.parse(formSetting);
       if (containers && Array.isArray(containers)) {
         this.containers = containers;
+        Array.prototype.push.apply(this.allContainers,containers);
       }
     }
   }

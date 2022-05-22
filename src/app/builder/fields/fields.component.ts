@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, ComponentFactoryResolver, ViewChild, ViewContainerRef, Type, AfterViewInit, OnDestroy } from "@angular/core";
-import { Fields, InputField, FieldType, FieldCategory } from '../model/field';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit, OnDestroy } from "@angular/core";
+import { InputField, FieldType, FieldCategory } from '../model/field';
 import { AppService } from '../share/Render/app.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { RichTextSettingComponent } from './rich-text-setting/rich-text-setting.component';
-import { FieldRenderSetting } from '../model/field-render-setting';
 import { FieldService } from './fields.service';
 
 @Component({

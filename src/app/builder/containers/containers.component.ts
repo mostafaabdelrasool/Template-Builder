@@ -3,8 +3,8 @@ import { Containers, CardField } from '../model/containers';
 import { FieldType, Fields, ButtonFieldTypes, ButtonField } from '../model/field';
 import { HighlightColors } from '../share/Render/highlight.directive';
 import { AppService } from '../share/Render/app.service';
-import { MatSnackBar } from '@angular/material';
-import { ResizeEvent } from 'angular-resizable-element';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ResizeEvent } from "angular-resizable-element";
 
 @Component({
   selector: "app-containers",

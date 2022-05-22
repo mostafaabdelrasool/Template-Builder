@@ -3,7 +3,7 @@ import { Submission } from './model/submission';
 import { SubmissionService } from './submission.service';
 import { workflow } from '../admin/model/workflow';
 import { Router } from '@angular/router';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-submission',

@@ -15,14 +15,12 @@ import { CreateableTableRenderComponent } from './field-render/createable-table-
 import { FieldModule } from '../builder/fields/field.module';
 import { ListFieldRenderComponent } from './child-container-render/list-field-render/list-field-render.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabFieldRenderComponent } from './child-container-render/tab-field-render/tab-field-render.component';
 import { ContainerRenderComponent } from './container.render/container.render.component';
 import { ButtonFieldRenderComponent } from './field-render/button-field-render/button-field-render.component';
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     AngularMaterialModule,

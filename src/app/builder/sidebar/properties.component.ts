@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../share/Render/app.service';
 import { Fields } from '../model/field';
 import { CardField } from '../model/containers';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-properties',

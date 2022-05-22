@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostListener } from "@angular/core";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { ButtonField } from '../../model/field';
 import { ButtonClickHandlerComponent } from "./Button-Click-Handler/Button-Click-Handler.component";
 import { ELementClickAction } from './../../model/field';

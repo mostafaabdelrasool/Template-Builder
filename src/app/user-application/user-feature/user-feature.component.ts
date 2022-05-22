@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Observable, Subscription } from "rxjs";
+import { Observable } from "rxjs";
 import { Form } from "src/app/admin/model/forms";
 import { FormFunction } from "src/app/builder/model/form-load-type";
 import { UserApplicationService } from "../user-application.service";
 import { Feature } from './../../admin/model/feature';
 import { Containers } from './../../builder/model/containers';
+import { mapProps } from 'src/app/share/object-func';
+import { RenderService } from 'src/app/page-renderer/render.service';
 
 @Component({
   selector: "app-user-feature",
@@ -20,12 +22,12 @@ export class UserFeatureComponent implements OnInit {
   formSetting: Containers[];
   currentForm: Form;
   currentFormFunction: FormFunction;
-  routeSub: Subscription;
+  panelOpenState : boolean;
   constructor(private uappService: UserApplicationService, private route: ActivatedRoute,
-    private router: Router) {
-    this.routeSub=this.route.queryParamMap.subscribe(x => {
-      const formId = x.get("formId");
-      this.getFeatureForm(formId)
+    private router: Router, renderService: RenderService) {
+    renderService.loadFormFeature.subscribe(x => {
+      const formId = this.route.snapshot.queryParams.formId;
+      this.getFeatureForm(x || formId);
     })
   }
 
@@ -46,13 +48,12 @@ export class UserFeatureComponent implements OnInit {
         if (x) {
           if (x.formSetting) {
             this.formSetting = JSON.parse(x.formSetting);
-          }else{
+          } else {
             this.formSetting = [];
           }
+          this.currentFormFunction = new FormFunction();
           if (x.formFunction) {
-            this.currentFormFunction = JSON.parse(x.formFunction);
-          } else {
-            this.currentFormFunction = new FormFunction();
+            mapProps(JSON.parse(x.formFunction), this.currentFormFunction);
           }
           this.currentForm = x;
           this.navigateToForm(x);
@@ -69,8 +70,5 @@ export class UserFeatureComponent implements OnInit {
       queryParams: params,
       queryParamsHandling: 'merge'
     });
-  }
-  OnDestroy() {
-    this.routeSub.unsubscribe();
   }
 }

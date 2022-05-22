@@ -1,4 +1,4 @@
-<div fxLayout class="field-action" >
+<div fxLayout class="field-action" [ngStyle]="{'left.px': left,'top.px': top}">
     <button   matTooltip="Copy" mat-icon-button (click)=handleFieldAction(2,field)>
         <mat-icon >file_copy</mat-icon>
     </button>
@@ -11,7 +11,7 @@
     <button   mat-icon-button (click)=handleFieldAction(4,field) matTooltip="Equation and binding" *ngIf="field.type===27">
         <mat-icon >functions</mat-icon>
     </button>
-  
+
     <ng-content>
 
     </ng-content>

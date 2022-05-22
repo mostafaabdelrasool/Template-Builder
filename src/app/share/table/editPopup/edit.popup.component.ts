@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PopupSetting, FieldType } from '../model';
 import { TableApiService } from '../service/table.api.service';
 import { SelectSetting } from '../model/popup.fields';
