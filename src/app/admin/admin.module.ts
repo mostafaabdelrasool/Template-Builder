@@ -14,16 +14,15 @@ import { ApplicationComponent } from './application/application.component';
 import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    SharedModule,
-    AdminRoutes
-  ],
-  declarations: [AdminComponent, GroupsComponent, PositionsComponent,
-    FormsComponent, FormEditComponent, ApplicationComponent, FeaturesComponent],
-  entryComponents: [FormEditComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        SharedModule,
+        AdminRoutes
+    ],
+    declarations: [AdminComponent, GroupsComponent, PositionsComponent,
+        FormsComponent, FormEditComponent, ApplicationComponent, FeaturesComponent]
 })
 export class AdminModule { }

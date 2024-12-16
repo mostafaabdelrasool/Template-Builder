@@ -27,7 +27,6 @@ const components = [FormFieldComponent, ListFieldComponent, TabFieldComponent, C
     exports: components,
     declarations: [components],
     providers: [],
-    entryComponents: [components],
-    schemas:[CUSTOM_ELEMENTS_SCHEMA]
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ChildContainerModule { }

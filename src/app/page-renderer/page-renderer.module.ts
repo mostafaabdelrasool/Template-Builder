@@ -19,29 +19,24 @@ import { TabFieldRenderComponent } from './child-container-render/tab-field-rend
 import { ContainerRenderComponent } from './container.render/container.render.component';
 import { ButtonFieldRenderComponent } from './field-render/button-field-render/button-field-render.component';
 @NgModule({
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    PageRendererRoutes,
-    HttpClientModule,
-    NgxPaginationModule,
-    BuilderModule, FieldModule,
-  ],
-  declarations: [PageRendererComponent, FieldRenderComponent, ChildContainerRenderComponent,
-    CreateableTableRenderComponent,
-    ListFieldRenderComponent,
-    TabFieldRenderComponent,
-    ContainerRenderComponent,
-    ButtonFieldRenderComponent],
-  providers: [RenderService],
-  exports: [PageRendererComponent],
-  entryComponents: [FieldRenderComponent, ChildContainerRenderComponent,
-    CreateableTableRenderComponent,
-    ListFieldRenderComponent,
-    TabFieldRenderComponent,
-    ContainerRenderComponent]
+    imports: [
+        BrowserModule,
+        CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        PageRendererRoutes,
+        HttpClientModule,
+        NgxPaginationModule,
+        BuilderModule, FieldModule,
+    ],
+    declarations: [PageRendererComponent, FieldRenderComponent, ChildContainerRenderComponent,
+        CreateableTableRenderComponent,
+        ListFieldRenderComponent,
+        TabFieldRenderComponent,
+        ContainerRenderComponent,
+        ButtonFieldRenderComponent],
+    providers: [RenderService],
+    exports: [PageRendererComponent]
 })
 export class PageRendererModule { }

@@ -33,41 +33,39 @@ import { ComponentConfigComponent } from './component-config/component-config.co
 import { FormLoadingComponent } from './form-loading/form-loading.component';
 import { ButtonClickHandlerComponent } from './fields/button-field/Button-Click-Handler/Button-Click-Handler.component';
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-    NgSelectModule,
-    ColorPickerModule,
-    BuilderRoutes,
-    HttpClientModule,
-    SharedModule,
-    ChildContainerModule,
-    FieldModule,
-    SharedBuilderModule
-  ],
-  declarations: [
-    SanitizeHtmlPipe,
-    PropertiesComponent,
-    MeasureUnitComponent,
-    TopNavComponent,
-    FieldTypesComponent,
-    ContainersComponent,
-    BuilderComponent,
-    TypographyComponent,
-    FlexSettingComponent,
-    StyleToCssComponent,
-    FieldPropertySettingComponent,
-    FieldValueSettingComponent,
-    ComponentConfigComponent,
-    FormLoadingComponent,
-    ButtonClickHandlerComponent
-  ],
-  providers: [AppService, BuilderService],
-  entryComponents: [StyleToCssComponent, DataSettingComponent, ComplexValueComponent,
-    DataMapperSettingComponent, ComponentConfigComponent, FormLoadingComponent, ButtonClickHandlerComponent],
-  exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    imports: [
+        CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        NgSelectModule,
+        ColorPickerModule,
+        BuilderRoutes,
+        HttpClientModule,
+        SharedModule,
+        ChildContainerModule,
+        FieldModule,
+        SharedBuilderModule
+    ],
+    declarations: [
+        SanitizeHtmlPipe,
+        PropertiesComponent,
+        MeasureUnitComponent,
+        TopNavComponent,
+        FieldTypesComponent,
+        ContainersComponent,
+        BuilderComponent,
+        TypographyComponent,
+        FlexSettingComponent,
+        StyleToCssComponent,
+        FieldPropertySettingComponent,
+        FieldValueSettingComponent,
+        ComponentConfigComponent,
+        FormLoadingComponent,
+        ButtonClickHandlerComponent
+    ],
+    providers: [AppService, BuilderService],
+    exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BuilderModule { }

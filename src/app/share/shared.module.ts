@@ -8,15 +8,14 @@ import { ListComponent } from './table/list/list.component';
 import { EditPopupComponent } from './table/editPopup/edit.popup.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    AngularMaterialModule,
-    FlexLayoutModule,
-  ],
-  declarations: [EditInPlaceComponent, ListComponent,
-    EditPopupComponent],
-  exports: [ListComponent, EditInPlaceComponent],
-  entryComponents: [EditPopupComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+    ],
+    declarations: [EditInPlaceComponent, ListComponent,
+        EditPopupComponent],
+    exports: [ListComponent, EditInPlaceComponent]
 })
 export class SharedModule { }

@@ -27,10 +27,9 @@ const components = [FieldsComponent, TableFieldComponent, SelectFieldComponent, 
         FlexLayoutModule,
         NgxPaginationModule,
         AngularEditorModule
-      ],
+    ],
     exports: components,
     declarations: [components],
-    providers: [FieldService],
-    entryComponents: [components]
+    providers: [FieldService]
 })
 export class FieldModule { }
