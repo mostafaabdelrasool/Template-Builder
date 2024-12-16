@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angularMaterial/angularMaterial.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { PageRendererRoutes } from './page-renderer.routing';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BuilderModule } from '../builder/builder.module';
 import { FieldRenderComponent } from './field-render/field-render.component';
@@ -18,25 +18,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TabFieldRenderComponent } from './child-container-render/tab-field-render/tab-field-render.component';
 import { ContainerRenderComponent } from './container.render/container.render.component';
 import { ButtonFieldRenderComponent } from './field-render/button-field-render/button-field-render.component';
-@NgModule({
-    imports: [
-        BrowserModule,
-        CommonModule,
-        FormsModule,
-        AngularMaterialModule,
-        FlexLayoutModule,
-        PageRendererRoutes,
-        HttpClientModule,
-        NgxPaginationModule,
-        BuilderModule, FieldModule,
-    ],
-    declarations: [PageRendererComponent, FieldRenderComponent, ChildContainerRenderComponent,
+@NgModule({ declarations: [PageRendererComponent, FieldRenderComponent, ChildContainerRenderComponent,
         CreateableTableRenderComponent,
         ListFieldRenderComponent,
         TabFieldRenderComponent,
         ContainerRenderComponent,
         ButtonFieldRenderComponent],
-    providers: [RenderService],
-    exports: [PageRendererComponent]
-})
+    exports: [PageRendererComponent], imports: [BrowserModule,
+        CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        PageRendererRoutes,
+        NgxPaginationModule,
+        BuilderModule, FieldModule], providers: [RenderService, provideHttpClient(withInterceptorsFromDi())] })
 export class PageRendererModule { }

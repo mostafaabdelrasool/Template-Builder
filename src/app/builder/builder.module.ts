@@ -18,7 +18,7 @@ import { FlexSettingComponent } from './sidebar/flex-setting/flex-setting.compon
 import { TypographyComponent } from './sidebar/typography/typography.component';
 import { StyleToCssComponent } from './sidebar/style--to-css/style--to-css.component';
 import { DataSettingComponent } from './data-source/data-setting/data-setting.component';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { SharedModule } from '../share/shared.module';
 import { EditInPlaceComponent } from '../share/edit-in-place/edit-in-place.component';
 import { ComplexValueComponent } from './complex-value/complex-value.component';
@@ -32,22 +32,7 @@ import { FieldValueSettingComponent } from './sidebar/field-value-setting/field-
 import { ComponentConfigComponent } from './component-config/component-config.component';
 import { FormLoadingComponent } from './form-loading/form-loading.component';
 import { ButtonClickHandlerComponent } from './fields/button-field/Button-Click-Handler/Button-Click-Handler.component';
-@NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        AngularMaterialModule,
-        FlexLayoutModule,
-        NgSelectModule,
-        ColorPickerModule,
-        BuilderRoutes,
-        HttpClientModule,
-        SharedModule,
-        ChildContainerModule,
-        FieldModule,
-        SharedBuilderModule
-    ],
-    declarations: [
+@NgModule({ declarations: [
         SanitizeHtmlPipe,
         PropertiesComponent,
         MeasureUnitComponent,
@@ -64,8 +49,16 @@ import { ButtonClickHandlerComponent } from './fields/button-field/Button-Click-
         FormLoadingComponent,
         ButtonClickHandlerComponent
     ],
-    providers: [AppService, BuilderService],
     exports: [EditInPlaceComponent, ContainersComponent, SharedBuilderModule],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [CommonModule,
+        FormsModule,
+        AngularMaterialModule,
+        FlexLayoutModule,
+        NgSelectModule,
+        ColorPickerModule,
+        BuilderRoutes,
+        SharedModule,
+        ChildContainerModule,
+        FieldModule,
+        SharedBuilderModule], providers: [AppService, BuilderService, provideHttpClient(withInterceptorsFromDi())] })
 export class BuilderModule { }
