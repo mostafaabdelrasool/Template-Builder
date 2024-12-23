@@ -7,10 +7,10 @@
     <mat-icon>fireplace</mat-icon>
 </button>
 <div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngFor="let event of currentField.fieldEvent">
-    <mat-form-field fxFlex="1 1 40%">
+    <mat-form-field appearance="outline" fxFlex="1 1 40%">
         <input matInput placeholder="Name" [(ngModel)]="event.name">
     </mat-form-field>
-    <mat-form-field fxFlex="1 1 40%">
+    <mat-form-field appearance="outline" fxFlex="1 1 40%">
         <mat-select placeholder="Type" [(ngModel)]="event.type">
             <mat-option value="click">click</mat-option>
             <mat-option value="change">change</mat-option>

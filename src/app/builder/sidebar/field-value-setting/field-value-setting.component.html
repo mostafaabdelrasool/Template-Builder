@@ -1,35 +1,35 @@
 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-  <mat-form-field fxFlex="45%">
+  <mat-form-field appearance="outline" fxFlex="45%">
     <input matInput placeholder="Min" [valueHandler]="castInputField()['min']" name='min'>
   </mat-form-field>
-  <mat-form-field fxFlex="45%">
+  <mat-form-field appearance="outline" fxFlex="45%">
     <input matInput placeholder="Max" [valueHandler]="castInputField()['max']" name='max'>
   </mat-form-field>
-  <mat-form-field fxFlex="45%">
+  <mat-form-field appearance="outline" fxFlex="45%">
     <input matInput placeholder="Max Length" [valueHandler]="castInputField()['maxLength']" name='maxLength'>
   </mat-form-field>
-  <mat-form-field fxFlex="45%">
+  <mat-form-field appearance="outline" fxFlex="45%">
     <input matInput placeholder="Min Length" [valueHandler]="castInputField()['minLength']" name='minLength'>
   </mat-form-field>
   <div *ngIf="currentField.type===7" fxFlex="1 1 100%" fxLayoutGap="5px">
-    <mat-form-field fxFlex="45%">
+    <mat-form-field appearance="outline" fxFlex="45%">
       <input readonly="true" name='startDate' [valueHandler]="castInputField()['startDate']" matInput
         [matDatepicker]="z" placeholder="Start Date">
       <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
       <mat-datepicker #z startView="month"></mat-datepicker>
     </mat-form-field>
-    <mat-form-field fxFlex="45%">
+    <mat-form-field appearance="outline" fxFlex="45%">
       <input readonly="true" name='endData' matInput [matDatepicker]="x" placeholder="End Date"
         [valueHandler]="castInputField()['endData']">
       <mat-datepicker-toggle matSuffix [for]="x"></mat-datepicker-toggle>
       <mat-datepicker #x startView="month"></mat-datepicker>
     </mat-form-field>
   </div>
-  <mat-form-field fxFlex="100">
+  <mat-form-field appearance="outline" fxFlex="100">
     <input matInput placeholder="value" [valueHandler]=currentField.value name="value">
   </mat-form-field>
   <div *ngIf="currentField.type===25" fxFlex="1 1 100%">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Display Member</mat-label>
       <mat-select name='dispalyMember' [valueHandler]="castSelectField()['dispalyMember']">
         <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
@@ -37,7 +37,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Value Member</mat-label>
       <mat-select name='valueMember' [valueHandler]="castSelectField()['valueMember']">
         <mat-option *ngFor="let item of getFieldDataStructure()" [value]="item.name">
@@ -46,7 +46,7 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <mat-form-field fxFlex="1 1 100%">
+  <mat-form-field appearance="outline" fxFlex="1 1 100%">
     <input matInput placeholder="Hint" [valueHandler]="castInputField()['hint']" name='hint'>
     <button mat-button *ngIf="castInputField()['hint']" matSuffix mat-icon-button aria-label="Clear"
       (click)="castInputField()['hint']=''">

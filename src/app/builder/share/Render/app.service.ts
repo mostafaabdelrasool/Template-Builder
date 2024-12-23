@@ -186,7 +186,7 @@ export class AppService {
       category: option.category,
       label: "label",
     };
-    if (option.isChildContainer && field["fields"]) {
+    if (option.isChildContainer) {
       //because here we add field so fields prop. note exist in type field
       field["fields"] = [];
       field.isContainer = true;
@@ -256,7 +256,7 @@ export class AppService {
       const current = currentContainer.fields?.findIndex(
         (x) => x.id === currentHoverFieldId
       );
-      if (currentContainer.fields && prev && current) {
+      if (currentContainer.fields && prev !== undefined && current !== undefined) {
         moveItemInArray(currentContainer.fields, prev, current);
       }
     }

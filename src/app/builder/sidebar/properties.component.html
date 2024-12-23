@@ -79,8 +79,8 @@
       </mat-expansion-panel-header>
       <div class="mb-1">
         <label>Background color</label>
-        <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
-          [style.background]="currentField.style?.backgroundColor" [colorPicker]="currentField.style?.backgroundColor || ''"
+        <input class="form-control" *ngIf="currentField.style" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
+          [style.background]="currentField.style.backgroundColor" [colorPicker]="currentField.style.backgroundColor || 'black'"
           (colorPickerChange)="colorPickerChange($event,'backgroundColor')" />
       </div>
       <mat-divider></mat-divider>
@@ -96,7 +96,7 @@
           (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
         <div>
           <!-- changed due update -->
-          <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow.color"
+          <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow.color"
             [colorPicker]="boxShadow.color || ''" (colorPickerChange)="boxShawChange('c',$event)" />
         </div>
       </div>
