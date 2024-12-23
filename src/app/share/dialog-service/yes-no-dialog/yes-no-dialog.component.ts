@@ -7,9 +7,10 @@ export interface YesNoDialogData {
 }
 
 @Component({
-  selector: 'app-yes-no-dialog',
-  templateUrl: './yes-no-dialog.component.html',
-  styleUrls: ['./yes-no-dialog.component.scss']
+    selector: 'app-yes-no-dialog',
+    templateUrl: './yes-no-dialog.component.html',
+    styleUrls: ['./yes-no-dialog.component.scss'],
+    standalone: false
 })
 export class YesNoDialogComponent {
 

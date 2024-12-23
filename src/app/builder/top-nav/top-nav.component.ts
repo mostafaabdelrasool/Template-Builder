@@ -9,9 +9,10 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-  selector: "app-top-nav",
-  templateUrl: "./top-nav.component.html",
-  styleUrls: ["./top-nav.component.scss"]
+    selector: "app-top-nav",
+    templateUrl: "./top-nav.component.html",
+    styleUrls: ["./top-nav.component.scss"],
+    standalone: false
 })
 
 export class TopNavComponent implements OnInit {
@@ -23,7 +24,7 @@ export class TopNavComponent implements OnInit {
   ngOnInit() {
 
   }
-  OpenManager(type) {
+  OpenManager(type: number) {
     if (type === 1) {
       this.appService.openFieldTypes = !this.appService.openFieldTypes;
     } else {

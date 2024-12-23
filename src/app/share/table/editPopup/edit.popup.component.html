@@ -4,8 +4,8 @@
       <div *ngSwitchCase="'select'">
         <mat-form-field appearance="outline">
           <mat-select placeholder="{{item.placeholder}}" [(ngModel)]="data[item.model]">
-            <mat-option *ngFor="let data of item.selectSetting.data" [value]="data[item.selectSetting.dataModel]">
-              {{data[item.selectSetting.dataViewModel]}}
+            <mat-option *ngFor="let data of item.selectSetting?.data" (onSelectionChange)="setDate($event ,data, item.selectSetting?.dataModel)">
+              {{getDataValue(data, item.selectSetting?.dataViewModel)}}
             </mat-option>
           </mat-select>
         </mat-form-field>

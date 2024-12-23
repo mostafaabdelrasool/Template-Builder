@@ -2,7 +2,7 @@
     <mat-list-item *ngIf="field.fields.length===0">
         Add Items by drop here
     </mat-list-item>
-    <mat-list-item *ngIf="field.fields.length>0" [appStyle]="field.style">
+    <mat-list-item *ngIf="field.fields.length>0" [appStyle]="field.style || {}">
         <app-field-child-container [field]="field"></app-field-child-container>
     </mat-list-item>
 </mat-list>

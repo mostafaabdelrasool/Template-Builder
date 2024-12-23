@@ -2,9 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterContentInit } from
 import { EditType } from './edit.type';
 
 @Component({
-  selector: "app-edit-in-place",
-  templateUrl: "./edit-in-place.component.html",
-  styleUrls: ["./edit-in-place.component.scss"]
+    selector: "app-edit-in-place",
+    templateUrl: "./edit-in-place.component.html",
+    styleUrls: ["./edit-in-place.component.scss"],
+    standalone: false
 })
 
 export class EditInPlaceComponent implements OnInit, AfterContentInit {
@@ -43,7 +44,7 @@ export class EditInPlaceComponent implements OnInit, AfterContentInit {
       }
     }
   }
-  changeEditStatus(status) {
+  changeEditStatus(status: any) {
     this.status = status;
     if (status === CellStatus.Save) {
       this.saveChanges();

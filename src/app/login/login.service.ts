@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
-import { DataService } from '../core/data.api/data.service';
+import { HttpClient } from "@angular/common/http";
+import { DataService } from "../core/data.api/data.service";
 
 /**
  * @description
@@ -8,12 +8,10 @@ import { DataService } from '../core/data.api/data.service';
  */
 @Injectable()
 export class LoginService extends DataService {
-
-  constructor(public http:HttpClient) {
-    super(http)
+  constructor(public override http: HttpClient) {
+    super(http);
   }
-  login(data){
-   return this.http.post(this._url+'api/Account/Login',data);
+  login(data: any) {
+    return this.http.post(this._url + "api/Account/Login", data);
   }
-
 }

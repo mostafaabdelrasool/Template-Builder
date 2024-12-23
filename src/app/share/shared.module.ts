@@ -12,7 +12,7 @@ import { EditPopupComponent } from './table/editPopup/edit.popup.component';
         CommonModule,
         FormsModule,
         AngularMaterialModule,
-        FlexLayoutModule,
+        FlexLayoutModule
     ],
     declarations: [EditInPlaceComponent, ListComponent,
         EditPopupComponent],

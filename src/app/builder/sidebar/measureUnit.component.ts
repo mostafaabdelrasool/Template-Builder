@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
-  selector: "app-measureUnit",
-  templateUrl: "./measureUnit.component.html",
-  styleUrls: ["./measureUnit.component.scss"]
+    selector: "app-measureUnit",
+    templateUrl: "./measureUnit.component.html",
+    styleUrls: ["./measureUnit.component.scss"],
+    standalone: false
 })
 
 export class MeasureUnitComponent implements OnInit {
@@ -14,12 +15,12 @@ export class MeasureUnitComponent implements OnInit {
   }
   value: string="";
   unit: string;
-  setMeasureUnit(event) {
+  setMeasureUnit(event: any) {
     const model = this.value + event.target.value;
     this.unit = event.target.value;
     this.valueUpdated.emit(model)
   }
-  propertyChangeHandle(event) {
+  propertyChangeHandle(event: any) {
     const { value } = event.target;
     const model = value + (this.unit || '');
     this.value = value;

@@ -2,9 +2,10 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
-  selector: "app-form-loading",
-  templateUrl: "./form-loading.component.html",
-  styleUrls: ["./form-loading.component.scss"],
+    selector: "app-form-loading",
+    templateUrl: "./form-loading.component.html",
+    styleUrls: ["./form-loading.component.scss"],
+    standalone: false
 })
 
 export class FormLoadingComponent implements OnInit {

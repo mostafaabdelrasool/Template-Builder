@@ -33,21 +33,22 @@ export const slideInAnimation =
 
   ]);
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  animations: [
-    slideInAnimation
-    // animation triggers go here
-  ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations: [
+        slideInAnimation
+        // animation triggers go here
+    ],
+    standalone: false
 })
 export class AppComponent {
 
   constructor(public authenticationService:AuthenticationService) {
 
   }
-  public getRouterOutletState(outlet) {
+  public getRouterOutletState(outlet: any) {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 

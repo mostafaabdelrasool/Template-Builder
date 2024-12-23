@@ -6,9 +6,10 @@ import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
-  selector: 'app-submission',
-  templateUrl: './submission.component.html',
-  styleUrls: ['./submission.component.scss']
+    selector: 'app-submission',
+    templateUrl: './submission.component.html',
+    styleUrls: ['./submission.component.scss'],
+    standalone: false
 })
 export class SubmissionComponent implements OnInit {
   submissions: Submission[] = [];
@@ -26,10 +27,10 @@ export class SubmissionComponent implements OnInit {
         this.currentWorkflowId= x[0].id;
       }
     })
-    this.getWorkflowSubmissions(this.currentWorkflowId)
+    this.getWorkflowSubmissions()
   }
-  getWorkflowSubmissions(workflowId) {
-    this.submissionService.getSubmissions(workflowId).subscribe((x: Submission[]) => {
+  getWorkflowSubmissions() {
+    this.submissionService.getSubmissions().subscribe((x: Submission[]) => {
       this.submissions = x;
     })
   }

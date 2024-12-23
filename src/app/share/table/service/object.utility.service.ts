@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ObjectUtilityService {
 
   constructor() { }
-  getPathData(schema, path) {
+  getPathData(schema: any, path: any) {
     let pList = path.split('.');
     let len = pList.length;
     for (let i = 0; i < len - 1; i++) {

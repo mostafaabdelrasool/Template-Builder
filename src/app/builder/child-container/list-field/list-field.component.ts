@@ -8,26 +8,28 @@ import { FieldDataSource } from '../../model/data-source';
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
-  selector: "app-list-field",
-  templateUrl: "./list-field.component.html",
-  styleUrls: ["./list-field.component.scss"]
+    selector: "app-list-field",
+    templateUrl: "./list-field.component.html",
+    styleUrls: ["./list-field.component.scss"],
+    standalone: false
 })
 
 export class ListFieldComponent extends ContainersComponent implements OnInit {
   @Input() field: ListField;
   data: any;
-  constructor(public appService: AppService, public snackBar: MatSnackBar,public dialog: MatDialog) {
+  constructor(public override appService: AppService, public snackBar: MatSnackBar,public dialog: MatDialog) {
     super(appService, snackBar)
   }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
     if (!this.field.fields) {
       this.field.fields = new Array<Fields>();
     }
     this.field.hasAction = true;
   }
   openSetting() {
-    let setting = { width: '40vw', height: 'auto' };
+    let setting = { width: '40vw', height: 'auto', data: {} };
     if (this.field.dataSource) {
       setting["data"] = this.field.dataSource
     }

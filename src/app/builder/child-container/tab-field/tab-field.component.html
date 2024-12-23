@@ -5,9 +5,9 @@
       <app-edit-in-place [(data)]="tab.tabName"></app-edit-in-place>
       <mat-icon (click)="removeTab(tab)" aria-label="remove">delete</mat-icon>
     </ng-template>
-    <div class="field" [appStyle]="tab.container.style" id="{{tab.container.id}}"
-      (click)="appService.selectField(tab.container)"
-      [ngClass]="{'field-selected':tab.container.id===appService.currentField?.id}" [appHighlight]='{color:"black"}'
+    <div class="field" [appStyle]="tab.container.style || {}" id="{{tab.container.id}}"
+      (click)="appService.selectField(tab.container, $event)"
+      [ngClass]="{'field-selected':appService.currentField && tab.container.id===appService.currentField.id}" [appHighlight]='{color:colors.BLACK}'
       (drop)='onDrop($event);' (dragover)='onDragOver($event,tab.container);'>
       <app-field-child-container [field]="tab.container"></app-field-child-container>
     </div>

@@ -6,11 +6,11 @@ import { FormFunction } from "./model/form-load-type";
 import { AppService } from './share/Render/app.service';
 
 @Component({
-  selector: "app-builder",
-  templateUrl: "./builder.component.html",
-  styleUrls: ["./builder.component.scss"],
-  encapsulation: ViewEncapsulation.None
-
+    selector: "app-builder",
+    templateUrl: "./builder.component.html",
+    styleUrls: ["./builder.component.scss"],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 
 export class BuilderComponent implements OnInit {
@@ -23,7 +23,7 @@ export class BuilderComponent implements OnInit {
   ngOnInit() {
     const formId = this.route.snapshot.queryParams['id'];
     if (formId) {
-      this.builderService.getById(formId).subscribe((x: Form) => {
+      this.builderService.getById<Form>(formId).subscribe((x: Form) => {
         this.appService.setFormSetting(x.formSetting);
         if (x.formFunction) {
           this.builderService.currentFormFunction = JSON.parse(x.formFunction);

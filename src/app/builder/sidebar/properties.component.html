@@ -80,7 +80,7 @@
       <div class="mb-1">
         <label>Background color</label>
         <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
-          [style.background]="currentField.style?.backgroundColor" [colorPicker]="currentField.style?.backgroundColor"
+          [style.background]="currentField.style?.backgroundColor" [colorPicker]="currentField.style?.backgroundColor || ''"
           (colorPickerChange)="colorPickerChange($event,'backgroundColor')" />
       </div>
       <mat-divider></mat-divider>
@@ -95,8 +95,9 @@
         <app-measureUnit fxFlex="45" [item]="{name:'spread',model:'boxShadow.spread',modelValue:boxShadow.spread}"
           (valueUpdated)="boxShawChange('s',$event)"></app-measureUnit>
         <div>
-          <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow[4]"
-            [colorPicker]="boxShadow[4]" (colorPickerChange)="boxShawChange('c',$event)" />
+          <!-- changed due update -->
+          <input [cpPosition]="'top-left'" [cpPositionOffset]="'50%'" [style.background]="boxShadow.color"
+            [colorPicker]="boxShadow.color || ''" (colorPickerChange)="boxShawChange('c',$event)" />
         </div>
       </div>
       <mat-divider></mat-divider>
@@ -114,7 +115,7 @@
         <div>
           <label>color</label>
           <input class="form-control" [cpPosition]="'top-left'" [cpPositionOffset]="'50%'"
-            [style.background]="currentField.style?.borderColor" [colorPicker]="currentField.style?.borderColor"
+            [style.background]="currentField.style?.borderColor" [colorPicker]="currentField.style?.borderColor || ''"
             (colorPickerChange)="colorPickerChange($event,'borderColor')" />
         </div>
         <app-measureUnit [item]="{name:'Border Raduis',model:'borderRadius',modelValue:currentField.style?.borderRadius}"
@@ -138,11 +139,11 @@
       </mat-expansion-panel-header>
       <div fxLayout="row wrap" fxLayoutAlign="space-between center">
         <mat-form-field fxFlex="45%">
-          <input matInput placeholder="Title" name='cardTitle' [valueHandler]="currentField['cardTitle']">
+          <input matInput placeholder="Title" name='cardTitle' [valueHandler]="castContainerToCard()['cardTitle' ]">
         </mat-form-field>
   
         <mat-form-field fxFlex="45%">
-          <input matInput placeholder="Sub-title" name="cardSubTitle" [valueHandler]="currentField['cardSubTitle']">
+          <input matInput placeholder="Sub-title" name="cardSubTitle" [valueHandler]="castContainerToCard()['cardSubTitle']">
         </mat-form-field>
       </div>
       Card Actions
@@ -153,7 +154,7 @@
             <mat-icon>add</mat-icon>
           </button>
         </div>
-        <div *ngFor="let action of currentField['cardActions']" fxFlex="45%">
+        <div *ngFor="let action of castContainerToCard()['cardActions']" fxFlex="45%">
           <mat-form-field>
             <input matInput placeholder="action Name" [(ngModel)]="action.title">
           </mat-form-field>

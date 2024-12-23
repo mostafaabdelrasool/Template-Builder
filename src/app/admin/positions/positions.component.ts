@@ -7,15 +7,16 @@ import { PositionSetting } from '../setting/position.setting';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: "app-positions",
-  templateUrl: "./positions.component.html",
-  styleUrls: ["./positions.component.scss"]
+    selector: "app-positions",
+    templateUrl: "./positions.component.html",
+    styleUrls: ["./positions.component.scss"],
+    standalone: false
 })
 
 export class PositionsComponent extends BaseComponent<Postion> implements OnInit {
   position$: Observable<Postion[]>;
   tableSetting: TableSetting
-  constructor(public dataService: DataService) {
+  constructor(public override dataService: DataService) {
     super("Position", dataService)
     this.dataService._controller = "api/Position";
     this.position$ = this.dataSubject.asObservable();

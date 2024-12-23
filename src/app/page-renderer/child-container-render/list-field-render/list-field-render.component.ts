@@ -4,9 +4,10 @@ import { RenderService } from '../../render.service';
 import { getPathData } from 'src/app/share/object-func';
 
 @Component({
-  selector: "app-list-field-render",
-  templateUrl: "./list-field-render.component.html",
-  styleUrls: ["./list-field-render.component.scss"]
+    selector: "app-list-field-render",
+    templateUrl: "./list-field-render.component.html",
+    styleUrls: ["./list-field-render.component.scss"],
+    standalone: false
 })
 
 export class ListFieldRenderComponent implements OnInit {

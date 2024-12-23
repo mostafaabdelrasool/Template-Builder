@@ -1,29 +1,26 @@
 import { Component, OnInit, Input } from "@angular/core";
-import {  SelectField } from '../../model/field';
-import { MatDialog } from '@angular/material/dialog';
-import { DataSettingComponent } from '../../data-source/data-setting/data-setting.component';
-import { FieldDataSource } from '../../model/data-source';
+import { SelectField } from "../../model/field";
+import { MatDialog } from "@angular/material/dialog";
+import { DataSettingComponent } from "../../data-source/data-setting/data-setting.component";
+import { FieldDataSource } from "../../model/data-source";
 
 @Component({
   selector: "app-select-field",
   templateUrl: "./select-field.component.html",
-  styleUrls: ["./select-field.component.scss"]
+  styleUrls: ["./select-field.component.scss"],
+  standalone: false,
 })
-
 export class SelectFieldComponent implements OnInit {
-
   @Input() field: SelectField;
   data: any;
-  constructor(public dialog: MatDialog) {
-
-  }
+  constructor(public dialog: MatDialog) {}
   ngOnInit() {
     this.field.hasAction = true;
   }
   openSetting() {
-    let setting = { width: '60vw', height: 'auto' };
+    let setting = { width: "60vw", height: "auto", data: {} };
     if (this.field.dataSource) {
-      setting["data"] = this.field.dataSource
+      setting["data"] = this.field.dataSource;
     }
     const dialogRef = this.dialog.open(DataSettingComponent, setting);
 
@@ -33,9 +30,9 @@ export class SelectFieldComponent implements OnInit {
       }
       this.data = result.data;
       this.field.dataSource = result;
-      if (result.staticData && result.staticData.length>0) {
-        this.field.dispalyMember="discription";
-        this.field.valueMember="id";
+      if (result.staticData && result.staticData.length > 0) {
+        this.field.dispalyMember = "discription";
+        this.field.valueMember = "id";
       }
     });
   }

@@ -1,6 +1,9 @@
-import { Injectable, ComponentFactoryResolver, ViewContainerRef } from "@angular/core";
-import { FieldRenderSetting } from '../model/field-render-setting';
-import { FieldType, Fields, FieldCategory } from '../model/field';
+import {
+  Injectable,
+  ViewContainerRef,
+} from "@angular/core";
+import { FieldRenderSetting } from "../model/field-render-setting";
+import { FieldType, Fields, FieldCategory } from "../model/field";
 
 /**
  * @description
@@ -8,23 +11,19 @@ import { FieldType, Fields, FieldCategory } from '../model/field';
  */
 @Injectable()
 export class FieldService {
-
-  constructor( private resolver: ComponentFactoryResolver) {
-    
-  }
-  createComponent(field:Fields,entry: ViewContainerRef) {
+  constructor() {}
+  createComponent(field: Fields, entry: ViewContainerRef) {
     let renderSetting = FieldRenderSetting[FieldType[field.type]];
-    let componentName ;
+    let componentName;
     if (!renderSetting && field.category === FieldCategory.Input) {
-      componentName = FieldRenderSetting.INPUT_TEXT.componentName;
+      componentName = FieldRenderSetting[FieldCategory.Input].componentName;
     } else {
       componentName = renderSetting.componentName;
     }
-    const factory = this.resolver.resolveComponentFactory(componentName);
     entry.clear();
-    let componentRef = entry.createComponent(factory);
-    componentRef.instance['field'] = field;
+    let componentRef = entry.createComponent(componentName);
+    (componentRef.instance as typeof componentName)["field"] = field;
     componentRef.changeDetectorRef.detectChanges();
-    return componentRef
+    return componentRef;
   }
 }

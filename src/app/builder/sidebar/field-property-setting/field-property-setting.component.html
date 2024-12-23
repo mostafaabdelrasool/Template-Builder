@@ -1,42 +1,42 @@
-
-  <div fxLayout="row wrap" fxLayoutAlign="space-between center">
-    <mat-form-field fxFlex="100">
-      <input matInput placeholder="Id" name="id" [valueHandler]=currentField.id>
-    </mat-form-field>
-    <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainer()"
-      name="bindContainer">Bind Container DS</mat-checkbox>
-    <mat-form-field fxFlex="100" >
-      <input type="text" placeholder="Model binder" aria-label="Number" matInput name="model" [matAutocomplete]="auto"
-        [valueHandler]=currentField.model>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="fieldValueChanged($event.option.value,'model')">
-        <mat-option *ngFor="let option of modelProps" [value]="option" >
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
-      <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)" [(value)]="currentField['typeName']">
-        <mat-option value="text">
-          text
-        </mat-option>
-        <mat-option value="number">
-          Number
-        </mat-option>
-        <mat-option value="datetime">
-          Datetime
-        </mat-option>
-        <mat-option value="password">
-          Password
-        </mat-option>
-        <mat-option value="email">
-          Email
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field fxFlex="45">
-      <input matInput placeholder="Placeholder" [valueHandler]=currentField.placeholder name="placeholder">
-    </mat-form-field>
-    <mat-form-field fxFlex="45">
-      <input matInput placeholder="Label" name="label" [valueHandler]=currentField.label>
-    </mat-form-field>
-  </div>
+<div fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <mat-form-field fxFlex="100">
+    <input matInput placeholder="Id" name="id" [valueHandler]=currentField.id>
+  </mat-form-field>
+  <mat-checkbox style="align-self: center;" *ngIf="!currentField.isContainer" (change)="bindToContainer()"
+    name="bindContainer">Bind Container DS</mat-checkbox>
+  <mat-form-field fxFlex="100">
+    <input type="text" placeholder="Model binder" aria-label="Number" matInput name="model" [matAutocomplete]="auto"
+      [valueHandler]=currentField.model>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+      (optionSelected)="fieldValueChanged($event.option.value,'model')">
+      <mat-option *ngFor="let option of modelProps" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field fxFlex="45%" *ngIf="currentField.type===0 ||currentField.type===7">
+    <mat-select placeholder="Type" (selectionChange)="typeValueChanged($event)" [(value)]="castInputField()['typeName']">
+      <mat-option value="text">
+        text
+      </mat-option>
+      <mat-option value="number">
+        Number
+      </mat-option>
+      <mat-option value="datetime">
+        Datetime
+      </mat-option>
+      <mat-option value="password">
+        Password
+      </mat-option>
+      <mat-option value="email">
+        Email
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="45">
+    <input matInput placeholder="Placeholder" [valueHandler]=currentField.placeholder name="placeholder">
+  </mat-form-field>
+  <mat-form-field fxFlex="45">
+    <input matInput placeholder="Label" name="label" [valueHandler]=currentField.label>
+  </mat-form-field>
+</div>

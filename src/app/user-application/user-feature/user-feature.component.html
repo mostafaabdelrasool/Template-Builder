@@ -4,8 +4,8 @@
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
-<div fxFill>
-  <app-page-renderer *ngIf="currentForm" [containers]=formSetting [formFunction]=currentFormFunction [featureId]="currentForm?.featureId"></app-page-renderer>
+<div fxFill *ngIf="currentForm">
+  <app-page-renderer *ngIf="currentForm" [containers]=formSetting [formFunction]=currentFormFunction [featureId]="currentForm.featureId"></app-page-renderer>
 </div>
 
 <mat-sidenav-container class="example-container">

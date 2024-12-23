@@ -6,19 +6,21 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { Fields, FieldType } from '../../model/field';
 
 @Component({
-  selector: "app-field-child-container",
-  templateUrl: "./field-child-container.component.html",
-  styleUrls: ["./field-child-container.component.scss"]
+    selector: "app-field-child-container",
+    templateUrl: "./field-child-container.component.html",
+    styleUrls: ["./field-child-container.component.scss"],
+    standalone: false
 })
 
 export class FieldChildContainerComponent extends ContainersComponent implements OnInit {
 
   @Input() field: Containers;
-  constructor(public appService: AppService, public snackBar: MatSnackBar) {
+  constructor(public override appService: AppService, public snackBar: MatSnackBar) {
     super(appService, snackBar)
   }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit();
     if (!this.field.fields) {
       this.field.type = FieldType.DIV;
       this.field.fields = new Array<Fields>();

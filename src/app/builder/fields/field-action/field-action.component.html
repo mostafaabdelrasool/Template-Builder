@@ -1,17 +1,8 @@
 <div fxLayout class="field-action" [ngStyle]="{'left.px': left,'top.px': top}">
-    <button   matTooltip="Copy" mat-icon-button (click)=handleFieldAction(2,field)>
-        <mat-icon >file_copy</mat-icon>
-    </button>
-    <button  matTooltip="Delete" mat-icon-button (click)=handleFieldAction(1,field)>
-        <mat-icon>delete</mat-icon>
-    </button>
-    <button  matTooltip="Select Parent" mat-icon-button (click)=handleFieldAction(3,field)>
-        <mat-icon >keyboard_arrow_up</mat-icon>
-    </button>
-    <button   mat-icon-button (click)=handleFieldAction(4,field) matTooltip="Equation and binding" *ngIf="field.type===27">
-        <mat-icon >functions</mat-icon>
-    </button>
-
+    <mat-icon matTooltip="Copy" (click)=handleFieldAction(2,field,$event)>file_copy</mat-icon>
+    <mat-icon matTooltip="Delete" (click)=handleFieldAction(1,field,$event)>delete</mat-icon>
+    <mat-icon matTooltip="Select Parent" (click)=handleFieldAction(3,field,$event)>keyboard_arrow_up</mat-icon>
+    <mat-icon   *ngIf="field.type===27" (click)="handleFieldAction(4,field,$event)" matTooltip="Equation and binding">functions</mat-icon>
     <ng-content>
 
     </ng-content>

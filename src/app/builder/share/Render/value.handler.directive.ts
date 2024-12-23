@@ -2,6 +2,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
     selector: '[valueHandler]',
+    standalone: false
 })
 export class InputValueHandler {
     constructor(private el: ElementRef) {

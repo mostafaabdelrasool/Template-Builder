@@ -1,18 +1,19 @@
 import { Component, OnInit, Input, ViewChild, ViewContainerRef, AfterViewInit, OnDestroy } from "@angular/core";
-import { InputField, FieldType, FieldCategory } from '../model/field';
+import { InputField, FieldType, FieldCategory, Fields } from '../model/field';
 import { AppService } from '../share/Render/app.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RichTextSettingComponent } from './rich-text-setting/rich-text-setting.component';
 import { FieldService } from './fields.service';
 
 @Component({
-  selector: "app-fields",
-  templateUrl: "./fields.component.html",
-  styleUrls: ["./fields.component.scss"],
+    selector: "app-fields",
+    templateUrl: "./fields.component.html",
+    styleUrls: ["./fields.component.scss"],
+    standalone: false
 })
 
 export class FieldsComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() field: InputField;
+  @Input() field: Fields;
   // performAction: boolean;
   fieldType: FieldType;
   @ViewChild('fieldtemplate', { static: true, read: ViewContainerRef }) entry: ViewContainerRef;

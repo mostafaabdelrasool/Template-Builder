@@ -1,7 +1,8 @@
 import { Directive, HostListener, ElementRef, Input } from '@angular/core';
 
 @Directive({
-  selector: '[appHighlight]'
+    selector: '[appHighlight]',
+    standalone: false
 })
 export class HighlightDirective {
 
@@ -13,9 +14,10 @@ export class HighlightDirective {
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.highlight(null);
+    this.highlight(undefined);
   }
-  private highlight(color: HighlightColors) {
+
+  private highlight(color?: HighlightColors) {
     if (!this.highlightColor.disabled) {
       this.el.nativeElement.style.border = color ? '1px dashed ' + color : null;
 
@@ -23,10 +25,12 @@ export class HighlightDirective {
   }
   @Input('appHighlight') highlightColor: HighlightSetting;
 }
+
 export interface HighlightSetting {
   color: HighlightColors;
-  disabled: boolean;
+  disabled?: boolean;
 }
+
 export enum HighlightColors {
   YELLOW = 'yellow', BLUE = '#00c4ff', RED = 'red', BLACK = 'black'
 }

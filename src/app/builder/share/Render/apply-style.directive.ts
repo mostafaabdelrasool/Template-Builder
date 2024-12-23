@@ -1,36 +1,44 @@
-import { Directive, Input, ElementRef } from '@angular/core';
-import { Fields } from 'src/app/builder/model/field';
-import { AppService } from './app.service';
-import { Style } from '../../model/style';
+import { Directive, Input, ElementRef } from "@angular/core";
+import { Fields } from "src/app/builder/model/field";
+import { AppService } from "./app.service";
+import { Style } from "../../model/style";
+import objectKeysOfType from "src/app/utility/object-key";
 
 @Directive({
-  selector: '[appStyle]'
+  selector: "[appStyle]",
+  standalone: false,
 })
 export class ApplyStyleDirective {
   _style: Style;
   constructor(private el: ElementRef, private appService: AppService) {
     this._style = {};
   }
-  @Input() styleField:Fields
-  @Input('appStyle') set appStyle(value: Style) {
+  @Input() styleField: Fields;
+  @Input("appStyle") set appStyle(value: Style) {
     if (value) {
       // to detect change in fxFlex or style Object
-      Object.keys(value).forEach(key => {
-        if (key !== 'fxFlex') {
-          this.el.nativeElement.style[key] = value[key]
+      const valueKey = objectKeysOfType(value);
+      valueKey.forEach((key) => {
+        if (key !== "fxFlex") {
+          const val = (this.el.nativeElement.style[key] = value[key]);
         }
-      })
+      });
       if (value.fxFlex) {
-        Object.keys(value.fxFlex).forEach(key => {
-          this.applyFlex(key, value.fxFlex[key]);
-        })
+        objectKeysOfType(value.fxFlex).forEach((key) => {
+          if (value.fxFlex?.[key]) {
+            this.applyFlex(key, value.fxFlex[key] as string);
+          }
+        });
       }
     }
-
   }
+
   private applyFlex(key: string, value: string): boolean {
-    if ((this.appService.currentField && this.appService.currentField.isContainer) 
-     || (this.styleField && this.styleField.isContainer))
+    if (
+      (this.appService.currentField &&
+        this.appService.currentField.isContainer) ||
+      (this.styleField && this.styleField.isContainer)
+    )
       this.el.nativeElement.style.display = "flex";
     switch (key) {
       case "fxLayout":
@@ -52,14 +60,13 @@ export class ApplyStyleDirective {
         this.el.nativeElement.style.width = "100%";
         return true;
       case "wrap":
-        this.el.nativeElement.style.flexWrap = "wrap";;
+        this.el.nativeElement.style.flexWrap = "wrap";
         return true;
       case "fxFlex":
-        this.el.nativeElement.style.width = value + '%';
+        this.el.nativeElement.style.width = value + "%";
         return true;
       default:
         return false;
     }
   }
-
 }

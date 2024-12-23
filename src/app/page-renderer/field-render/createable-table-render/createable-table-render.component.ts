@@ -1,16 +1,16 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { CreateableTable, SummaryType, TabelSummary } from 'src/app/builder/model/field';
 import { RenderService } from '../../render.service';
-import { CellStatus } from 'src/app/share/edit-in-place/edit-in-place.component';
 import { TableHeader } from './../../../builder/model/field';
 import { ActivatedRoute, Router } from "@angular/router";
 import { DialogsService } from "src/app/share/dialog-service/dialogs.service";
 import { lastValueFrom } from "rxjs";
 
 @Component({
-  selector: "app-createable-table-render",
-  templateUrl: "./createable-table-render.component.html",
-  styleUrls: ["./createable-table-render.component.scss"]
+    selector: "app-createable-table-render",
+    templateUrl: "./createable-table-render.component.html",
+    styleUrls: ["./createable-table-render.component.scss"],
+    standalone: false
 })
 
 export class CreateableTableRenderComponent implements OnInit {
@@ -44,14 +44,14 @@ export class CreateableTableRenderComponent implements OnInit {
     if (this.field.editFormId) {
       this.navigateToForm(this.field.editFormId, "");
       //to get back to current form after submit
-      this.renderService.setPreviosFormId(this.route.snapshot.queryParams.formId);
+      this.renderService.setPreviosFormId(this.route.snapshot.queryParams['formId']);
     }
   }
-  edit(item) {
+  edit(item: any) {
     if (item && this.field.editFormId) {
       this.navigateToForm(this.field.editFormId, item["id"]);
       //to get back to current form after submit
-      this.renderService.setPreviosFormId(this.route.snapshot.queryParams.formId);
+      this.renderService.setPreviosFormId(this.route.snapshot.queryParams['formId']);
     }
     // item.isEdit = true;
     // item.status = CellStatus.Edit;
@@ -65,13 +65,13 @@ export class CreateableTableRenderComponent implements OnInit {
   //   item.isEdit = false;
   //   item.status = CellStatus.Cancel;
   // }
-  async delete(item) {
+  async delete(item: any) {
     const source$ =this.dialogService.openYesNoDialog("Confirm Delete", "Are you sure to Delete?");
     const dialogResult = await lastValueFrom(source$);
     if (!dialogResult) {
       return;
     }
-    const featureId = this.route.snapshot.queryParams.featureId;
+    const featureId = this.route.snapshot.queryParams['featureId'];
     if (!featureId) {
       return
     }
@@ -111,14 +111,14 @@ export class CreateableTableRenderComponent implements OnInit {
     }
     return result;
   }
-  setCurrentItem(item, index) {
+  setCurrentItem(item: any, index: number) {
     this.currentItem = item;
     this.currentItem.index = index;
   }
-  getHeaderColumns(index) {
+  getHeaderColumns(index: number) {
     return this.field.header.filter(x => x.rowHeaderIndex === index);
   }
-  navigateToForm(formId, itemId) {
+  navigateToForm(formId: string, itemId: string) {
     // changes the route without moving from the current view or
     // triggering a navigation event,
     let params = { formId: formId, featureId: this.renderService.featureId, id: itemId };

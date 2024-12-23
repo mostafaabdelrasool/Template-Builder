@@ -4,9 +4,10 @@ import { UserApplication } from './model/user-application';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
-  selector: 'app-user-application',
-  templateUrl: './user-application.component.html',
-  styleUrls: ['./user-application.component.scss']
+    selector: 'app-user-application',
+    templateUrl: './user-application.component.html',
+    styleUrls: ['./user-application.component.scss'],
+    standalone: false
 })
 export class UserApplicationComponent implements OnInit {
 

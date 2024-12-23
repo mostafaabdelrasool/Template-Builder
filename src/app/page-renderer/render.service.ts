@@ -4,25 +4,25 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureSubData, FeatureSubmission } from './model/feature-submission';
-import { ExtractAndMapAllPorps } from '../share/json-parser/extract-props';
+import { ExtractAndMapAllPorps } from '../utility/extract-props';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RenderService {
   data: any = {}
-  featureId: string;
+  featureId: string | undefined;
   featureName: string;
   dataRetrieved: Subject<any> = new Subject<any>();
   reloadData: Subject<any> = new Subject<any>();
   loadFormFeature: Subject<string> = new Subject<string>();
   private previousFormId: string;
   constructor(private http: HttpClient) { }
-  initData(featureId: string) {
+  initData(featureId: string | undefined) {
     this.data = {};
     this.featureId = featureId;
   }
-  setPreviosFormId(formId) {
+  setPreviosFormId(formId :string) {
     this.previousFormId = formId;
   }
   getPreviosFormId() {
@@ -82,7 +82,7 @@ export class RenderService {
       this.dataRetrieved.next(this.data);
     }
   }
-  addFeature(featureId) {
+  addFeature(featureId : string) {
     return this.http.post(environment.apiUrl + 'api/FeatureSubmission/AddFeature', { dataJson: JSON.stringify(this.data) }, { params: { featureId: featureId } });
   }
 }

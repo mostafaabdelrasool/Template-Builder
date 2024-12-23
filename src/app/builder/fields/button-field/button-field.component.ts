@@ -5,9 +5,10 @@ import { ButtonClickHandlerComponent } from "./Button-Click-Handler/Button-Click
 import { ELementClickAction } from './../../model/field';
 
 @Component({
-  selector: "app-button-field",
-  templateUrl: "./button-field.component.html",
-  styleUrls: ["./button-field.component.scss"]
+    selector: "app-button-field",
+    templateUrl: "./button-field.component.html",
+    styleUrls: ["./button-field.component.scss"],
+    standalone: false
 })
 
 export class ButtonFieldComponent implements OnInit {

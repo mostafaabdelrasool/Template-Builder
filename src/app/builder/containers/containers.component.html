@@ -1,23 +1,23 @@
 <div style="height:96%" (drop)='onDrop($event);'>
     <div *ngFor="let item of appService.containers" id="{{item.id}}" (dragover)='onDragOver($event,item);'
-        [ngSwitch]="item.type" class="field-container" [appStyle]="item.style"
-        [ngClass]="{'item-selected': item.id===appService.currentField?.id}" (click)="selectItem($event,item)"
-        [appHighlight]='{color:"black"}' (drop)='onDrop($event);'>
+        [ngSwitch]="item.type" class="field-container" [appStyle]="item.style || {}"
+        [ngClass]="{'item-selected': appService.currentField && item.id===appService.currentField.id}" (click)="selectItem($event,item)"
+        [appHighlight]='{color:colors.BLACK}' (drop)='onDrop($event);'>
         <ng-container *ngSwitchCase="divType">
             <ng-container *ngFor="let field of item.fields">
                 <app-fields mwlResizable [enableGhostResize]="true"
                     [resizeEdges]="{ bottom: true, right: true, top: true, left: true }"
                     (resizeEnd)="onResizeEnd($event,field)" id="{{field.id}}"
-                    [ngClass]="{'field-selected':field.id===appService.currentField?.id,'full-width':field.fullWidth}"
-                    [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="!field.isContainer" [field]="field"
-                    (click)="appService.selectField(field)" draggable="true" (dragstart)="startReposition($event,field)"
-                    (dragover)='onDragOver($event,field);'></app-fields>
+                    [ngClass]="{'field-selected':appService.currentField && field.id===appService.currentField.id,'full-width':field.fullWidth}"
+                    [appHighlight]='{color:colors.BLACK}' [appStyle]="field.style || {}" *ngIf="!field.isContainer"
+                    [field]="field" (click)="appService.selectField(field, $event)" draggable="true"
+                    (dragstart)="startReposition($event,field)" (dragover)='onDragOver($event, field);'></app-fields>
                 <app-child-container mwlResizable [enableGhostResize]="true"
                     [resizeEdges]="{ bottom: true, right: true, top: true, left: true }"
                     (resizeEnd)="onResizeEnd($event,field)" class="child-container" id="{{field.id}}"
-                    [ngClass]="{'field-selected':field.id===appService.currentField?.id}"
-                    [appHighlight]='{color:"black"}' [appStyle]="field.style" *ngIf="field.isContainer"
-                    [container]="field" (click)="appService.selectField(field)" draggable="true"
+                    [ngClass]="{'field-selected':appService.currentField && field.id===appService.currentField.id}"
+                    [appHighlight]='{color:colors.BLACK}' [appStyle]="field.style || {}" *ngIf="field.isContainer"
+                    [container]="field" (click)="appService.selectField(field, $event)" draggable="true"
                     (dragstart)="startReposition($event,field)" (dragover)='onDragOver($event,field);'>
                 </app-child-container>
             </ng-container>
@@ -25,12 +25,12 @@
         <ng-container *ngSwitchCase="15">
             <mat-card class="example-card">
                 <mat-card-header>
-                    <mat-card-title>{{item["cardTitle"]}}</mat-card-title>
-                    <mat-card-subtitle> {{item["cardSubTitle"]}}</mat-card-subtitle>
+                    <mat-card-title>{{castContainerToCard(item).cardTitle}}</mat-card-title>
+                    <mat-card-subtitle> {{castContainerToCard(item).cardSubTitle}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content (dragover)='onDragOver($event);' (drop)='onDrop($event);'>
-                    <div *ngFor="let field of item.fields" (click)="appService.selectField(field)"
-                        [appStyle]="field.style" [ngClass]="{'field-selected':field.id===appService.currentField?.id,
+                    <div *ngFor="let field of item.fields" (click)="appService.selectField(field, $event)"
+                        [appStyle]="field.style || {}" [ngClass]="{'field-selected':appService.currentField && field.id===appService.currentField.id,
                         'full-width':field.isContainer || field.fullWidth}">
                         <app-field-action [field]="field" *ngIf="field.id===appService.currentField?.id">
                         </app-field-action>
@@ -40,7 +40,7 @@
                     </div>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button *ngFor="let action of item['cardActions']" mat-button>{{action.title}}</button>
+                    <button *ngFor="let action of castContainerToCard(item).cardActions" mat-button>{{action.title}}</button>
                 </mat-card-actions>
             </mat-card>
         </ng-container>

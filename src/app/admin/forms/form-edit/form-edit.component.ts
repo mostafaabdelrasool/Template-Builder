@@ -5,9 +5,10 @@ import { FormService } from '../form.service';
 import { Feature } from './../../model/feature';
 
 @Component({
-  selector: "app-form-edit",
-  templateUrl: "./form-edit.component.html",
-  styleUrls: ["./form-edit.component.scss"]
+    selector: "app-form-edit",
+    templateUrl: "./form-edit.component.html",
+    styleUrls: ["./form-edit.component.scss"],
+    standalone: false
 })
 
 export class FormEditComponent implements OnInit {
@@ -23,8 +24,8 @@ export class FormEditComponent implements OnInit {
     this.getFeatures();
   }
   getFeatures() {
-    this.formService.getUrl("api/Feature").subscribe((feature: Feature[]) => {
-      this.features = feature;
+    this.formService.getUrl("api/Feature").subscribe((feature) => {
+      this.features = feature as Feature[];
     });
   }
   save() {

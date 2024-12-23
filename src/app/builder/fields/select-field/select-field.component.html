@@ -1,12 +1,12 @@
 <mat-form-field appearance="outline">
-    <mat-select  placeholder="{{field.placeholder}}">
+    <mat-select placeholder="{{field.placeholder}}">
         <mat-label>{{field.label}}</mat-label>
-        <ng-container *ngIf="field.dataSource?.staticData?.length>0">
+        <ng-container *ngIf="field.dataSource!.staticData!.length > 0">
             <mat-option *ngFor="let item of field.dataSource.staticData">
                 {{item.discription}}
             </mat-option>
         </ng-container>
-       
+
     </mat-select>
     <mat-hint>{{field['hint']}}</mat-hint>
     <button mat-button *ngIf="field['clearButton']" matSuffix mat-icon-button aria-label="Clear">

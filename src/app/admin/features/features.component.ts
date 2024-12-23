@@ -8,9 +8,10 @@ import { Feature } from "../model/feature";
 import { FeatureSetting } from "../setting/feature.setting";
 
 @Component({
-  selector: "app-features",
-  templateUrl: "./features.component.html",
-  styleUrls: ["./features.component.scss"]
+    selector: "app-features",
+    templateUrl: "./features.component.html",
+    styleUrls: ["./features.component.scss"],
+    standalone: false
 })
 
 export class FeaturesComponent extends BaseComponent<Feature> implements OnInit {
@@ -18,7 +19,7 @@ export class FeaturesComponent extends BaseComponent<Feature> implements OnInit 
   features$: Observable<Feature[]>;
   tableSetting: TableSetting
   appId: string;
-  constructor(public dataService: DataService, private route: ActivatedRoute) {
+  constructor(public override dataService: DataService, private route: ActivatedRoute) {
     super("Feature", dataService)
     this.dataService._controller = "api/Feature";
     this.features$ = this.dataSubject.asObservable();
@@ -26,7 +27,7 @@ export class FeaturesComponent extends BaseComponent<Feature> implements OnInit 
 
   ngOnInit() {
     this.tableSetting = FeatureSetting.TableSetting;
-    this.appId = this.route.snapshot.params.appId;
+    this.appId = this.route.snapshot.params['appId'];
     if (this.appId)
       this.loadWithFilter({ applicationId: this.appId });
   }

@@ -9,7 +9,7 @@ export class Fields {
   id: string;
   classes?: string[];
   name?: string
-  style?: Style;
+  style?: Style = new Style();
   containerId?: string;
   placeholder?: string;
   label?: string;
@@ -23,7 +23,7 @@ export class Fields {
   value?: string;
   category?: FieldCategory;
   complexValueCalculation?: ComplexValueCalculation;
-  bindContainer?: boolean
+  bindContainer?: boolean;
 }
 export class ButtonField extends Fields {
   buttonType: ButtonFieldTypes;
@@ -114,12 +114,13 @@ export class TableHeader {
   actions?: [{ tooltip?: string, onClickCode?: string, actionType?: number, icon?: string }];
   rowHeaderIndex = 0;
 }
-export class SelectField extends Fields {
+export class SelectField extends InputField {
   dispalyMember: string;
   valueMember: string;
   dataSource: FieldDataSource;
   onSelect?: OnSelectEvent
 }
+
 export class ListField extends Fields {
   fields: Fields[];
   dataSource: FieldDataSource;

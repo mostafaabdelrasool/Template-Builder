@@ -6,9 +6,10 @@ import { getPathData, objectKeys } from 'src/app/share/object-func';
 import { BuilderService } from "../../builder.service";
 
 @Component({
-  selector: "app-field-property-setting",
-  templateUrl: "./field-property-setting.component.html",
-  styleUrls: ["./field-property-setting.component.scss"]
+    selector: "app-field-property-setting",
+    templateUrl: "./field-property-setting.component.html",
+    styleUrls: ["./field-property-setting.component.scss"],
+    standalone: false
 })
 
 export class FieldPropertySettingComponent implements OnInit {
@@ -20,7 +21,7 @@ export class FieldPropertySettingComponent implements OnInit {
   ngOnInit() {
     this.getModelProps();
   }
-  typeValueChanged(event) {
+  typeValueChanged(event: any) {
     let input = (<InputField>this.currentField)
     input.typeName = event.value;
     if (event.value === 'datetime') {
@@ -35,7 +36,7 @@ export class FieldPropertySettingComponent implements OnInit {
     if (this.currentField.bindContainer) {
       const parentContainer = this.appService.allContainers.find(x => x.id === this.currentField.containerId);
       if (parentContainer) {
-        const ds = <FieldDataSource>parentContainer['dataSource'];
+        const ds = <FieldDataSource>parentContainer['dataSource' as keyof typeof parentContainer];
         if (ds) {
           this.modelProps = ds.dataStructure.map(d => d['name'])
         } else {
@@ -58,9 +59,13 @@ export class FieldPropertySettingComponent implements OnInit {
     }
   }
 
-  fieldValueChanged(value , name) {
+  fieldValueChanged(value: any , name: string) {
     this.appService.updateFieldProperty(this.currentField.id, value, name);
-    this.currentField[name] = value;
+    this.currentField[name as keyof typeof this.currentField] = value as never;
+  }
+
+  castInputField () {
+    return this.currentField as InputField
   }
 
 }

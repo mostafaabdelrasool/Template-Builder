@@ -5,19 +5,20 @@ import { DataService } from "src/app/core/data.api/data.service";
 import { TableSetting } from "src/app/share/table/model";
 import { Applications } from "../model/applications";
 import { ApplicationsSetting } from "../setting/application.setting";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-application",
-  templateUrl: "./application.component.html",
-  styleUrls: ["./application.component.scss"]
+    selector: "app-application",
+    templateUrl: "./application.component.html",
+    styleUrls: ["./application.component.scss"],
+    standalone: false
 })
 
 export class ApplicationComponent extends BaseComponent<Applications> implements OnInit {
 
   applications$: Observable<Applications[]>;
   tableSetting: TableSetting
-  constructor(public dataService: DataService, private route: Router) {
+  constructor(public override dataService: DataService, private route: Router) {
     super("Application", dataService)
     this.dataService._controller = "api/Application";
     this.applications$ = this.dataSubject.asObservable();

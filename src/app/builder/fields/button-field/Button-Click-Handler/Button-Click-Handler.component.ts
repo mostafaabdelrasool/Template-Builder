@@ -8,9 +8,10 @@ import { BuilderService } from "src/app/builder/builder.service";
 import { Observable } from "rxjs";
 
 @Component({
-  selector: "app-Button-Click-Handler",
-  templateUrl: "./Button-Click-Handler.component.html",
-  styleUrls: ["./Button-Click-Handler.component.scss"]
+    selector: "app-Button-Click-Handler",
+    templateUrl: "./Button-Click-Handler.component.html",
+    styleUrls: ["./Button-Click-Handler.component.scss"],
+    standalone: false
 })
 
 export class ButtonClickHandlerComponent implements OnInit {
@@ -44,10 +45,10 @@ export class ButtonClickHandlerComponent implements OnInit {
   getApplications() {
     this.applications$ = this.builderService.getApplications();
   }
-  getFeatures(appId) {
+  getFeatures(appId: string) {
     this.features$ = this.builderService.getFeatures(appId);
   }
-  getForms(featureId) {
+  getForms(featureId: string) {
     this.form$ = this.builderService.getForms(featureId)
   }
 

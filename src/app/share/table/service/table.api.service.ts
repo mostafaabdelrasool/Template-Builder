@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TableApiService {
-
-  constructor(private http: HttpClient) { }
-  fetchData(url) {
+  constructor(private http: HttpClient) {}
+  
+  fetchData(url: string) {
     return this.http.get(environment.apiUrl + url);
   }
 }

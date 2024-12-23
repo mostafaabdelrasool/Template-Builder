@@ -5,9 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataSettingComponent } from './data-setting/data-setting.component';
 
 @Component({
-  selector: "app-data-source",
-  templateUrl: "./data-source.component.html",
-  styleUrls: ["./data-source.component.scss"]
+    selector: "app-data-source",
+    templateUrl: "./data-source.component.html",
+    styleUrls: ["./data-source.component.scss"],
+    standalone: false
 })
 
 export class DataSourceComponent implements OnInit {
@@ -19,8 +20,8 @@ export class DataSourceComponent implements OnInit {
   ngOnInit() {
 
   }
-  openDataSource(dataSource: FieldDataSource=null) {
-    let setting = { width: '40vw', height: 'auto' };
+  openDataSource(dataSource?: FieldDataSource) {
+    let setting = { width: '40vw', height: 'auto', "data": {} };
     if(dataSource) {
       setting["data"] = dataSource
     }

@@ -7,9 +7,10 @@ import { FieldType } from '../model/field';
 import { FieldRenderSetting } from '../model/field-render-setting';
 
 @Component({
-  selector: "app-child-container",
-  templateUrl: "./child-container.component.html",
-  styleUrls: ["./child-container.component.scss"]
+    selector: "app-child-container",
+    templateUrl: "./child-container.component.html",
+    styleUrls: ["./child-container.component.scss"],
+    standalone: false
 })
 
 export class ChildContainerComponent extends ContainersComponent implements OnInit, AfterViewInit {
@@ -17,23 +18,25 @@ export class ChildContainerComponent extends ContainersComponent implements OnIn
   fieldType: FieldType;
   @ViewChild('fieldtemplate', { static: true, read: ViewContainerRef }) entry: ViewContainerRef;
   componentRef: any;
-  constructor(public appService: AppService, snackBar: MatSnackBar) {
+  constructor(public override appService: AppService, snackBar: MatSnackBar) {
     super(appService, snackBar)
   }
 
-  ngOnInit() {
+  override ngOnInit() {
+    super.ngOnInit()
     this.appService.initField(this.container);
   }
   ngAfterViewInit(): void {
     this.componentRef = this.createComponent();
   }
+  
   createComponent() {
     let renderSetting = FieldRenderSetting[FieldType[this.container.type]];
     let componentName = renderSetting.componentName;
     //const factory = this.resolver.resolveComponentFactory(componentName);
     this.entry.clear();
     let componentRef = this.entry.createComponent(componentName);
-    componentRef.instance['field'] = this.container;
+    (componentRef.instance as typeof componentName).field = this.container;
     componentRef.changeDetectorRef.detectChanges();
     return componentRef
   }

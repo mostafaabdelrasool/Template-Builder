@@ -3,11 +3,11 @@
     <ng-template mat-tab-label>
       {{tab.tabName}}
     </ng-template>
-    <div class="field" [appStyle]="tab.container.style">
+    <div class="field" [appStyle]="tab.container.style || {}">
       <ng-container *ngFor="let item of tab.container.fields">
-        <app-field-render *ngIf="!item.isContainer" [field]="item" [appStyle]="item.style"
+        <app-field-render *ngIf="!item.isContainer" [field]="item" [appStyle]="item.style  || {}"
           [ngClass]="{'full-width':item.fullWidth}"></app-field-render>
-        <app-child-container-render *ngIf="item.isContainer" [container]="item" [appStyle]="item.style"
+        <app-child-container-render *ngIf="item.isContainer" [container]="item" [appStyle]="item.style || {}"
           [styleField]="item">
         </app-child-container-render>
       </ng-container>

@@ -8,7 +8,7 @@ export class Submission {
     assignToPositionId?: number;
     actionId: number;
     workFlowId: number;
-    formId: number;
+    formId?: number;
     creatorId?: number;
     stepName?: string;
     workflowName?: string;

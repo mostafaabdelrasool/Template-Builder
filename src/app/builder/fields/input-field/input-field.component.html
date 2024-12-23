@@ -1,7 +1,7 @@
 <ng-container [ngSwitch]="field.type">
     <mat-form-field *ngSwitchCase="0" appearance="outline">
         <mat-label>{{field.label}}</mat-label>
-        <input [type]="field.typeName" matInput placeholder="{{field.placeholder}}" [value]="value"
+        <input [type]="field.typeName || 'text'" matInput placeholder="{{field.placeholder}}" [value]="value"
             (change)="onValueChange($event)">
         <mat-hint>{{field.hint}}</mat-hint>
         <button mat-button *ngIf="field.clearButton" (click)="onValueChange({target:{value:''}})" matSuffix

@@ -7,9 +7,10 @@ import { SubmissionStep } from '../model/submission-step';
 import { RenderService } from 'src/app/page-renderer/render.service';
 
 @Component({
-  selector: "app-submission-edit",
-  templateUrl: "./submission-edit.component.html",
-  styleUrls: ["./submission-edit.component.scss"]
+    selector: "app-submission-edit",
+    templateUrl: "./submission-edit.component.html",
+    styleUrls: ["./submission-edit.component.scss"],
+    standalone: false
 })
 
 export class SubmissionEditComponent implements OnInit {
@@ -24,7 +25,7 @@ export class SubmissionEditComponent implements OnInit {
   ngOnInit() {
     this.renderService.data={};
     if (this.route.snapshot.params['id']) {
-      this.submissionService.getById(this.route.snapshot.params['id']).subscribe((x: Submission) => {
+      this.submissionService.getById<Submission>(this.route.snapshot.params['id']).subscribe((x: Submission) => {
         this.submission = x;
         this.getForm(0, x.currentStepId);
         if (this.submission.data) {
@@ -36,14 +37,14 @@ export class SubmissionEditComponent implements OnInit {
     }
     this.step.stepActions = [];
   }
-  getForm(workflowId = null, stepId = null) {
+  getForm(workflowId:number = 0, stepId: number = 0) {
     this.submissionService.getForm(workflowId, stepId).subscribe((x: SubmissionStep) => {
       this.step = x;
       if (x.formSetting)
         this.containers = JSON.parse(x.formSetting)
     });
   }
-  submit(actionId) {
+  submit(actionId: number) {
     this.submission.data=JSON.stringify(this.renderService.data);
     if (!this.route.snapshot.params['id']) {
       this.submission.workFlowId= +this.route.snapshot.params['workflowId'];
@@ -52,7 +53,7 @@ export class SubmissionEditComponent implements OnInit {
       this.submission.nextStepId=this.step.nextStepId;
     }
     this.submission.actionId=actionId;
-    this.submissionService.submit(this.submission).subscribe((x: SubmissionStep) => {
+    this.submissionService.submit(this.submission).subscribe(() => {
       this.renderService.data={};
       this.router.navigate(['submission']);
     });

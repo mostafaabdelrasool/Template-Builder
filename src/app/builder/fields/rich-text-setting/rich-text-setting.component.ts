@@ -3,9 +3,10 @@ import { Fields } from '../../model/field';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 @Component({
-  selector: "app-rich-text-setting",
-  templateUrl: "./rich-text-setting.component.html",
-  styleUrls: ["./rich-text-setting.component.scss"]
+    selector: "app-rich-text-setting",
+    templateUrl: "./rich-text-setting.component.html",
+    styleUrls: ["./rich-text-setting.component.scss"],
+    standalone: false
 })
 
 export class RichTextSettingComponent implements OnInit {

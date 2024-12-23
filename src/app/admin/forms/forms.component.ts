@@ -6,9 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormEditComponent } from './form-edit/form-edit.component';
 
 @Component({
-  selector: 'app-forms',
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.scss']
+    selector: 'app-forms',
+    templateUrl: './forms.component.html',
+    styleUrls: ['./forms.component.scss'],
+    standalone: false
 })
 export class FormsComponent implements OnInit, OnDestroy {
   forms: Form[];
@@ -16,8 +17,8 @@ export class FormsComponent implements OnInit, OnDestroy {
   constructor(public formService: FormService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.subscription = this.formService.get().subscribe((x: Form[]) => {
-      this.forms = x;
+    this.subscription = this.formService.get().subscribe((x) => {
+      this.forms = x as Form[];
     })
   }
   ngOnDestroy() {

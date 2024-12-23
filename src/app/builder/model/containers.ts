@@ -1,7 +1,7 @@
 import {  Fields } from './field';
 
 export class Containers extends Fields {
-  fields: Fields[];
+  fields?: Fields[];
 }
 export class CardField extends Containers{
   cardTitle?: string;

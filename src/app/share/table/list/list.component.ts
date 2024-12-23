@@ -1,16 +1,17 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { TableSetting, PopupFields } from '../model/popup.fields';
-import { EditpopupService } from '../editPopup/edit.Popup.service';
-import { DataService } from './../../../core/data.api/data.service';
-import { ObjectUtilityService } from '../service/object.utility.service';
-import { getPathData } from '../../object-func';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { TableSetting, PopupFields } from "../model/popup.fields";
+import { EditpopupService } from "../editPopup/edit.Popup.service";
+import { DataService } from "./../../../core/data.api/data.service";
+import { ObjectUtilityService } from "../service/object.utility.service";
+import { getPathData } from "../../object-func";
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: "app-list",
+  templateUrl: "./list.component.html",
+  styleUrls: ["./list.component.scss"],
+  standalone: false,
 })
 export class ListComponent implements OnInit {
-  @Input() data: Array<any>;
+  @Input() data: Array<any> | null;
   @Input() saveData: Function;
   @Input() deleteData: Function;
   @Input() updateData: Function;
@@ -18,9 +19,11 @@ export class ListComponent implements OnInit {
   @Output() onSave: EventEmitter<any>;
 
   popupFields: Array<PopupFields> = [];
-  constructor(private editpopupServiceService: EditpopupService,
+  constructor(
+    private editpopupServiceService: EditpopupService,
     private dataService: DataService,
-    private objectUtilityService: ObjectUtilityService) {
+    private objectUtilityService: ObjectUtilityService
+  ) {
     this.onSave = new EventEmitter<any>();
   }
   ngOnInit() {
@@ -28,52 +31,61 @@ export class ListComponent implements OnInit {
     this.validateTableSettings();
     // this.data.push(this.item) ;
     this.popupFields = this.tableSetting.popupFields;
-    console.log('data =>', this.data);
+    console.log("data =>", this.data);
   }
 
   private validateTableSettings() {
     if (this.tableSetting.headerSetting.length === 0) {
-      throw 'Popup fileds should not be null';
+      throw "Popup fileds should not be null";
     }
   }
   addNewLine() {
-    this.editpopupServiceService.openDialog(this.tableSetting.popupFields).subscribe(x => {
-      // this.onSave.emit(x);
-      if (x) {
-        if (this.saveData) {
-          this.saveData.apply(this, [x]);
+    this.editpopupServiceService
+      .openDialog(this.tableSetting.popupFields)
+      .subscribe((x) => {
+        // this.onSave.emit(x);
+        if (x) {
+          if (this.saveData) {
+            this.saveData.apply(this, [x]);
+          }
         }
-      }
-    })
+      });
   }
-  edit(row) {
-    this.editpopupServiceService.openDialog(this.tableSetting.popupFields, row).subscribe(x => {
-      // this.onSave.emit(x);
-      if (x) {
-        let index = this.data.findIndex(x => {
-          return x === row;
-        });
-        this.data[index] = x;
-        if (this.updateData) {
-          this.updateData.apply(this, [x]);
+  edit(row: any) {
+    this.editpopupServiceService
+      .openDialog(this.tableSetting.popupFields, row)
+      .subscribe((x) => {
+        // this.onSave.emit(x);
+        if (x) {
+          let index = this.data?.findIndex((x) => {
+            return x === row;
+          });
+          if (!index) {
+            return;
+          }
+          this.data![index] = x;
+          if (this.updateData) {
+            this.updateData.apply(this, [x]);
+          }
         }
-      }
-    })
+      });
   }
-  delete(row) {
-    let index = this.data.findIndex(x => {
+  delete(row: any) {
+    let index = this.data?.findIndex((x) => {
       return x === row;
     });
-    this.data.splice(index, 1);
+    if (!index) {
+      return;
+    }
+    this.data?.splice(index, 1);
     if (this.deleteData) {
-      this.deleteData(row)
+      this.deleteData(row);
     }
   }
 
-  applyFilter(filterValue: string) {
-
-  }
-  getData(row, model) {
-    return getPathData(row, model)
+  applyFilter(filterValue: string | undefined) {}
+  
+  getData(row: any, model: any) {
+    return getPathData(row, model);
   }
 }

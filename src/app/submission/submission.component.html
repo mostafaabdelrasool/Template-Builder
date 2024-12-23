@@ -43,7 +43,7 @@
     <mat-divider></mat-divider>
     <mat-list role="list">
       <mat-list-item role="listitem" *ngFor="let item of workflows;">
-        <a mat-flat-button (click)="getWorkflowSubmissions(item.id)">{{item.name}}</a>
+        <a mat-flat-button (click)="getWorkflowSubmissions()">{{item.name}}</a>
         <mat-divider></mat-divider>
       </mat-list-item>
     </mat-list>

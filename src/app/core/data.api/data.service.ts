@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class DataService {
-
   _url: string;
   _controller: string;
   constructor(public http: HttpClient) {
@@ -15,26 +14,31 @@ export class DataService {
   get() {
     return this.http.get(this._url + this._controller);
   }
-  post(data) {
+  post(data: any) {
     return this.http.post(this._url + this._controller, data);
   }
-  put(data) {
+  put(data: any) {
     return this.http.put(this._url + this._controller, data);
   }
-  delete(id) {
-    return this.http.delete(this._url + this._controller, { params: { id: id } });
+  delete(id: any) {
+    return this.http.delete(this._url + this._controller, {
+      params: { id: id },
+    });
   }
-  getById(id) {
-    return this.http.get(this._url + this._controller + '/' + id);
+  getById<T>(id: any) {
+    return this.http.get<T>(this._url + this._controller + "/" + id);
   }
-  getUrl<T>(url) {
+  getUrl<T>(url: string) {
     return this.http.get<T>(this._url + url);
   }
-  partialUpdate(data, props) {
-    return this.http.post(this._url + this._controller + '/PartialUpdate', data, { params: { props: props } });
+  partialUpdate(data: any, props: any) {
+    return this.http.post(
+      this._url + this._controller + "/PartialUpdate",
+      data,
+      { params: { props: props } }
+    );
   }
-  getWithFilter(filter) {
+  getWithFilter(filter: any) {
     return this.http.get(this._url + this._controller, { params: filter });
   }
 }
-

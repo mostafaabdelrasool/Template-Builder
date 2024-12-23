@@ -2,8 +2,9 @@
     <mat-list-item *ngFor="let item of data">
         <ng-container *ngFor="let field of container.fields">
             <app-field-render *ngIf="!field.isContainer" [field]="field" [parentValue]="item"
-            [appStyle]="field.style" [appStyle]="field.style"></app-field-render>
-            <app-child-container-render *ngIf="field.isContainer"[container]="field" [appStyle]="field.style" [styleField]="field" >
+                [appStyle]="field.style || {}" [appStyle]="field.style || {}"></app-field-render>
+            <app-child-container-render *ngIf="field.isContainer" [container]="field" [appStyle]="field.style || {}"
+                [styleField]="field">
             </app-child-container-render>
         </ng-container>
     </mat-list-item>

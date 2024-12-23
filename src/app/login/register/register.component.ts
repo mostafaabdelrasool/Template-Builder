@@ -5,9 +5,10 @@ import { AuthenticationService } from "src/app/core/data.api/auth.service";
 import { Login, LoginResponse } from "../login";
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.scss"]
+    selector: "app-register",
+    templateUrl: "./register.component.html",
+    styleUrls: ["./register.component.scss"],
+    standalone: false
 })
 
 export class RegisterComponent implements OnInit {

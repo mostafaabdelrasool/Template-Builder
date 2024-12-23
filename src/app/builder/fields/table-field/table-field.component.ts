@@ -5,9 +5,10 @@ import { DataSettingComponent } from '../../data-source/data-setting/data-settin
 import { FieldDataSource } from '../../model/data-source';
 
 @Component({
-  selector: "app-table-field",
-  templateUrl: "./table-field.component.html",
-  styleUrls: ["./table-field.component.scss"]
+    selector: "app-table-field",
+    templateUrl: "./table-field.component.html",
+    styleUrls: ["./table-field.component.scss"],
+    standalone: false
 })
 
 export class TableFieldComponent implements OnInit {
@@ -23,11 +24,11 @@ export class TableFieldComponent implements OnInit {
     this.field.hasAction = true;
     //this.openDataSource();
   }
-  setHeaderVisability(event) {
+  setHeaderVisability(event: any) {
     this.currentRows = event.value;
   }
   openSetting() {
-    let setting = { width: '40vw', height: 'auto' };
+    let setting = { width: '40vw', height: 'auto', data: {} };
     if (this.field.dataSource) {
       setting["data"] = this.field.dataSource
     }

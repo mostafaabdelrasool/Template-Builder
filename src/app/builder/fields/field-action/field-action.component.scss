@@ -1,23 +1,24 @@
-.field-action{
-    background: gold;
-    color: white;
-    padding: 1px;
-    text-align: center;
-    cursor: pointer;
-    position: absolute;
-    left: -0.1rem;
-    top: -1.6rem;
-    mat-icon{
-        font-size: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.field-action {
+  background: gold;
+  color: white;
+  padding: 1px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  left: -0.1rem;
+  top: -1.6rem;
+  width: 6rem;
+  justify-content: space-around;
+  mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
-button{
-    width: inherit;
-    height: inherit;
+button {
+  width: inherit;
+  height: inherit;
 }
-:host{
-    position: fixed;
+:host {
+  position: fixed;
 }

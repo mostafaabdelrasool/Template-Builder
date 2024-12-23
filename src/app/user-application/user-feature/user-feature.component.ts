@@ -10,9 +10,10 @@ import { mapProps } from 'src/app/share/object-func';
 import { RenderService } from 'src/app/page-renderer/render.service';
 
 @Component({
-  selector: "app-user-feature",
-  templateUrl: "./user-feature.component.html",
-  styleUrls: ["./user-feature.component.scss"]
+    selector: "app-user-feature",
+    templateUrl: "./user-feature.component.html",
+    styleUrls: ["./user-feature.component.scss"],
+    standalone: false
 })
 
 export class UserFeatureComponent implements OnInit {
@@ -26,14 +27,14 @@ export class UserFeatureComponent implements OnInit {
   constructor(private uappService: UserApplicationService, private route: ActivatedRoute,
     private router: Router, renderService: RenderService) {
     renderService.loadFormFeature.subscribe(x => {
-      const formId = this.route.snapshot.queryParams.formId;
+      const formId = this.route.snapshot.queryParams['formId'];
       this.getFeatureForm(x || formId);
     })
   }
 
   ngOnInit() {
-    const appId = this.route.snapshot.params.appId;
-    const formId = this.route.snapshot.queryParams.formId;
+    const appId = this.route.snapshot.params['appId'];
+    const formId = this.route.snapshot.queryParams['formId'];
     if (appId) {
       this.features$ = this.uappService.getApplicationFeatures(appId)
     }
